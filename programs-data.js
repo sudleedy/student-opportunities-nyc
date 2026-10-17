@@ -1,5 +1,4 @@
-// Student Opportunity Beacon public opportunity catalog.
-// Update official program information before claiming current availability.
+// Student Opportunity Beacon catalog. Publication is not a live availability claim.
 window.PROGRAMS = [
   {
     "title": "Rockefeller University Jumpstart",
@@ -18,7 +17,13 @@ window.PROGRAMS = [
     "subject": "Other",
     "details": "A spring-to-summer laboratory research program combining after-school training with a mentored summer science research experience.",
     "preparation": "Read the official page carefully, check the current cycle and eligibility, and note any required application materials.",
-    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications."
+    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications.",
+    "grades": [
+      11,
+      12
+    ],
+    "deadlineISO": "2027-01-04",
+    "deadlineNote": "Deadline applies to the currently described cycle or registration; confirm with the organizer."
   },
   {
     "title": "Science Research Mentoring Program (SRMP)",
@@ -37,7 +42,13 @@ window.PROGRAMS = [
     "subject": "Science & Research",
     "details": "A paid year-long research and mentorship experience where students investigate scientific questions with museum scientists.",
     "preparation": "Read the official page carefully, check the current cycle and eligibility, and note any required application materials.",
-    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications."
+    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications.",
+    "grades": [
+      10,
+      11
+    ],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "CUNY STEM Research Academy",
@@ -56,7 +67,10 @@ window.PROGRAMS = [
     "subject": "Science & Research",
     "details": "A two-semester STEM enrichment and research pathway with a spring research course and mentoring connected to CUNY faculty.",
     "preparation": "Read the official page carefully, check the current cycle and eligibility, and note any required application materials.",
-    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications."
+    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications.",
+    "grades": [],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "Summer Youth Employment Program (SYEP)",
@@ -75,7 +89,10 @@ window.PROGRAMS = [
     "subject": "Careers & Business",
     "details": "A citywide paid summer work and career exploration program offering project-based experiences and workplace learning.",
     "preparation": "Read the official page carefully, check the current cycle and eligibility, and note any required application materials.",
-    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications."
+    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications.",
+    "grades": [],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "NYC Ladders for Leaders",
@@ -94,7 +111,10 @@ window.PROGRAMS = [
     "subject": "Careers & Business",
     "details": "A selective paid summer professional internship program with preparation in resumes, interviews and workplace skills.",
     "preparation": "Read the official page carefully, check the current cycle and eligibility, and note any required application materials.",
-    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications."
+    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications.",
+    "grades": [],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "AMNH Science Communication Internship (SCIP)",
@@ -113,7 +133,12 @@ window.PROGRAMS = [
     "subject": "Media & Journalism",
     "details": "A paid museum internship focused on explaining scientific exhibits and ideas to visitors.",
     "preparation": "Read the official page carefully, check the current cycle and eligibility, and note any required application materials.",
-    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications."
+    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications.",
+    "grades": [
+      10
+    ],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "NYU Precollege",
@@ -132,7 +157,13 @@ window.PROGRAMS = [
     "subject": "College & Career Prep",
     "details": "An opportunity for high school students to explore university courses and potentially earn college credit before graduation.",
     "preparation": "Read the official page carefully, check the current cycle and eligibility, and note any required application materials.",
-    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications."
+    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications.",
+    "grades": [
+      11,
+      12
+    ],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "NYU College Access Leadership Institute",
@@ -151,7 +182,12 @@ window.PROGRAMS = [
     "subject": "College & Career Prep",
     "details": "A free college-access program helping rising seniors understand admissions, financial aid, essays, and campus life.",
     "preparation": "Read the official page carefully, check the current cycle and eligibility, and note any required application materials.",
-    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications."
+    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications.",
+    "grades": [
+      12
+    ],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "NYC Service in Schools",
@@ -170,7 +206,10 @@ window.PROGRAMS = [
     "subject": "Community & Leadership",
     "details": "A school-based pathway to learn about service-learning and ways to support meaningful community projects.",
     "preparation": "Read the official page carefully, check the current cycle and eligibility, and note any required application materials.",
-    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications."
+    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications.",
+    "grades": [],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "AMNH Science Alliance",
@@ -189,7 +228,10 @@ window.PROGRAMS = [
     "subject": "Science & Research",
     "details": "Hands-on science enrichment for teenagers at the museum, with opportunities to build scientific curiosity and skills.",
     "preparation": "Read the official page carefully, check the current cycle and eligibility, and note any required application materials.",
-    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications."
+    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications.",
+    "grades": [],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "NYU High School Art & Design Programs",
@@ -208,7 +250,10 @@ window.PROGRAMS = [
     "subject": "Arts & Design",
     "details": "Explore arts, music, design, game-development and other pre-college programs offered by NYU Steinhardt.",
     "preparation": "Read the official page carefully, check the current cycle and eligibility, and note any required application materials.",
-    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications."
+    "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications.",
+    "grades": [],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "Futures and Options Internship Program",
@@ -227,7 +272,13 @@ window.PROGRAMS = [
     "url": "https://futuresandoptions.org/our-programs/the-internship-program/",
     "id": "futures-and-options-internship-program",
     "verified": "2026-10-17",
-    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted."
+    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
+    "grades": [
+      11,
+      12
+    ],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "Futures and Options Urban Leadership Fellows",
@@ -246,7 +297,12 @@ window.PROGRAMS = [
     "url": "https://futuresandoptions.org/urban-leadership-fellows-application/",
     "id": "futures-and-options-urban-leadership-fellows",
     "verified": "2026-10-17",
-    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted."
+    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
+    "grades": [
+      12
+    ],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "The Met High School Internships",
@@ -265,7 +321,13 @@ window.PROGRAMS = [
     "url": "https://www.metmuseum.org/about-the-met/internships/high-school",
     "id": "the-met-high-school-internships",
     "verified": "2026-10-17",
-    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted."
+    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
+    "grades": [
+      10,
+      11
+    ],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "Whitney Youth Insights Artists",
@@ -284,7 +346,15 @@ window.PROGRAMS = [
     "url": "https://whitney.org/education/teens/youth-insights",
     "id": "whitney-youth-insights-artists",
     "verified": "2026-10-17",
-    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted."
+    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
+    "grades": [
+      9,
+      10,
+      11,
+      12
+    ],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "Scholastic Art & Writing Awards",
@@ -303,7 +373,17 @@ window.PROGRAMS = [
     "url": "https://www.artandwriting.org/awards/how-to-enter/",
     "id": "scholastic-art-writing-awards",
     "verified": "2026-10-17",
-    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted."
+    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
+    "grades": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "YoungArts National Arts Competition",
@@ -322,7 +402,14 @@ window.PROGRAMS = [
     "url": "https://youngarts.org/apply/",
     "id": "youngarts-national-arts-competition",
     "verified": "2026-10-17",
-    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted."
+    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
+    "grades": [
+      10,
+      11,
+      12
+    ],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "WNYC Radio Rookies",
@@ -341,7 +428,15 @@ window.PROGRAMS = [
     "url": "https://wnyc.org/browse/shows/rookies",
     "id": "wnyc-radio-rookies",
     "verified": "2026-10-17",
-    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted."
+    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
+    "grades": [
+      9,
+      10,
+      11,
+      12
+    ],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "Princeton Summer Journalism Program",
@@ -360,7 +455,12 @@ window.PROGRAMS = [
     "url": "https://psjp.princeton.edu/apply/application-process",
     "id": "princeton-summer-journalism-program",
     "verified": "2026-10-17",
-    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted."
+    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
+    "grades": [
+      11
+    ],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "Girls Who Code Pathways",
@@ -379,7 +479,15 @@ window.PROGRAMS = [
     "url": "https://girlswhocode.com/programs/pathways",
     "id": "girls-who-code-pathways",
     "verified": "2026-10-17",
-    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted."
+    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
+    "grades": [
+      9,
+      10,
+      11,
+      12
+    ],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "Technovation Challenge",
@@ -398,7 +506,10 @@ window.PROGRAMS = [
     "url": "https://technovationchallenge.org/competition/",
     "id": "technovation-challenge",
     "verified": "2026-10-17",
-    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted."
+    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
+    "grades": [],
+    "deadlineISO": "2027-03-11",
+    "deadlineNote": "Deadline applies to the currently described cycle or registration; confirm with the organizer."
   },
   {
     "title": "Congressional App Challenge",
@@ -417,7 +528,10 @@ window.PROGRAMS = [
     "url": "https://www.congressionalappchallenge.us/students/rules/",
     "id": "congressional-app-challenge",
     "verified": "2026-10-17",
-    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted."
+    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
+    "grades": [],
+    "deadlineISO": "2026-10-26",
+    "deadlineNote": "Deadline applies to the currently described cycle or registration; confirm with the organizer."
   },
   {
     "title": "Diamond Challenge",
@@ -436,7 +550,10 @@ window.PROGRAMS = [
     "url": "https://diamondchallenge.org/competition/",
     "id": "diamond-challenge",
     "verified": "2026-10-17",
-    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted."
+    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
+    "grades": [],
+    "deadlineISO": "2027-01-14",
+    "deadlineNote": "Deadline applies to the currently described cycle or registration; confirm with the organizer."
   },
   {
     "title": "NYC Student Advisory Councils",
@@ -455,7 +572,10 @@ window.PROGRAMS = [
     "url": "https://www.schools.nyc.gov/get-involved/students/student-advisory-councils",
     "id": "nyc-student-advisory-councils",
     "verified": "2026-10-17",
-    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted."
+    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
+    "grades": [],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "Mayor's Youth Leadership Council",
@@ -474,7 +594,10 @@ window.PROGRAMS = [
     "url": "https://www.nyc.gov/site/ymi/initiatives/youth-leadership-council.page",
     "id": "mayor-s-youth-leadership-council",
     "verified": "2026-10-17",
-    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted."
+    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
+    "grades": [],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   },
   {
     "title": "NYC Parks Ranger Conservation Corps",
@@ -493,6 +616,9 @@ window.PROGRAMS = [
     "url": "https://www.nyc.gov/jobs/internships.page",
     "id": "nyc-parks-ranger-conservation-corps",
     "verified": "2026-10-17",
-    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted."
+    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
+    "grades": [],
+    "deadlineISO": null,
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
   }
 ];
