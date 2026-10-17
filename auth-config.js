@@ -1,6 +1,5 @@
-// Public configuration only. These values are SAFE TO PUBLISH when RLS is enabled.
-// Never paste a Supabase service_role key or database password into GitHub.
+// Public Supabase browser configuration. Never add database passwords or secret keys here.
 window.SOB_AUTH_CONFIG = {
-  supabaseUrl: "",
-  publishableKey: ""
+  supabaseUrl: "https://qhluxzgzlozoijjfhxaa.supabase.co",
+  publishableKey: "sb_publishable_NNHq7jRMRRcw8pG7RlsjFA_xdsRbx3w"
 };
