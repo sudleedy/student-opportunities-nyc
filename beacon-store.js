@@ -22,7 +22,9 @@ function authNotice(){
  const el=document.getElementById('sob-auth-message');if(el)el.textContent=user?'Signed in. Your saved work syncs between devices.':enabled?'Sign in to sync favorites and notes.':'Sign-in setup pending. You can save programs in this browser meanwhile.';
 }
 async function session(s){
- user=s?.user||null;account={};ready=false;notify();authNotice();
+ const incoming=s?.user||null;
+ if(incoming&&user?.id===incoming.id&&ready)return;
+ user=incoming;account={};ready=false;notify();authNotice();
  if(!user)return;
  const{data,error}=await db.from('student_saves').select('program_id,favorited,notes,application_status').eq('user_id',user.id);
  if(error){message('Could not load account saves; contact the site administrator.');return}
@@ -52,8 +54,17 @@ async function init(){
  try{
   await new Promise((ok,bad)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';s.onload=ok;s.onerror=bad;document.head.appendChild(s)});
   db=window.supabase.createClient(config.supabaseUrl,config.publishableKey);
-  db.auth.onAuthStateChange((event,s)=>{if(event==='SIGNED_IN'||event==='SIGNED_OUT')setTimeout(()=>session(s),0)});
-  const{data}=await db.auth.getSession();await session(data.session);
+  // INITIAL_SESSION handles returning OAuth redirects and restored browser sessions.
+  // Do not race it against a separate getSession() call, which could reset signed-in UI.
+  db.auth.onAuthStateChange((event,s)=>{
+    if(['INITIAL_SESSION','SIGNED_IN','SIGNED_OUT','TOKEN_REFRESHED','USER_UPDATED'].includes(event)){
+      setTimeout(()=>session(s),0);
+    }
+  });
+  const fragment=new URLSearchParams(location.hash.slice(1));
+  const query=new URLSearchParams(location.search);
+  const authError=fragment.get('error_description')||query.get('error_description');
+  if(authError)message('Google sign-in response: '+authError.slice(0,220));
  }catch{message('Sign-in is temporarily unavailable. Guest favorites still work.')}
 }
 window.BeaconStore={get,save,watch:f=>watchers.push(f),count:()=>Object.values(current()).filter(x=>x.favorited).length,enabled:()=>enabled};
