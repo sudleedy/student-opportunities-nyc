@@ -77,6 +77,19 @@ In **Admin Dashboard → Student Reports**, each report has a **Delete report** 
 
 **One-time permission setup:** Run `supabase-report-deletion.sql` in the existing Supabase project's SQL Editor. This adds a Row Level Security `DELETE` policy that allows deletion **only by authorized admins** already recorded in `private.site_admins`. It does not delete records on its own and it does not grant ordinary students report deletion access. No further Supabase visits are needed for individual report deletions.
 
+## Automatic neighborhood youth program discovery (October 2026)
+
+The homepage has an **additional, visually separate** *Discover more programs near you* panel:
+
+- Students may choose their NYC borough, and the selection is retained only in browser localStorage.
+- Or they can optionally click **Use my location**, which requests browser permission and calculates distances against city-provided latitude/longitude data. GPS coordinates never leave the browser, and are not saved.
+- On demand, the panel fetches the latest available NYC Department of Youth and Community Development program sites from the **official NYC Open Data** dataset [DYCD Program Sites](https://data.cityofnewyork.us/Social-Services/DYCD-Program-Sites/ebkm-iyma). Data changes on the city's schedule, not ours; no administrator SQL migration or search API key is required.
+- Only relevant youth, internship, workforce and high-school category program sites appear. Results are deduplicated and labeled with borough, ZIP code, provider, program type, source-data year and *application status not verified*. A full discoverDYCD directory link is provided.
+- These city **program-site** records are **not** automatically published as separately verified opportunities in the 41-entry curated catalog. Application deadlines, registration and eligibility are not inferred. Any official-data availability failure shows a link to discoverDYCD instead of fabricated results.
+- This automatic expansion currently works for **NYC only**, not all of the United States; additional regions would need vetted local public data sources.
+
+For code: `nearby-programs.js` is loaded by `index.html`. For privacy information, see `privacy.html`. This source has an annual update cadence and may include older current-year program sites.
+
 ## Complete official-source review (October 18, 2026)
 
 Reviewed the **organizer source for all 41 bundled programs** and recorded per-program `sourceStatus`, `sourceChecked` and `sourceNote` data. [Read the full 41-program audit](catalog-audit-2026-10-18.md).
