@@ -15,7 +15,7 @@ create table if not exists public.student_reports (
 create index if not exists student_reports_created_at_idx on public.student_reports(created_at desc);
 alter table public.student_reports enable row level security;
 revoke all on public.student_reports from anon, authenticated;
-grant insert on public.student_reports to authenticated;
+grant insert (user_id,category,details,program_id,page_url) on public.student_reports to authenticated;
 drop policy if exists "Signed in students can submit their own reports" on public.student_reports;
 create policy "Signed in students can submit their own reports"
  on public.student_reports for insert to authenticated
