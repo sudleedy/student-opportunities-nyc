@@ -14,11 +14,7 @@ create index if not exists program_updates_deadline_idx on public.program_update
 alter table public.program_updates enable row level security;
 revoke all on public.program_updates from public, anon, authenticated;
 grant select on public.program_updates to anon, authenticated;
-grant insert(program_id, deadline_text, deadline_iso, status_text, review_note, verified_at, updated_at)
- on public.program_updates to authenticated;
-grant update(deadline_text, deadline_iso, status_text, review_note, verified_at, updated_at)
- on public.program_updates to authenticated;
-grant delete on public.program_updates to authenticated;
+grant insert, update, delete on public.program_updates to authenticated;
 drop policy if exists "Anyone can read published program timelines" on public.program_updates;
 create policy "Anyone can read published program timelines"
  on public.program_updates for select to anon, authenticated using (true);
