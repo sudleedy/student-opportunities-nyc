@@ -1,9 +1,36 @@
 (()=>{'use strict';
 const items=window.PROGRAMS||[],store=window.BeaconStore,el=id=>document.getElementById(id);
-const cards=el('cards'),count=el('count'),safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-for(const [id,field] of [['category','type'],['subject','subject'],['location','location']]){
- const select=el(id);[...new Set(items.map(o=>o[field]))].sort().forEach(v=>select.add(new Option(v,v)));
+
+const daysLeft=d=>d&&/^\\d{4}-\\d{2}-\\d{2}$/.test(d)?Math.ceil((new Date(d+'T23:59:59')-Date.now())/86400000):null;
+const reviewed=p=>p.verified&&/^\\d{4}-\\d{2}-\\d{2}$/.test(p.verified)&&((Date.now()-new Date(p.verified+'T12:00:00Z'))/86400000)<=60&&((Date.now()-new Date(p.verified+'T12:00:00Z'))/86400000)>=-1;
+const fee=p=>['free','fee'].includes(p.costCategory)?p.costCategory:/\\bfree\\b|no participation fee|no tuition/i.test(p.cost||'')?'free':'unknown';
+const pay=p=>['paid','unpaid'].includes(p.payCategory)?p.payCategory:/\\bpaid\\b|stipend|paid hourly/i.test(p.cost||'')?'paid':'unknown';
+const mode=p=>['in-person','remote','hybrid'].includes(p.deliveryMode)?p.deliveryMode:/online/i.test(p.location||'')&&!/hybrid/i.test(p.location||'')?'remote':'unknown';
+const state=p=>reviewed(p)&&['open','closed','upcoming'].includes(p.applicationState)?p.applicationState:'unknown';
+function badges(p){
+ const badges=[],days=daysLeft(p.deadlineISO),status=state(p);
+ if(status==='open')badges.push(['open','Applications open']);
+ if(status==='closed')badges.push(['closed','Applications closed']);
+ if(status==='upcoming')badges.push(['soon','Opening soon']);
+ if(days!==null&&days>=0&&days<=14)badges.push(['soon','Deadline in '+days+' days']);
+ if(days===null)badges.push(['','Deadline unconfirmed']);
+ if(!reviewed(p))badges.push(['review','Status needs checking']);
+ return '<div class="program-badges">'+badges.map(([c,t])=>'<span class="program-badge '+c+'">'+safe(t)+'</span>').join('')+'</div>'+
+ (reviewed(p)?'<p class="verified-line">Information reviewed '+safe(p.verified)+' · <a href="'+safe(p.url)+'" target="_blank" rel="noopener noreferrer">Official source ↗</a></p>':
+ '<p class="verified-line">Confirm details on the official website.</p>');
 }
+function refreshOptions(){
+ for(const [id,key] of [['category','type'],['subject','subject'],['location','location']]){
+ const select=el(id),old=select.value;
+ const options=[...new Set(items.map(p=>p[key]).filter(Boolean))].sort();
+ select.innerHTML='<option value="">'+({category:'All program types',subject:'All subjects',location:'All locations'}[id])+'</option>';
+ options.forEach(v=>select.add(new Option(v,v)));
+ select.value=options.includes(old)?old:'';
+ }
+}
+
+const cards=el('cards'),count=el('count'),safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+refreshOptions();
 const saved=el('savedOnly');saved.checked=new URLSearchParams(location.search).get('saved')==='1';
 const PAGE_SIZE=9,pagers=[el('pagination-top'),el('pagination-bottom')];
 const requestedPage=Number(new URLSearchParams(location.search).get('page')||1);
@@ -38,6 +65,10 @@ function render(){
  (!el('subject').value||o.subject===el('subject').value)&&
  (!el('location').value||o.location===el('location').value)&&
  (!el('grade').value||(o.grades||[]).includes(Number(el('grade').value)))&&
+ (!el('cost-filter').value||fee(o)===el('cost-filter').value)&&
+ (!el('pay-filter').value||pay(o)===el('pay-filter').value)&&
+ (!el('mode-filter').value||mode(o)===el('mode-filter').value)&&
+ (!el('apply-filter').value||state(o)===el('apply-filter').value)&&
  (!saved.checked||store.get(o.id).favorited)&&
  (!el('progress').value||(store.get(o.id).application_status===el('progress').value && (store.get(o.id).favorited||store.get(o.id).notes||store.get(o.id).application_status!=='Interested')))&&
  (!q||[o.title,o.org,o.summary,o.subject,o.eligibility].join(' ').toLowerCase().includes(q)));
@@ -50,11 +81,11 @@ function render(){
  count.textContent=results.length+' result'+(results.length===1?'':'s');
  cards.innerHTML=results.length?visibleResults.map(o=>{
  const isFav=Boolean(store.get(o.id).favorited);
- return '<article class="card"><span class="pill">'+safe(o.type)+'</span><h3>'+safe(o.title)+'</h3><p>'+safe(o.summary)+'</p><p class="deadline-line">📅 '+safe(o.deadline)+'</p><div class="meta">'+safe(o.org)+' · '+safe(o.location)+'</div><div class="card-actions"><a class="open-detail" href="program.html?id='+encodeURIComponent(o.id)+'">View details →</a><button class="favorite-button" type="button" data-id="'+safe(o.id)+'" aria-pressed="'+isFav+'" aria-label="'+(isFav?'Remove favorite':'Save favorite')+'">'+(isFav?'♥':'♡')+'</button></div></article>'}).join(''):'<div class="empty">No matches found. Try different filters or save a program.</div>';
+ return '<article class="card"><span class="pill">'+safe(o.type)+'</span><h3>'+safe(o.title)+'</h3>'+badges(o)+'<p>'+safe(o.summary)+'</p><p class="deadline-line">📅 '+safe(o.deadline)+'</p><div class="meta">'+safe(o.org)+' · '+safe(o.location)+'</div><div class="card-actions"><a class="open-detail" href="program.html?id='+encodeURIComponent(o.id)+'">View details →</a><button class="favorite-button" type="button" data-id="'+safe(o.id)+'" aria-pressed="'+isFav+'" aria-label="'+(isFav?'Remove favorite':'Save favorite')+'">'+(isFav?'♥':'♡')+'</button></div></article>'}).join(''):'<div class="empty">No matches found. Try different filters or save a program.</div>';
  renderPager(results.length);
 }
 cards.addEventListener('click',e=>{const b=e.target.closest('button[data-id]');if(b)store.save(b.dataset.id,{favorited:!store.get(b.dataset.id).favorited})});
-['search','category','subject','location','grade','sort','progress'].forEach(id=>el(id).addEventListener('input',()=>{page=1;syncPage();render()}));
+['search','category','subject','location','grade','sort','progress','cost-filter','pay-filter','mode-filter','apply-filter'].forEach(id=>el(id).addEventListener('input',()=>{page=1;syncPage();render()}));
 saved.addEventListener('change',()=>{
  const u=new URL(location.href);
  saved.checked?u.searchParams.set('saved','1'):u.searchParams.delete('saved');
@@ -72,6 +103,7 @@ const backTop=el('back-to-top');
 const updateTop=()=>backTop.classList.toggle('visible',window.scrollY>400);
 window.addEventListener('scroll',updateTop,{passive:true});
 backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-document.addEventListener('sob-programs-updated',render);
+document.addEventListener('sob-catalog-ready',()=>{refreshOptions();page=1;render()});
+document.addEventListener('sob-programs-updated',()=>{refreshOptions();render()});
 store.watch(render);el('year').textContent=new Date().getFullYear();render();updateTop();
 })();
