@@ -5,9 +5,10 @@
 <script src="programs-data.js"></script><script>
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const programs=window.PROGRAMS||[],id=new URLSearchParams(location.search).get('id');
-const program=programs.find(o=>o.id===id);
+let program=programs.find(o=>o.id===id);
 const root=document.getElementById('page');
 document.getElementById('year').textContent=new Date().getFullYear();
+function renderProgram(){
 if(!program){document.title="Program not found | Student Opportunities NYC";root.innerHTML='<h1>Program not found</h1><p>That program may have moved or the link may be incorrect.</p><a href="./#opportunities">Browse all opportunities →</a>'}
 else {
  document.title=program.title+' | Student Opportunities NYC';
@@ -22,6 +23,16 @@ else {
  '<aside><section class="panel"><h2>Apply or learn more</h2><p style="margin-bottom:17px">'+esc(program.applicationNote||'Go to the organizer’s site for current application details.')+'</p><a class="button" target="_blank" rel="noopener noreferrer" href="'+esc(program.url)+'">Official program website ↗</a></section>'+
  '<section class="panel"><h2>Similar opportunities</h2><div class="related">'+(related.length?related.map(o=>'<a href="program.html?id='+encodeURIComponent(o.id)+'">'+esc(o.title)+'<span>'+esc(o.org)+'</span></a>').join(''):'<p class="small">Explore more programs in the directory.</p>')+'</div><p style="margin-top:16px"><a href="./#opportunities">Browse all programs →</a></p></section></aside></div>';
 }
+document.addEventListener('sob-detail-ready',()=>{});
+}
+renderProgram();
+document.addEventListener('sob-catalog-ready',()=>{
+ const fresh=programs.find(p=>p.id===id)||null;
+ if(fresh!==program){
+  program=fresh;renderProgram();
+  if(program)document.dispatchEvent(new Event('sob-detail-ready'));
+ }
+});
 document.addEventListener('sob-programs-updated',()=>{
  if(!program)return;
  const summary=document.getElementById('sob-program-summary');
@@ -36,4 +47,4 @@ document.addEventListener('sob-programs-updated',()=>{
  const reviewed=document.getElementById('sob-reviewed');
  if(reviewed)reviewed.textContent=program.verified||'Date not recorded';
 });
-</script><script src="auth-config.js"></script><script src="program-updates.js?v=1"></script><script src="program-descriptions.js?v=1"></script><script src="beacon-store.js?v=6"></script><script src="program-tracker.js"></script><script src="report-issue.js?v=4"></script></body></html>
+</script><script src="auth-config.js"></script><script src="site-data.js?v=1"></script><script src="program-updates.js?v=2"></script><script src="program-descriptions.js?v=2"></script><script src="beacon-store.js?v=7"></script><script src="program-tracker.js?v=2"></script><script src="report-issue.js?v=4"></script><script src="site-analytics.js?v=1"></script></body></html>
