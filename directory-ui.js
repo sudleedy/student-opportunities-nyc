@@ -143,9 +143,10 @@ function renderPager(total){
    if(n===2||n===pages-1)links.push('<span class="pagination-ellipsis" aria-hidden="true">…</span>');
    continue;
   }
-  links.push(link(n,String(n),'Page '+n));
+  links.push(link(n,String(n),page===n?'Current page '+n+' of '+pages:'Go to page '+n));
  }
- const html='<span class="pagination-summary">Showing '+first+'–'+last+' of '+total+'</span>'+
+ const html='<span class="pagination-position" aria-live="polite">Page <strong>'+page+'</strong> of <strong>'+pages+'</strong></span>'+
+  '<span class="pagination-summary">Showing '+first+'–'+last+' of '+total+' programs</span>'+
   link(page-1,'← Previous','Previous page')+
   links.join('')+
   link(page+1,'Next →','Next page');
@@ -223,7 +224,7 @@ function render(){
  if(page>pages){page=pages;syncPage()}
  const shown=results.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
  const cityCount=results.filter(x=>x.kind==='city').length;
- count.textContent=results.length+' result'+(results.length===1?'':'s')+(cityCount?' · '+cityCount+' city sites':'');
+ count.textContent=results.length+' result'+(results.length===1?'':'s')+(cityCount?' · '+cityCount+' city sites':'')+(results.length?' · Page '+page+' of '+pages:'');
  cards.innerHTML=shown.length?shown.map(p=>p.kind==='city'?renderCity(p):renderCurated(p)).join(''):
  '<div class="empty">No matching programs. Try another interest or borough, or clear your filters.</div>';
  renderPager(results.length);
