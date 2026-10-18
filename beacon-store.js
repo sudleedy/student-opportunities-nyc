@@ -44,7 +44,7 @@ async function session(s){
 function initUI(){
  const nav=document.querySelector('header .nav');if(!nav)return;
  const controls=document.createElement('div');controls.className='sob-header-actions';
- controls.innerHTML='<a href="./?saved=1#opportunities">♥ Saved (<span data-saved-count>0</span>)</a> <button type="button" id="sob-account-button">Sign in</button>';nav.appendChild(controls);
+ controls.innerHTML='<a href="./dashboard.html">My Dashboard</a> <a href="./?saved=1#opportunities">♥ Saved (<span data-saved-count>0</span>)</a> <button type="button" id="sob-account-button">Sign in</button>';nav.appendChild(controls);
  const panel=document.createElement('div');panel.id='sob-panel';panel.hidden=true;
  panel.innerHTML='<section role="dialog" aria-modal="true" aria-labelledby="sob-title"><button type="button" id="sob-close" aria-label="Close">×</button><h2 id="sob-title">Save your opportunities</h2><p id="sob-auth-message"></p><div id="sob-google-container"><button type="button" id="sob-google-login">Continue with Google</button><p class="fine">Or use an email sign-in link:</p></div><form id="sob-login-form"><label for="sob-email">Email</label><input id="sob-email" type="email" autocomplete="email" required><button type="submit">Send a sign-in link</button></form><a href="./admin.html" id="sob-admin-dashboard" hidden>Manage reports, timelines &amp; descriptions →</a><button type="button" id="sob-logout" hidden>Sign out</button><p class="fine">No password needed. Save only application notes, not confidential personal information. Guest data stays in this browser.</p><p role="status" id="sob-sync-status"></p></section>';
  document.body.appendChild(panel);
@@ -87,6 +87,17 @@ async function submitReport(kind,details,programId,pageUrl){
  });
  return error?{ok:false,message:'Report could not be sent. The reporting database may not be set up yet.'}:{ok:true,message:'Report submitted. Thank you for helping improve Student Opportunities NYC!'};
 }
-window.BeaconStore={get,save,submitReport,watch:f=>watchers.push(f),count:()=>Object.values(current()).filter(x=>x.favorited).length,enabled:()=>enabled};
+async function submitSuggestion(draft){
+ if(!db)return {ok:false,message:'Sign-in is still loading. Try again shortly.'};
+ const {data:{user:active},error:authError}=await db.auth.getUser();
+ if(authError||!active)return {ok:false,message:'Please sign in using the Account button before suggesting a program.'};
+ const {error}=await db.from('program_suggestions').insert({
+  user_id:active.id,program_name:draft.program_name,
+  organization:draft.organization,official_url:draft.official_url,details:draft.details
+ });
+ return error?{ok:false,message:'Could not submit. The suggestion database may not be set up yet.'}:
+  {ok:true,message:'Thank you! Your suggestion was sent to the site administrator for review.'};
+}
+window.BeaconStore={get,save,submitReport,submitSuggestion,watch:f=>watchers.push(f),count:()=>Object.values(current()).filter(x=>x.favorited).length,enabled:()=>enabled};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
