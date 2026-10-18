@@ -39,7 +39,7 @@ jobs:
         run: python3 -m unittest discover -s tests -p 'test_daily_deadline_monitor.py' -v
 
   monitor:
-    if: github.event_name != 'push'
+    # Also perform the initial scan on workflow changes; normal daily runs use cron.
     needs: test
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -90,7 +90,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
       - name: Commit confirmed changes and trigger a GitHub Pages rebuild
-        if: ${{ !inputs.dry_run && inputs.max_programs == 0 }}
+        if: ${{ !inputs.dry_run && !inputs.max_programs }}
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
