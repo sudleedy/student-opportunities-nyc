@@ -44,7 +44,7 @@ function render(){
  listing.innerHTML=candidates.slice((page-1)*8,page*8).map(p=>{
   const hidden=isArchived(p.id),managed=rows.has(p.id);
   return '<article class="admin-record"><div><h3>'+escape(p.title)+'</h3><p>'+escape(p.org||'')+' · '+escape(p.subject||'')+'</p>'+
-   '<p>'+(hidden?'Archived — hidden from students':managed?'Customized listing':'Original listing')+'</p></div>'+
+   '<p>'+(hidden?'Archived (hidden from students)':managed?'Customized listing':'Original listing')+'</p></div>'+
    '<div class="admin-actions"><button type="button" data-edit="'+escape(p.id)+'">Edit</button>'+
    '<button type="button" data-archive="'+escape(p.id)+'">'+(hidden?'Unarchive':'Archive')+'</button>'+
    (managed?'<button type="button" data-revert="'+escape(p.id)+'">Remove override</button>':'')+'</div></article>';
