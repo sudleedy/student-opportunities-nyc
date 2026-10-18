@@ -48,11 +48,17 @@ const choices={
 };
 const checked=Object.fromEntries(Object.keys(choices).map(key=>[key,new Set()]));
 const selected=key=>checked[key];
+const advancedKeys=['apply-filter','cost-filter','mode-filter','progress','source-filter'];
+function updateAdvancedCount(){
+ const n=advancedKeys.reduce((sum,key)=>sum+checked[key].size,0)+(saved.checked?1:0);
+ el('advanced-count').textContent=n?n+' selected':'optional';
+}
 const selectedAny=(key,value)=>!checked[key].size||checked[key].has(String(value));
 function labelSelected(key,options){
  const picked=options.filter(([value])=>selected(key).has(value)).map(([,label])=>label);
  const name=picked.length?picked.length===1?picked[0]:picked[0]+' +'+(picked.length-1):choices[key].placeholder;
  el(key+'-summary-text').textContent=name;
+ updateAdvancedCount();
 }
 function refreshOptions(){
  for(const [key,config] of Object.entries(choices)){
@@ -207,6 +213,7 @@ const resetPage=()=>{page=1;syncPage();render()};
 saved.addEventListener('change',()=>{
  const url=new URL(location.href);
  if(saved.checked)url.searchParams.set('saved','1');else url.searchParams.delete('saved');
+ updateAdvancedCount();
  history.replaceState({},'',url.pathname+url.search+url.hash);
  resetPage();
 });
@@ -216,6 +223,7 @@ el('clear-filters').addEventListener('click',()=>{
  refreshOptions();
  el('sort').value='default';
  saved.checked=false;
+ updateAdvancedCount();
  const url=new URL(location.href);url.searchParams.delete('saved');
  history.replaceState({},'',url.pathname+url.search+url.hash);
  const borough=el('nearby-borough');
