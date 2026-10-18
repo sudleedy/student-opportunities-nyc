@@ -6,7 +6,7 @@ https://sudleedy.github.io/student-opportunities-nyc/
 ## Features already working without an account
 - Save/remove favorites (heart icon on cards or program pages).
 - Browse just your saved programs.
-- Filter by subject, category, location and known grade eligibility.
+- Filter by multiple interests and grades, plus optional borough and advanced checkboxes.
 - Sort by upcoming **known** deadlines, putting unknown dates after upcoming dated items.
 - On individual program pages, save an application status and personal notes.
 - All guest data stays in the browser on the current device and may disappear if browser data is cleared.
@@ -76,6 +76,19 @@ In **Admin Dashboard → Student Suggestions**, **Approve** keeps a submission a
 In **Admin Dashboard → Student Reports**, each report has a **Delete report** button beside **Save status**. Select it and confirm before permanent deletion. On successful deletion the report disappears and the report status counts update automatically. **Deleted reports cannot be restored from this dashboard.**
 
 **One-time permission setup:** Run `supabase-report-deletion.sql` in the existing Supabase project's SQL Editor. This adds a Row Level Security `DELETE` policy that allows deletion **only by authorized admins** already recorded in `private.site_admins`. It does not delete records on its own and it does not grant ordinary students report deletion access. No further Supabase visits are needed for individual report deletions.
+
+## Catalog expansion: 71 programs (October 18, 2026)
+
+Expanded the reviewed, bundled catalog from **41 to 71 entries** by researching **30 additional opportunities** on organizers' official websites. [See the 30-program expansion audit](catalog-expansion-audit-2026-10-18.md) for all links, eligibility details, organizer deadlines, and limitations. The [original 41-program audit](catalog-audit-2026-10-18.md) is retained as historical documentation.
+
+Highlights include Columbia BRAINYAC, NYBG High School Explainers, Queens Teens Institute, Queens Public Library peer-led service projects, Wave Hill internships, Bronx Zoo Project TRUE, BioBus Junior Scientists, NYU GSTEM, NYSSEF, Brooklyn Public Library and BRIC youth programs, and Staten Island Zoo's actual teen volunteer programs (not its college-only animal-care internships).
+
+- All new entries have **What you'll do** details, full eligibility, source notes and the latest organizer-reported application status. Only verified exact upcoming application deadlines produce deadline countdowns.
+- Only programs with an identified specific physical borough have a `borough` field. Citywide/online/multi-site opportunities deliberately remain unassigned in strict borough searches.
+- Open and time-sensitive programs are placed near the front of the directory, while other new programs appear interspersed with earlier listings. The layout still uses **9 cards per page** and supports selecting multiple filter values.
+- Applicant eligibility is important: Columbia BRAINYAC has designated school/community partner prerequisites; Bronx Zoo Project TRUE requires Bronx residence; tuition-based Columbia/NYU classes are visibly marked as having fees.
+- These are **not** 30 programs confirmed to be accepting applications. Some are closed for their 2026 cohorts or await new-year announcements. The organizer link should be rechecked before a student applies.
+- The homepage, detail page, student dashboard and admin page all load the expanded catalog using a versioned asset reference. Existing student saves and reports are not modified. No new Supabase SQL required.
 
 ## Strict borough filtering (October 18, 2026)
 
