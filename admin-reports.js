@@ -44,7 +44,9 @@ async function start(){
   const {data:allowed,error}=await db.rpc('is_report_admin');
   if(error){notice.textContent='Dashboard setup is incomplete. Run supabase-admin-setup.sql in the Supabase SQL Editor, then authorize your administrator account.';return}
   if(!allowed){notice.textContent='Access restricted. This account is not authorized to view student reports.';return}
-  notice.hidden=true;dashboard.hidden=false;await load();
+  notice.hidden=true;dashboard.hidden=false;
+  document.dispatchEvent(new CustomEvent('sob-admin-ready',{detail:{db}}));
+  await load();
  }catch(e){console.error('Admin dashboard',e);notice.textContent='Unable to load administrator tools. Please refresh and check your connection.'}
 }
 el('reports').addEventListener('click',async e=>{
