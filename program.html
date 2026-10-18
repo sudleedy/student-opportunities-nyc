@@ -84,6 +84,9 @@ function syncSearchMetadata(){
  }
 }
 
+const deadlinePassed=p=>/^\d{4}-\d{2}-\d{2}$/.test(p.deadlineISO||'')&&new Date(p.deadlineISO+'T23:59:59').getTime()<Date.now();
+const deadlineForDisplay=p=>deadlinePassed(p)&&!/last published deadline|\bpassed\b/i.test(p.deadline||'')?'Last published deadline: '+p.deadline+' (passed; next cycle unconfirmed)':p.deadline;
+const statusForDisplay=p=>deadlinePassed(p)&&(['open','upcoming'].includes(p.applicationState)||/applications? (?:are )?open|accepting applications|apply now/i.test(p.status||''))?'The listed application deadline has passed. Check the organizer for an extension or the next cycle.':p.status;
 function renderProgram(){
  syncSearchMetadata();
 if(!program){document.title="Program not found | Student Opportunities NYC";root.innerHTML='<h1>Program not found</h1><p>That program may have moved or the link may be incorrect.</p><a href="./#opportunities">Browse all opportunities →</a>'}
@@ -94,7 +97,7 @@ else {
  root.innerHTML='<div class="crumb"><a href="./">Home</a> / <a href="./#opportunities">Opportunities</a> / '+esc(program.title)+'</div>'+
  '<div class="hero"><span class="pill">'+esc(program.type)+'</span> <span class="tag">'+esc(program.subject||'Opportunities')+'</span><h1>'+esc(program.title)+'</h1><p id="sob-program-summary">'+esc(program.summary)+'</p><p><strong>'+esc(program.org)+'</strong> · '+esc(program.location)+'</p></div>'+
  '<div class="layout"><div><section class="panel activity-panel"><h2>What you’ll actually do</h2><p id="sob-program-activities">'+esc(program.whatYouDo||program.summary)+'</p><p class="small">Actual activities depend on the placement, cohort and organizer.</p></section><section class="panel"><h2>About this program</h2><p id="sob-program-details">'+esc(program.details||program.summary)+'</p></section>'+
- '<section class="panel"><h2>Eligibility and important details</h2><div class="info">'+field('Who can apply',program.eligibility)+field('Application deadline',program.deadline)+field('Application status',program.status)+field('Cost or compensation',program.cost)+field('Location',program.location)+field('Time commitment',program.commitment)+'</div><p class="small" id="sob-deadline-note">'+esc(program.deadlineNote||'Verify the current application cutoff on the official program website.')+'</p></section>'+
+ '<section class="panel"><h2>Eligibility and important details</h2><div class="info">'+field('Who can apply',program.eligibility)+field('Application deadline',deadlineForDisplay(program))+field('Application status',statusForDisplay(program))+field('Cost or compensation',program.cost)+field('Location',program.location)+field('Time commitment',program.commitment)+'</div><p class="small" id="sob-deadline-note">'+esc(program.deadlineNote||'Verify the current application cutoff on the official program website.')+'</p></section>'+
  '<section class="panel"><h2>How to prepare</h2><p>'+esc(program.preparation||'Check the official website for application steps.')+'</p></section>'+
  '<section class="panel"><h2>Before you apply</h2><div class="warning">Program information can change. Always verify eligibility, dates, application status and any fees on the official organizer website. Student Opportunities NYC is independent and is not affiliated with the organization listed here.</div><p class="small">Organizer source review: <strong id="sob-source-status">'+esc(program.sourceStatus==='current'?'Current or recent cycle information checked':program.sourceStatus==='program'?'Program existence checked; dates unconfirmed':'Current enrollment not verified')+'</strong>. Checked <span id="sob-reviewed">'+esc(program.sourceChecked||program.verified||'Date not recorded')+'</span>. This is not a live application-status check.</p><p class="source-evidence" id="sob-source-note">'+esc(program.sourceNote||'No current organizer verification note available; confirm the full details independently.')+'</p></section></div>'+
  '<aside><section class="panel"><h2>Apply or learn more</h2><p id="sob-program-application-note" style="margin-bottom:17px">'+esc(program.applicationNote||'Go to the organizer’s site for current application details.')+'</p>'+(officialUrl(program.url)?'<a id="sob-program-official-link" class="button" target="_blank" rel="noopener noreferrer" href="'+esc(officialUrl(program.url))+'">Official program website ↗</a>':'<p id="sob-program-invalid-link" class="warning">Official link needs verification before opening.</p>')+'</section>'+
@@ -140,7 +143,7 @@ document.addEventListener('sob-programs-updated',()=>{
  const entries=root.querySelectorAll('.info > div');
  if(entries[1])entries[1].querySelector('span').textContent=program.deadline;
  if(entries[2])entries[2].querySelector('span').textContent=program.status;
- const values=[program.eligibility,program.deadline,program.status,program.cost,program.location,program.commitment];
+ const values=[program.eligibility,deadlineForDisplay(program),statusForDisplay(program),program.cost,program.location,program.commitment];
  entries.forEach((entry,i)=>{const span=entry.querySelector('span');if(span)span.textContent=values[i]||'Not confirmed'});
  const note=document.getElementById('sob-deadline-note');
  if(note)note.textContent=program.deadlineNote||'Verify the current application cutoff on the official program website.';
