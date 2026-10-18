@@ -6,7 +6,7 @@ const reviewed=p=>p.verified&&/^\d{4}-\d{2}-\d{2}$/.test(p.verified)&&((Date.now
 const fee=p=>['free','fee'].includes(p.costCategory)?p.costCategory:/\bfree\b|no participation fee|no tuition/i.test(p.cost||'')?'free':'unknown';
 const pay=p=>['paid','unpaid'].includes(p.payCategory)?p.payCategory:/\bpaid\b|stipend|paid hourly/i.test(p.cost||'')?'paid':'unknown';
 const mode=p=>['in-person','remote','hybrid'].includes(p.deliveryMode)?p.deliveryMode:/online/i.test(p.location||'')&&!/hybrid/i.test(p.location||'')?'remote':'unknown';
-const state=p=>reviewed(p)&&['open','closed','upcoming'].includes(p.applicationState)?p.applicationState:'unknown';
+const state=p=>reviewed(p)&&['open','closed','upcoming'].includes(p.applicationState)&&!(p.applicationState==='open'&&daysLeft(p.deadlineISO)!==null&&daysLeft(p.deadlineISO)<0)?p.applicationState:'unknown';
 function badges(p){
  const badges=[],days=daysLeft(p.deadlineISO),status=state(p);
  if(status==='open')badges.push(['open','Applications open']);
