@@ -1,10 +1,10 @@
 (()=>{'use strict';
 const items=window.PROGRAMS||[],store=window.BeaconStore,el=id=>document.getElementById(id);
 
-const daysLeft=d=>d&&/^\\d{4}-\\d{2}-\\d{2}$/.test(d)?Math.ceil((new Date(d+'T23:59:59')-Date.now())/86400000):null;
-const reviewed=p=>p.verified&&/^\\d{4}-\\d{2}-\\d{2}$/.test(p.verified)&&((Date.now()-new Date(p.verified+'T12:00:00Z'))/86400000)<=60&&((Date.now()-new Date(p.verified+'T12:00:00Z'))/86400000)>=-1;
-const fee=p=>['free','fee'].includes(p.costCategory)?p.costCategory:/\\bfree\\b|no participation fee|no tuition/i.test(p.cost||'')?'free':'unknown';
-const pay=p=>['paid','unpaid'].includes(p.payCategory)?p.payCategory:/\\bpaid\\b|stipend|paid hourly/i.test(p.cost||'')?'paid':'unknown';
+const daysLeft=d=>d&&/^\d{4}-\d{2}-\d{2}$/.test(d)?Math.ceil((new Date(d+'T23:59:59')-Date.now())/86400000):null;
+const reviewed=p=>p.verified&&/^\d{4}-\d{2}-\d{2}$/.test(p.verified)&&((Date.now()-new Date(p.verified+'T12:00:00Z'))/86400000)<=60&&((Date.now()-new Date(p.verified+'T12:00:00Z'))/86400000)>=-1;
+const fee=p=>['free','fee'].includes(p.costCategory)?p.costCategory:/\bfree\b|no participation fee|no tuition/i.test(p.cost||'')?'free':'unknown';
+const pay=p=>['paid','unpaid'].includes(p.payCategory)?p.payCategory:/\bpaid\b|stipend|paid hourly/i.test(p.cost||'')?'paid':'unknown';
 const mode=p=>['in-person','remote','hybrid'].includes(p.deliveryMode)?p.deliveryMode:/online/i.test(p.location||'')&&!/hybrid/i.test(p.location||'')?'remote':'unknown';
 const state=p=>reviewed(p)&&['open','closed','upcoming'].includes(p.applicationState)?p.applicationState:'unknown';
 function badges(p){
