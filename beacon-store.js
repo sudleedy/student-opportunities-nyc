@@ -67,6 +67,16 @@ async function init(){
   if(authError)message('Google sign-in response: '+authError.slice(0,220));
  }catch{message('Sign-in is temporarily unavailable. Guest favorites still work.')}
 }
-window.BeaconStore={get,save,watch:f=>watchers.push(f),count:()=>Object.values(current()).filter(x=>x.favorited).length,enabled:()=>enabled};
+async function submitReport(kind,details,programId,pageUrl){
+ if(!db)return {ok:false,message:'Sign-in is still loading. Please try again.'};
+ const {data:{user:active},error:authError}=await db.auth.getUser();
+ if(authError||!active)return {ok:false,message:'Please sign in with Google or email before submitting a report.'};
+ const {error}=await db.from('student_reports').insert({
+  user_id:active.id,category:kind,details:details.slice(0,2000),
+  program_id:programId||null,page_url:pageUrl.slice(0,500)
+ });
+ return error?{ok:false,message:'Report could not be sent. The reporting database may not be set up yet.'}:{ok:true,message:'Report submitted. Thank you for helping improve Student Opportunities NYC!'};
+}
+window.BeaconStore={get,save,submitReport,watch:f=>watchers.push(f),count:()=>Object.values(current()).filter(x=>x.favorited).length,enabled:()=>enabled};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
