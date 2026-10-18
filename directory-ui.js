@@ -42,11 +42,17 @@ const rememberDirectoryReturn=()=>{
 saved.checked=new URLSearchParams(location.search).get('saved')==='1';
 const requested=Number(new URLSearchParams(location.search).get('page')||1);
 let page=Number.isSafeInteger(requested)&&requested>0?requested:1,lastTotal=0;
-const cityItems=()=>window.NearbyCatalog?.getItems()||[];
+// Filter only the individually listed programs, never general provider locations.
+const boroughPicker=el('nearby-borough');
+const boroughs=['Brooklyn','Manhattan','Queens','Bronx','Staten Island'];
+try {
+ const earlier=localStorage.getItem('sob-borough-v1');
+ if(boroughs.includes(earlier))boroughPicker.value=earlier;
+} catch {}
 // Native checkboxes allow any number of choices within a filter category.
 // Multiple checked choices use OR; distinct categories combine using AND.
 const choices={
- subject:{placeholder:'All interests',options:()=>[...new Set([...items,...cityItems()].map(p=>p.subject).filter(Boolean))].sort().map(v=>[v,v])},
+ subject:{placeholder:'All interests',options:()=>[...new Set(items.map(p=>p.subject).filter(Boolean))].sort().map(v=>[v,v])},
  grade:{placeholder:'Any grade',options:()=>[9,10,11,12].map(n=>[String(n),'Grade '+n])},
  'apply-filter':{placeholder:'Any status',options:()=>[['open','Verified open'],['upcoming','Opening soon'],['closed','Closed'],['unknown','Not confirmed']]},
  'cost-filter':{placeholder:'Any cost',options:()=>[['free','Free'],['fee','Has tuition or fees'],['unknown','Not confirmed']]},
@@ -153,61 +159,38 @@ function renderPager(total){
  pagers.forEach(p=>p.innerHTML=html);
 }
 function deadline(p){
- if(p.kind==='city'||!p.deadlineISO)return [1,Infinity];
+ if(!p.deadlineISO)return [1,Infinity];
  const value=Date.parse(p.deadlineISO+'T23:59:59');
  return value>=Date.now()?[0,value]:[2,value];
 }
 function matches(p,q){
- const city=p.kind==='city';
  const borough=el('nearby-borough').value.trim().toLowerCase();
- // A selected borough must match this opportunity's actual program site.
- // Unlocated citywide, multi-site and virtual listings do not qualify.
+ // Show only verified listings with a known, matching program borough.
+ // Citywide, online and unspecified locations stay visible with no borough selected.
  if(borough&&String(p.borough||'').trim().toLowerCase()!==borough)return false;
  const progress=store.get(p.id);
  if(!selectedAny('subject',p.subject))return false;
- // Within one category: any checked grade is a match. City programs with no
- // known grade information remain visible and are explicitly labeled unverified.
+ // Within one category, any checked grade is a match. Unknown grades
+ // cannot qualify for a grade-specific search.
  if(selected('grade').size){
   const grades=(p.grades||[]).map(String);
   if(grades.length&&!grades.some(grade=>selected('grade').has(grade)))return false;
-  if(!grades.length&&!city)return false;
+  if(!grades.length)return false;
  }
  if(!selectedAny('cost-filter',fee(p)))return false;
  if(!selectedAny('mode-filter',mode(p)))return false;
  if(!selectedAny('apply-filter',state(p)))return false;
- if(saved.checked&&(city||!progress.favorited))return false;
- if(selected('progress').size&&(city||!selectedAny('progress',progress.application_status)||!(progress.favorited||progress.notes||progress.application_status!=='Interested')))return false;
- return !q||[p.title,p.org,p.summary,p.whatYouDo,p.subject,p.type,p.eligibility,p.location,p.borough,p.zipcode].join(' ').toLowerCase().includes(q);
+ if(saved.checked&&!progress.favorited)return false;
+ if(selected('progress').size&&(!selectedAny('progress',progress.application_status)||!(progress.favorited||progress.notes||progress.application_status!=='Interested')))return false;
+ return !q||[p.title,p.org,p.summary,p.whatYouDo,p.subject,p.type,p.eligibility,p.location,p.borough].join(' ').toLowerCase().includes(q);
 }
 function mixResults(found){
  const order=el('sort').value;
- // Show individually reviewed internships and programs before broad NYC-funded
- // DYCD site listings, regardless of sort selection or borough filtering.
- const curated=found.filter(p=>p.kind!=='city'),city=found.filter(p=>p.kind==='city');
- if(order==='az'){
-  const byTitle=(a,b)=>(a.title||'').localeCompare(b.title||'');
-  curated.sort(byTitle);
-  city.sort(byTitle);
- }else if(order==='deadline'){
-  const byDeadline=(a,b)=>deadline(a)[0]-deadline(b)[0]||deadline(a)[1]-deadline(b)[1]||(a.title||'').localeCompare(b.title||'');
-  curated.sort(byDeadline);
-  city.sort(byDeadline);
- }
- return curated.concat(city);
-}
-function renderCity(p){
- const name=safe(p.title),url=officialUrl(p),model=officialUrl({url:p.modelUrl});
- const places=[p.borough,p.zipcode].filter(Boolean).map(safe).join(' · ');
- const distance=Number.isFinite(p.distance)?' · '+p.distance.toFixed(1)+' miles away':'';
- return '<article class="card city-card">'+
-  '<span class="pill">NYC-funded site</span><h3>'+name+'</h3>'+
-  '<p class="city-provenance">'+safe(p.type)+' · City data '+safe(p.date||'date unknown')+' · Applications unverified</p>'+
-  '<p class="activity-preview"><strong>What you might do:</strong> '+safe(p.whatYouDo)+'</p>'+
-  '<p class="city-audience"><strong>Usually for:</strong> '+safe(p.eligibility)+'</p>'+
-  '<p class="city-disclaimer">Examples of typical activities; this provider’s current schedule and eligibility have not been checked.</p>'+
-  '<p class="meta">📍 '+places+safe(distance)+' · '+safe(p.org)+'</p>'+
-  (model?'<a class="city-model" href="'+safe(model)+'" target="_blank" rel="noopener noreferrer">About this program type ↗</a>':'')+
-  '<div class="card-actions">'+(url?'<a class="open-detail" href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">Check NYC program directory ↗</a>':'<span>City directory unavailable</span>')+'</div></article>';
+ if(order==='az')found.sort((a,b)=>(a.title||'').localeCompare(b.title||''));
+ else if(order==='deadline')found.sort((a,b)=>
+  deadline(a)[0]-deadline(b)[0]||deadline(a)[1]-deadline(b)[1]||
+  (a.title||'').localeCompare(b.title||''));
+ return found;
 }
 function renderCurated(p){
  const isFav=Boolean(store.get(p.id).favorited);
@@ -218,14 +201,13 @@ function renderCurated(p){
  '<button class="favorite-button" type="button" data-id="'+safe(p.id)+'" aria-pressed="'+isFav+'" aria-label="'+(isFav?'Remove favorite':'Save favorite')+'">'+(isFav?'♥':'♡')+'</button></div></article>';
 }
 function render(){
- const query=el('search').value.trim().toLowerCase(),results=mixResults([...items,...cityItems()].filter(p=>matches(p,query)));
+ const query=el('search').value.trim().toLowerCase(),results=mixResults(items.filter(p=>matches(p,query)));
  lastTotal=results.length;
  const pages=Math.max(1,Math.ceil(results.length/PAGE_SIZE));
  if(page>pages){page=pages;syncPage()}
  const shown=results.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
- const cityCount=results.filter(x=>x.kind==='city').length;
- count.textContent=results.length+' result'+(results.length===1?'':'s')+(cityCount?' · '+cityCount+' city sites':'')+(results.length?' · Page '+page+' of '+pages:'');
- cards.innerHTML=shown.length?shown.map(p=>p.kind==='city'?renderCity(p):renderCurated(p)).join(''):
+ count.textContent=results.length+' program'+(results.length===1?'':'s')+(results.length?' · Page '+page+' of '+pages:'');
+ cards.innerHTML=shown.length?shown.map(renderCurated).join(''):
  '<div class="empty">No matching programs. Try another interest or borough, or clear your filters.</div>';
  renderPager(results.length);
 }
@@ -279,7 +261,13 @@ const backTop=el('back-to-top');
 const updateTop=()=>backTop.classList.toggle('visible',window.scrollY>400);
 window.addEventListener('scroll',updateTop,{passive:true});
 backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-document.addEventListener('sob-nearby-updated',()=>{refreshOptions();resetPage()});
+boroughPicker.addEventListener('change',()=>{
+ try{
+  if(boroughPicker.value)localStorage.setItem('sob-borough-v1',boroughPicker.value);
+  else localStorage.removeItem('sob-borough-v1');
+ }catch{}
+ resetPage();
+});
 document.addEventListener('sob-catalog-ready',()=>{refreshOptions();render()});
 document.addEventListener('sob-programs-updated',()=>{refreshOptions();render()});
 store.watch(render);el('year').textContent=new Date().getFullYear();refreshOptions();render();updateTop();
