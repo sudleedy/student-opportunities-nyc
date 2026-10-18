@@ -68,6 +68,32 @@ input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #ff78
 .program-badge.closed{background:#f0f1f4;color:#5c6b7e}
 .program-badge.review{background:#fff4e9;color:#9a5935}
 .card .verified-line{font-size:12px;color:#52657f;margin:2px 0 12px}
+
+/* Public-launch mobile audit: prevent narrow screens from overflowing. */
+:where(.card,.sectiontop,.filters,.nav,.brand,.brand-copy){min-width:0}
+.card h3,.card p,.card .meta,.verified-line{overflow-wrap:anywhere}
+.nav .sob-header-actions{min-width:0}
+@media(max-width:600px){
+ .nav{padding:12px 16px;gap:10px}
+ .nav nav{order:2;flex:1 1 100%;display:flex;flex-wrap:wrap;justify-content:center;gap:7px}
+ .nav nav a{margin:0;min-height:44px;padding:10px 12px}
+ .main{padding:32px 16px 60px}
+ .hero{padding:60px 18px 66px;min-height:340px}
+ .hero h1{font-size:clamp(32px,9vw,43px);letter-spacing:-1px}
+ .hero p{font-size:16px}
+ .filters{grid-template-columns:minmax(0,1fr)}
+ .filters #search{grid-column:auto}
+ .filters input,.filters select{min-width:0;min-height:46px;font-size:16px}
+ .contribute{padding:20px}
+ .card{padding:18px}
+ .card-actions .open-detail,.favorite-button{min-height:44px}
+ .card .verified-line a{overflow-wrap:anywhere}
+}
+@media(max-width:360px){
+ .nav .brand-name strong{font-size:16px}
+ .nav .brand-tagline{letter-spacing:.4px}
+ .pagination button{min-height:44px}
+}
 </style></head><body>
 <header id="top"><div class="nav"><a class="brand" href="#top" aria-label="Student Opportunities NYC homepage"><img src="assets/student_opportunities_nyc_icon.svg?v=1" alt="Graduation cap with upward arrow" class="brand-icon"><span class="brand-copy"><span class="brand-name">Student<strong>Opportunities <em>NYC</em></strong></span><span class="brand-tagline">DISCOVER WHAT’S NEXT</span></span></a><nav><a href="#opportunities">Explore</a><a href="#about">About</a><a href="#contribute">Contribute</a></nav></div></header>
 <section class="hero"><div class="wrap"><div class="eyebrow">Discover what's possible</div><h1>Every opportunity starts somewhere.</h1><p>Find internships, scholarships, research experiences, and volunteer programs for high school students—all in one place.</p><a href="#opportunities">Explore opportunities →</a></div></section>
