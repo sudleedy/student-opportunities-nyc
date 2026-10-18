@@ -14,11 +14,14 @@ host.innerHTML='<div class="local-heading"><div><p class="local-kicker">AUTOMATI
 '<div class="local-controls"><label for="local-borough">Your borough</label><select id="local-borough"><option value="">Choose a borough</option>'+boros.map(b=>'<option value="'+b+'">'+b+'</option>').join('')+'</select>'+
 '<button type="button" id="local-position">◎ Use my location</button><button type="button" id="local-refresh" disabled>Refresh results</button></div>'+
 '<p id="local-feedback" class="local-feedback" role="status" aria-live="polite">Choose a borough to load additional NYC youth program locations. Your borough preference stays in this browser.</p>'+
+'<nav id="local-pagination-top" class="local-pagination" aria-label="Nearby program pages (top)"></nav>'+
 '<div id="local-results" class="local-grid"></div>'+
+'<nav id="local-pagination-bottom" class="local-pagination" aria-label="Nearby program pages (bottom)"></nav>'+
 '<p class="local-disclaimer">These are <strong>DYCD-funded program sites</strong>, not independently checked application openings. The examples above describe typical activities for each program type, not a verified schedule at a specific site. They may include after-school, career-readiness, and other youth services. Confirm your grade eligibility, registration, costs and openings with the provider. <a href="'+POLICY+'" target="_blank" rel="noopener noreferrer">NYC Open Data source ↗</a>. We do not store or transmit GPS coordinates.</p>';
 const boroughEl=host.querySelector('#local-borough'),feedback=host.querySelector('#local-feedback'),results=host.querySelector('#local-results');
 const refresh=host.querySelector('#local-refresh'),locate=host.querySelector('#local-position');
-let active=0,coords=null,cache=new Map(),lastKey='';
+const PER_PAGE=9, pagers=[host.querySelector('#local-pagination-top'),host.querySelector('#local-pagination-bottom')];
+let active=0,coords=null,cache=new Map(),lastKey='',visible=[],page=1,visibleLabel='';
 try{const saved=localStorage.getItem('sob-borough-v1');if(boros.includes(saved))boroughEl.value=saved}catch{}
 const asNumber=value=>Number.isFinite(Number(value))?Number(value):null;
 const miles=(a,b,c,d)=>{
@@ -85,24 +88,63 @@ function prepare(rows,nearby,borough){
  }
  const candidates=[...found.values()];
  candidates.sort((a,b)=>nearby?(a.distance??Infinity)-(b.distance??Infinity)||Number(b.date)-Number(a.date):Number(b.date)-Number(a.date)||nameOf(a).localeCompare(nameOf(b)));
- return candidates.slice(0,18);
+ return candidates;
 }
-function paint(found,label){
- if(!found.length){results.innerHTML='<div class="local-empty">No matching high-school or youth program locations were found for this search. Try another borough or the full official directory.</div>';feedback.textContent='No matches found '+label+'.';return}
- results.innerHTML=found.map(r=>{
+function renderPager(){
+ const total=visible.length, pages=Math.ceil(total/PER_PAGE);
+ if(pages<=1){pagers.forEach(p=>p.innerHTML='');return;}
+ const first=(page-1)*PER_PAGE+1,last=Math.min(page*PER_PAGE,total);
+ const buttons=[];
+ for(let n=1;n<=pages;n++){
+  if(pages>7&&n!==1&&n!==pages&&Math.abs(n-page)>2){
+   if(n===2||n===pages-1)buttons.push('<span class="local-pagination-ellipsis" aria-hidden="true">…</span>');
+   continue;
+  }
+  buttons.push('<button type="button" data-local-page="'+n+'" '+(n===page?'aria-current="page" ':'')+'aria-label="Nearby programs page '+n+'">'+n+'</button>');
+ }
+ const html='<span class="local-pagination-summary">Showing '+first+'–'+last+' of '+total+' programs</span>'+
+ '<button type="button" data-local-page="'+(page-1)+'" '+(page===1?'disabled ':'')+'aria-label="Previous nearby programs page">← Previous</button>'+
+ buttons.join('')+
+ '<button type="button" data-local-page="'+(page+1)+'" '+(page===pages?'disabled ':'')+'aria-label="Next nearby programs page">Next →</button>';
+ pagers.forEach(p=>p.innerHTML=html);
+}
+function clearResults(){
+ visible=[];page=1;visibleLabel='';
+ pagers.forEach(p=>p.innerHTML='');
+ results.innerHTML='';
+}
+function renderPage(){
+ const total=visible.length;
+ if(!total){results.innerHTML='<div class="local-empty">No matching high-school or youth program locations were found for this search. Try another borough or the full official directory.</div>';feedback.textContent='No matches found '+visibleLabel+'.';renderPager();return;}
+ const first=(page-1)*PER_PAGE,last=Math.min(page*PER_PAGE,total);
+ results.innerHTML=visible.slice(first,last).map(r=>{
   const type=escape(r.program_type||'Youth program'),name=escape(nameOf(r)),provider=escape(r.provider||'City-funded provider');
   const place=escape([r.borough,r.zipcode].filter(Boolean).join(' · ')),dist=r.distance===null?'':' · '+r.distance.toFixed(1)+' mi away';
   const activity=explain(r);
   return '<article class="local-program"><span class="local-tag">'+type+'</span><h3>'+name+'</h3><p>'+provider+'</p><div class="local-activity"><strong>What you might do</strong><p>'+escape(activity.activity)+'</p></div><p class="local-audience"><strong>Who it is usually for:</strong> '+escape(activity.audience)+'</p><p class="local-place">📍 '+place+escape(dist)+'</p><p class="local-unknown">Application status not verified · City data year: '+escape(r.date||'Unknown')+'</p><a class="local-model-link" href="'+activity.url+'" target="_blank" rel="noopener noreferrer">Read about this program type ↗</a><a href="'+DIRECTORY+'" target="_blank" rel="noopener noreferrer" aria-label="Verify '+name+' in NYC directory">Check program &amp; availability ↗</a></article>';
  }).join('');
- feedback.textContent='Showing '+found.length+' additional NYC-funded youth program locations '+label+'. Check the official directory before applying.';
+ feedback.textContent='Showing '+(first+1)+'–'+last+' of '+total+' NYC-funded youth program locations '+visibleLabel+'. Application status varies; check the official directory.';
+ renderPager();
 }
+function paint(found,label){
+ visible=found;page=1;visibleLabel=label;
+ renderPage();
+}
+pagers.forEach(p=>p.addEventListener('click',e=>{
+ const button=e.target.closest('button[data-local-page]');
+ if(!button||button.disabled)return;
+ const next=Number(button.dataset.localPage),pages=Math.ceil(visible.length/PER_PAGE);
+ if(!Number.isSafeInteger(next)||next<1||next>pages||next===page)return;
+ page=next;renderPage();
+ results.scrollIntoView({behavior:'smooth',block:'start'});
+}));
+
 async function search(borough,nearby,force=false){
  const queryKey=nearby?'gps':borough;if(!queryKey)return;
  const run=++active,lastLabel=nearby?'near your location':'in '+borough;
  lastKey=queryKey;refresh.disabled=true;locate.disabled=true;boroughEl.disabled=true;
+ clearResults();
  feedback.textContent='Loading official NYC youth program sites '+lastLabel+'…';
- results.innerHTML='';
  try{
   const year=new Date().getFullYear();
   const params=new URLSearchParams();
@@ -125,13 +167,14 @@ async function search(borough,nearby,force=false){
  }catch(e){
   if(run!==active)return;
   feedback.textContent='Could not load the city dataset right now. You can still search NYC’s official program directory directly.';
+  clearResults();
   results.innerHTML='<p class="local-empty">Program data is temporarily unavailable. <a href="'+DIRECTORY+'" target="_blank" rel="noopener noreferrer">Search discoverDYCD ↗</a></p>';
  }finally{if(run===active){refresh.disabled=false;locate.disabled=false;boroughEl.disabled=false}}
 }
 boroughEl.addEventListener('change',()=>{
  coords=null;const b=boroughEl.value;
  try{if(b)localStorage.setItem('sob-borough-v1',b);else localStorage.removeItem('sob-borough-v1')}catch{}
- if(!b){active++;lastKey='';results.innerHTML='';feedback.textContent='Choose a borough to find youth programs.';refresh.disabled=true;return}
+ if(!b){active++;lastKey='';clearResults();feedback.textContent='Choose a borough to find youth programs.';refresh.disabled=true;return}
  search(b,null);
 });
 refresh.addEventListener('click',()=>{if(coords)search('',coords,true);else if(boroughEl.value)search(boroughEl.value,null,true)});
