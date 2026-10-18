@@ -98,7 +98,7 @@ async function load(){
 }
 async function save(form){
  if(!db)return;
- const id=form.dataset.id,p=byId.get(id),feedback=form.querySelector('.timeline-feedback');
+ const id=form.dataset.id,p=byId.get(id)||programs.find(o=>o.id===id),feedback=form.querySelector('.timeline-feedback');
  if(!p)return;
  const buttons=form.querySelectorAll('button');buttons.forEach(b=>b.disabled=true);
  feedback.textContent='Saving…';
@@ -112,7 +112,7 @@ async function save(form){
  overrides.set(id,data);render();message.textContent='Saved '+p.title+'. Changes are available to website visitors after they load or refresh the page.';
 }
 async function reset(form){
- const id=form.dataset.id,p=byId.get(id);if(!p||!overrides.has(id)||!db)return;
+ const id=form.dataset.id,p=byId.get(id)||programs.find(o=>o.id===id);if(!p||!overrides.has(id)||!db)return;
  if(!confirm('Restore the original catalog dates for '+p.title+'? The public update will be deleted.'))return;
  const feedback=form.querySelector('.timeline-feedback');feedback.textContent='Restoring…';
  const {error}=await db.from('program_updates').delete().eq('program_id',id);
