@@ -196,9 +196,9 @@ function mixResults(found){
   (a.title||'').localeCompare(b.title||''));
  return found;
 }
-const deadlinePassed=p=>/^\\d{4}-\\d{2}-\\d{2}$/.test(p.deadlineISO||'')&&
+const deadlinePassed=p=>/^\d{4}-\d{2}-\d{2}$/.test(p.deadlineISO||'')&&
   new Date(p.deadlineISO+'T23:59:59').getTime()<Date.now();
-const deadlineDisplay=p=>deadlinePassed(p)&&!/last published deadline|\\bpassed\\b/i.test(p.deadline||'')
+const deadlineDisplay=p=>deadlinePassed(p)&&!/last published deadline|\bpassed\b/i.test(p.deadline||'')
   ?'Last published deadline: '+p.deadline+' (passed; verify next cycle)':p.deadline;
 function renderCurated(p){
  const isFav=Boolean(store.get(p.id).favorited);
