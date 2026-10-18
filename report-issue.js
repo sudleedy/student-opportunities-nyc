@@ -24,15 +24,16 @@ function init(){
   const detail=document.getElementById('sob-report-details').value.trim();
   const status=document.getElementById('sob-report-feedback');
   if(detail.length<10){status.textContent='Please provide at least 10 characters.';return}
-  const submit=e.currentTarget.querySelector('button[type="submit"]');
+  const form=e.currentTarget;
+  const submit=form.querySelector('button[type="submit"]');
   submit.disabled=true;status.textContent='Submitting report…';
   const id=new URLSearchParams(location.search).get('id');
   const page=location.origin+location.pathname+(id?'?id='+encodeURIComponent(id):'');
   try{
    const result=await window.BeaconStore.submitReport(kind,detail,id,page);
    status.textContent=result.message;
-   if(result.ok)e.currentTarget.reset();
-  }catch{status.textContent='Unable to submit right now. Please try again later.'}
+   if(result.ok)form.reset();
+  }catch(err){console.error('Report submission failed',err);status.textContent='Report submission failed. Please refresh and try again.'}
   finally{submit.disabled=false}
 
  };
