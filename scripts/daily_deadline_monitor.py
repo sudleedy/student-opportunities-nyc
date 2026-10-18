@@ -34,27 +34,27 @@ MAX_WORKERS = 6
 REQUEST_TIMEOUT = 10
 
 DATE = re.compile(
-    r"(?<!\\d)(20\\d{2})-(0[1-9]|1[0-2])-([0-2]\\d|3[01])(?!\\d)"
-    r"|\\b(January|February|March|April|May|June|July|August|September|October|November|December|"
-    r"Jan\\.?|Feb\\.?|Mar\\.?|Apr\\.?|Jun\\.?|Jul\\.?|Aug\\.?|Sep\\.?|Sept\\.?|Oct\\.?|Nov\\.?|Dec\\.?)"
-    r"\\s+([0-2]?\\d|3[01])(?:st|nd|rd|th)?[,]?\\s+(20\\d{2})\\b",
+    r"(?<!\d)(20\d{2})-(0[1-9]|1[0-2])-([0-2]\d|3[01])(?!\d)"
+    r"|\b(January|February|March|April|May|June|July|August|September|October|November|December|"
+    r"Jan\.?|Feb\.?|Mar\.?|Apr\.?|Jun\.?|Jul\.?|Aug\.?|Sep\.?|Sept\.?|Oct\.?|Nov\.?|Dec\.?)"
+    r"\s+([0-2]?\d|3[01])(?:st|nd|rd|th)?[,]?\s+(20\d{2})\b",
     re.I,
 )
 LABEL = re.compile(
-    r"\\b(?:application\\s+deadline|applications?\\s+(?:close|closes|closing|end|ends|due)|"
-    r"deadline\\s+for\\s+applications?|application\\s+due\\s+date|"
-    r"registration\\s+deadline|submission\\s+deadline|"
-    r"submit\\s+(?:your\\s+|the\\s+)?application\\s+by|apply\\s+by)\\b",
+    r"\b(?:application\s+deadline|applications?\s+(?:close|closes|closing|end|ends|due)|"
+    r"deadline\s+for\s+applications?|application\s+due\s+date|"
+    r"registration\s+deadline|submission\s+deadline|"
+    r"submit\s+(?:your\s+|the\s+)?application\s+by|apply\s+by)\b",
     re.I,
 )
 EXCLUDE = re.compile(
-    r"\\b(?:priority|early-bird|early\\s+deadline|recommendation|parent\\s+consent|"
-    r"letter\\s+of|scholarship\\s+deadline|nomination|financial\\s+aid|"
-    r"fee\\s+waiver|estimated|tentative|not\\s+confirmed|example|sample)\\b",
+    r"\b(?:priority|early-bird|early\s+deadline|recommendation|parent\s+consent|"
+    r"letter\s+of|scholarship\s+deadline|nomination|financial\s+aid|"
+    r"fee\s+waiver|estimated|tentative|not\s+confirmed|example|sample)\b",
     re.I,
 )
 STOP = set("the a and for from at with of in to on high school student students youth teen teens program programs internship internships summer spring fall winter new york city nyc academy research science careers scholarship".split())
-ACRONYM = re.compile(r"\\b[A-Z][A-Z0-9]{3,}\\b")
+ACRONYM = re.compile(r"\b[A-Z][A-Z0-9]{3,}\b")
 
 
 class PageText(HTMLParser):
@@ -90,7 +90,7 @@ class PageText(HTMLParser):
                 self.heading_parts.append(data.strip())
 
     def result(self):
-        return re.sub(r"\\s+", " ", " ".join(self.parts)), self.headlines
+        return re.sub(r"\s+", " ", " ".join(self.parts)), self.headlines
 
 
 def parse_date(match):
@@ -264,7 +264,7 @@ def main():
     args = cli.parse_args()
     now = dt.datetime.now(dt.timezone.utc).date()
     contents = CATALOG.read_text(encoding="utf-8")
-    match = re.search(r"window\\.PROGRAMS\\s*=\\s*(\\[.*\\])\\s*;\\s*$", contents, re.S)
+    match = re.search(r"window\.PROGRAMS\s*=\s*(\[.*\])\s*;\s*$", contents, re.S)
     if not match:
         raise SystemExit("Catalog assignment missing")
     programs = json.loads(match.group(1))
@@ -286,14 +286,14 @@ def main():
         "mode": "dry-run" if args.dry_run or args.max_programs else "write",
         "results": rows,
     }
-    pathlib.Path(args.report).write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\\n", encoding="utf-8")
+    pathlib.Path(args.report).write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     if not args.dry_run and not args.max_programs:
         if json.dumps(programs, sort_keys=True) != original:
             CATALOG.write_text(contents[:match.start(1)] + json.dumps(programs, indent=2, ensure_ascii=False) +
                                contents[match.end(1):], encoding="utf-8")
         if nextstate != prior:
             STATE.parent.mkdir(parents=True, exist_ok=True)
-            STATE.write_text(json.dumps(nextstate, indent=2, sort_keys=True) + "\\n", encoding="utf-8")
+            STATE.write_text(json.dumps(nextstate, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(f"Checked {len(rows)}/{len(programs)}: {len(updates)} confirmed updates, "
           f"{len(staged)} pending second observation, {len(expired)} expired labels flagged, "
           f"{report['unavailable']} unavailable. Report: {args.report}")
