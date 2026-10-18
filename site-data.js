@@ -4,7 +4,7 @@ const items=window.PROGRAMS||[],config=window.SOB_AUTH_CONFIG||{};
 const existing=new Set(items.map(p=>p.id)),fields=[
  'title','org','type','subject','location','summary','details','eligibility','deadline',
  'deadlineISO','deadlineNote','status','cost','commitment','preparation','url',
- 'verified','applicationNote','grades','costCategory','deliveryMode','applicationState'
+ 'verified','applicationNote','grades','costCategory','payCategory','deliveryMode','applicationState'
 ];
 const byId=new Map(items.map(p=>[p.id,p]));
 const originals=new Map(items.map(p=>[p.id,JSON.parse(JSON.stringify(p))]));
