@@ -65,6 +65,12 @@ In the Program Descriptions tab you can:
 
 Description edits do **not** modify deadline overrides in `program_updates`. The public site falls back to the bundled `programs-data.js` text if the description database is unavailable. Check official organizer information before editing factual claims.
 
+## Delete unnecessary student reports from the admin dashboard
+
+In **Admin Dashboard → Student Reports**, each report has a **Delete report** button beside **Save status**. Select it and confirm before permanent deletion. On successful deletion the report disappears and the report status counts update automatically. **Deleted reports cannot be restored from this dashboard.**
+
+**One-time permission setup:** Run `supabase-report-deletion.sql` in the existing Supabase project's SQL Editor. This adds a Row Level Security `DELETE` policy that allows deletion **only by authorized admins** already recorded in `private.site_admins`. It does not delete records on its own and it does not grant ordinary students report deletion access. No further Supabase visits are needed for individual report deletions.
+
 ## Files
 - `index.html` — searchable directory
 - `program.html` — shareable program pages and tracker
