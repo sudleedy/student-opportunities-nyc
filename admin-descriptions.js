@@ -83,7 +83,7 @@ async function load(){
 }
 async function save(form){
  if(!db||!available)return;
- const p=programById.get(form.dataset.id);
+ const p=programById.get(form.dataset.id)||programs.find(o=>o.id===form.dataset.id);
  if(!p)return;
  const summary=form.elements.summary_text.value.trim();
  const details=form.elements.details_text.value.trim();
