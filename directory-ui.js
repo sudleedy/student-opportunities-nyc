@@ -165,9 +165,13 @@ function deadline(p){
 }
 function matches(p,q){
  const borough=el('nearby-borough').value.trim().toLowerCase();
- // Show only verified listings with a known, matching program borough.
+ // Filter only programs with an explicitly known physical borough.
+ // A program with verified venues in multiple boroughs can match any of them.
  // Citywide, online and unspecified locations stay visible with no borough selected.
- if(borough&&String(p.borough||'').trim().toLowerCase()!==borough)return false;
+ if(borough){
+  const locations=[p.borough,...(Array.isArray(p.boroughs)?p.boroughs:[])];
+  if(!locations.some(place=>String(place||'').trim().toLowerCase()===borough))return false;
+ }
  const progress=store.get(p.id);
  if(!selectedAny('subject',p.subject))return false;
  // Within one category, any checked grade is a match. Unknown grades
