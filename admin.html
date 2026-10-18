@@ -58,6 +58,29 @@
 .admin-actions a{font-weight:700;color:#a2442a}
 .admin-note{color:#5c6c84;font-size:13px}
 @media(max-width:650px){.admin-edit-grid{grid-template-columns:1fr}.admin-edit-grid .wide{grid-column:auto}}
+
+/* Dashboard usability and touch targets on smaller devices. */
+.admin-record,.admin-edit-card,.timeline-card,.report{min-width:0;overflow-wrap:anywhere}
+.admin-tabs button,.admin-actions button,.toolbar button{min-height:44px}
+@media(max-width:650px){
+ main{padding:24px 16px 60px}
+ .nav{padding:12px 16px}
+ .summary{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .admin-tabs{gap:7px}
+ .admin-tabs button{font-size:13px;padding:10px 12px;flex:1 1 135px}
+ .admin-edit-card,.admin-record,.timeline-card{padding:15px}
+ .admin-edit-grid{grid-template-columns:minmax(0,1fr)}
+ .admin-edit-grid .wide{grid-column:auto}
+ .admin-edit-grid input,.admin-edit-grid textarea,.admin-edit-grid select{font-size:16px}
+ #manager-search,.toolbar select,.toolbar input{min-width:0;max-width:100%;font-size:16px}
+ #manager-search{flex:1 1 100%}
+ .admin-actions{align-items:stretch}
+}
+@media(max-width:360px){
+ .summary{grid-template-columns:minmax(0,1fr)}
+ .brand-name strong{font-size:17px}
+ .admin-tabs button{flex:1 1 100%}
+}
 </style></head>
 <body><header><div class="nav"><a class="brand" href="./"><img src="assets/student_opportunities_nyc_icon.svg?v=1" alt="Graduation cap with upward arrow"><span class="brand-name">Student<strong>Opportunities <em>NYC</em></strong><small>DISCOVER WHAT’S NEXT</small></span></a><a class="home" href="./">← Back to Home</a></div></header>
 <main><h1>Admin Dashboard</h1><p class="lead">Review student reports, manage program timelines, and edit descriptions from one secure dashboard.</p>
@@ -152,4 +175,4 @@
 </section>
 </div>
 </main><footer class="footer">Student Opportunities NYC · Private administrator tools</footer>
-<script src="programs-data.js"></script><script src="auth-config.js"></script><script src="site-data.js?v=2"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script><script src="admin-reports.js?v=4"></script><script src="admin-programs.js?v=7"></script><script src="admin-descriptions.js?v=2"></script><script src="admin-manager.js?v=3"></script><script src="admin-suggestions.js?v=2"></script><script src="admin-insights.js?v=1"></script></body></html>
+<script src="programs-data.js"></script><script src="auth-config.js"></script><script src="site-data.js?v=2"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script><script src="admin-reports.js?v=4"></script><script src="admin-programs.js?v=7"></script><script src="admin-descriptions.js?v=2"></script><script src="admin-manager.js?v=4"></script><script src="admin-suggestions.js?v=2"></script><script src="admin-insights.js?v=1"></script></body></html>
