@@ -117,28 +117,38 @@ document.addEventListener('click',e=>{
  }
 });
 
-function syncPage(){
+function directoryPageUrl(nextPage){
  const url=new URL(location.href);
- if(page>1)url.searchParams.set('page',String(page));else url.searchParams.delete('page');
+ if(nextPage>1)url.searchParams.set('page',String(nextPage));else url.searchParams.delete('page');
  const query=el('search').value.trim();
  if(query)url.searchParams.set('q',query.slice(0,250));else url.searchParams.delete('q');
- history.replaceState({},'',url.pathname+url.search+url.hash);
+ url.hash='opportunities';
+ return url.pathname+url.search+url.hash;
+}
+function syncPage(push=false){
+ const href=directoryPageUrl(page);
+ if(push)history.pushState({},'',href);else history.replaceState({},'',href);
 }
 function renderPager(total){
  if(!total){pagers.forEach(p=>p.innerHTML='');return}
  const pages=Math.ceil(total/PAGE_SIZE),first=(page-1)*PAGE_SIZE+1,last=Math.min(page*PAGE_SIZE,total);
- const buttons=[];
+ const link=(n,label,aria)=>{
+  if(n<1||n>pages)return '<span class="pagination-disabled" aria-disabled="true">'+label+'</span>';
+  return '<a href="'+safe(directoryPageUrl(n))+'" data-page="'+n+'"'+
+    (page===n?' aria-current="page"':'')+' aria-label="'+safe(aria)+'">'+label+'</a>';
+ };
+ const links=[];
  for(let n=1;n<=pages;n++){
   if(pages>7&&n!==1&&n!==pages&&Math.abs(n-page)>2){
-   if(n===2||n===pages-1)buttons.push('<span class="pagination-ellipsis" aria-hidden="true">…</span>');
+   if(n===2||n===pages-1)links.push('<span class="pagination-ellipsis" aria-hidden="true">…</span>');
    continue;
   }
-  buttons.push('<button type="button" data-page="'+n+'" '+(page===n?'aria-current="page" ':'')+'aria-label="Page '+n+'">'+n+'</button>');
+  links.push(link(n,String(n),'Page '+n));
  }
  const html='<span class="pagination-summary">Showing '+first+'–'+last+' of '+total+'</span>'+
-  '<button type="button" data-page="'+(page-1)+'" '+(page===1?'disabled ':'')+'aria-label="Previous page">← Previous</button>'+
-  buttons.join('')+
-  '<button type="button" data-page="'+(page+1)+'" '+(page===pages?'disabled ':'')+'aria-label="Next page">Next →</button>';
+  link(page-1,'← Previous','Previous page')+
+  links.join('')+
+  link(page+1,'Next →','Next page');
  pagers.forEach(p=>p.innerHTML=html);
 }
 function deadline(p){
@@ -247,13 +257,23 @@ el('clear-filters').addEventListener('click',()=>{
  resetPage();
 });
 pagers.forEach(p=>p.addEventListener('click',e=>{
- const button=e.target.closest('button[data-page]');
- if(!button||button.disabled)return;
- const next=Number(button.dataset.page),pages=Math.ceil(lastTotal/PAGE_SIZE);
+ const link=e.target.closest('a[data-page]');
+ if(!link||e.button!==0||e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;
+ const next=Number(link.dataset.page),pages=Math.ceil(lastTotal/PAGE_SIZE);
  if(!Number.isSafeInteger(next)||next<1||next>pages)return;
- page=next;syncPage();render();
+ e.preventDefault();
+ if(next!==page){page=next;syncPage(true);render()}
  el('opportunities').scrollIntoView({behavior:'smooth',block:'start'});
 }));
+window.addEventListener('popstate',()=>{
+ const params=new URLSearchParams(location.search);
+ const prior=Number(params.get('page')||1);
+ page=Number.isSafeInteger(prior)&&prior>0?prior:1;
+ el('search').value=(params.get('q')||'').slice(0,250);
+ saved.checked=params.get('saved')==='1';
+ updateAdvancedCount();
+ render();
+});
 const backTop=el('back-to-top');
 const updateTop=()=>backTop.classList.toggle('visible',window.scrollY>400);
 window.addEventListener('scroll',updateTop,{passive:true});
