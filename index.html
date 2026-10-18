@@ -110,17 +110,17 @@ input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #ff78
 
 }
 
-/* One clean search and result area for curated opportunities and optional city program sites. */
+/* Search and filter individually reviewed student programs only. */
 .simple-filters{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:12px;align-items:end;margin:26px 0 10px}
 .simple-filters label,.borough-picker{min-width:0;display:flex;flex-direction:column;gap:7px;font-size:13px;font-weight:750;color:#2b405e}
 .simple-filters label span,.borough-picker label{font-size:13px;font-weight:750}
 .simple-filters select,.simple-filters input{min-height:46px;min-width:0}
 .simple-filters .optional{font-weight:500;color:#75859c}
-.discovery-line{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:0 0 16px}
-.discovery-line button{background:#fff;border:1px solid #cbd7e6;border-radius:9px;padding:10px 13px;min-height:44px;color:#253952;font:inherit;font-size:13px;font-weight:750;cursor:pointer}
-.discovery-line button:hover:not(:disabled){background:#fff0e7;border-color:#de9676}
-.discovery-line button:disabled{opacity:.55;cursor:default}
-.discovery-help{font-size:12px;color:#62758e;flex:1 1 220px}
+
+
+
+
+
 .more-filters{border:1px solid #d6e0ed;background:#fff;border-radius:12px;margin:12px 0;overflow:hidden}
 .more-filters summary{font-size:14px;font-weight:800;color:#233956;cursor:pointer;list-style:revert;padding:13px 17px}
 .more-filters summary:hover{background:#f3f6fb}
@@ -131,7 +131,7 @@ input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #ff78
 .advanced-filters .favorites-toggle{flex-direction:row;gap:8px;align-items:center}
 .advanced-filters .favorites-toggle input{width:18px;height:18px}
 .clear-filters{border:1px solid #bfcddd;background:#f6f9fc;color:#334e70;font:inherit;font-weight:750;border-radius:9px;cursor:pointer;min-height:43px}
-.location-feedback{font-size:12px;color:#63758e;line-height:1.55;margin:10px 0 18px}
+
 .city-card{border-left-color:#5987bb;background:#f1f7ff}
 .city-card .pill{background:#e1edff;color:#224d83}
 .city-card .city-provenance{color:#5c6d85;font-size:12px;margin-top:0}
@@ -202,11 +202,11 @@ input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #ff78
  <label class="simple-search"><span>Search programs</span><input id="search" type="search" aria-label="Search opportunities" placeholder="Research, design, internships…"></label>
  <div class="multi-field"><span class="filter-title" id="subject-title">Interest</span><details class="multi-filter" id="subject-dropdown"><summary aria-labelledby="subject-title subject-summary-text"><span id="subject-summary-text">All interests</span><span class="multi-caret" aria-hidden="true">⌄</span></summary><div class="multi-options" id="subject-options" role="group" aria-labelledby="subject-title"></div></details></div>
  <div class="multi-field"><span class="filter-title" id="grade-title">Grade</span><details class="multi-filter" id="grade-dropdown"><summary aria-labelledby="grade-title grade-summary-text"><span id="grade-summary-text">Any grade</span><span class="multi-caret" aria-hidden="true">⌄</span></summary><div class="multi-options" id="grade-options" role="group" aria-labelledby="grade-title"></div></details></div>
- <div class="borough-picker" id="local-discovery"><label for="nearby-borough">NYC borough <span class="optional">optional</span></label><select id="nearby-borough" aria-label="Show only programs located in this borough"><option value="">All programs · any borough</option><option>Brooklyn</option><option>Manhattan</option><option>Queens</option><option>Bronx</option><option>Staten Island</option></select></div>
+ <div class="borough-picker" id="local-discovery"><label for="nearby-borough">Program borough <span class="optional">optional</span></label><select id="nearby-borough" aria-label="Show only programs located in this borough"><option value="">All programs · any borough</option><option>Brooklyn</option><option>Manhattan</option><option>Queens</option><option>Bronx</option><option>Staten Island</option></select></div>
 </div>
-<div class="discovery-line"><button type="button" id="nearby-refresh" disabled>Refresh local programs</button><span class="discovery-help">Selecting a borough shows programs based there. Reviewed opportunities appear before NYC-funded site listings. <a href="https://discoverdycd.dycdconnect.nyc/program-public?nt=1" target="_blank" rel="noopener noreferrer">Official NYC directory ↗</a></span></div>
+
 <details class="more-filters" id="more-filters"><summary>More filters <span class="more-hint" id="advanced-count">optional</span></summary><div class="advanced-filters">
-<label>Sort by<select id="sort" aria-label="Sort programs"><option value="default">Reviewed programs first</option><option value="deadline">Upcoming deadlines first</option><option value="az">Program name A–Z</option></select></label>
+<label>Sort by<select id="sort" aria-label="Sort programs"><option value="default">Recommended order</option><option value="deadline">Upcoming deadlines first</option><option value="az">Program name A–Z</option></select></label>
 <div class="multi-field"><span class="filter-title" id="apply-filter-title">Application status</span><details class="multi-filter" id="apply-filter-dropdown"><summary aria-labelledby="apply-filter-title apply-filter-summary-text"><span id="apply-filter-summary-text">Any status</span><span class="multi-caret" aria-hidden="true">⌄</span></summary><div class="multi-options" id="apply-filter-options" role="group" aria-labelledby="apply-filter-title"></div></details></div>
 <div class="multi-field"><span class="filter-title" id="cost-filter-title">Program cost</span><details class="multi-filter" id="cost-filter-dropdown"><summary aria-labelledby="cost-filter-title cost-filter-summary-text"><span id="cost-filter-summary-text">Any cost</span><span class="multi-caret" aria-hidden="true">⌄</span></summary><div class="multi-options" id="cost-filter-options" role="group" aria-labelledby="cost-filter-title"></div></details></div>
 <div class="multi-field"><span class="filter-title" id="mode-filter-title">Attendance</span><details class="multi-filter" id="mode-filter-dropdown"><summary aria-labelledby="mode-filter-title mode-filter-summary-text"><span id="mode-filter-summary-text">Any format</span><span class="multi-caret" aria-hidden="true">⌄</span></summary><div class="multi-options" id="mode-filter-options" role="group" aria-labelledby="mode-filter-title"></div></details></div>
@@ -216,7 +216,7 @@ input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #ff78
 <button type="button" id="clear-filters" class="clear-filters">Clear filters</button>
 </div></details>
 <p class="multi-filter-tip">Choose multiple options in a filter; matching programs will include any of those choices.</p>
-<p id="nearby-feedback" class="location-feedback" role="status" aria-live="polite">Choose a borough to see additional city-funded program sites.</p>
-<p class="filter-note">Borough searches show only programs with a known site in the selected borough. Citywide, online, and unlocated programs are hidden until you clear the borough. NYC-funded sites show typical activities, not confirmed application openings.</p>
-<nav class="pagination" id="pagination-top" aria-label="Opportunity pages (top)"></nav><div class="cards" id="cards"></div><nav class="pagination" id="pagination-bottom" aria-label="Opportunity pages (bottom)"></nav><p class="directory-index-link"><a href="./program-directory.html">Browse all reviewed programs A–Z →</a></p><p class="filter-note">Reviewed opportunities have their own detail pages. NYC-funded site listings appear after reviewed programs and link to NYC’s official directory for current details.</p><div class="note"><strong>Before applying:</strong> Always confirm deadlines, age requirements, eligibility, and application details on the program's official website. These listings link to official program pages; application dates and requirements may change. Status labels are informational and are not live application availability checks.</div></section><section class="contribute" id="about"><h2>Built for students, by students.</h2><p>Student Opportunities NYC is an independent project created to make educational and career opportunities easier to discover. Our goal is to help students spend less time searching and more time applying.</p></section><section class="contribute" id="contribute"><h2>Know about an opportunity?</h2><p>We're building a directory of verified student programs. Help grow the list by suggesting an organization or program for review.</p><p id="suggestion-loading" class="filter-note">Loading the program suggestion form…</p></section></main><button type="button" id="back-to-top" aria-label="Back to top">↑ Back to Top</button><footer>© <span id="year"></span> Student Opportunities NYC · Independent student project · <a href="./privacy.html">Privacy &amp; Data</a></footer>
-<script src="programs-data.js?v=8"></script><script src="auth-config.js"></script><script src="site-data.js?v=4"></script><script src="program-updates.js?v=2"></script><script src="program-descriptions.js?v=2"></script><script src="beacon-store.js?v=12"></script><script src="nearby-programs.js?v=8"></script><script src="directory-ui.js?v=19"></script><script src="report-issue.js?v=4"></script><script src="suggest-program.js?v=1"></script><script src="site-analytics.js?v=1"></script></body></html>
+
+<p class="filter-note">Only specific programs with a known location in the selected borough are shown. Choose all boroughs to include citywide, remote and unlocated opportunities.</p>
+<nav class="pagination" id="pagination-top" aria-label="Opportunity pages (top)"></nav><div class="cards" id="cards"></div><nav class="pagination" id="pagination-bottom" aria-label="Opportunity pages (bottom)"></nav><p class="directory-index-link"><a href="./program-directory.html">Browse all reviewed programs A–Z →</a></p><p class="filter-note">Each listing has program-specific details and a link to its official organizer. Always verify the current application requirements.</p><div class="note"><strong>Before applying:</strong> Always confirm deadlines, age requirements, eligibility, and application details on the program's official website. These listings link to official program pages; application dates and requirements may change. Status labels are informational and are not live application availability checks.</div></section><section class="contribute" id="about"><h2>Built for students, by students.</h2><p>Student Opportunities NYC is an independent project created to make educational and career opportunities easier to discover. Our goal is to help students spend less time searching and more time applying.</p></section><section class="contribute" id="contribute"><h2>Know about an opportunity?</h2><p>We're building a directory of verified student programs. Help grow the list by suggesting an organization or program for review.</p><p id="suggestion-loading" class="filter-note">Loading the program suggestion form…</p></section></main><button type="button" id="back-to-top" aria-label="Back to top">↑ Back to Top</button><footer>© <span id="year"></span> Student Opportunities NYC · Independent student project · <a href="./privacy.html">Privacy &amp; Data</a></footer>
+<script src="programs-data.js?v=8"></script><script src="auth-config.js"></script><script src="site-data.js?v=4"></script><script src="program-updates.js?v=2"></script><script src="program-descriptions.js?v=2"></script><script src="beacon-store.js?v=12"></script><script src="directory-ui.js?v=20"></script><script src="report-issue.js?v=4"></script><script src="suggest-program.js?v=1"></script><script src="site-analytics.js?v=1"></script></body></html>
