@@ -40,7 +40,7 @@ function setMeta(selector,attribute,value,content){
 function syncSearchMetadata(){
  const usable=Boolean(program);
  const title=usable?program.title+' | Student Opportunities NYC':'Program not found | Student Opportunities NYC';
- const description=usable?String(program.whatYouDo||program.summary||program.details||'').replace(/\\s+/g,' ').trim().slice(0,155):
+ const description=usable?String(program.whatYouDo||program.summary||program.details||'').replace(/\s+/g,' ').trim().slice(0,155):
    'Explore verified educational opportunities and student programs in New York City.';
  const url=usable?siteBase+'program.html?id='+encodeURIComponent(program.id):siteBase;
  document.title=title;
