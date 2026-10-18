@@ -25,7 +25,7 @@ The former GitHub Pages address, `https://sudleedy.github.io/student-opportuniti
 - All guest data stays in the browser on the current device and may disappear if browser data is cleared.
 
 ## Enable real sign-in and cross-device saving (site owner only)
-**Sign-in is intentionally disabled until the following setup is completed.** Do not share accounts with students before checking security and privacy.
+**The site already contains optional Supabase sign-in code.** Check the active project's configuration, redirects, Row Level Security, and privacy requirements before inviting students to create accounts.
 
 1. Create a project at https://supabase.com/ and open its SQL Editor.
 2. Review and run the statements in `supabase-setup.sql`. They create a `student_saves` table and enable per-user Row Level Security so students cannot read each other's saves.
