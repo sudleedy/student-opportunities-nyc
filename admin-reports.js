@@ -23,15 +23,18 @@ function render(){
    '<div class="report-actions"><label for="report-status-'+safe(r.id)+'">Status</label><select id="report-status-'+safe(r.id)+'" class="report-status" aria-label="Report status">'+choices.map(s=>'<option'+(r.status===s?' selected':'')+'>'+safe(s)+'</option>').join('')+'</select><button type="button" class="save-status">Save status</button><button type="button" class="delete-report" aria-label="Permanently delete report '+safe(r.id)+'">Delete report</button><span class="report-feedback" role="status"></span></div></article>';
  }).join(''):'<div class="notice">No reports match these filters.</div>';
 }
+function refreshCategories(){
+ const options=[...new Set(rows.map(r=>r.category))].sort();
+ const sel=el('category-filter'),prior=sel.value;
+ sel.innerHTML='<option value="">All categories</option>'+options.map(v=>'<option>'+safe(v)+'</option>').join('');
+ sel.value=options.includes(prior)?prior:'';
+}
 async function load(){
  message.textContent='Loading reports…';
  const {data,error}=await db.from('student_reports').select('id,category,details,program_id,page_url,created_at,status').order('created_at',{ascending:false}).limit(250);
  if(error){message.textContent='Could not load reports. Check Supabase policies and refresh.';return}
  rows=data||[];
- const options=[...new Set(rows.map(r=>r.category))].sort();
- const sel=el('category-filter'),old=sel.value;
- sel.innerHTML='<option value="">All categories</option>'+options.map(v=>'<option>'+safe(v)+'</option>').join('');
- sel.value=options.includes(old)?old:'';
+ refreshCategories();
  message.textContent=rows.length===250?'Showing the latest 250 reports.':'Showing '+rows.length+' report'+(rows.length===1?'':'s')+'.';
  render();
 }
@@ -80,6 +83,7 @@ el('reports').addEventListener('click',async e=>{
   return;
  }
  rows=rows.filter(r=>r.id!==id);
+ refreshCategories();
  render();
  message.textContent='Report #'+id+' permanently deleted. '+rows.length+' report'+(rows.length===1?'':'s')+' remaining in the current list.';
 });
