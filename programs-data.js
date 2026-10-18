@@ -49,7 +49,7 @@ window.PROGRAMS = [
       11
     ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates."
+    "deadlineNote": "Official Brooklyn Botanic Garden says applications submitted before December 4, 2026 receive an interview invitation; it does not specify this as the final cutoff. Check their application page."
   },
   {
     "id": "moma-open-art-space",
@@ -96,7 +96,7 @@ window.PROGRAMS = [
       12
     ],
     "deadlineISO": "2027-01-04",
-    "deadlineNote": "Deadline applies to the currently described cycle or registration; confirm with the organizer."
+    "deadlineNote": "Confirmed on Rockefeller University's Jumpstart 2027 page: January 4, 2027, 5:00 PM Eastern, including recommendation letter. Must be at least 16 by program start and in grade 11 or 12."
   },
   {
     "title": "Science Research Mentoring Program (SRMP)",
@@ -121,7 +121,7 @@ window.PROGRAMS = [
       11
     ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "Official American Museum of Natural History says Class of 2028 applications are expected to open in Winter 2027, with no exact application deadline posted."
   },
   {
     "title": "CUNY STEM Research Academy",
@@ -571,18 +571,18 @@ window.PROGRAMS = [
     "summary": "Build an app or AI-based project with a team to address a challenge affecting your community.",
     "details": "Technovation students identify a real-world problem, create a technical solution, and communicate how it could make a difference. The experience blends coding with entrepreneurship, design thinking, teamwork, and pitching.",
     "eligibility": "Ages 8–18 in eligible teams; age divisions and competition tracks depend on team composition.",
-    "deadline": "Register by March 11, 2027; project submissions due May 5, 2027",
-    "status": "2027 registration open",
+    "deadline": "2027 season: project submissions due May 5, 2027; registration cutoff needs organizer confirmation",
+    "status": "2027 season ongoing; verify the registration cutoff",
     "cost": "Free",
     "commitment": "Team project developed across the academic year.",
     "preparation": "Find teammates, identify a local issue, review the rules and work backward from the competition submission deadline.",
     "url": "https://technovationchallenge.org/competition/",
     "id": "technovation-challenge",
     "verified": "2026-10-17",
-    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
+    "applicationNote": "Check the organizer's 2026–27 key dates directly before registering. The published registration year is inconsistent.",
     "grades": [],
-    "deadlineISO": "2027-03-11",
-    "deadlineNote": "Deadline applies to the currently described cycle or registration; confirm with the organizer."
+    "deadlineISO": null,
+    "deadlineNote": "Official Technovation instructions show a registration date with a conflicting year (March 11, 2026) for the 2026–27 season. An exact upcoming registration deadline is not confirmed; verify with Technovation. Project submission is listed for May 5, 2027."
   },
   {
     "title": "Congressional App Challenge",
@@ -593,7 +593,7 @@ window.PROGRAMS = [
     "summary": "Design your own software application for a coding competition hosted through participating U.S. congressional districts.",
     "details": "The Congressional App Challenge welcomes creative approaches to solving problems with technology. Students may build individually or in teams and submit an original app with supporting explanations, subject to local district rules.",
     "eligibility": "Middle or high school students who live or attend school in a participating district; teams of up to four.",
-    "deadline": "October 26, 2026 (district participation and time rules apply)",
+    "deadline": "October 26, 2026, 12:00 PM Eastern (check district participation)",
     "status": "2026 competition open as of October 17",
     "cost": "Free to enter",
     "commitment": "Build an app and prepare a submission explaining how it works.",
@@ -604,7 +604,7 @@ window.PROGRAMS = [
     "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
     "grades": [],
     "deadlineISO": "2026-10-26",
-    "deadlineNote": "Deadline applies to the currently described cycle or registration; confirm with the organizer."
+    "deadlineNote": "2026 U.S. Congressional App Challenge deadline confirmed on participating U.S. House district pages. Students must live or attend school in a participating district."
   },
   {
     "title": "Diamond Challenge",
@@ -626,7 +626,7 @@ window.PROGRAMS = [
     "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
     "grades": [],
     "deadlineISO": "2027-01-14",
-    "deadlineNote": "Deadline applies to the currently described cycle or registration; confirm with the organizer."
+    "deadlineNote": "2027 competition timeline confirmed on Diamond Challenge's official competition page: January 14 at 5 PM EST."
   },
   {
     "title": "NYC Student Advisory Councils",
@@ -714,7 +714,7 @@ window.PROGRAMS = [
     "applicationNote": "See the organizer's official page for current applications, scheduling, and requirements.",
     "grades": [],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates."
+    "deadlineNote": "NYU's ARISE page still shows the 2026 cycle as closed, with a February 27, 2026 deadline. No 2027 application date is confirmed."
   },
   {
     "id": "columbia-science-honors-program",
