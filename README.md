@@ -16,6 +16,10 @@ The former GitHub Pages address, `https://sudleedy.github.io/student-opportuniti
 - **Storage limitation:** Browser-local guest saves, notes and sessions do not migrate between hostnames; this is a browser security boundary. Do not promise automatic migration.
 - **No database migration required:** Keep the existing Supabase project and tables; no SQL script is needed *just for the domain change*.
 
+## October 18, 2026: 120 reviewed student opportunities
+
+Added 30 official-source-reviewed high school opportunities across STEM, design, mentoring, career preparation, scholarships and competitions. The catalog now has 120 entries, with 123 sitemap URLs (120 detail pages, homepage, privacy and the static program directory). Each new entry explains activities, precise grade or other eligibility limitations, known tuition or scholarship terms, and official organizer source notes. Unless an organizer confirmed a specific active intake, application dates are marked unknown rather than assumed open. The free, crawlable `program-directory.html` page groups all 120 reviewed listings by subject with HTML links. The site retains nine-card pagination and student saved-program tools.
+
 ## October 2026: Search visibility, security review, and planning tools
 
 **Search engines:** `robots.txt` advertises `https://student-opportunities-nyc.com/sitemap.xml`, which lists the homepage, privacy page, and reviewed catalog program URLs. Program detail pages set descriptions, canonical addresses, Open Graph metadata, and basic structured data when JavaScript renders a program. The admin and personal dashboard pages are not intended for search indexing. **Google indexing is not guaranteed**: this is a client-rendered GitHub Pages site; crawlers must successfully render JavaScript to obtain per-program content and metadata. Search Console performance requires a verified account.
