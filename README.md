@@ -34,6 +34,13 @@ The former GitHub Pages address, `https://sudleedy.github.io/student-opportuniti
 
 **New researched catalog entries:** Rockefeller SSRP 2027, Rockefeller Summer Neuroscience Program (next application unconfirmed), NYC DYCD Learn & Earn, and CareerReady Work/Learn/Grow (restricted eligibility); always check the organizer page. The bundled catalog now contains **90** reviewed listings. Newly added current-cycle application deadlines are not generalized to other cycles.
 
+## Navigation and calendar usability fixes (October 18, 2026)
+
+- Home-page searches are preserved as `?q=` in the directory URL. Browser Back, reload, and program details’ **Back** links restore the search text; the page query is preserved as well. The return address is temporarily remembered per browser tab (not sent to Supabase).
+- After sign-in, the account button shows the authenticated email address, and the account panel displays the full address. Long addresses are visually shortened in the header; users can open the panel to confirm which account is active.
+- The student dashboard and individual program trackers offer **Add to Google Calendar** links for known future deadlines, avoiding the operating system’s automatic Outlook file association. Each link opens a pre-filled Google Calendar draft that the student must save; it does not add events automatically or create alerts. The existing multi-deadline `.ics` download remains available, with manual Google Calendar import instructions for students who want all events at once. Calendar app association is controlled by the user's device, not by this website.
+- Deadline times, application availability and eligibility still must be checked directly with organizers. Students may need to sign in to Google Calendar. Calendar links share the chosen program name and cutoff with Google when clicked.
+
 ## Features already working without an account
 - Save/remove favorites (heart icon on cards or program pages).
 - Browse just your saved programs.
