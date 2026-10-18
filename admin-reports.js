@@ -20,7 +20,7 @@ function render(){
    '<h2>'+safe(r.program_id?'Program: '+r.program_id.replace(/-/g,' '):'Website feedback')+'</h2>'+
    '<div class="report-body">'+safe(r.details)+'</div>'+
    '<div class="report-meta">'+(page?'<a href="'+safe(page)+'" target="_blank" rel="noopener noreferrer">Open reported page ↗</a>':'Page information unavailable')+'</div>'+
-   '<div class="report-actions"><label for="report-status-'+safe(r.id)+'">Status</label><select id="report-status-'+safe(r.id)+'" class="report-status" aria-label="Report status">'+choices.map(s=>'<option'+(r.status===s?' selected':'')+'>'+safe(s)+'</option>').join('')+'</select><button type="button" class="save-status">Save status</button><span class="report-feedback" role="status"></span></div></article>';
+   '<div class="report-actions"><label for="report-status-'+safe(r.id)+'">Status</label><select id="report-status-'+safe(r.id)+'" class="report-status" aria-label="Report status">'+choices.map(s=>'<option'+(r.status===s?' selected':'')+'>'+safe(s)+'</option>').join('')+'</select><button type="button" class="save-status">Save status</button><button type="button" class="delete-report" aria-label="Permanently delete report '+safe(r.id)+'">Delete report</button><span class="report-feedback" role="status"></span></div></article>';
  }).join(''):'<div class="notice">No reports match these filters.</div>';
 }
 async function load(){
@@ -58,6 +58,30 @@ el('reports').addEventListener('click',async e=>{
  if(error){feedback.textContent='Could not update status. Please try again.'}
  else{const row=rows.find(r=>r.id===id);if(row)row.status=data.status;render();const fresh=el('reports').querySelector('[data-report-id="'+id+'"] .report-feedback');if(fresh)fresh.textContent='Saved.'}
  button.disabled=false;
+});
+el('reports').addEventListener('click',async e=>{
+ const button=e.target.closest('button.delete-report');
+ if(!button||!db)return;
+ const card=button.closest('[data-report-id]');
+ if(!card)return;
+ const id=Number(card.dataset.reportId),report=rows.find(r=>r.id===id);
+ if(!Number.isSafeInteger(id)||!report)return;
+ const context=report.program_id?' for '+report.program_id.replace(/-/g,' '):'';
+ const confirmed=window.confirm('Permanently delete this '+report.category+' report'+context+'?\n\nThis action cannot be undone.');
+ if(!confirmed)return;
+ const buttons=card.querySelectorAll('button');
+ buttons.forEach(b=>b.disabled=true);
+ const feedback=card.querySelector('.report-feedback');
+ feedback.textContent='Deleting…';
+ const {data,error}=await db.from('student_reports').delete().eq('id',id).select('id');
+ if(error||!data||data.length!==1){
+  feedback.textContent='Could not delete this report. Check admin permissions and try again.';
+  buttons.forEach(b=>b.disabled=false);
+  return;
+ }
+ rows=rows.filter(r=>r.id!==id);
+ render();
+ message.textContent='Report #'+id+' permanently deleted. '+rows.length+' report'+(rows.length===1?'':'s')+' remaining in the current list.';
 });
 el('status-filter').addEventListener('change',render);
 el('category-filter').addEventListener('change',render);
