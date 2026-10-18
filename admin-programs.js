@@ -147,6 +147,10 @@ function switchTab(active){
  history.replaceState(null,'',location.pathname+location.search+hash);
 }
 for(const name of tabNames)el('tab-'+name).addEventListener('click',()=>switchTab(name));
+// Select the deep-linked tab immediately, even while authentication/catalog requests load.
+const tabFromUrl=()=>tabNames.includes(location.hash.slice(1))?location.hash.slice(1):'reports';
+switchTab(tabFromUrl());
+window.addEventListener('hashchange',()=>switchTab(tabFromUrl()));
 document.addEventListener('sob-programs-updated',()=>{render()});
 document.addEventListener('sob-admin-ready',e=>{
  db=e.detail.db;initialized=true;
