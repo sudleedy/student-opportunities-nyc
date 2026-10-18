@@ -19,6 +19,7 @@
  .brand-tagline{font-size:8px;letter-spacing:.4px}
  .panel{padding:16px}
 }
+.source-evidence{margin-top:13px!important;padding:14px 16px;border-left:3px solid #8296b5;background:#f4f7fb;border-radius:8px;font-size:14px;line-height:1.65;color:#394d69!important;overflow-wrap:anywhere}
 </style></head><body>
 <header><div class="nav"><a class="brand" href="./" aria-label="Student Opportunities NYC home"><img src="assets/student_opportunities_nyc_icon.svg?v=1" alt="Graduation cap with upward arrow" class="brand-icon"><span class="brand-copy"><span class="brand-name">Student<strong>Opportunities <em>NYC</em></strong></span><span class="brand-tagline">DISCOVER WHAT’S NEXT</span></span></a><a class="back" href="./#opportunities">← All opportunities</a></div></header>
 <main class="container"><a class="return-link" id="return-to-directory" href="./#opportunities">← Back to Home</a><div id="page"><p>Loading program information…</p></div></main><footer>© <span id="year"></span> Student Opportunities NYC · Independent student project · <a href="./privacy.html">Privacy &amp; Data</a></footer>
@@ -40,7 +41,7 @@ else {
  '<div class="layout"><div><section class="panel"><h2>About this program</h2><p id="sob-program-details">'+esc(program.details||program.summary)+'</p></section>'+
  '<section class="panel"><h2>Eligibility and important details</h2><div class="info">'+field('Who can apply',program.eligibility)+field('Application deadline',program.deadline)+field('Application status',program.status)+field('Cost or compensation',program.cost)+field('Location',program.location)+field('Time commitment',program.commitment)+'</div><p class="small" id="sob-deadline-note">'+esc(program.deadlineNote||'Verify the current application cutoff on the official program website.')+'</p></section>'+
  '<section class="panel"><h2>How to prepare</h2><p>'+esc(program.preparation||'Check the official website for application steps.')+'</p></section>'+
- '<section class="panel"><h2>Before you apply</h2><div class="warning">Program information can change. Always verify eligibility, dates, application status and any fees on the official organizer website. Student Opportunities NYC is independent and is not affiliated with the organization listed here.</div><p class="small">Information reviewed: <span id="sob-reviewed">'+esc(program.verified||'Date not recorded')+'</span>. This is not a live application-status check.</p></section></div>'+
+ '<section class="panel"><h2>Before you apply</h2><div class="warning">Program information can change. Always verify eligibility, dates, application status and any fees on the official organizer website. Student Opportunities NYC is independent and is not affiliated with the organization listed here.</div><p class="small">Organizer source review: <strong id="sob-source-status">'+esc(program.sourceStatus==='current'?'Current or recent cycle information checked':program.sourceStatus==='program'?'Program existence checked; dates unconfirmed':'Current enrollment not verified')+'</strong>. Checked <span id="sob-reviewed">'+esc(program.sourceChecked||program.verified||'Date not recorded')+'</span>. This is not a live application-status check.</p><p class="source-evidence" id="sob-source-note">'+esc(program.sourceNote||'No current organizer verification note available; confirm the full details independently.')+'</p></section></div>'+
  '<aside><section class="panel"><h2>Apply or learn more</h2><p id="sob-program-application-note" style="margin-bottom:17px">'+esc(program.applicationNote||'Go to the organizer’s site for current application details.')+'</p>'+(officialUrl(program.url)?'<a id="sob-program-official-link" class="button" target="_blank" rel="noopener noreferrer" href="'+esc(officialUrl(program.url))+'">Official program website ↗</a>':'<p id="sob-program-invalid-link" class="warning">Official link needs verification before opening.</p>')+'</section>'+
  '<section class="panel"><h2>Similar opportunities</h2><div class="related">'+(related.length?related.map(o=>'<a href="program.html?id='+encodeURIComponent(o.id)+'">'+esc(o.title)+'<span>'+esc(o.org)+'</span></a>').join(''):'<p class="small">Explore more programs in the directory.</p>')+'</div><p style="margin-top:16px"><a href="./#opportunities">Browse all programs →</a></p></section></aside></div>';
 }
@@ -88,6 +89,10 @@ document.addEventListener('sob-programs-updated',()=>{
  const note=document.getElementById('sob-deadline-note');
  if(note)note.textContent=program.deadlineNote||'Verify the current application cutoff on the official program website.';
  const reviewed=document.getElementById('sob-reviewed');
- if(reviewed)reviewed.textContent=program.verified||'Date not recorded';
+ if(reviewed)reviewed.textContent=program.sourceChecked||program.verified||'Date not recorded';
+ const sourceStatus=document.getElementById('sob-source-status');
+ if(sourceStatus)sourceStatus.textContent=program.sourceStatus==='current'?'Current or recent cycle information checked':program.sourceStatus==='program'?'Program existence checked; dates unconfirmed':'Current enrollment not verified';
+ const sourceNote=document.getElementById('sob-source-note');
+ if(sourceNote)sourceNote.textContent=program.sourceNote||'No current organizer verification note available; confirm the full details independently.';
 });
 </script><script src="auth-config.js"></script><script src="site-data.js?v=3"></script><script src="program-updates.js?v=2"></script><script src="program-descriptions.js?v=2"></script><script src="beacon-store.js?v=9"></script><script src="program-tracker.js?v=4"></script><script src="report-issue.js?v=4"></script><script src="site-analytics.js?v=1"></script></body></html>
