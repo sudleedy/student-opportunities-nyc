@@ -16,14 +16,18 @@ window.PROGRAMS = [
     "commitment": "Tuesdays, 4:30–6:30 PM, January 19–June 1, 2027",
     "preparation": "Prepare short responses, an essay, and contact details for two non-family references.",
     "url": "https://www.cooperhewitt.org/design-hive/",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "applicationNote": "See the organizer's official page for current applications, scheduling, and requirements.",
     "grades": [
       11,
       12
     ],
     "deadlineISO": "2026-10-25",
-    "deadlineNote": "2027 application deadline listed on Cooper Hewitt's official Design Hive page."
+    "deadlineNote": "2027 application deadline listed on Cooper Hewitt's official Design Hive page.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "2027 Design Hive accepts juniors and seniors in NYC area; apply by October 25, 2026 at 11:59 p.m. $1,250 stipend.",
+    "applicationState": "open"
   },
   {
     "id": "brooklyn-botanic-garden-apprentice",
@@ -41,7 +45,7 @@ window.PROGRAMS = [
     "commitment": "March–November 2027; spring/fall weekly activities and several summer days each week",
     "preparation": "Describe your interest in gardening, education or sustainability; arrange a reference and review the full calendar.",
     "url": "https://www.bbg.org/learn/gap",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "applicationNote": "See the organizer's official page for current applications, scheduling, and requirements.",
     "grades": [
       9,
@@ -49,7 +53,11 @@ window.PROGRAMS = [
       11
     ],
     "deadlineISO": null,
-    "deadlineNote": "Official Brooklyn Botanic Garden says applications submitted before December 4, 2026 receive an interview invitation; it does not specify this as the final cutoff. Check their application page."
+    "deadlineNote": "Official Brooklyn Botanic Garden says applications submitted before December 4, 2026 receive an interview invitation; it does not specify this as the final cutoff. Check their application page.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "2027 GAP applications have an early December 4, 2026 interview-invitation cutoff; it is not stated as the final deadline. Grades 9–11.",
+    "applicationState": "open"
   },
   {
     "id": "moma-open-art-space",
@@ -62,16 +70,20 @@ window.PROGRAMS = [
     "details": "Open Art Space offers free hands-on activities, conversations, and occasional screenings in a welcoming space for high school students. Students can experiment with materials and connect with MoMA educators and artists without applying to a competitive internship.",
     "eligibility": "High school-age students; open to all. RSVP encouraged, with walk-ins welcome when space allows.",
     "deadline": "Drop-in sessions: Thursdays during the school year; check current calendar",
-    "status": "Recurring sessions listed for fall 2026",
-    "cost": "Free; materials and snacks provided, plus transit support described by MoMA",
-    "commitment": "Typically Thursdays, 4–6 PM, except school holidays",
+    "status": "Free weekly drop-in events (no application)",
+    "cost": "Free, with snacks, supplies and student OMNY cards at scheduled sessions.",
+    "commitment": "Thursdays 4–6 p.m. during the school year (except NYCPS holidays).",
     "preparation": "Check the next workshop date and whether RSVP is recommended.",
     "url": "https://www.moma.org/calendar/programs/199",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "applicationNote": "See the organizer's official page for current applications, scheduling, and requirements.",
     "grades": [],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates."
+    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "Free Thursday 4–6 p.m. drop-in for high-school-age students; no internship application required.",
+    "applicationState": "unknown"
   },
   {
     "title": "Rockefeller University Jumpstart",
@@ -85,7 +97,7 @@ window.PROGRAMS = [
     "cost": "Check program details",
     "commitment": "Spring after-school sessions and a full-time summer research phase.",
     "url": "https://www.rockefeller.edu/outreach/lab-jumpstart/",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "id": "rockefeller-university-jumpstart",
     "subject": "Science & Research",
     "details": "Lab Jumpstart combines after-school scientific training with a more intensive summer research experience. Students practice asking scientific questions, performing experiments, and learning how discoveries are made in real laboratories.",
@@ -96,7 +108,11 @@ window.PROGRAMS = [
       12
     ],
     "deadlineISO": "2027-01-04",
-    "deadlineNote": "Confirmed on Rockefeller University's Jumpstart 2027 page: January 4, 2027, 5:00 PM Eastern, including recommendation letter. Must be at least 16 by program start and in grade 11 or 12."
+    "deadlineNote": "Confirmed on Rockefeller University's Jumpstart 2027 page: January 4, 2027, 5:00 PM Eastern, including recommendation letter. Must be at least 16 by program start and in grade 11 or 12.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "Jumpstart 2027 applications open; due January 4, 2027 at 5 p.m. ET including recommendation. NYC juniors/seniors age 16+.",
+    "applicationState": "unknown"
   },
   {
     "title": "Science Research Mentoring Program (SRMP)",
@@ -110,7 +126,7 @@ window.PROGRAMS = [
     "cost": "Paid stipend on successful completion",
     "commitment": "August orientation and twice-weekly research throughout the school year.",
     "url": "https://www.amnh.org/learn-teach/teens/science-research-mentoring-program/join-srmp",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "id": "science-research-mentoring-program-srmp",
     "subject": "Science & Research",
     "details": "SRMP pairs NYC high school students with museum scientists for sustained research. Participants learn to design investigations, interpret evidence, and communicate findings while discovering career paths in science.",
@@ -121,7 +137,11 @@ window.PROGRAMS = [
       11
     ],
     "deadlineISO": null,
-    "deadlineNote": "Official American Museum of Natural History says Class of 2028 applications are expected to open in Winter 2027, with no exact application deadline posted."
+    "deadlineNote": "Official American Museum of Natural History says Class of 2028 applications are expected to open in Winter 2027, with no exact application deadline posted.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "AMNH states Class of 2028 applications expected winter 2027, but no exact date is posted.",
+    "applicationState": "upcoming"
   },
   {
     "title": "CUNY STEM Research Academy",
@@ -129,10 +149,10 @@ window.PROGRAMS = [
     "type": "Research",
     "location": "New York City",
     "summary": "Build college-level research skills through a CUNY STEM course and a faculty-connected science research pathway.",
-    "eligibility": "NYC public high school students; consult participating CUNY colleges and College Now for campus-specific eligibility.",
+    "eligibility": "Primarily NYC public high school students in grades 10–11; exceptionally motivated ninth graders considered case by case. Check campus College Now contacts.",
     "deadline": "Varies by campus; check official program page",
     "status": "Application dates vary",
-    "cost": "Check campus details",
+    "cost": "No application tuition listed; accepted high-school summer researchers receive a competitive stipend.",
     "commitment": "Spring research preparation with campus-specific components; confirm details with the host CUNY college.",
     "url": "https://www.cuny.edu/academics/current-initiatives/p20/stem-research-academy/",
     "verified": "2026-10-17",
@@ -141,9 +161,17 @@ window.PROGRAMS = [
     "details": "Students develop scientific thinking through a research preparation course and campus-specific mentoring opportunities. Application requirements, faculty placements, schedules, and deadlines vary among participating CUNY colleges.",
     "preparation": "Read the official page carefully, check the current cycle and eligibility, and note any required application materials.",
     "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications.",
-    "grades": [],
+    "grades": [
+      9,
+      10,
+      11
+    ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing.",
+    "sourceStatus": "program",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "CUNY confirms STEM Research Academy for primarily grades 10–11 NYCPS students; select ninth graders considered. Dates differ by campus.",
+    "applicationState": "unknown"
   },
   {
     "title": "Summer Youth Employment Program (SYEP)",
@@ -157,7 +185,7 @@ window.PROGRAMS = [
     "cost": "Paid experiences",
     "commitment": "Summer program; schedule varies by age and placement.",
     "url": "https://www.nyc.gov/site/dycd/services/jobs-internships/summer-youth-employment-program-syep.page",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "id": "summer-youth-employment-program-syep",
     "subject": "Careers & Business",
     "details": "SYEP connects eligible NYC youth with summer jobs or project-based work experiences. Participants build communication, teamwork, financial literacy, and workplace confidence. Placements and schedules depend on age and program track.",
@@ -165,7 +193,11 @@ window.PROGRAMS = [
     "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications.",
     "grades": [],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "NYC DYCD confirms 2026 SYEP submissions closed March 13; next summer application dates not published.",
+    "applicationState": "closed"
   },
   {
     "title": "NYC Ladders for Leaders",
@@ -187,7 +219,11 @@ window.PROGRAMS = [
     "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications.",
     "grades": [],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing.",
+    "sourceStatus": "program",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "DYCD confirms paid summer internships and career training; the page has no current application deadline.",
+    "applicationState": "unknown"
   },
   {
     "title": "AMNH Science Communication Internship (SCIP)",
@@ -196,12 +232,12 @@ window.PROGRAMS = [
     "location": "New York City",
     "summary": "Turn scientific knowledge into engaging explanations for museum visitors through a paid science communication internship.",
     "eligibility": "The posted 2026 cycle targeted NYC tenth graders with additional prior-program or partner-school requirements; check future cycle rules.",
-    "deadline": "2026 deadline passed; future deadline not announced",
+    "deadline": "2026 cohort deadline passed March 1, 2026; no 2027 date posted",
     "status": "Future cycle to be announced",
     "cost": "Paid stipend (amount varies by cycle)",
     "commitment": "Summer museum shifts and training.",
     "url": "https://www.amnh.org/learn-teach/teens/science-communication-internship-program",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "id": "amnh-science-communication-internship-scip",
     "subject": "Media & Journalism",
     "details": "Students learn to share scientific ideas with different audiences while exploring museum education and public engagement. The experience develops teamwork and public-speaking skills; eligibility can depend on grade and prior program involvement.",
@@ -211,7 +247,11 @@ window.PROGRAMS = [
       10
     ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "AMNH still displays the March 1, 2026 deadline for its paid 2026 SCIP cohort; future intake not announced.",
+    "applicationState": "closed"
   },
   {
     "title": "NYU Precollege",
@@ -236,7 +276,11 @@ window.PROGRAMS = [
       12
     ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing.",
+    "sourceStatus": "program",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "NYU confirms Precollege for rising juniors/seniors, but the landing page provides no 2027 deadline. Check cost/course details.",
+    "applicationState": "unknown"
   },
   {
     "title": "NYU College Access Leadership Institute",
@@ -260,7 +304,11 @@ window.PROGRAMS = [
       12
     ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing.",
+    "sourceStatus": "limited",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "NYU's overview article explains the free summer program for rising seniors, but 2027 application dates are not confirmed; primary article blocked live extraction.",
+    "applicationState": "unknown"
   },
   {
     "title": "NYC Service in Schools",
@@ -282,7 +330,11 @@ window.PROGRAMS = [
     "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications.",
     "grades": [],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing.",
+    "sourceStatus": "program",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "NYC Public Schools describes Service in Schools resources; participation depends on each school's projects, not one application.",
+    "applicationState": "unknown"
   },
   {
     "title": "AMNH Science Alliance",
@@ -311,7 +363,11 @@ window.PROGRAMS = [
     "deadlineISO": null,
     "deadlineNote": "AMNH's Science Alliance page lists 2026–27 courses at $1,000 each; 50% of seats are reserved for tuition aid applicants. Courses may be sold out; check course-specific availability.",
     "costCategory": "fee",
-    "deliveryMode": "in-person"
+    "deliveryMode": "in-person",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "AMNH lists 2026–27 paid Science Alliance courses for grades 9–12, at $1,000 per course with tuition assistance and session availability.",
+    "applicationState": "unknown"
   },
   {
     "title": "NYU High School Art & Design Programs",
@@ -333,7 +389,11 @@ window.PROGRAMS = [
     "applicationNote": "Visit the official organizer website for the current application process. This listing does not accept applications.",
     "grades": [],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing.",
+    "sourceStatus": "program",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "NYU Steinhardt has different summer art/design programs and enrollment rules; check the individual course.",
+    "applicationState": "unknown"
   },
   {
     "title": "Futures and Options Internship Program",
@@ -351,14 +411,18 @@ window.PROGRAMS = [
     "preparation": "Prepare a résumé, recent report card or transcript, a reference, and working papers where required.",
     "url": "https://futuresandoptions.org/our-programs/the-internship-program/",
     "id": "futures-and-options-internship-program",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
     "grades": [
       11,
       12
     ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "Futures and Options explicitly marks its internship application closed; next opening not given.",
+    "applicationState": "closed"
   },
   {
     "title": "Futures and Options Urban Leadership Fellows",
@@ -369,20 +433,24 @@ window.PROGRAMS = [
     "summary": "Learn how city infrastructure and public projects are financed during a paid introduction to municipal finance.",
     "details": "Urban Leadership Fellows combines professional exposure and training to reveal how finance affects the city around us. Students develop workplace skills, meet industry professionals, and explore a career field often missing from high school classes.",
     "eligibility": "New York City high school seniors; selection is competitive.",
-    "deadline": "2026 deadline passed; next cycle not yet announced",
-    "status": "Upcoming cycle unconfirmed",
+    "deadline": "2026 application closed February 25, 2026; next cohort not announced",
+    "status": "2026 cycle closed; next cycle unconfirmed",
     "cost": "Paid internship",
     "commitment": "Approximately six weeks during summer.",
     "preparation": "The previous application asked for a résumé, transcript and short essay about interest in municipal finance; verify next-cycle requirements.",
-    "url": "https://futuresandoptions.org/urban-leadership-fellows-application/",
+    "url": "https://futuresandoptions.org/our-programs/urban-leadership-fellows-program/",
     "id": "futures-and-options-urban-leadership-fellows",
-    "verified": "2026-10-17",
-    "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
+    "verified": "2026-10-18",
+    "applicationNote": "Program overview confirms that applications are closed. Do not use the old 2026 application form for a new cohort.",
     "grades": [
       12
     ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "Futures and Options states the six-week paid Urban Leadership Fellows program is closed, and its 2026 form had a February 25 deadline.",
+    "applicationState": "closed"
   },
   {
     "title": "The Met High School Internships",
@@ -393,12 +461,12 @@ window.PROGRAMS = [
     "summary": "Get paid to learn how a major art museum operates, from exhibition support to design, education, and communications.",
     "details": "The Met introduces students to museum professionals and behind-the-scenes roles. Interns strengthen workplace habits and gain exposure to career paths in culture and the arts. School-year and summer eligibility may differ.",
     "eligibility": "Typically grades 10–11; school-year and summer rules differ, including NYC versus tri-state residency and attendance requirements.",
-    "deadline": "2026 posted cycle deadlines passed; check for new sessions",
-    "status": "Next cycle not announced",
+    "deadline": "Separate spring and summer internship cycles; check official session dates",
+    "status": "Specific session application status must be checked",
     "cost": "Paid stipend; amount varies by session",
     "commitment": "Summer and school-year tracks have different schedules.",
     "preparation": "Check the correct seasonal internship page; expect written application responses and possibly a recommendation and working papers.",
-    "url": "https://www.metmuseum.org/about-the-met/internships/high-school",
+    "url": "https://www.metmuseum.org/opportunities/internships",
     "id": "the-met-high-school-internships",
     "verified": "2026-10-17",
     "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
@@ -407,7 +475,11 @@ window.PROGRAMS = [
       11
     ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing.",
+    "sourceStatus": "program",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "The Met confirms spring and summer high-school internships but currently lists different cohorts; use the official specific session page.",
+    "applicationState": "unknown"
   },
   {
     "title": "Whitney Youth Insights Artists",
@@ -418,14 +490,14 @@ window.PROGRAMS = [
     "summary": "Make original art alongside practicing artists in the Whitney's free after-school program for NYC teens.",
     "details": "Youth Insights Artists encourages participants to experiment with techniques, discuss contemporary art, and collaborate on creative projects. Students connect with museum educators and peers while building artistic confidence.",
     "eligibility": "NYC high school students in grades 9–12.",
-    "deadline": "Fall 2026 application closed September 9; check next semester",
+    "deadline": "Fall 2026 application closed September 9, 2026; next semester not confirmed",
     "status": "Next semester to confirm",
     "cost": "Free",
     "commitment": "Semester-long after-school program.",
     "preparation": "Review the Youth Insights page for the next cohort, available schedules and application questions.",
     "url": "https://whitney.org/education/teens/youth-insights",
     "id": "whitney-youth-insights-artists",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
     "grades": [
       9,
@@ -434,7 +506,11 @@ window.PROGRAMS = [
       12
     ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "Whitney's most recent Youth Insights Artists application deadline was September 9, 2026; next semester not published.",
+    "applicationState": "closed"
   },
   {
     "title": "Scholastic Art & Writing Awards",
@@ -452,7 +528,7 @@ window.PROGRAMS = [
     "preparation": "Find your regional deadline and category, prepare original work and any required educator/guardian approvals.",
     "url": "https://www.artandwriting.org/awards/how-to-enter/",
     "id": "scholastic-art-writing-awards",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
     "grades": [
       7,
@@ -463,7 +539,11 @@ window.PROGRAMS = [
       12
     ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "The 2027 Scholastic awards accept fall entries, with regional closing dates starting in December; check region-specific cutoff.",
+    "applicationState": "unknown"
   },
   {
     "title": "YoungArts National Arts Competition",
@@ -474,14 +554,14 @@ window.PROGRAMS = [
     "summary": "Showcase work in visual, literary, or performing arts through a prestigious national youth arts competition.",
     "details": "YoungArts applicants submit portfolios or recordings that highlight artistic voice and technical ability. Selected artists may receive awards, mentorship, and access to development programs. Submission rules differ by discipline.",
     "eligibility": "Typically artists ages 15–18 or in grades 10–12 in the U.S.; additional eligibility rules apply.",
-    "deadline": "2027 application closed October 6, 2026; 2028 opens summer 2027",
+    "deadline": "2027 cycle closed October 6, 2026 at 8 p.m. ET; 2028 opens summer 2027",
     "status": "2028 cycle forthcoming",
     "cost": "Application fee or waiver, where applicable",
     "commitment": "Prepare and submit a discipline-specific portfolio or work samples.",
     "preparation": "Review the discipline requirements and choose the strongest original portfolio pieces.",
     "url": "https://youngarts.org/apply/",
     "id": "youngarts-national-arts-competition",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
     "grades": [
       10,
@@ -489,7 +569,11 @@ window.PROGRAMS = [
       12
     ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "YoungArts' 2027 cycle closed October 6, 2026 at 8 p.m. ET; 2028 applications open summer 2027.",
+    "applicationState": "closed"
   },
   {
     "title": "WNYC Radio Rookies",
@@ -507,7 +591,7 @@ window.PROGRAMS = [
     "preparation": "Think of an issue affecting teens that you could report fairly and prepare to describe your interest in audio journalism.",
     "url": "https://wnyc.org/browse/shows/rookies",
     "id": "wnyc-radio-rookies",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
     "grades": [
       9,
@@ -516,7 +600,11 @@ window.PROGRAMS = [
       12
     ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "WNYC still posts Fall 2026 Radio Rookies recruitment for NYC public/charter students in grades 9–12; the form deadline is not published.",
+    "applicationState": "unknown"
   },
   {
     "title": "Princeton Summer Journalism Program",
@@ -527,20 +615,24 @@ window.PROGRAMS = [
     "summary": "Study journalism and receive college-application guidance through a free program for eligible high school juniors.",
     "details": "Princeton Summer Journalism Program combines reporting instruction, a residential experience, and continued college advising. Students develop writing, interviewing, and editorial skills while preparing for the admissions process.",
     "eligibility": "High school juniors from limited-income backgrounds; review the program's full academic and financial criteria.",
-    "deadline": "2027–28 application expected mid-November 2026 through late January 2027",
-    "status": "Applications upcoming",
+    "deadline": "2027–28 application opens mid-November 2026; due last Monday in January 2027",
+    "status": "2027–28 applications scheduled to open mid-November 2026",
     "cost": "Program covers residential summer costs and travel",
     "commitment": "Multi-week summer intensive and ongoing senior-year college guidance.",
     "preparation": "Expect writing samples, essay responses, school records, and recommendations; review the official application rounds.",
     "url": "https://psjp.princeton.edu/apply/application-process",
     "id": "princeton-summer-journalism-program",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
     "grades": [
       11
     ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "Princeton states applications open mid-November and Round 1 closes on the last Monday in January. No clock time stated; confirm once application opens.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "Princeton states 2027–28 application opens mid-November 2026 and closes the last Monday in January; juniors only.",
+    "applicationState": "upcoming"
   },
   {
     "title": "Girls Who Code Pathways",
@@ -552,13 +644,13 @@ window.PROGRAMS = [
     "details": "Girls Who Code Pathways offers flexible learning that introduces computer science through guided projects. Students can build their technical confidence, create digital work, and learn about different careers in technology.",
     "eligibility": "High school girls and nonbinary students, including rising ninth graders and graduating seniors; check current participation rules.",
     "deadline": "Check current enrollment period",
-    "status": "Program information available",
+    "status": "Free year-round Pathways program; Apply Now listed on official site",
     "cost": "Free",
     "commitment": "Self-paced tracks typically take around 6–7 weeks.",
     "preparation": "Choose a tech topic that interests you; beginner-level tracks are available.",
     "url": "https://girlswhocode.com/programs/pathways",
     "id": "girls-who-code-pathways",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
     "grades": [
       9,
@@ -567,7 +659,13 @@ window.PROGRAMS = [
       12
     ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "Girls Who Code's free virtual Pathways program has an Apply Now link; grade 9–12 girls/nonbinary students; self-paced projects.",
+    "applicationState": "open",
+    "deliveryMode": "remote",
+    "costCategory": "free"
   },
   {
     "title": "Technovation Challenge",
@@ -578,18 +676,22 @@ window.PROGRAMS = [
     "summary": "Build an app or AI-based project with a team to address a challenge affecting your community.",
     "details": "Technovation students identify a real-world problem, create a technical solution, and communicate how it could make a difference. The experience blends coding with entrepreneurship, design thinking, teamwork, and pitching.",
     "eligibility": "Ages 8–18 in eligible teams; age divisions and competition tracks depend on team composition.",
-    "deadline": "2027 season: project submissions due May 5, 2027; registration cutoff needs organizer confirmation",
-    "status": "2027 season ongoing; verify the registration cutoff",
+    "deadline": "Registration: March 11, 2027, 23:59 UTC; projects: May 5, 2027, 5 p.m. PDT",
+    "status": "2027 student/mentor registration open (official page)",
     "cost": "Free",
     "commitment": "Team project developed across the academic year.",
     "preparation": "Find teammates, identify a local issue, review the rules and work backward from the competition submission deadline.",
     "url": "https://technovationchallenge.org/competition/",
     "id": "technovation-challenge",
-    "verified": "2026-10-17",
-    "applicationNote": "Check the organizer's 2026–27 key dates directly before registering. The published registration year is inconsistent.",
+    "verified": "2026-10-18",
+    "applicationNote": "Registration closes March 11, 2027 at 23:59 UTC; confirm your local time zone and team eligibility. Project submission closes May 5, 2027 at 5 p.m. PDT.",
     "grades": [],
-    "deadlineISO": null,
-    "deadlineNote": "Official Technovation instructions show a registration date with a conflicting year (March 11, 2026) for the 2026–27 season. An exact upcoming registration deadline is not confirmed; verify with Technovation. Project submission is listed for May 5, 2027."
+    "deadlineISO": "2027-03-11",
+    "deadlineNote": "2026–27 official competition page confirms March 11, 2027 at 23:59 UTC for registration and May 5, 2027 at 5 p.m. Pacific Daylight Time for submissions.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "2027 Technovation team registration closes March 11, 2027 at 23:59 UTC; final project submission May 5, 2027 at 5 p.m. PDT.",
+    "applicationState": "open"
   },
   {
     "title": "Congressional App Challenge",
@@ -600,18 +702,22 @@ window.PROGRAMS = [
     "summary": "Design your own software application for a coding competition hosted through participating U.S. congressional districts.",
     "details": "The Congressional App Challenge welcomes creative approaches to solving problems with technology. Students may build individually or in teams and submit an original app with supporting explanations, subject to local district rules.",
     "eligibility": "Middle or high school students who live or attend school in a participating district; teams of up to four.",
-    "deadline": "October 26, 2026, 12:00 PM Eastern (check district participation)",
-    "status": "2026 competition open as of October 17",
+    "deadline": "October 26, 2026 (confirm time in participating district)",
+    "status": "2026 challenge registration/submission period ongoing",
     "cost": "Free to enter",
     "commitment": "Build an app and prepare a submission explaining how it works.",
     "preparation": "Confirm your district is participating and read the complete challenge rulebook before submitting.",
     "url": "https://www.congressionalappchallenge.us/students/rules/",
     "id": "congressional-app-challenge",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
     "grades": [],
     "deadlineISO": "2026-10-26",
-    "deadlineNote": "2026 U.S. Congressional App Challenge deadline confirmed on participating U.S. House district pages. Students must live or attend school in a participating district."
+    "deadlineNote": "2026 challenge closes October 26; check the complete rules and participating district for the precise submission time.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "Congressional App Challenge 2026 closes October 26; check district participation and exact local cutoff with the official rules.",
+    "applicationState": "open"
   },
   {
     "title": "Diamond Challenge",
@@ -629,11 +735,15 @@ window.PROGRAMS = [
     "preparation": "Recruit teammates and an adult advisor; outline the problem, proposed solution, impact and evidence supporting the idea.",
     "url": "https://diamondchallenge.org/competition/",
     "id": "diamond-challenge",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
     "grades": [],
     "deadlineISO": "2027-01-14",
-    "deadlineNote": "2027 competition timeline confirmed on Diamond Challenge's official competition page: January 14 at 5 PM EST."
+    "deadlineNote": "2027 competition timeline confirmed on Diamond Challenge's official competition page: January 14 at 5 PM EST.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "Diamond Challenge 2027 submission deadline is January 14 at 5 p.m. Eastern; teams of 2–4 students with adult advisor.",
+    "applicationState": "open"
   },
   {
     "title": "NYC Student Advisory Councils",
@@ -655,7 +765,11 @@ window.PROGRAMS = [
     "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
     "grades": [],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing.",
+    "sourceStatus": "program",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "NYCPS describes advisory councils; each local council or school has a separate selection process.",
+    "applicationState": "unknown"
   },
   {
     "title": "Mayor's Youth Leadership Council",
@@ -677,7 +791,11 @@ window.PROGRAMS = [
     "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
     "grades": [],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing.",
+    "sourceStatus": "program",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "NYC government describes the Mayor's Youth Leadership Council, but no current recruitment date appears on its overview.",
+    "applicationState": "unknown"
   },
   {
     "title": "NYC Parks Ranger Conservation Corps",
@@ -699,7 +817,11 @@ window.PROGRAMS = [
     "applicationNote": "Use the official organizer page to check current eligibility and start an application, if applications are being accepted.",
     "grades": [],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming deadline available for this listing."
+    "deadlineNote": "No exact confirmed upcoming deadline available for this listing.",
+    "sourceStatus": "program",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "NYC government confirms Ranger Conservation Corps high-school conservation internships, but the linked internship directory does not publish a current cohort application date.",
+    "applicationState": "unknown"
   },
   {
     "id": "nyu-tandon-arise",
@@ -717,11 +839,15 @@ window.PROGRAMS = [
     "commitment": "2026 program lasted 10 weeks; future schedule subject to confirmation",
     "preparation": "Explore NYU research labs, develop a clear statement of interest, and prepare for application writing and possible recommendations.",
     "url": "https://k12stem.engineering.nyu.edu/programs/arise",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "applicationNote": "See the organizer's official page for current applications, scheduling, and requirements.",
     "grades": [],
     "deadlineISO": null,
-    "deadlineNote": "NYU's ARISE page still shows the 2026 cycle as closed, with a February 27, 2026 deadline. No 2027 application date is confirmed."
+    "deadlineNote": "NYU's ARISE page still shows the 2026 cycle as closed, with a February 27, 2026 deadline. No 2027 application date is confirmed.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "NYU ARISE website still gives the February 27, 2026 closing date from the 2026 cycle; 2027 cycle is not posted.",
+    "applicationState": "closed"
   },
   {
     "id": "columbia-science-honors-program",
@@ -739,7 +865,7 @@ window.PROGRAMS = [
     "commitment": "Saturday mornings, approximately 10 AM–12:30 PM, September–May",
     "preparation": "Review the application and admission testing process, and be ready to commit to Saturday classes.",
     "url": "https://outreach.engineering.columbia.edu/SHP",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "applicationNote": "See the organizer's official page for current applications, scheduling, and requirements.",
     "grades": [
       10,
@@ -747,7 +873,11 @@ window.PROGRAMS = [
       12
     ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates."
+    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "Columbia lists 2026–27 Saturday classes for grades 10–12, but a new admissions deadline is not published.",
+    "applicationState": "unknown"
   },
   {
     "id": "cshl-urban-barcode-research-program",
@@ -758,7 +888,7 @@ window.PROGRAMS = [
     "location": "New York City",
     "summary": "Use DNA barcoding to investigate New York City biodiversity through independent research with scientist mentors.",
     "details": "Participants receive training in techniques used to identify organisms through DNA sequences before developing their own biodiversity research projects. The program combines field questions, laboratory and computational analysis, and mentorship from researchers in NYC.",
-    "eligibility": "NYC-area high school students in grades 9–12; selection includes an application and interview process.",
+    "eligibility": "NYC-area high school students in grades 9–12; apply in the spring, interview in the summer, and complete training before mentored research.",
     "deadline": "Applications generally sought in spring; next cycle deadline not confirmed",
     "status": "Next research cohort details to verify",
     "cost": "Check official program information",
@@ -774,7 +904,11 @@ window.PROGRAMS = [
       12
     ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates."
+    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates.",
+    "sourceStatus": "program",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "CSHL DNA Learning Center confirms Urban Barcode Research Program grades 9–12; applications generally in spring; next exact date not posted.",
+    "applicationState": "unknown"
   },
   {
     "id": "cshl-urban-barcode-project",
@@ -785,7 +919,7 @@ window.PROGRAMS = [
     "location": "New York City",
     "summary": "Work with a small school team to investigate NYC biodiversity using DNA technology and scientific research methods.",
     "details": "In the Urban Barcode Project, teams identify a question about living things, food products, or local ecology and explore it using DNA barcoding. Teacher and mentor support helps students connect genetics to conservation and environmental research.",
-    "eligibility": "Grades 9–12 working in teams of 2–4 with an eligible trained teacher or research mentor.",
+    "eligibility": "High school students grades 9–12 in teams of 2–4 led by a DNALC-trained teacher or eligible research mentor.",
     "deadline": "Ask DNALC about the next team registration or competition timeline",
     "status": "School-team project; next dates to verify",
     "cost": "Check mentor and equipment arrangements",
@@ -801,7 +935,11 @@ window.PROGRAMS = [
       12
     ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates."
+    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates.",
+    "sourceStatus": "program",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "CSHL confirms Urban Barcode Project for teams of 2–4 high-school students with trained mentors; upcoming competition dates not specified.",
+    "applicationState": "unknown"
   },
   {
     "id": "moma-teens-in-residence",
@@ -813,13 +951,13 @@ window.PROGRAMS = [
     "summary": "Take part in a paid, behind-the-scenes museum experience, creating programs and exploring contemporary art with MoMA professionals.",
     "details": "Teen residents collaborate with artists and staff, experiment with hands-on creative work, and contribute to public engagement projects. Activities may include planning events and creating gallery interpretation, while building workplace and communication skills.",
     "eligibility": "NYC high school students in grades 10–12; check the next intake.",
-    "deadline": "2026–27 cohort in progress; next application opening not announced",
+    "deadline": "2026–27 applications closed September 14, 2026, 11:59 p.m.; next cycle unannounced",
     "status": "Current program underway; future cycle unconfirmed",
-    "cost": "Paid enrichment opportunity; check next cohort terms",
-    "commitment": "2026–27 participants meet Tuesdays, 4:30–6:30 PM, October–June plus some additional events",
+    "cost": "No participation fee; $1,000 stipend for successful completion.",
+    "commitment": "Tuesdays 4:30–6:30 p.m., October 2026 through June 2027; additional meetings may be required.",
     "preparation": "Read current program eligibility and prepare any requested short answers or references.",
     "url": "https://www.moma.org/calendar/programs/253",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "applicationNote": "See the organizer's official page for current applications, scheduling, and requirements.",
     "grades": [
       10,
@@ -827,7 +965,11 @@ window.PROGRAMS = [
       12
     ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates."
+    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "MoMA lists 2026–27 paid Teens-in-Residence cohort (grades 10–12), September 14, 2026 application deadline and $1,000 stipend.",
+    "applicationState": "closed"
   },
   {
     "id": "moma-in-the-making",
@@ -839,17 +981,21 @@ window.PROGRAMS = [
     "summary": "Build a creative portfolio in MoMA's free summer studio-art classes and work on projects inspired by the museum's collections.",
     "details": "In the Making introduces NYC teens to artistic techniques, group projects, and the wider New York art community. Sessions include work with educators, encounters with artists, and opportunities to produce individual artwork for a final showcase.",
     "eligibility": "NYC high school students ages 15–18, based on the most recent published cycle.",
-    "deadline": "Summer 2026 program ended; next application cycle not yet posted",
+    "deadline": "No upcoming events currently listed; check for summer 2027 course applications",
     "status": "Next summer enrollment to verify",
     "cost": "Free; supplies and some participation costs covered",
     "commitment": "Recent cycle was six weeks, three days a week in summer",
     "preparation": "Read current program eligibility and prepare any requested short answers or references.",
     "url": "https://www.moma.org/calendar/programs/86",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "applicationNote": "See the organizer's official page for current applications, scheduling, and requirements.",
     "grades": [],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates."
+    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "MoMA lists In the Making summer arts courses as free, with no upcoming event or 2027 application window.",
+    "applicationState": "closed"
   },
   {
     "id": "cooper-hewitt-teen-drop-in",
@@ -863,7 +1009,7 @@ window.PROGRAMS = [
     "eligibility": "High school students; specific events may require free registration.",
     "deadline": "Workshop dates vary; check upcoming calendar",
     "status": "Teen events scheduled for 2026",
-    "cost": "Free workshops",
+    "cost": "Free monthly teen drop-in workshops (event registration may apply).",
     "commitment": "Individual workshops, often about two hours",
     "preparation": "Read current program eligibility and prepare any requested short answers or references.",
     "url": "https://www.cooperhewitt.org/teen-programs/",
@@ -871,7 +1017,11 @@ window.PROGRAMS = [
     "applicationNote": "See the organizer's official page for current applications, scheduling, and requirements.",
     "grades": [],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates."
+    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates.",
+    "sourceStatus": "program",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "Cooper Hewitt confirms free monthly teen drop-in workshops; individual event dates and reservations vary.",
+    "applicationState": "unknown"
   },
   {
     "id": "nyas-junior-academy",
@@ -885,15 +1035,20 @@ window.PROGRAMS = [
     "eligibility": "Students ages 13–17 with sufficient English proficiency, online access, and parent or guardian consent.",
     "deadline": "Fall 2026 applications closed July 9, 2026; check next recruitment cycle",
     "status": "Next recruitment period not confirmed",
-    "cost": "Free to participate",
+    "cost": "Free to participate.",
     "commitment": "Around 3–4 hours per week during 10-week challenge periods",
     "preparation": "Read current program eligibility and prepare any requested short answers or references.",
     "url": "https://www.nyas.org/learning/high-school-research-programs/the-junior-academy/",
-    "verified": "2026-10-17",
+    "verified": "2026-10-18",
     "applicationNote": "See the organizer's official page for current applications, scheduling, and requirements.",
     "grades": [],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates."
+    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates.",
+    "sourceStatus": "current",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "NYAS states Junior Academy Fall 2026 recruitment closed July 9, 2026; future recruitment dates not confirmed.",
+    "applicationState": "closed",
+    "deliveryMode": "remote"
   },
   {
     "id": "msk-hopp-summer-student-program",
@@ -915,7 +1070,11 @@ window.PROGRAMS = [
     "applicationNote": "See the organizer's official page for current applications, scheduling, and requirements.",
     "grades": [],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates."
+    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates.",
+    "sourceStatus": "program",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "MSK HOPP confirms high-school Summer Student Program cancer research placements; no current 2027 deadline on this overview.",
+    "applicationState": "unknown"
   },
   {
     "id": "mit-think-scholars-program",
@@ -927,8 +1086,8 @@ window.PROGRAMS = [
     "summary": "Pitch an ambitious, realistic science or engineering idea and compete for mentorship and project funding to bring it to life.",
     "details": "MIT THINK supports selected high school student proposals that are well researched but still need resources to become experiments or prototypes. Finalists can receive guidance and up to $1,000 in project funding, with additional opportunities subject to program terms.",
     "eligibility": "High school students with a feasible STEM project proposal; confirm current applicant geography and grade rules.",
-    "deadline": "2025–26 application closed January 1, 2026; next deadline not confirmed",
-    "status": "Await next competition cycle",
+    "deadline": "Next application cycle not independently confirmed; check official MIT THINK site",
+    "status": "Current application window not verified",
     "cost": "No participation fee described; selected projects may receive up to $1,000",
     "commitment": "Proposal writing followed by mentored project work for selected finalists",
     "preparation": "Outline the problem, background research, experimental plan, expected results, and an achievable budget.",
@@ -937,7 +1096,11 @@ window.PROGRAMS = [
     "applicationNote": "See the organizer's official page for current applications, scheduling, and requirements.",
     "grades": [],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates."
+    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates.",
+    "sourceStatus": "limited",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "MIT THINK's official homepage could not be fully read in this check; a 2026–27 application deadline cannot be independently confirmed.",
+    "applicationState": "unknown"
   },
   {
     "id": "nypl-teen-reading-ambassadors",
@@ -949,12 +1112,12 @@ window.PROGRAMS = [
     "summary": "Support younger readers and develop tutoring, literacy, and leadership skills through an NYPL teen internship.",
     "details": "Teen Reading Ambassadors work with children in the library's after-school activities by helping with homework, reading, and educational projects. The experience provides practice in communication, patience, youth mentorship, and planning learning activities.",
     "eligibility": "NYPL describes the internship for students in grades 10–12; check branch and location eligibility.",
-    "deadline": "Current recruitment date not confirmed; check NYPL teen opportunities",
+    "deadline": "Current internship hiring deadline not published on reviewed NYPL information",
     "status": "Confirm current hiring or application window",
     "cost": "NYPL describes its teen ambassador opportunities as paid; confirm current terms",
     "commitment": "School-year or seasonal schedule depends on current recruitment",
     "preparation": "Read current program eligibility and prepare any requested short answers or references.",
-    "url": "https://www.nypl.org/teens",
+    "url": "https://www.nypl.org/blog/2023/07/31/kick-summer-great-book-teen-reading-ambassadors-favorite-reads-kids",
     "verified": "2026-10-17",
     "applicationNote": "See the organizer's official page for current applications, scheduling, and requirements.",
     "grades": [
@@ -963,7 +1126,11 @@ window.PROGRAMS = [
       12
     ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates."
+    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates.",
+    "sourceStatus": "limited",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "NYPL confirms Teen Reading Ambassadors for grades 10–12 in organizer articles, but no current internship application page or deadline was verified.",
+    "applicationState": "unknown"
   },
   {
     "id": "nypl-teen-civics-ambassadors",
@@ -975,12 +1142,12 @@ window.PROGRAMS = [
     "summary": "Create teen programs, research community issues, and practice civic leadership through a library-based internship.",
     "details": "Teen Civics Ambassadors help plan activities for their peers at NYPL branches while learning how local issues, information, and public institutions shape community life. Some cohorts develop civic research projects and present recommendations to local leaders.",
     "eligibility": "High school students in grades 10–12; confirm current borough, branch and age requirements.",
-    "deadline": "Next recruitment opening not confirmed",
+    "deadline": "Current recruitment deadline not published on reviewed NYPL information",
     "status": "Check NYPL for next internship cycle",
     "cost": "Paid teen internship in previous cycles; verify current terms",
     "commitment": "Branch activities and group projects during school year or summer",
     "preparation": "Read current program eligibility and prepare any requested short answers or references.",
-    "url": "https://www.nypl.org/teens",
+    "url": "https://www.nypl.org/blog/2025/09/29/teen-civics-ambassadors-report-ai-media-bias",
     "verified": "2026-10-17",
     "applicationNote": "See the organizer's official page for current applications, scheduling, and requirements.",
     "grades": [
@@ -989,6 +1156,10 @@ window.PROGRAMS = [
       12
     ],
     "deadlineISO": null,
-    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates."
+    "deadlineNote": "No exact confirmed upcoming application deadline available; check organizer for updates.",
+    "sourceStatus": "limited",
+    "sourceChecked": "2026-10-18",
+    "sourceNote": "NYPL confirms Teen Civics Ambassadors grades 10–12 in organizer articles, but no current application deadline was verified.",
+    "applicationState": "unknown"
   }
 ];
