@@ -72,5 +72,6 @@ const backTop=el('back-to-top');
 const updateTop=()=>backTop.classList.toggle('visible',window.scrollY>400);
 window.addEventListener('scroll',updateTop,{passive:true});
 backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+document.addEventListener('sob-programs-updated',render);
 store.watch(render);el('year').textContent=new Date().getFullYear();render();updateTop();
 })();
