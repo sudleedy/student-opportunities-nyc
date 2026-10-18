@@ -160,17 +160,19 @@ function matches(p,q){
 }
 function mixResults(found){
  const order=el('sort').value;
- if(order==='az')return found.sort((a,b)=>(a.title||'').localeCompare(b.title||''));
- if(order==='deadline')return found.sort((a,b)=>deadline(a)[0]-deadline(b)[0]||deadline(a)[1]-deadline(b)[1]||(a.title||'').localeCompare(b.title||''));
- // Curated entries remain prominent while local city programs are visible on page 1.
- const curated=found.filter(p=>p.kind!=='city'),city=found.filter(p=>p.kind==='city'),out=[];
- let c=0,n=0;
- while(c<curated.length||n<city.length){
-  if(c<curated.length)out.push(curated[c++]);
-  if(c<curated.length)out.push(curated[c++]);
-  if(n<city.length)out.push(city[n++]);
+ // Show individually reviewed internships and programs before broad NYC-funded
+ // DYCD site listings, regardless of sort selection or borough filtering.
+ const curated=found.filter(p=>p.kind!=='city'),city=found.filter(p=>p.kind==='city');
+ if(order==='az'){
+  const byTitle=(a,b)=>(a.title||'').localeCompare(b.title||'');
+  curated.sort(byTitle);
+  city.sort(byTitle);
+ }else if(order==='deadline'){
+  const byDeadline=(a,b)=>deadline(a)[0]-deadline(b)[0]||deadline(a)[1]-deadline(b)[1]||(a.title||'').localeCompare(b.title||'');
+  curated.sort(byDeadline);
+  city.sort(byDeadline);
  }
- return out;
+ return curated.concat(city);
 }
 function renderCity(p){
  const name=safe(p.title),url=officialUrl(p),model=officialUrl({url:p.modelUrl});
