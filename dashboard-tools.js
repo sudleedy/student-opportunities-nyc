@@ -6,6 +6,7 @@ const resultHost=document.getElementById('dash-compare-result');
 const suggestionHost=document.getElementById('dash-suggestions');
 const downloadButton=document.getElementById('dash-calendar-download');
 const feedback=document.getElementById('dash-tool-feedback');
+const googleHost=document.getElementById('dash-google-calendar-list');
 if(!optionHost||!resultHost||!suggestionHost||!downloadButton||!store)return;
 const selected=new Set();
 const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -40,6 +41,26 @@ function renderRecommendations(){
  suggestionHost.innerHTML=candidates.length?candidates.map(p=>'<article class="dash-recommendation"><strong>'+escapeHtml(p.title)+'</strong><p>'+escapeHtml(p.subject)+' · '+escapeHtml(p.org)+'</p><p>'+escapeHtml(p.whatYouDo||p.summary||'')+'</p><a href="program.html?id='+encodeURIComponent(p.id)+'">See details and eligibility →</a></article>').join(''):
   '<p class="small">You have saved the opportunities in those subjects. Explore other interests in the directory.</p>';
 }
+function renderGoogleCalendar(){
+ if(!googleHost)return;
+ const deadlines=saved().filter(future).sort((a,b)=>a.deadlineISO.localeCompare(b.deadlineISO));
+ if(!deadlines.length){
+  googleHost.innerHTML='<p class="small">Save a program with a confirmed future deadline to add it to Google Calendar.</p>';
+  return;
+ }
+ googleHost.innerHTML=deadlines.map(p=>{
+  const iso=p.deadlineISO.replace(/-/g,'');
+  const details='Verify the exact application cutoff and eligibility with the organizer. Published deadline: '+(p.deadline||'Not specified')+
+   (p.url?'\nOfficial program website: '+p.url:'');
+  const params=new URLSearchParams({
+   action:'TEMPLATE',text:p.title+' — application deadline',
+   dates:iso+'/'+dateAfter(p.deadlineISO),details
+  });
+  const url='https://calendar.google.com/calendar/render?'+params.toString();
+  return '<div class="dash-google-row"><span>'+escapeHtml(p.title)+' <small>('+escapeHtml(p.deadlineISO)+')</small></span>'+
+   '<a href="'+escapeHtml(url)+'" target="_blank" rel="noopener noreferrer" aria-label="Add '+escapeHtml(p.title)+' deadline to Google Calendar">Add to Google Calendar ↗</a></div>';
+ }).join('');
+}
 function escapeCalendar(s){return String(s||'').replace(/\\/g,'\\\\').replace(/\r?\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;')}
 function dateAfter(iso){const d=new Date(iso+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+1);return d.toISOString().slice(0,10).replace(/-/g,'')}
 downloadButton.addEventListener('click',()=>{
@@ -63,7 +84,7 @@ downloadButton.addEventListener('click',()=>{
  setTimeout(()=>URL.revokeObjectURL(url),2000);
  feedback.textContent='Calendar file ready with 7-day and 1-day reminders for '+list.length+' saved deadlines. Import it into your calendar app; reminder support varies. Verify organizer cutoff times.';
 });
-function render(){renderComparison();renderRecommendations();downloadButton.disabled=!saved().some(future)}
+function render(){renderComparison();renderRecommendations();renderGoogleCalendar();downloadButton.disabled=!saved().some(future)}
 store.watch(render);
 document.addEventListener('sob-catalog-ready',render);
 document.addEventListener('sob-programs-updated',render);
