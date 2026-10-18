@@ -14,8 +14,8 @@ else {
  const related=programs.filter(o=>o.id!==program.id&&o.subject===program.subject).slice(0,3);
  const field=(name,value)=>'<div><strong>'+esc(name)+'</strong><span>'+esc(value)+'</span></div>';
  root.innerHTML='<div class="crumb"><a href="./">Home</a> / <a href="./#opportunities">Opportunities</a> / '+esc(program.title)+'</div>'+
- '<div class="hero"><span class="pill">'+esc(program.type)+'</span> <span class="tag">'+esc(program.subject||'Opportunities')+'</span><h1>'+esc(program.title)+'</h1><p>'+esc(program.summary)+'</p><p><strong>'+esc(program.org)+'</strong> · '+esc(program.location)+'</p></div>'+
- '<div class="layout"><div><section class="panel"><h2>About this program</h2><p>'+esc(program.details||program.summary)+'</p></section>'+
+ '<div class="hero"><span class="pill">'+esc(program.type)+'</span> <span class="tag">'+esc(program.subject||'Opportunities')+'</span><h1>'+esc(program.title)+'</h1><p id="sob-program-summary">'+esc(program.summary)+'</p><p><strong>'+esc(program.org)+'</strong> · '+esc(program.location)+'</p></div>'+
+ '<div class="layout"><div><section class="panel"><h2>About this program</h2><p id="sob-program-details">'+esc(program.details||program.summary)+'</p></section>'+
  '<section class="panel"><h2>Eligibility and important details</h2><div class="info">'+field('Who can apply',program.eligibility)+field('Application deadline',program.deadline)+field('Application status',program.status)+field('Cost or compensation',program.cost)+field('Location',program.location)+field('Time commitment',program.commitment)+'</div><p class="small" id="sob-deadline-note">'+esc(program.deadlineNote||'Verify the current application cutoff on the official program website.')+'</p></section>'+
  '<section class="panel"><h2>How to prepare</h2><p>'+esc(program.preparation||'Check the official website for application steps.')+'</p></section>'+
  '<section class="panel"><h2>Before you apply</h2><div class="warning">Program information can change. Always verify eligibility, dates, application status and any fees on the official organizer website. Student Opportunities NYC is independent and is not affiliated with the organization listed here.</div><p class="small">Information reviewed: <span id="sob-reviewed">'+esc(program.verified||'Date not recorded')+'</span>. This is not a live application-status check.</p></section></div>'+
@@ -24,6 +24,10 @@ else {
 }
 document.addEventListener('sob-programs-updated',()=>{
  if(!program)return;
+ const summary=document.getElementById('sob-program-summary');
+ if(summary)summary.textContent=program.summary;
+ const details=document.getElementById('sob-program-details');
+ if(details)details.textContent=program.details||program.summary;
  const entries=root.querySelectorAll('.info > div');
  if(entries[1])entries[1].querySelector('span').textContent=program.deadline;
  if(entries[2])entries[2].querySelector('span').textContent=program.status;
@@ -32,4 +36,4 @@ document.addEventListener('sob-programs-updated',()=>{
  const reviewed=document.getElementById('sob-reviewed');
  if(reviewed)reviewed.textContent=program.verified||'Date not recorded';
 });
-</script><script src="auth-config.js"></script><script src="program-updates.js?v=1"></script><script src="beacon-store.js?v=5"></script><script src="program-tracker.js"></script><script src="report-issue.js?v=4"></script></body></html>
+</script><script src="auth-config.js"></script><script src="program-updates.js?v=1"></script><script src="program-descriptions.js?v=1"></script><script src="beacon-store.js?v=5"></script><script src="program-tracker.js"></script><script src="report-issue.js?v=4"></script></body></html>
