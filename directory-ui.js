@@ -196,11 +196,15 @@ function mixResults(found){
   (a.title||'').localeCompare(b.title||''));
  return found;
 }
+const deadlinePassed=p=>/^\\d{4}-\\d{2}-\\d{2}$/.test(p.deadlineISO||'')&&
+  new Date(p.deadlineISO+'T23:59:59').getTime()<Date.now();
+const deadlineDisplay=p=>deadlinePassed(p)&&!/last published deadline|\\bpassed\\b/i.test(p.deadline||'')
+  ?'Last published deadline: '+p.deadline+' (passed; verify next cycle)':p.deadline;
 function renderCurated(p){
  const isFav=Boolean(store.get(p.id).favorited);
  return '<article class="card"><span class="pill">'+safe(p.type)+'</span><h3>'+safe(p.title)+'</h3>'+badges(p)+
  '<p class="activity-preview"><strong>What you’ll do:</strong> '+safe(p.whatYouDo||p.summary)+'</p>'+
- '<p class="deadline-line">📅 '+safe(p.deadline)+'</p><div class="meta">'+safe(p.org)+' · '+safe(p.borough||p.location)+'</div>'+
+ '<p class="deadline-line">📅 '+safe(deadlineDisplay(p))+'</p><div class="meta">'+safe(p.org)+' · '+safe(p.borough||p.location)+'</div>'+
  '<div class="card-actions"><a class="open-detail" href="program.html?id='+encodeURIComponent(p.id)+'">View details →</a>'+
  '<button class="favorite-button" type="button" data-id="'+safe(p.id)+'" aria-pressed="'+isFav+'" aria-label="'+(isFav?'Remove favorite':'Save favorite')+'">'+(isFav?'♥':'♡')+'</button></div></article>';
 }
