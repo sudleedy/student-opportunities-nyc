@@ -35,13 +35,75 @@ saved.checked=new URLSearchParams(location.search).get('saved')==='1';
 const requested=Number(new URLSearchParams(location.search).get('page')||1);
 let page=Number.isSafeInteger(requested)&&requested>0?requested:1,lastTotal=0;
 const cityItems=()=>window.NearbyCatalog?.getItems()||[];
-function refreshOptions(){
- const select=el('subject'),previous=select.value;
- const choices=[...new Set([...items,...cityItems()].map(p=>p.subject).filter(Boolean))].sort();
- select.innerHTML='<option value="">All interests</option>';
- choices.forEach(v=>select.add(new Option(v,v)));
- select.value=choices.includes(previous)?previous:'';
+// Native checkboxes allow any number of choices within a filter category.
+// Multiple checked choices use OR; distinct categories combine using AND.
+const choices={
+ subject:{placeholder:'All interests',options:()=>[...new Set([...items,...cityItems()].map(p=>p.subject).filter(Boolean))].sort().map(v=>[v,v])},
+ grade:{placeholder:'Any grade',options:()=>[9,10,11,12].map(n=>[String(n),'Grade '+n])},
+ 'apply-filter':{placeholder:'Any status',options:()=>[['open','Verified open'],['upcoming','Opening soon'],['closed','Closed'],['unknown','Not confirmed']]},
+ 'cost-filter':{placeholder:'Any cost',options:()=>[['free','Free'],['fee','Has tuition or fees'],['unknown','Not confirmed']]},
+ 'mode-filter':{placeholder:'Any format',options:()=>[['in-person','In person'],['remote','Online'],['hybrid','Hybrid'],['unknown','Not confirmed']]},
+ progress:{placeholder:'Any progress',options:()=>[['Interested','Interested'],['Planning to apply','Planning to apply'],['Applied','Applied'],['Completed','Completed']]},
+ 'source-filter':{placeholder:'All listings',options:()=>[['curated','Reviewed directory listings'],['city','NYC-funded program sites']]}
+};
+const checked=Object.fromEntries(Object.keys(choices).map(key=>[key,new Set()]));
+const selected=key=>checked[key];
+const selectedAny=(key,value)=>!checked[key].size||checked[key].has(String(value));
+function labelSelected(key,options){
+ const picked=options.filter(([value])=>selected(key).has(value)).map(([,label])=>label);
+ const name=picked.length?picked.length===1?picked[0]:picked[0]+' +'+(picked.length-1):choices[key].placeholder;
+ el(key+'-summary-text').textContent=name;
 }
+function refreshOptions(){
+ for(const [key,config] of Object.entries(choices)){
+  const options=config.options();
+  const allowed=new Set(options.map(([value])=>value));
+  for(const value of checked[key])if(!allowed.has(value))checked[key].delete(value);
+  const box=el(key+'-options');
+  box.innerHTML=options.map(([value,label])=>
+   '<label class="multi-choice"><input type="checkbox" value="'+safe(value)+'" '+(checked[key].has(value)?'checked ':'')+'><span>'+safe(label)+'</span></label>'
+  ).join('')+
+  '<div class="multi-options-footer"><button type="button" data-multi-clear="'+safe(key)+'">Clear</button><button type="button" class="multi-done" data-multi-done="'+safe(key)+'">Done</button></div>';
+  labelSelected(key,options);
+ }
+}
+function changeChoices(key){
+ labelSelected(key,choices[key].options());
+ page=1;syncPage();render();
+}
+for(const key of Object.keys(choices)){
+ const box=el(key+'-options');
+ box.addEventListener('change',e=>{
+  const target=e.target;
+  if(!target.matches('input[type="checkbox"]'))return;
+  if(target.checked)checked[key].add(target.value);
+  else checked[key].delete(target.value);
+  changeChoices(key);
+ });
+ box.addEventListener('click',e=>{
+  if(e.target.closest('[data-multi-clear]')){
+   checked[key].clear();
+   box.querySelectorAll('input[type="checkbox"]').forEach(input=>{input.checked=false});
+   changeChoices(key);
+  }
+  if(e.target.closest('[data-multi-done]'))el(key+'-dropdown').open=false;
+ });
+ const dropdown=el(key+'-dropdown');
+ dropdown.addEventListener('toggle',()=>{
+  if(!dropdown.open)return;
+  for(const other of Object.keys(choices))if(other!==key)el(other+'-dropdown').open=false;
+ });
+ dropdown.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){dropdown.open=false;dropdown.querySelector('summary')?.focus()}
+ });
+}
+document.addEventListener('click',e=>{
+ for(const key of Object.keys(choices)){
+  const menu=el(key+'-dropdown');
+  if(menu.open&&!menu.contains(e.target))menu.open=false;
+ }
+});
+
 function syncPage(){
  const url=new URL(location.href);
  if(page>1)url.searchParams.set('page',String(page));else url.searchParams.delete('page');
@@ -71,20 +133,21 @@ function deadline(p){
 }
 function matches(p,q){
  const city=p.kind==='city';
- const grade=Number(el('grade').value);
  const progress=store.get(p.id);
- const source=el('source-filter').value;
- if(source&&source!==(city?'city':'curated'))return false;
- if(el('subject').value&&p.subject!==el('subject').value)return false;
- // City records lack verified grades except for some specific program models:
- // keep age-unknown sites visible but mark eligibility unconfirmed.
- if(grade&&!city&&!(p.grades||[]).includes(grade))return false;
- if(grade&&city&&p.grades?.length&&!p.grades.includes(grade))return false;
- if(el('cost-filter').value&&fee(p)!==el('cost-filter').value)return false;
- if(el('mode-filter').value&&mode(p)!==el('mode-filter').value)return false;
- if(el('apply-filter').value&&state(p)!==el('apply-filter').value)return false;
+ if(!selectedAny('source-filter',city?'city':'curated'))return false;
+ if(!selectedAny('subject',p.subject))return false;
+ // Within one category: any checked grade is a match. City programs with no
+ // known grade information remain visible and are explicitly labeled unverified.
+ if(selected('grade').size){
+  const grades=(p.grades||[]).map(String);
+  if(grades.length&&!grades.some(grade=>selected('grade').has(grade)))return false;
+  if(!grades.length&&!city)return false;
+ }
+ if(!selectedAny('cost-filter',fee(p)))return false;
+ if(!selectedAny('mode-filter',mode(p)))return false;
+ if(!selectedAny('apply-filter',state(p)))return false;
  if(saved.checked&&(city||!progress.favorited))return false;
- if(el('progress').value&&(city||progress.application_status!==el('progress').value||!(progress.favorited||progress.notes||progress.application_status!=='Interested')))return false;
+ if(selected('progress').size&&(city||!selectedAny('progress',progress.application_status)||!(progress.favorited||progress.notes||progress.application_status!=='Interested')))return false;
  return !q||[p.title,p.org,p.summary,p.whatYouDo,p.subject,p.type,p.eligibility,p.location,p.borough,p.zipcode].join(' ').toLowerCase().includes(q);
 }
 function mixResults(found){
@@ -140,7 +203,7 @@ cards.addEventListener('click',e=>{
  if(button)store.save(button.dataset.id,{favorited:!store.get(button.dataset.id).favorited});
 });
 const resetPage=()=>{page=1;syncPage();render()};
-['search','subject','grade','sort','progress','cost-filter','mode-filter','apply-filter','source-filter'].forEach(id=>el(id).addEventListener('input',resetPage));
+['search','sort'].forEach(id=>el(id).addEventListener('input',resetPage));
 saved.addEventListener('change',()=>{
  const url=new URL(location.href);
  if(saved.checked)url.searchParams.set('saved','1');else url.searchParams.delete('saved');
@@ -148,7 +211,9 @@ saved.addEventListener('change',()=>{
  resetPage();
 });
 el('clear-filters').addEventListener('click',()=>{
- ['search','subject','grade','sort','progress','cost-filter','mode-filter','apply-filter','source-filter'].forEach(id=>el(id).value='');
+ ['search','sort'].forEach(id=>el(id).value='');
+ for(const key of Object.keys(choices)){checked[key].clear();el(key+'-dropdown').open=false}
+ refreshOptions();
  el('sort').value='default';
  saved.checked=false;
  const url=new URL(location.href);url.searchParams.delete('saved');
