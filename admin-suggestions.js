@@ -13,7 +13,7 @@ function render(){
  '<p>'+escapeText(r.details||'No notes')+'</p>'+
  '<div class="admin-actions"><a href="'+escapeText(r.official_url)+'" target="_blank" rel="noopener noreferrer">Official website ↗</a>'+
  '<button type="button" data-decision="Approved">Approve</button>'+
- '<button type="button" data-decision="Declined">Decline</button>'+
+ '<button type="button" data-decision="Declined" aria-label="Decline and permanently delete suggestion">Decline &amp; remove</button>'+
  '<button type="button" data-draft="1">Create program listing</button>'+
  '<span class="suggestion-feedback" role="status"></span></div></article>').join('')||'<div class="notice">No suggestions found.</div>';
 }
@@ -37,12 +37,28 @@ container.addEventListener('click',async e=>{
  }
  const choice=btn.dataset.decision;
  if(!['Approved','Declined'].includes(choice)||!db)return;
- btn.disabled=true;card.querySelector('.suggestion-feedback').textContent='Saving…';
+ const feedback=card.querySelector('.suggestion-feedback');
+ if(choice==='Declined'){
+  if(!window.confirm('Decline and permanently delete "'+record.program_name+'"? This cannot be undone.'))return;
+  card.querySelectorAll('button').forEach(button=>button.disabled=true);
+  feedback.textContent='Removing suggestion…';
+  const response=await db.from('program_suggestions').delete().eq('id',record.id).select('id').single();
+  if(response.error||!response.data){
+   card.querySelectorAll('button').forEach(button=>button.disabled=false);
+   feedback.textContent='Could not remove suggestion. Run supabase-suggestion-deletion.sql in the Supabase SQL Editor, then try again.';
+   return;
+  }
+  records=records.filter(r=>r.id!==record.id);
+  render();
+  message.textContent='Suggestion permanently removed. '+records.length+' suggestion'+(records.length===1?'':'s')+' remaining.';
+  return;
+ }
+ btn.disabled=true;feedback.textContent='Saving…';
  const response=await db.from('program_suggestions').update({
-  review_status:choice,reviewed_at:new Date().toISOString()
+  review_status:'Approved',reviewed_at:new Date().toISOString()
  }).eq('id',record.id).select('id,review_status').single();
  if(response.error){
-  btn.disabled=false;card.querySelector('.suggestion-feedback').textContent='Save failed: '+response.error.message;
+  btn.disabled=false;feedback.textContent='Save failed: '+response.error.message;
   return;
  }
  record.review_status=response.data.review_status;render();
