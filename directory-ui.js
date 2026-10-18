@@ -31,6 +31,14 @@ const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'
 const fields=id=>document.getElementById(id);
 const cards=el('cards'),count=el('count'),saved=el('savedOnly');
 const PAGE_SIZE=9,pagers=[el('pagination-top'),el('pagination-bottom')];
+/* Keep program searches in the URL so browser Back, refresh, and detail links restore them. */
+const initialSearch=new URLSearchParams(location.search).get('q');
+if(initialSearch!==null)el('search').value=initialSearch.slice(0,250);
+const rememberDirectoryReturn=()=>{
+ try{sessionStorage.setItem('sob-directory-return-v1',JSON.stringify({
+  url:location.pathname+location.search+'#opportunities',savedAt:Date.now()
+ }))}catch{}
+};
 saved.checked=new URLSearchParams(location.search).get('saved')==='1';
 const requested=Number(new URLSearchParams(location.search).get('page')||1);
 let page=Number.isSafeInteger(requested)&&requested>0?requested:1,lastTotal=0;
@@ -112,6 +120,8 @@ document.addEventListener('click',e=>{
 function syncPage(){
  const url=new URL(location.href);
  if(page>1)url.searchParams.set('page',String(page));else url.searchParams.delete('page');
+ const query=el('search').value.trim();
+ if(query)url.searchParams.set('q',query.slice(0,250));else url.searchParams.delete('q');
  history.replaceState({},'',url.pathname+url.search+url.hash);
 }
 function renderPager(total){
@@ -209,6 +219,8 @@ function render(){
  renderPager(results.length);
 }
 cards.addEventListener('click',e=>{
+ const detail=e.target.closest('a.open-detail[href^="program.html?id="]');
+ if(detail)rememberDirectoryReturn();
  const button=e.target.closest('button[data-id]');
  if(button)store.save(button.dataset.id,{favorited:!store.get(button.dataset.id).favorited});
 });
@@ -247,7 +259,7 @@ const updateTop=()=>backTop.classList.toggle('visible',window.scrollY>400);
 window.addEventListener('scroll',updateTop,{passive:true});
 backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 document.addEventListener('sob-nearby-updated',()=>{refreshOptions();resetPage()});
-document.addEventListener('sob-catalog-ready',()=>{refreshOptions();resetPage()});
+document.addEventListener('sob-catalog-ready',()=>{refreshOptions();render()});
 document.addEventListener('sob-programs-updated',()=>{refreshOptions();render()});
 store.watch(render);el('year').textContent=new Date().getFullYear();refreshOptions();render();updateTop();
 })();
