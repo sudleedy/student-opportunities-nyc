@@ -34,14 +34,14 @@ const relevant=r=>{
  const text=[r.program_type,r.program_area].filter(Boolean).join(' ');
  return types.test(text)||String(r.service_category||'').toLowerCase().includes('jobs and internships')&&/youth|high school|student|internship|career|employment/i.test(text);
 };
-function prepare(rows,nearby){
+function prepare(rows,nearby,borough){
  const found=new Map(),yearNow=new Date().getFullYear();
  for(const r of rows){
   if(!r||!relevant(r))continue;
   const year=Number(r.date),lat=asNumber(r.latitude),lon=asNumber(r.longitude);
   if(Number.isFinite(year)&&year<yearNow-1)continue;
   const title=nameOf(r),type=String(r.program_type||'DYCD youth program').trim(),boro=boroOf(r);
-  if(!title||title.length<3||!boros.includes(boro))continue;
+  if(!title||title.length<3||!boros.includes(boro)||(borough&&boro!==borough))continue;
   const distance=nearby&&lat!==null&&lon!==null?miles(nearby.lat,nearby.lon,lat,lon):null;
   if(nearby&&(distance===null||distance>12))continue;
   const code=String(r.zipcode||'').replace(/[^0-9]/g,'').slice(0,5);
@@ -57,7 +57,7 @@ function paint(found,label){
  results.innerHTML=found.map(r=>{
   const type=escape(r.program_type||'Youth program'),name=escape(nameOf(r)),provider=escape(r.provider||'City-funded provider');
   const place=escape([r.borough,r.zipcode].filter(Boolean).join(' · ')),dist=r.distance===null?'':' · '+r.distance.toFixed(1)+' mi away';
-  return '<article class="local-program"><span class="local-tag">'+type+'</span><h3>'+name+'</h3><p>'+provider+'</p><p class="local-place">📍 '+place+escape(dist)+'</p><p class="local-unknown">Application status not verified</p><a href="'+DIRECTORY+'" target="_blank" rel="noopener noreferrer" aria-label="Verify '+name+' in NYC directory">Check program &amp; availability ↗</a></article>';
+  return '<article class="local-program"><span class="local-tag">'+type+'</span><h3>'+name+'</h3><p>'+provider+'</p><p class="local-place">📍 '+place+escape(dist)+'</p><p class="local-unknown">Application status not verified · City data year: '+escape(r.date||'Unknown')+'</p><a href="'+DIRECTORY+'" target="_blank" rel="noopener noreferrer" aria-label="Verify '+name+' in NYC directory">Check program &amp; availability ↗</a></article>';
  }).join('');
  feedback.textContent='Showing '+found.length+' additional NYC-funded youth program locations '+label+'. Check the official directory before applying.';
 }
@@ -85,7 +85,7 @@ async function search(borough,nearby,force=false){
    }finally{clearTimeout(timer)}
   }
   if(run!==active)return;
-  paint(prepare(rows,nearby),lastLabel);
+  paint(prepare(rows,nearby,borough),lastLabel);
  }catch(e){
   if(run!==active)return;
   feedback.textContent='Could not load the city dataset right now. You can still search NYC’s official program directory directly.';
