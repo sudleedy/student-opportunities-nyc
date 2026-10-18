@@ -1,5 +1,15 @@
 # Student Opportunities NYC — site setup
 
+## October 18, 2026: Medical, Bronx and Staten Island teen programs
+
+Added 11 distinct official-organizer-sourced program records, expanding the catalog to **153 listings** and the sitemap to **156 URLs**. Entries include Genspace Biorocket, Weill Cornell Medicine HPREP 2027, Smithsonian NESST Youth Ambassadors 2026-2027, Bronx Museum Teen Council and Teen Summer, Rocking the Boat Environmental Science, ELP Bx's separate paid Internship and alumni Fellows tracks, Natural Areas Conservancy's 2027 paid SUN ecology internship, Staten Island Art Lab Summer Studio Scholarship Program, and SONIQLAB free teen DJ workshops.
+
+**Application accuracy:** Weill Cornell confirms HPREP 2027 applications through November 25, 2026. SUN will accept applications November 2 through December 11, 2026 and is **not open yet** as of this review date. Smithsonian's 2026-27 youth ambassador application is closed, and its archived page has conflicting application and parent-permission cutoff dates. Genspace's Biorocket page has a 2026 schedule and ambiguous next-opening notice, so the new cycle was **not** claimed open. Bronx Museum's fall Teen Council cycle is closed; next summer program deadlines are unknown. Art Lab has a fee with competitive scholarships, not a guaranteed free place.
+
+**Multiple boroughs:** The single SUN catalog record has `boroughs: ["Queens", "Staten Island"]` for its verified Forest Park and Staten Island Greenbelt hubs. The homepage borough filter supports either location without showing duplicate records or restoring generic provider-site feeds. Location, school, age, Core-alumni, or parent permission restrictions remain visible for relevant programs. The site still shows nine programs per page.
+
+
+
 ## October 18, 2026: Expansion across all boroughs and online
 
 Added 22 **specific named programs** with verified official organizer pages and program descriptions. Catalog now has **142 reviewed listings**, including named opportunities in **all five NYC boroughs** and additional virtual or hybrid offerings. The sitemap has **145 URLs**: 142 program pages, the homepage, privacy, and the A–Z catalog. The static program directory and cached catalog references were refreshed.
