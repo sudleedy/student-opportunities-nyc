@@ -33,7 +33,7 @@ const cards=el('cards'),count=el('count'),saved=el('savedOnly');
 const PAGE_SIZE=9,pagers=[el('pagination-top'),el('pagination-bottom')];
 saved.checked=new URLSearchParams(location.search).get('saved')==='1';
 const requested=Number(new URLSearchParams(location.search).get('page')||1);
-let page=Number.isSafeInteger(requested)&&requested>0?requested:1;
+let page=Number.isSafeInteger(requested)&&requested>0?requested:1,lastTotal=0;
 const cityItems=()=>window.NearbyCatalog?.getItems()||[];
 function refreshOptions(){
  const select=el('subject'),previous=select.value;
@@ -125,6 +125,7 @@ function renderCurated(p){
 }
 function render(){
  const query=el('search').value.trim().toLowerCase(),results=mixResults([...items,...cityItems()].filter(p=>matches(p,query)));
+ lastTotal=results.length;
  const pages=Math.max(1,Math.ceil(results.length/PAGE_SIZE));
  if(page>pages){page=pages;syncPage()}
  const shown=results.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
@@ -148,6 +149,7 @@ saved.addEventListener('change',()=>{
 });
 el('clear-filters').addEventListener('click',()=>{
  ['search','subject','grade','sort','progress','cost-filter','mode-filter','apply-filter','source-filter'].forEach(id=>el(id).value='');
+ el('sort').value='default';
  saved.checked=false;
  const url=new URL(location.href);url.searchParams.delete('saved');
  history.replaceState({},'',url.pathname+url.search+url.hash);
@@ -158,7 +160,7 @@ el('clear-filters').addEventListener('click',()=>{
 pagers.forEach(p=>p.addEventListener('click',e=>{
  const button=e.target.closest('button[data-page]');
  if(!button||button.disabled)return;
- const next=Number(button.dataset.page),pages=Math.ceil(Number(count.textContent.match(/^\d+/)?.[0]||0)/PAGE_SIZE);
+ const next=Number(button.dataset.page),pages=Math.ceil(lastTotal/PAGE_SIZE);
  if(!Number.isSafeInteger(next)||next<1||next>pages)return;
  page=next;syncPage();render();
  el('opportunities').scrollIntoView({behavior:'smooth',block:'start'});
