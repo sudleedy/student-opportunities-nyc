@@ -77,6 +77,14 @@ In **Admin Dashboard → Student Reports**, each report has a **Delete report** 
 
 **One-time permission setup:** Run `supabase-report-deletion.sql` in the existing Supabase project's SQL Editor. This adds a Row Level Security `DELETE` policy that allows deletion **only by authorized admins** already recorded in `private.site_admins`. It does not delete records on its own and it does not grant ordinary students report deletion access. No further Supabase visits are needed for individual report deletions.
 
+## Clear student activity descriptions (October 18, 2026)
+
+- **All 41 bundled curated opportunities** now have a `whatYouDo` field describing the typical day-to-day activity, not only program benefits. The homepage cards show this first; every program detail page has a dedicated **What you'll actually do** section. Activities can vary by cohort, mentor, and placement.
+- The **automatic Near You** directory shows a **What you might do** explanation, a general eligibility note, and an official DYCD program-model information link on every local site card. Examples cover SYEP, Ladders for Leaders, COMPASS High/Explore, Beacon/Cornerstone, Learn & Earn, Work/Learn/Grow, and career training. Ambiguous site types explicitly say that their precise activities are unknown.
+- NYC Open Data exposes program types and locations **but no per-site daily schedule**. The automatic explanations use official program-model overviews, never pretend to describe a specific provider's verified activities. Confirm at the provider's site before registering.
+- Administrators can revise any curated listing's **What students actually do** field in Manage Programs. No additional SQL migration was required because the existing catalog stores a JSON program_data object.
+- No saved student notes, favorites, report permissions, or other Supabase records were changed.
+
 ## Automatic neighborhood youth program discovery (October 2026)
 
 The homepage has an **additional, visually separate** *Discover more programs near you* panel:
