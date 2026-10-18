@@ -1,6 +1,6 @@
 # Source-by-source audit: all 41 programs
 **Review date: October 18, 2026**  
-**Site:** [Student Opportunities NYC](https://sudleedy.github.io/student-opportunities-nyc/)
+**Site:** [Student Opportunities NYC](https://student-opportunities-nyc.com/)
 
 ## Scope and meanings
 
