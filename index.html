@@ -132,6 +132,9 @@ input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #ff78
 @media(max-width:900px){.simple-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.simple-search{grid-column:span 2}}
 @media(max-width:600px){.simple-filters,.advanced-filters{grid-template-columns:minmax(0,1fr)}.simple-search{grid-column:auto}.simple-filters{gap:10px;margin-top:17px}.simple-filters input,.simple-filters select{font-size:16px}.discovery-help{flex-basis:100%}.advanced-filters{gap:10px}}
 
+/* The original generic label selector must not stack the checkbox rows vertically. */
+.simple-filters .multi-choice{flex-direction:row;align-items:center;gap:11px;min-height:43px;font-size:13px;font-weight:550}
+.simple-filters .multi-choice span{font-size:13px;font-weight:550}
 /* Compact, keyboard-friendly checkbox menus: OR within a category, AND across categories. */
 .simple-filters>.multi-field,.advanced-filters>.multi-field{display:flex;flex-direction:column;gap:7px;min-width:0}
 .multi-field .filter-title{font-size:13px;font-weight:750;color:#2b405e}
@@ -168,7 +171,7 @@ input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #ff78
  <div class="borough-picker" id="local-discovery"><label for="nearby-borough">NYC borough <span class="optional">optional</span></label><select id="nearby-borough" aria-label="Find additional programs by borough"><option value="">All NYC · curated listings</option><option>Brooklyn</option><option>Manhattan</option><option>Queens</option><option>Bronx</option><option>Staten Island</option></select></div>
 </div>
 <div class="discovery-line"><button type="button" id="nearby-position">◎ Use my location</button><button type="button" id="nearby-refresh" disabled>Refresh local programs</button><span class="discovery-help">Choose a borough to add NYC-funded programs. Location sharing is optional. <a href="https://discoverdycd.dycdconnect.nyc/program-public?nt=1" target="_blank" rel="noopener noreferrer">Official NYC directory ↗</a></span></div>
-<details class="more-filters" id="more-filters"><summary>More filters <span class="more-hint">optional</span></summary><div class="advanced-filters">
+<details class="more-filters" id="more-filters"><summary>More filters <span class="more-hint" id="advanced-count">optional</span></summary><div class="advanced-filters">
 <label>Sort by<select id="sort" aria-label="Sort programs"><option value="default">Recommended mix</option><option value="deadline">Upcoming deadlines first</option><option value="az">Program name A–Z</option></select></label>
 <div class="multi-field"><span class="filter-title" id="apply-filter-title">Application status</span><details class="multi-filter" id="apply-filter-dropdown"><summary aria-labelledby="apply-filter-title apply-filter-summary-text"><span id="apply-filter-summary-text">Any status</span><span class="multi-caret" aria-hidden="true">⌄</span></summary><div class="multi-options" id="apply-filter-options" role="group" aria-labelledby="apply-filter-title"></div></details></div>
 <div class="multi-field"><span class="filter-title" id="cost-filter-title">Program cost</span><details class="multi-filter" id="cost-filter-dropdown"><summary aria-labelledby="cost-filter-title cost-filter-summary-text"><span id="cost-filter-summary-text">Any cost</span><span class="multi-caret" aria-hidden="true">⌄</span></summary><div class="multi-options" id="cost-filter-options" role="group" aria-labelledby="cost-filter-title"></div></details></div>
