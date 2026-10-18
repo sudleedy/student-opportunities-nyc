@@ -8,11 +8,22 @@ function initialize(){
  started=true;
 const parent=document.querySelector('.layout > div');if(!parent)return;
 const panel=document.createElement('section');panel.className='panel sob-tracker';
-const futureDate=()=>item.deadlineISO&&/^\d{4}-\d{2}-\d{2}$/.test(item.deadlineISO)&&new Date(item.deadlineISO+'T23:59:59').getTime()>Date.now();
-const calendarButton=futureDate()?'<button id="sob-calendar" type="button">📅 Add deadline to calendar</button>':'';
+const currentItem=()=>(window.PROGRAMS||[]).find(p=>p.id===id)||item;
+const futureDate=()=>{const p=currentItem();return p.deadlineISO&&/^\d{4}-\d{2}-\d{2}$/.test(p.deadlineISO)&&new Date(p.deadlineISO+'T23:59:59').getTime()>Date.now()};
+const googleCalendarUrl=()=>{
+ const p=currentItem(),day=p.deadlineISO.replace(/-/g,'');
+ const next=new Date(p.deadlineISO+'T12:00:00Z');next.setUTCDate(next.getUTCDate()+1);
+ const end=next.toISOString().slice(0,10).replace(/-/g,'');
+ const params=new URLSearchParams({action:'TEMPLATE',text:p.title+' — application deadline',
+  dates:day+'/'+end,
+  details:'Verify the exact deadline time and eligibility with the organizer. Listed cutoff: '+(p.deadline||'Unconfirmed')+'\n'+(p.url||'')});
+ return 'https://calendar.google.com/calendar/render?'+params.toString();
+};
+const calendarButtons=()=>futureDate()?'<a id="sob-google-calendar" href="'+googleCalendarUrl().replace(/&/g,'&amp;')+'" target="_blank" rel="noopener noreferrer">Add to Google Calendar ↗</a><button id="sob-calendar" type="button">Download .ics file</button>':'';
+const calendarButton=calendarButtons();
 panel.innerHTML='<h2>My application tracker</h2><p>Bookmark this opportunity and keep your next steps organized.</p><div class="sob-track-actions"><button id="sob-fav-program" type="button">♡ Save favorite</button><button id="sob-copy-link" type="button">Copy shareable link</button>'+calendarButton+'</div><form id="sob-track-form"><label for="sob-status">My progress</label><select id="sob-status"><option>Interested</option><option>Planning to apply</option><option>Applied</option><option>Completed</option></select><label for="sob-notes">My notes (optional)</label><textarea id="sob-notes" rows="5" maxlength="1500" placeholder="Important requirements, questions to ask, next steps…"></textarea><p class="small">Avoid passwords, school IDs, or other sensitive personal information.</p><button type="submit" class="button sob-track-submit">Save progress</button><p id="sob-track-feedback" role="status" class="small"></p></form>';
 parent.insertBefore(panel,parent.querySelector('.panel:last-child'));
-const css=document.createElement('style');css.textContent='.sob-track-actions{display:flex;gap:11px;flex-wrap:wrap;margin:16px 0}.sob-track-actions button{background:#fff0e8;border:1px solid #e6baa7;color:#793f2c;border-radius:9px;padding:11px 14px;cursor:pointer;font:inherit;font-weight:750}.sob-track-actions button[aria-pressed=true]{background:#ffe3d3}.sob-tracker label{display:block;font-weight:750;margin:18px 0 7px}.sob-tracker select,.sob-tracker textarea{display:block;width:100%;font:inherit;color:#19253d;padding:12px;border:1px solid #c7d1df;border-radius:10px}.sob-tracker .sob-track-submit{border:0;cursor:pointer;margin:16px 0 7px}.sob-tracker p{margin-bottom:10px}.sob-tracker textarea{resize:vertical}';document.head.append(css);
+const css=document.createElement('style');css.textContent='.sob-track-actions{display:flex;gap:11px;flex-wrap:wrap;margin:16px 0}.sob-track-actions a,.sob-track-actions button{background:#fff0e8;border:1px solid #e6baa7;color:#793f2c;border-radius:9px;padding:11px 14px;cursor:pointer;font:inherit;font-weight:750}.sob-track-actions a{color:#793f2c;text-decoration:none;font-weight:750;display:inline-flex;align-items:center}.sob-track-actions a:hover{text-decoration:underline}.sob-track-actions button[aria-pressed=true]{background:#ffe3d3}.sob-tracker label{display:block;font-weight:750;margin:18px 0 7px}.sob-tracker select,.sob-tracker textarea{display:block;width:100%;font:inherit;color:#19253d;padding:12px;border:1px solid #c7d1df;border-radius:10px}.sob-tracker .sob-track-submit{border:0;cursor:pointer;margin:16px 0 7px}.sob-tracker p{margin-bottom:10px}.sob-tracker textarea{resize:vertical}';document.head.append(css);
 const fav=document.getElementById('sob-fav-program'),form=document.getElementById('sob-track-form'),status=document.getElementById('sob-status'),notes=document.getElementById('sob-notes'),feedback=document.getElementById('sob-track-feedback');
 let dirty=false;
 const refresh=()=>{const data=store.get(id),f=Boolean(data.favorited);fav.textContent=f?'♥ Saved to favorites':'♡ Save favorite';fav.setAttribute('aria-pressed',String(f));if(!dirty){status.value=data.application_status||'Interested';notes.value=data.notes||''}};
@@ -21,9 +32,11 @@ form.addEventListener('input',()=>dirty=true);
 fav.addEventListener('click',async()=>{const ok=await store.save(id,{favorited:!store.get(id).favorited});feedback.textContent=ok?'Favorite updated.':'Save failed. Please try again.'});
 form.addEventListener('submit',async e=>{e.preventDefault();feedback.textContent='Saving…';const ok=await store.save(id,{application_status:status.value,notes:notes.value});if(ok){dirty=false;feedback.textContent='Progress saved.'}else feedback.textContent='Could not save progress. Please try again.'});
 document.addEventListener('sob-programs-updated',()=>{
- const exists=document.getElementById('sob-calendar');
- if(futureDate()&&!exists)document.getElementById('sob-copy-link').insertAdjacentHTML('afterend','<button id="sob-calendar" type="button">📅 Add deadline to calendar</button>');
- if(!futureDate()&&exists)exists.remove();
+ const existing=document.getElementById('sob-calendar'),google=document.getElementById('sob-google-calendar');
+ if(futureDate()){
+  if(!existing)document.getElementById('sob-copy-link').insertAdjacentHTML('afterend',calendarButtons());
+  else if(google)google.href=googleCalendarUrl();
+ }else{existing?.remove();google?.remove()}
 });
 panel.addEventListener('click',e=>{
  if(!e.target.closest('#sob-calendar')||!futureDate())return;
