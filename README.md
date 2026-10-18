@@ -79,7 +79,7 @@ In **Admin Dashboard → Student Reports**, each report has a **Delete report** 
 
 ## Multiple selections per filter (October 2026)
 
-- **Interest**, **Grade**, **Application status**, **Program cost**, **Attendance**, **My progress**, and **Listing source** use compact checkbox drop-down menus. Students may select several options in the same category (for example, both Science & Research and Technology & Coding, or both 10th and 11th grade).
+- **Interest**, **Grade**, **Application status**, **Program cost**, **Attendance**, **My progress**, use compact checkbox drop-down menus. Students may select several options in the same category (for example, both Science & Research and Technology & Coding, or both 10th and 11th grade).
 - Within a single category, programs matching **any checked option** appear; between categories, the choices narrow results together. The search box combines with the chosen filters, and pagination stays **nine cards per page**.
 - Each checkbox stays visibly checked while selected. The closed menu shows either the selected choice or the first choice plus a count (e.g., "Science & Research +2"), while the collapsed **More filters** control displays how many advanced options are selected.
 - Each checkbox menu has a **Clear** button and **Done** button. **Clear filters** resets all menu selections, sorting and the optional borough without deleting actual saved programs. Menus can be operated by mouse, touch, or keyboard.
@@ -89,10 +89,10 @@ In **Admin Dashboard → Student Reports**, each report has a **Delete report** 
 
 Both the 41 curated entries and opt-in, automatically discovered NYC-funded program sites now appear in **one search result grid**, with a **single nine-card pagination** shared by all results. The standalone "Discover Programs Near You" section and its second set of pages have been retired.
 
-- Visible controls are just **Search**, **Interest**, **Grade**, and optional **Borough**; students may also select **Use my location**. Additional filters (including Saved, source, deadline status, mode, cost and progress) sit under **More filters**.
-- Choosing a borough or allowing browser location permission mixes relevant city-funded sites into the curated program list, prioritizing two curated listings then one city program in the default order. All results share searching, interest filtering and the 9-card pager.
+- Visible controls are just **Search**, **Interest**, **Grade**, and optional **Borough**. Additional filters (including Saved, application status, mode, cost and progress) sit under **More filters**.
+- Choosing a borough mixes relevant city-funded sites into the curated program list, prioritizing two curated listings then one city program in the default order. All results share searching, interest filtering and the 9-card pager.
 - Curated program cards retain **View details** and **Save favorite**. City cards carry a distinctive "NYC-funded site / applications unverified" label, typical activity and age notes, and an official-directory link. They are **not** presented as approved active internships and are not added to synced saved programs without curator verification.
-- The borough can be retained in localStorage; GPS coordinates stay in browser memory and never appear in Open Data requests. "Clear filters" clears the borough and any saved search filters, while account favorites/notes remain untouched.
+- The borough can be retained in localStorage; the site does not request GPS coordinates. "Clear filters" clears the borough and any saved search filters, while account favorites/notes remain untouched.
 - City data fetch failures do not prevent the curated catalog from loading. This is entirely front-end functionality; there is **no Supabase migration**.
 
 ## Clear student activity descriptions (October 18, 2026)
@@ -108,7 +108,6 @@ Both the 41 curated entries and opt-in, automatically discovered NYC-funded prog
 The same homepage opportunity search includes **optional location-based NYC youth program discovery**:
 
 - Students may choose their NYC borough, and the selection is retained only in browser localStorage.
-- Or they can optionally click **Use my location**, which requests browser permission and calculates distances against city-provided latitude/longitude data. GPS coordinates never leave the browser, and are not saved.
 - On demand, the integrated location filter fetches the latest available NYC Department of Youth and Community Development program sites from the **official NYC Open Data** dataset [DYCD Program Sites](https://data.cityofnewyork.us/Social-Services/DYCD-Program-Sites/ebkm-iyma). Data changes on the city's schedule, not ours; no administrator SQL migration or search API key is required.
 - Only relevant youth, internship, workforce and high-school category program sites appear. Results are deduplicated and labeled with borough, ZIP code, provider, program type, source-data year and *application status not verified*. A full discoverDYCD directory link is provided.
 - These city **program-site** records are **not** automatically published as separately verified opportunities in the 41-entry curated catalog. Application deadlines, registration and eligibility are not inferred. Any official-data availability failure shows a link to discoverDYCD instead of fabricated results.
