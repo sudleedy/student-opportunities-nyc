@@ -14,7 +14,7 @@ const googleCalendarUrl=()=>{
  const p=currentItem(),day=p.deadlineISO.replace(/-/g,'');
  const next=new Date(p.deadlineISO+'T12:00:00Z');next.setUTCDate(next.getUTCDate()+1);
  const end=next.toISOString().slice(0,10).replace(/-/g,'');
- const params=new URLSearchParams({action:'TEMPLATE',text:p.title+' — application deadline',
+ const params=new URLSearchParams({action:'TEMPLATE',text:p.title+': application deadline',
   dates:day+'/'+end,
   details:'Verify the exact deadline time and eligibility with the organizer. Listed cutoff: '+(p.deadline||'Unconfirmed')+'\n'+(p.url||'')});
  return 'https://calendar.google.com/calendar/render?'+params.toString();
@@ -44,7 +44,7 @@ panel.addEventListener('click',e=>{
  const day=item.deadlineISO.replace(/-/g,''),next=new Date(item.deadlineISO+'T12:00:00Z');next.setUTCDate(next.getUTCDate()+1);
  const end=next.toISOString().slice(0,10).replace(/-/g,'');
  const body=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Student Opportunities NYC//Deadline//EN','BEGIN:VEVENT','UID:'+encodeURIComponent(item.id)+'@student-opportunities-nyc','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').replace(/\\.\\d{3}/,''),
- 'DTSTART;VALUE=DATE:'+day,'DTEND;VALUE=DATE:'+end,'SUMMARY:'+escICS(item.title+' — application deadline'),
+ 'DTSTART;VALUE=DATE:'+day,'DTEND;VALUE=DATE:'+end,'SUMMARY:'+escICS(item.title+': application deadline'),
  'DESCRIPTION:'+escICS('Verify deadline and time zone with the official organizer. Listed deadline: '+item.deadline),
  'URL:'+escICS(/^https:\/\//i.test(item.url||'')?item.url:''),'END:VEVENT','END:VCALENDAR'].join('\r\n');
  const link=document.createElement('a');const url=URL.createObjectURL(new Blob([body],{type:'text/calendar;charset=utf-8'}));
