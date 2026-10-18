@@ -50,6 +50,21 @@ The private administrator interface is at `admin.html` → **Program Timelines**
 
 The public site retains its bundled catalog if Supabase cannot be reached. Check administrator edits with a second, ordinary test account before wider launch. Do not place account passwords or secret keys in the browser scripts.
 
+## Edit all program descriptions from the admin dashboard
+
+Go to `admin.html#descriptions` (or choose **Program Descriptions** from the authorized Admin Dashboard).
+
+**One-time setup:** Run `supabase-program-descriptions.sql` in your existing Supabase project's SQL Editor. The SQL adds a new `program_descriptions` table with Row-Level Security: visitors can read published content; only approved administrators can save or restore it. Your existing admin authorization works. No new login or GitHub code changes are needed for regular edits.
+
+In the Program Descriptions tab you can:
+- Search programs by name, organization, subject, and type; paginate six programs at a time.
+- Edit the **short description** (homepage cards, up to 500 characters) and **full description** (program detail pages, up to 4,000 characters).
+- Click **Save descriptions** to publish immediately. Public visitors see the changes on page load or refresh.
+- Choose **Restore originals** to delete a customized description and show the bundled catalog wording again.
+- Filter to show which programs have custom descriptions.
+
+Description edits do **not** modify deadline overrides in `program_updates`. The public site falls back to the bundled `programs-data.js` text if the description database is unavailable. Check official organizer information before editing factual claims.
+
 ## Files
 - `index.html` — searchable directory
 - `program.html` — shareable program pages and tracker
