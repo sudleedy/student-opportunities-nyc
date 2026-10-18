@@ -7,6 +7,7 @@ const existing=new Set(items.map(p=>p.id)),fields=[
  'verified','applicationNote','grades','costCategory','deliveryMode','applicationState'
 ];
 const byId=new Map(items.map(p=>[p.id,p]));
+const originals=new Map(items.map(p=>[p.id,JSON.parse(JSON.stringify(p))]));
 let online=false;
 function isValid(row){
  return row&&typeof row.program_id==='string'&&/^[a-z0-9][a-z0-9-]{2,119}$/.test(row.program_id);
@@ -44,5 +45,5 @@ const ready=(async()=>{
  document.dispatchEvent(new Event('sob-catalog-ready'));
  document.dispatchEvent(new Event('sob-programs-updated'));
 })();
-window.StudentCatalog={ready,items,originalIds:existing,isOnline:()=>online};
+window.StudentCatalog={ready,items,originalIds:existing,originals,isOnline:()=>online};
 })();
