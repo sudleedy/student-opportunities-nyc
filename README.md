@@ -77,6 +77,18 @@ In **Admin Dashboard → Student Reports**, each report has a **Delete report** 
 
 **One-time permission setup:** Run `supabase-report-deletion.sql` in the existing Supabase project's SQL Editor. This adds a Row Level Security `DELETE` policy that allows deletion **only by authorized admins** already recorded in `private.site_admins`. It does not delete records on its own and it does not grant ordinary students report deletion access. No further Supabase visits are needed for individual report deletions.
 
+## October 18, 2026 public launch audit
+
+**Mobile:** Added small-screen layout safeguards to directory, detail pages, dashboard, admin tools, privacy page, and authentication modal; use a real mobile phone for a final visual check.
+
+**Catalog accuracy:** All 41 bundled listings passed ID/HTTPS-field/date-format checks. [Full catalog review queue](catalog-audit-2026-10-18.md) distinguishes nine listings checked against current organizer pages from other programs awaiting another cycle-specific source review. Four entries have confirmed exact upcoming date fields; the other 37 intentionally avoid unverified deadline countdowns. Corrected AMNH Science Alliance's official link, tuition and grades, specified the October 26 Congressional App Challenge cutoff time, and marked Technovation's inconsistent registration-date year as unconfirmed.
+
+**Security:** Public-browser keys are expected; Supabase Row Level Security, not the hidden dashboard, is the access boundary. Static review found owner-only student notes and administrator-only policies for reports, suggestions and catalog management. Hardened public external links against unsafe URL schemes.
+
+**Database action needed for already deployed Supabase projects:** Run [`supabase-security-hardening.sql`](supabase-security-hardening.sql) once as the Supabase project owner. It limits students submitting issue reports to *submission* fields instead of allowing them to directly set a report's admin review status. The original `supabase-reports-setup.sql` now uses the narrower grant for future installations.
+
+**Limitations:** Static code inspection and build success cannot prove a non-admin user's actual RLS requests are denied, or that every program's official website is current. Test a separate ordinary student account before a public launch, and continue reviewing unconfirmed program listings.
+
 ## 2026 platform expansion: seven improvements
 
 This version includes all seven planned improvements:
