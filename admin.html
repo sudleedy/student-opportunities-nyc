@@ -26,6 +26,12 @@
 .description-feedback{color:#315779;font-size:13px;font-weight:650}
 .description-review{font-size:12px;margin:10px 0 0;color:#6b7b91}
 @media(max-width:650px){.description-summary{grid-template-columns:1fr 1fr}.description-card{padding:16px}}
+/* Clearly marked, confirmation-protected report deletion control. */
+.report-actions .delete-report{margin-left:auto;background:#fff;color:#9b2738;border:1px solid #d8a2a9}
+.report-actions .delete-report:hover{background:#fff0f1;border-color:#b94859}
+.report-actions button:disabled{opacity:.55;cursor:wait}
+.report-actions .delete-report:focus-visible{outline:3px solid #c95b65;outline-offset:2px}
+@media(max-width:650px){.report-actions .delete-report{margin-left:0}}
 </style></head>
 <body><header><div class="nav"><a class="brand" href="./"><img src="assets/student_opportunities_nyc_icon.svg?v=1" alt="Graduation cap with upward arrow"><span class="brand-name">Student<strong>Opportunities <em>NYC</em></strong><small>DISCOVER WHAT’S NEXT</small></span></a><a class="home" href="./">← Back to Home</a></div></header>
 <main><h1>Admin Dashboard</h1><p class="lead">Review student reports, manage program timelines, and edit descriptions from one secure dashboard.</p>
@@ -92,4 +98,4 @@
 </section>
 </div>
 </main><footer class="footer">Student Opportunities NYC · Private administrator tools</footer>
-<script src="programs-data.js"></script><script src="auth-config.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script><script src="admin-reports.js?v=2"></script><script src="admin-programs.js?v=3"></script><script src="admin-descriptions.js?v=1"></script></body></html>
+<script src="programs-data.js"></script><script src="auth-config.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script><script src="admin-reports.js?v=3"></script><script src="admin-programs.js?v=3"></script><script src="admin-descriptions.js?v=1"></script></body></html>
