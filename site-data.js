@@ -19,8 +19,12 @@ function merge(row){
   if(p){const n=items.indexOf(p);if(n>=0)items.splice(n,1)}
   byId.delete(row.program_id);return;
  }
- if(!p){p={id:row.program_id};items.push(p);byId.set(row.program_id,p)}
  const data=row.program_data||{};
+ if(!p){
+  // Reject newly added public records without a usable organizer website.
+  try{const u=new URL(data.url);if(u.protocol!=='https:'||!u.hostname)return}catch{return}
+  p={id:row.program_id};items.push(p);byId.set(row.program_id,p);
+ }
  for(const name of fields){
   if(Object.prototype.hasOwnProperty.call(data,name)){
    const value=data[name];
