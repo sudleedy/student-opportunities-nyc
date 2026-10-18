@@ -20,6 +20,7 @@
  .panel{padding:16px}
 }
 .source-evidence{margin-top:13px!important;padding:14px 16px;border-left:3px solid #8296b5;background:#f4f7fb;border-radius:8px;font-size:14px;line-height:1.65;color:#394d69!important;overflow-wrap:anywhere}
+.activity-panel{border-left:4px solid #e08d62;background:#fffaf6}.activity-panel h2{color:#713d27}.activity-panel p{overflow-wrap:anywhere}.activity-panel .small{margin-top:12px;color:#6f7a8a;font-size:12px}
 </style></head><body>
 <header><div class="nav"><a class="brand" href="./" aria-label="Student Opportunities NYC home"><img src="assets/student_opportunities_nyc_icon.svg?v=1" alt="Graduation cap with upward arrow" class="brand-icon"><span class="brand-copy"><span class="brand-name">Student<strong>Opportunities <em>NYC</em></strong></span><span class="brand-tagline">DISCOVER WHAT’S NEXT</span></span></a><a class="back" href="./#opportunities">← All opportunities</a></div></header>
 <main class="container"><a class="return-link" id="return-to-directory" href="./#opportunities">← Back to Home</a><div id="page"><p>Loading program information…</p></div></main><footer>© <span id="year"></span> Student Opportunities NYC · Independent student project · <a href="./privacy.html">Privacy &amp; Data</a></footer>
@@ -38,7 +39,7 @@ else {
  const field=(name,value)=>'<div><strong>'+esc(name)+'</strong><span>'+esc(value)+'</span></div>';
  root.innerHTML='<div class="crumb"><a href="./">Home</a> / <a href="./#opportunities">Opportunities</a> / '+esc(program.title)+'</div>'+
  '<div class="hero"><span class="pill">'+esc(program.type)+'</span> <span class="tag">'+esc(program.subject||'Opportunities')+'</span><h1>'+esc(program.title)+'</h1><p id="sob-program-summary">'+esc(program.summary)+'</p><p><strong>'+esc(program.org)+'</strong> · '+esc(program.location)+'</p></div>'+
- '<div class="layout"><div><section class="panel"><h2>About this program</h2><p id="sob-program-details">'+esc(program.details||program.summary)+'</p></section>'+
+ '<div class="layout"><div><section class="panel activity-panel"><h2>What you’ll actually do</h2><p id="sob-program-activities">'+esc(program.whatYouDo||program.summary)+'</p><p class="small">Actual activities depend on the placement, cohort and organizer.</p></section><section class="panel"><h2>About this program</h2><p id="sob-program-details">'+esc(program.details||program.summary)+'</p></section>'+
  '<section class="panel"><h2>Eligibility and important details</h2><div class="info">'+field('Who can apply',program.eligibility)+field('Application deadline',program.deadline)+field('Application status',program.status)+field('Cost or compensation',program.cost)+field('Location',program.location)+field('Time commitment',program.commitment)+'</div><p class="small" id="sob-deadline-note">'+esc(program.deadlineNote||'Verify the current application cutoff on the official program website.')+'</p></section>'+
  '<section class="panel"><h2>How to prepare</h2><p>'+esc(program.preparation||'Check the official website for application steps.')+'</p></section>'+
  '<section class="panel"><h2>Before you apply</h2><div class="warning">Program information can change. Always verify eligibility, dates, application status and any fees on the official organizer website. Student Opportunities NYC is independent and is not affiliated with the organization listed here.</div><p class="small">Organizer source review: <strong id="sob-source-status">'+esc(program.sourceStatus==='current'?'Current or recent cycle information checked':program.sourceStatus==='program'?'Program existence checked; dates unconfirmed':'Current enrollment not verified')+'</strong>. Checked <span id="sob-reviewed">'+esc(program.sourceChecked||program.verified||'Date not recorded')+'</span>. This is not a live application-status check.</p><p class="source-evidence" id="sob-source-note">'+esc(program.sourceNote||'No current organizer verification note available; confirm the full details independently.')+'</p></section></div>'+
@@ -75,12 +76,13 @@ document.addEventListener('sob-programs-updated',()=>{
  const targetLink=document.getElementById('sob-program-official-link');
  if(targetLink&&officialUrl(program.url))targetLink.href=officialUrl(program.url);
  else if(targetLink&&!officialUrl(program.url)){targetLink.removeAttribute('href');targetLink.textContent='Official link needs verification';}
- const about=root.querySelector('.layout > div > .panel:nth-of-type(3) p');
+ const about=root.querySelector('.layout > div > .panel:nth-of-type(4) p');
  if(about)about.textContent=program.preparation||'Check the official website for application steps.';
  const summary=document.getElementById('sob-program-summary');
  if(summary)summary.textContent=program.summary;
  const details=document.getElementById('sob-program-details');
  if(details)details.textContent=program.details||program.summary;
+ const activities=document.getElementById('sob-program-activities');if(activities)activities.textContent=program.whatYouDo||program.summary;
  const entries=root.querySelectorAll('.info > div');
  if(entries[1])entries[1].querySelector('span').textContent=program.deadline;
  if(entries[2])entries[2].querySelector('span').textContent=program.status;
