@@ -43,12 +43,11 @@ const choices={
  'apply-filter':{placeholder:'Any status',options:()=>[['open','Verified open'],['upcoming','Opening soon'],['closed','Closed'],['unknown','Not confirmed']]},
  'cost-filter':{placeholder:'Any cost',options:()=>[['free','Free'],['fee','Has tuition or fees'],['unknown','Not confirmed']]},
  'mode-filter':{placeholder:'Any format',options:()=>[['in-person','In person'],['remote','Online'],['hybrid','Hybrid'],['unknown','Not confirmed']]},
- progress:{placeholder:'Any progress',options:()=>[['Interested','Interested'],['Planning to apply','Planning to apply'],['Applied','Applied'],['Completed','Completed']]},
- 'source-filter':{placeholder:'All listings',options:()=>[['curated','Reviewed directory listings'],['city','NYC-funded program sites']]}
+ progress:{placeholder:'Any progress',options:()=>[['Interested','Interested'],['Planning to apply','Planning to apply'],['Applied','Applied'],['Completed','Completed']]}
 };
 const checked=Object.fromEntries(Object.keys(choices).map(key=>[key,new Set()]));
 const selected=key=>checked[key];
-const advancedKeys=['apply-filter','cost-filter','mode-filter','progress','source-filter'];
+const advancedKeys=['apply-filter','cost-filter','mode-filter','progress'];
 function updateAdvancedCount(){
  const n=advancedKeys.reduce((sum,key)=>sum+checked[key].size,0)+(saved.checked?1:0);
  el('advanced-count').textContent=n?n+' selected':'optional';
@@ -140,7 +139,6 @@ function deadline(p){
 function matches(p,q){
  const city=p.kind==='city';
  const progress=store.get(p.id);
- if(!selectedAny('source-filter',city?'city':'curated'))return false;
  if(!selectedAny('subject',p.subject))return false;
  // Within one category: any checked grade is a match. City programs with no
  // known grade information remain visible and are explicitly labeled unverified.
