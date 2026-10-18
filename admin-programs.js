@@ -61,6 +61,10 @@ function render(){
   return (!q||[p.title,p.org,p.type,p.subject].join(' ').toLowerCase().includes(q))&&
    (!which||Boolean(f[which]));
  }).sort((a,b)=>{const x=order(a),y=order(b);return x[0]-y[0]||x[1]-y[1]||a.title.localeCompare(b.title)});
+ const isFiltered=Boolean(q||which);
+ message.textContent=isFiltered
+  ? 'Showing '+rows.length+' of '+programs.length+' catalog programs matching your selection. Admin edits are published immediately.'
+  : 'Showing all '+programs.length+' catalog programs. Admin edits are published immediately.';
  const max=Math.max(1,Math.ceil(rows.length/PAGE_SIZE));
  page=Math.min(page,max);
  const visible=rows.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
@@ -90,7 +94,6 @@ async function load(){
  const {data,error}=await db.from('program_updates').select('program_id,deadline_text,deadline_iso,status_text,review_note,verified_at,updated_at').limit(500);
  if(error){message.textContent='Timeline database not ready. Run supabase-program-timelines.sql in the Supabase SQL Editor, then click Refresh dates.';return}
  overrides.clear();for(const entry of data||[])overrides.set(entry.program_id,entry);
- message.textContent='Showing all '+programs.length+' catalog programs. Admin edits are published immediately.';
  render();
 }
 async function save(form){
