@@ -31,6 +31,28 @@ const programs=window.PROGRAMS||[],id=new URLSearchParams(location.search).get('
 let program=programs.find(o=>o.id===id);
 const root=document.getElementById('page');
 document.getElementById('year').textContent=new Date().getFullYear();
+/* Restore the directory search when returning from a program detail page. */
+function directoryReturnHref(){
+ const valid=raw=>{
+  try{
+   const u=new URL(raw,location.origin);
+   return u.origin===location.origin&&['/','/index.html'].includes(u.pathname)
+    ?u.pathname+u.search+'#opportunities':null;
+  }catch{return null}
+ };
+ const ref=valid(document.referrer);
+ if(ref)return ref;
+ try{
+  const stored=JSON.parse(sessionStorage.getItem('sob-directory-return-v1')||'null');
+  if(stored&&Number.isFinite(stored.savedAt)&&Date.now()-stored.savedAt<3600000&&Date.now()>=stored.savedAt){
+   return valid(stored.url)||'./#opportunities';
+  }
+ }catch{}
+ return './#opportunities';
+}
+const returnHref=directoryReturnHref();
+document.querySelectorAll('a.back,#return-to-directory').forEach(link=>link.href=returnHref);
+
 const siteBase='https://student-opportunities-nyc.com/';
 function setMeta(selector,attribute,value,content){
  let tag=document.head.querySelector(selector);
