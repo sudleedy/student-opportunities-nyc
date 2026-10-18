@@ -7,7 +7,7 @@ const rows=new Map(),editor=el('manager-editor'),listing=el('manager-list'),stat
 const search=el('manager-search'),filter=el('manager-filter');
 const types=['Research','Internship','College Preparation','Scholarship','Volunteering','Leadership','Competition','Technology Program','Arts Program','Other'];
 const keys=['title','org','type','subject','location','summary','details','eligibility','deadline','deadlineISO','deadlineNote','status','cost','commitment','preparation','url','verified','applicationNote','grades','costCategory','payCategory','deliveryMode','applicationState'];
-let db=null,available=false,page=1,editing=null,changed=false;
+let db=null,available=false,loading=true,page=1,editing=null,changed=false;
 const escField=(name,label,value,type='text',extra='')=>'<label>'+escape(label)+
  (type==='textarea'?'<textarea name="'+name+'" '+extra+'>'+escape(value)+'</textarea>':
  '<input name="'+name+'" type="'+type+'" value="'+escape(value)+'" '+extra+'>')+'</label>';
@@ -51,7 +51,7 @@ function render(){
  }).join('')||'<div class="notice">No matching programs.</div>';
  el('manager-pager').innerHTML=pages>1?'<button type="button" data-page="'+(page-1)+'" '+(page===1?'disabled':'')+'>← Previous</button><span>Page '+page+' of '+pages+'</span><button type="button" data-page="'+(page+1)+'" '+(page===pages?'disabled':'')+'>Next →</button>':'';
  status.textContent='Showing '+candidates.length+' of '+total+' entries. '+active+' active, '+(total-active)+' archived.'+
-  (available?'':' Run supabase-platform-expansion.sql before saving.');
+  (available?' You can add and edit programs.':loading?' Loading saved catalog changes…':' Edits are temporarily unavailable; check your database connection.');
 }
 function startEditor(id=null,draft=null){
  if(!containsDirty())return;
@@ -130,9 +130,17 @@ async function revert(id){
 }
 async function load(){
  if(!db)return;
- const {data,error}=await db.from('catalog_programs').select('program_id,program_data,is_archived,updated_at').limit(1000);
- if(error){available=false;render();status.textContent='Run supabase-platform-expansion.sql in Supabase SQL Editor to enable program editing.';return}
- available=true;rows.clear();for(const row of data||[])rows.set(row.program_id,row);render();
+ loading=true;render();
+ try{
+  const {data,error}=await db.from('catalog_programs').select('program_id,program_data,is_archived,updated_at').limit(1000);
+  if(error)throw error;
+  available=true;loading=false;rows.clear();
+  for(const row of data||[])rows.set(row.program_id,row);
+  render();
+ }catch(error){
+  available=false;loading=false;render();
+  status.textContent='Showing built-in programs, but edits are unavailable. '+(error?.message||'Could not load the catalog table')+'. Check the Supabase setup or click Refresh.';
+ }
 }
 function fillSuggestion(d){
  el('tab-management').click();
@@ -155,5 +163,8 @@ editor.addEventListener('input',()=>{changed=true});
 editor.addEventListener('submit',e=>{e.preventDefault();save(e.target)});
 editor.addEventListener('click',e=>{if(e.target.id==='manager-cancel'&&containsDirty()){editor.hidden=true;editing=null;changed=false}});
 document.addEventListener('sob-use-suggestion',e=>fillSuggestion(e.detail));
+// Always show the bundled program list even before the database answers.
+render();
+document.addEventListener('sob-catalog-ready',()=>{if(!editing)render()});
 document.addEventListener('sob-admin-ready',e=>{db=e.detail.db;load()});
 })();
