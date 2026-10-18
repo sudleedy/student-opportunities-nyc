@@ -53,7 +53,7 @@ function renderGoogleCalendar(){
   const details='Verify the exact application cutoff and eligibility with the organizer. Published deadline: '+(p.deadline||'Not specified')+
    (p.url?'\nOfficial program website: '+p.url:'');
   const params=new URLSearchParams({
-   action:'TEMPLATE',text:p.title+' — application deadline',
+   action:'TEMPLATE',text:p.title+': application deadline',
    dates:iso+'/'+dateAfter(p.deadlineISO),details
   });
   const url='https://calendar.google.com/calendar/render?'+params.toString();
@@ -71,7 +71,7 @@ downloadButton.addEventListener('click',()=>{
  for(const p of list){
   lines.push('BEGIN:VEVENT','UID:'+p.id+'-deadline@student-opportunities-nyc.com','DTSTAMP:'+stamp,
    'DTSTART;VALUE=DATE:'+p.deadlineISO.replace(/-/g,''),'DTEND;VALUE=DATE:'+dateAfter(p.deadlineISO),
-   'SUMMARY:'+escapeCalendar(p.title+' — application deadline'),
+   'SUMMARY:'+escapeCalendar(p.title+': application deadline'),
    'DESCRIPTION:'+escapeCalendar('Check exact time and eligibility with the organizer. '+(p.deadline||'')),
    'URL:'+escapeCalendar(/^https:\/\//i.test(p.url||'')?p.url:''));
   for(const days of [7,1])lines.push('BEGIN:VALARM','TRIGGER:-P'+days+'D','ACTION:DISPLAY','DESCRIPTION:'+escapeCalendar('Check '+p.title+' application deadline'),'END:VALARM');
