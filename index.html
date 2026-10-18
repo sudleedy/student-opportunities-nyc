@@ -24,6 +24,41 @@ input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #ff78
 .card:hover{border-left-color:#e97a50;box-shadow:0 12px 30px rgba(25,37,61,.17)}
 .card .favorite-button{background:#fff}
 @media(max-width:560px){.cards{gap:18px}}
+
+/* Student-learning hero background — isolated for easy removal/reversion. */
+.hero{
+ position:relative;isolation:isolate;overflow:hidden;
+ background:#19253d;min-height:460px;display:flex;align-items:center;
+}
+.hero::before{
+ content:"";position:absolute;inset:0;z-index:-2;
+ background:url("assets/students-learning-hero.avif") center 47% / cover no-repeat;
+ opacity:.92;
+}
+.hero::after{
+ content:"";position:absolute;inset:0;z-index:-1;
+ background:linear-gradient(95deg,
+ rgba(15,32,56,.97) 0%,
+ rgba(19,39,67,.91) 28%,
+ rgba(22,40,68,.75) 52%,
+ rgba(19,36,61,.45) 78%,
+ rgba(18,34,58,.33) 100%);
+}
+.hero .wrap{position:relative;z-index:1;width:100%}
+.hero .eyebrow{color:#ffad79}
+.hero h1{max-width:850px;text-shadow:0 2px 18px rgba(0,0,0,.15)}
+.hero p{max-width:770px;color:#f0f4fa;text-shadow:0 1px 8px rgba(0,0,0,.22)}
+.hero a{box-shadow:0 4px 16px rgba(4,15,33,.16)}
+@media(max-width:760px){
+ .hero{min-height:400px}
+ .hero::before{background-position:67% center}
+ .hero::after{background:linear-gradient(90deg,rgba(15,32,56,.96),rgba(18,37,63,.83) 58%,rgba(18,37,63,.66))}
+}
+@media(max-width:560px){
+ .hero{min-height:360px;padding:68px 24px 76px}
+ .hero::before{background-position:70% center}
+ .hero h1{max-width:100%}
+}
 </style></head><body>
 <header id="top"><div class="nav"><a class="brand" href="#top" aria-label="Student Opportunities NYC homepage"><img src="assets/student_opportunities_nyc_icon.svg?v=1" alt="Graduation cap with upward arrow" class="brand-icon"><span class="brand-copy"><span class="brand-name">Student<strong>Opportunities <em>NYC</em></strong></span><span class="brand-tagline">DISCOVER WHAT’S NEXT</span></span></a><nav><a href="#opportunities">Explore</a><a href="#about">About</a><a href="#contribute">Contribute</a></nav></div></header>
 <section class="hero"><div class="wrap"><div class="eyebrow">Discover what's possible</div><h1>Every opportunity starts somewhere.</h1><p>Find internships, scholarships, research experiences, and volunteer programs for high school students—all in one place.</p><a href="#opportunities">Explore opportunities →</a></div></section>
