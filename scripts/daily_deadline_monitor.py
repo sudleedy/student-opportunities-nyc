@@ -58,39 +58,71 @@ ACRONYM = re.compile(r"\b[A-Z][A-Z0-9]{3,}\b")
 
 
 class PageText(HTMLParser):
+    """Keep visible text and heading boundaries to avoid unrelated program dates."""
     def __init__(self):
         super().__init__(convert_charrefs=True)
-        self.parts, self.headlines = [], []
+        self.parts, self.headings = [], []
         self.blocked = 0
-        self.in_heading = 0
+        self.heading_tag = None
         self.heading_parts = []
+        self.heading_start = 0
 
     def handle_starttag(self, tag, attrs):
         if tag in ("script", "style", "noscript", "svg", "template"):
             self.blocked += 1
-        if not self.blocked and tag in ("title", "h1"):
-            self.in_heading += 1
+        if not self.blocked and tag in ("h1", "h2", "h3", "h4"):
+            self.heading_tag = tag
             self.heading_parts = []
+            self.heading_start = len(self.parts)
 
     def handle_endtag(self, tag):
         if tag in ("script", "style", "noscript", "svg", "template"):
             self.blocked = max(0, self.blocked - 1)
-        if tag in ("title", "h1") and self.in_heading:
+        if tag == self.heading_tag:
             value = " ".join(self.heading_parts).strip()
             if value:
-                self.headlines.append(value)
-            self.in_heading = max(0, self.in_heading - 1)
+                self.headings.append((int(tag[1]), value, self.heading_start, len(self.parts)))
+            self.heading_tag = None
+            self.heading_parts = []
 
     def handle_data(self, data):
         if self.blocked:
             return
         if data.strip():
             self.parts.append(data.strip())
-            if self.in_heading:
+            if self.heading_tag:
                 self.heading_parts.append(data.strip())
 
-    def result(self):
-        return re.sub(r"\s+", " ", " ".join(self.parts)), self.headlines
+    def scoped_text(self, program):
+        # The organizer name alone is NOT program identification. A page listing
+        # Artslife, RECESS, and ArtsLab must never share their application dates.
+        org_words = set(re.findall(r"[a-z]{4,}", program.get("org", "").lower()))
+        tokens = set(re.findall(r"[a-z]{4,}", program["title"].lower()))
+        specific = tokens - org_words - STOP - {
+            "paid", "free", "virtual", "online", "intensive", "course", "workshops",
+            "leadership", "college", "career", "arts", "museum", "environmental",
+            "internship", "program", "apprenticeship", "fellowship",
+        }
+        acronyms = {a.lower() for a in ACRONYM.findall(program["title"])
+                    if a.lower() not in org_words}
+        matches = []
+        for level, heading, start, end in self.headings:
+            words = set(re.findall(r"[a-z]{4,}", heading.lower()))
+            overlap = words & specific
+            acr = {x for x in acronyms if re.search(r"\b" + re.escape(x) + r"\b", heading.lower())}
+            if overlap or acr:
+                score = 100 * (len(overlap) + len(acr)) + level * 3 - len(words)
+                matches.append((score, level, end))
+        if not matches:
+            return None
+        _, level, start = max(matches)
+        end = len(self.parts)
+        for next_level, _heading, next_start, _next_end in self.headings:
+            if next_start >= start and next_level <= level:
+                end = next_start
+                break
+        return re.sub(r"\s+", " ", " ".join(self.parts[start:end]))
+
 
 
 def parse_date(match):
@@ -106,23 +138,14 @@ def parse_date(match):
         return None
 
 
-def has_program_identity(program, headlines):
-    tokens = set(t for t in re.findall(r"[a-z]{4,}", program["title"].lower()) if t not in STOP)
-    joined = " ".join(headlines).lower()
-    headed = set(re.findall(r"[a-z]{4,}", joined))
-    acronyms = ACRONYM.findall(program["title"])
-    return len(tokens & headed) >= 2 or any(a.lower() in joined for a in acronyms)
-
-
 def extract_verified_date(program, html_source, today):
     parser = PageText()
     parser.feed(html_source)
-    text, headings = parser.result()
-    if not has_program_identity(program, headings):
-        return None, "program identity not established in page title/heading"
+    text = parser.scoped_text(program)
+    if not text:
+        return None, "no program-specific section heading"
     candidates = set()
     for label in LABEL.finditer(text):
-        # Require an explicit full date immediately after a specific application label.
         fragment = text[label.end():label.end() + 110]
         found = DATE.search(fragment)
         if not found or found.start() > 65:
@@ -134,8 +157,9 @@ def extract_verified_date(program, html_source, today):
         if date and today <= date <= today + dt.timedelta(days=420):
             candidates.add(date.isoformat())
     if len(candidates) != 1:
-        return None, "no single unambiguous future application deadline"
-    return next(iter(candidates)), "one explicit future application date with matching program heading"
+        return None, "no single unambiguous date in this program's own section"
+    return next(iter(candidates)), "one future application deadline in this program's section"
+
 
 
 class SafeRedirect(urllib.request.HTTPRedirectHandler):
