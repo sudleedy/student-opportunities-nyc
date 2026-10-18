@@ -16,6 +16,24 @@ The former GitHub Pages address, `https://sudleedy.github.io/student-opportuniti
 - **Storage limitation:** Browser-local guest saves, notes and sessions do not migrate between hostnames; this is a browser security boundary. Do not promise automatic migration.
 - **No database migration required:** Keep the existing Supabase project and tables; no SQL script is needed *just for the domain change*.
 
+## October 2026: Search visibility, security review, and planning tools
+
+**Search engines:** `robots.txt` advertises `https://student-opportunities-nyc.com/sitemap.xml`, which lists the homepage, privacy page, and reviewed catalog program URLs. Program detail pages set descriptions, canonical addresses, Open Graph metadata, and basic structured data when JavaScript renders a program. The admin and personal dashboard pages are not intended for search indexing. **Google indexing is not guaranteed**: this is a client-rendered GitHub Pages site; crawlers must successfully render JavaScript to obtain per-program content and metadata. Search Console performance requires a verified account.
+
+**One-time owner action in Google Search Console:**
+1. Visit https://search.google.com/search-console and **Add property → Domain**. Enter `student-opportunities-nyc.com` without the protocol.
+2. Copy Google's **own** verification TXT value. In Cloudflare DNS, add a TXT record with name `@` and Google's exact value. Do not modify GitHub Pages A or `www` CNAME records.
+3. Return to Search Console and choose Verify. Keep the TXT record to retain verification.
+4. Open **Sitemaps**, enter `https://student-opportunities-nyc.com/sitemap.xml`, and submit. Allow time for discovery; check URL Inspection for crawl/indexing issues.
+
+**Review, not false assurance:** `scripts/catalog_audit.py` validates required descriptions, application guidance, cost fields, URLs, unique IDs, review dates, and stale information. `.github/workflows/catalog-audit.yml` runs it after catalog changes and weekly. A passed automated run does NOT verify current program availability, financial eligibility, fees, official link contents, or real-world opening/closing dates.
+
+**Read-only security inspection:** `supabase-security-audit-readonly.sql` may be run by the Supabase project owner to display policies and grants, without fetching user content or making changes. The checked-in setup SQL specifies owner-only `student_saves` policies, administrators-only report and suggestion review, and Row Level Security on private student tables. **We have not verified the live Supabase permissions** until those SQL results and two separate non-admin test accounts are checked. No new admin accounts are created by this work. Review privacy practices, retention, account deletion requests, and third-party provider terms with a responsible adult before expanding account sign-ups.
+
+**Student dashboard planning features:** compare up to 3 saved programs; view a subject-based shortlist (not a grade or eligibility decision); download one `.ics` file for future saved deadlines with optional 7-day and 1-day calendar alerts. Imports and reminder delivery depend on the student's calendar app. The site does not send email, SMS, or push notifications. All comparison choices stay in the browser tab; the tool does not collect additional student profile fields.
+
+**New researched catalog entries:** Rockefeller SSRP 2027, Rockefeller Summer Neuroscience Program (next application unconfirmed), NYC DYCD Learn & Earn, and CareerReady Work/Learn/Grow (restricted eligibility); always check the organizer page. The bundled catalog now contains **90** reviewed listings. Newly added current-cycle application deadlines are not generalized to other cycles.
+
 ## Features already working without an account
 - Save/remove favorites (heart icon on cards or program pages).
 - Browse just your saved programs.
