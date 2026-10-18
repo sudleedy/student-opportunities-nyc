@@ -77,6 +77,10 @@ In **Admin Dashboard → Student Reports**, each report has a **Delete report** 
 
 **One-time permission setup:** Run `supabase-report-deletion.sql` in the existing Supabase project's SQL Editor. This adds a Row Level Security `DELETE` policy that allows deletion **only by authorized admins** already recorded in `private.site_admins`. It does not delete records on its own and it does not grant ordinary students report deletion access. No further Supabase visits are needed for individual report deletions.
 
+## Nine-program pages (October 2026)
+
+The curated directory already shows **9 programs per page**. The location-based **Near You** section now also shows **9 program cards per page**, with numbered pages and **Previous / Next** buttons above and below the nearby cards. The page count and `Showing X–Y of Z` label update for each search. Switching boroughs or refreshing results returns to page 1; selecting a page scrolls to the first nearby card. The available nearby results are no longer arbitrarily truncated after 18 locations. This is client-side pagination only; it doesn't change student notes or the Supabase schema.
+
 ## Clear student activity descriptions (October 18, 2026)
 
 - **All 41 bundled curated opportunities** now have a `whatYouDo` field describing the typical day-to-day activity, not only program benefits. The homepage cards show this first; every program detail page has a dedicated **What you'll actually do** section. Activities can vary by cohort, mentor, and placement.
