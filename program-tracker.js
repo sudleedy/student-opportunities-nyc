@@ -33,7 +33,7 @@ panel.addEventListener('click',e=>{
  const body=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Student Opportunities NYC//Deadline//EN','BEGIN:VEVENT','UID:'+encodeURIComponent(item.id)+'@student-opportunities-nyc','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').replace(/\\.\\d{3}/,''),
  'DTSTART;VALUE=DATE:'+day,'DTEND;VALUE=DATE:'+end,'SUMMARY:'+escICS(item.title+' — application deadline'),
  'DESCRIPTION:'+escICS('Verify deadline and time zone with the official organizer. Listed deadline: '+item.deadline),
- 'URL:'+item.url,'END:VEVENT','END:VCALENDAR'].join('\r\n');
+ 'URL:'+escICS(/^https:\/\//i.test(item.url||'')?item.url:''),'END:VEVENT','END:VCALENDAR'].join('\r\n');
  const link=document.createElement('a');const url=URL.createObjectURL(new Blob([body],{type:'text/calendar;charset=utf-8'}));
  link.href=url;link.download='deadline-'+item.id+'.ics';document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
  feedback.textContent='Calendar file created. Confirm the exact cutoff time on the official program website.';
