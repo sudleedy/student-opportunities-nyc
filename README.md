@@ -134,13 +134,19 @@ Highlights include Columbia BRAINYAC, NYBG High School Explainers, Queens Teens 
 - These are **not** 30 programs confirmed to be accepting applications. Some are closed for their 2026 cohorts or await new-year announcements. The organizer link should be rechecked before a student applies.
 - The homepage, detail page, student dashboard and admin page all load the expanded catalog using a versioned asset reference. Existing student saves and reports are not modified. No new Supabase SQL required.
 
+## October 18, 2026: Individually listed programs only
+
+At the owner's request, the public homepage now shows **only the 120 specifically described catalog programs**, each with its own details, organizer link, known eligibility and stated application status. The live DYCD NYC-funded **provider/site record feed** was removed from the homepage, together with its refresh button, city-site card type and browser data request. This does **not** remove legitimate named city programs such as SYEP or Learn & Earn from the reviewed catalog. The page remains 9 programs per page with search, multiple filter choices, bookmarks and saved notes.
+
+The **Program borough** filter now searches only curated entries with an explicit physical borough. Its choice is stored locally under `sob-borough-v1` and cleared by **Clear filters**. It does not access location services or request city Open Data. Remote, citywide and unknown-site entries remain available with **All programs · any borough**. `nearby-programs.js` is no longer loaded or used. The privacy page now reflects this behavior.
+
 ## Strict borough filtering (October 18, 2026)
 
-Selecting **Brooklyn, Manhattan, Queens, Bronx, or Staten Island** in the home-page borough selector now filters the **entire nine-card opportunity list**. Only items with a matching specific program-site borough are shown. The city DYCD feed already supplies its site borough; 14 bundled opportunities with clear physical venues now have an explicit `borough` field (12 Manhattan, 2 Brooklyn).
+Selecting **Brooklyn, Manhattan, Queens, Bronx, or Staten Island** in the home-page borough selector now filters the **entire nine-card opportunity list**. Only items with a matching specific program-site borough are shown. Only reviewed catalog entries with an explicitly verified borough are included in borough-specific results; we do not guess locations.
 
-**Important location rule:** the 27 remaining bundled opportunities are not assigned a fixed borough, because they are citywide, virtual, nationwide, across multiple sites, or their exact program venue could not be confidently established. They do **not** appear in a borough-specific search; clearing the borough brings them back. A program being open to residents of a borough does not prove the activity is located there. Avoid guessing venues for administrator-added opportunities until they are verified.
+**Important location rule:** Many individually listed programs are not assigned a fixed borough because they are citywide, virtual, nationwide, across multiple sites, or their exact program venue could not be confidently established. They do **not** appear in a borough-specific search; clearing the borough brings them back. A program being open to residents of a borough does not prove the activity is located there. Avoid guessing venues for administrator-added opportunities until they are verified.
 
-There is no change to favorites, notes, student tracking, or database permissions. The official DYCD feed still labels application status as unverified. The home page explains why citywide and remote options disappear when a borough is selected.
+There is no change to favorites, notes, student tracking, or database permissions. The home page explains why citywide and remote options disappear when a borough is selected.
 
 ## Multiple selections per filter (October 2026)
 
@@ -148,37 +154,16 @@ There is no change to favorites, notes, student tracking, or database permission
 - Within a single category, programs matching **any checked option** appear; between categories, the choices narrow results together. The search box combines with the chosen filters, and pagination stays **nine cards per page**.
 - Each checkbox stays visibly checked while selected. The closed menu shows either the selected choice or the first choice plus a count (e.g., "Science & Research +2"), while the collapsed **More filters** control displays how many advanced options are selected.
 - Each checkbox menu has a **Clear** button and **Done** button. **Clear filters** resets all menu selections, sorting and the optional borough without deleting actual saved programs. Menus can be operated by mouse, touch, or keyboard.
-- **Borough and Sort by** remain single-choice controls to keep city loading and sorting predictable. No Supabase migration is required; these filters are client-side and reset when the page is fully reloaded.
+- **Borough and Sort by** remain single-choice controls to keep filters and sorting predictable. No Supabase migration is required; these filters are client-side and reset when the page is fully reloaded.
 
-## One unified opportunity list (October 2026)
+## Current homepage program discovery
 
-Both the 41 curated entries and opt-in, automatically discovered NYC-funded program sites now appear in **one search result grid**, with a **single nine-card pagination** shared by all results. The standalone "Discover Programs Near You" section and its second set of pages have been retired.
-
-- Visible controls are just **Search**, **Interest**, **Grade**, and optional **Borough**. Additional filters (including Saved, application status, mode, cost and progress) sit under **More filters**.
-- Choosing a borough mixes relevant city-funded sites into the curated program list, prioritizing two curated listings then one city program in the default order. All results share searching, interest filtering and the 9-card pager.
-- Curated program cards retain **View details** and **Save favorite**. City cards carry a distinctive "NYC-funded site / applications unverified" label, typical activity and age notes, and an official-directory link. They are **not** presented as approved active internships and are not added to synced saved programs without curator verification.
-- The borough can be retained in localStorage; the site does not request GPS coordinates. "Clear filters" clears the borough and any saved search filters, while account favorites/notes remain untouched.
-- City data fetch failures do not prevent the curated catalog from loading. This is entirely front-end functionality; there is **no Supabase migration**.
-
-## Clear student activity descriptions (October 18, 2026)
-
-- **All 41 bundled curated opportunities** now have a `whatYouDo` field describing the typical day-to-day activity, not only program benefits. The homepage cards show this first; every program detail page has a dedicated **What you'll actually do** section. Activities can vary by cohort, mentor, and placement.
-- The **automatic Near You** directory shows a **What you might do** explanation, a general eligibility note, and an official DYCD program-model information link on every local site card. Examples cover SYEP, Ladders for Leaders, COMPASS High/Explore, Beacon/Cornerstone, Learn & Earn, Work/Learn/Grow, and career training. Ambiguous site types explicitly say that their precise activities are unknown.
-- NYC Open Data exposes program types and locations **but no per-site daily schedule**. The automatic explanations use official program-model overviews, never pretend to describe a specific provider's verified activities. Confirm at the provider's site before registering.
-- Administrators can revise any curated listing's **What students actually do** field in Manage Programs. No additional SQL migration was required because the existing catalog stores a JSON program_data object.
-- No saved student notes, favorites, report permissions, or other Supabase records were changed.
-
-## Automatic neighborhood youth program discovery (October 2026)
-
-The same homepage opportunity search includes **optional location-based NYC youth program discovery**:
-
-- Students may choose their NYC borough, and the selection is retained only in browser localStorage.
-- On demand, the integrated location filter fetches the latest available NYC Department of Youth and Community Development program sites from the **official NYC Open Data** dataset [DYCD Program Sites](https://data.cityofnewyork.us/Social-Services/DYCD-Program-Sites/ebkm-iyma). Data changes on the city's schedule, not ours; no administrator SQL migration or search API key is required.
-- Only relevant youth, internship, workforce and high-school category program sites appear. Results are deduplicated and labeled with borough, ZIP code, provider, program type, source-data year and *application status not verified*. A full discoverDYCD directory link is provided.
-- These city **program-site** records are **not** automatically published as separately verified opportunities in the 41-entry curated catalog. Application deadlines, registration and eligibility are not inferred. Any official-data availability failure shows a link to discoverDYCD instead of fabricated results.
-- This automatic expansion currently works for **NYC only**, not all of the United States; additional regions would need vetted local public data sources.
-
-For code: `nearby-programs.js` is loaded by `index.html`. For privacy information, see `privacy.html`. This source has an annual update cadence and may include older current-year program sites.
+- Search, Interest, Grade and Program borough are available in the main directory; additional filters for status, cost, format, favorites and progress are under **More filters**.
+- Only individually reviewed catalog entries are displayed. Each has **View details** and **Save favorite**, descriptive activities, and an official organizer link.
+- Pagination uses real page links, nine cards per page, and a clear Page X of Y indicator. A separate static A–Z index links to all 120 entries.
+- Choosing a borough limits results to entries with a confidently established venue in that borough. It does **not** add more results or contact a city site dataset.
+- Students can keep working with their existing saves and synced notes. No Supabase schema changes were required.
+- Program descriptions are written as likely activities based on the organizer's information. Application availability must be checked with the organizer.
 
 ## Complete official-source review (October 18, 2026)
 
