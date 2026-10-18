@@ -77,11 +77,24 @@ In **Admin Dashboard → Student Reports**, each report has a **Delete report** 
 
 **One-time permission setup:** Run `supabase-report-deletion.sql` in the existing Supabase project's SQL Editor. This adds a Row Level Security `DELETE` policy that allows deletion **only by authorized admins** already recorded in `private.site_admins`. It does not delete records on its own and it does not grant ordinary students report deletion access. No further Supabase visits are needed for individual report deletions.
 
+## Complete official-source review (October 18, 2026)
+
+Reviewed the **organizer source for all 41 bundled programs** and recorded per-program `sourceStatus`, `sourceChecked` and `sourceNote` data. [Read the full 41-program audit](catalog-audit-2026-10-18.md).
+
+- **24** entries have dated or current-cycle details on an organizer page (some are already closed).
+- **13** are confirmed programs or resources but have no independently verified new intake date.
+- **4** have limited evidence of current eligibility or hiring dates (NYU CALI, MIT THINK and the two NYPL Ambassador programs).
+- **5** listings have an exact deadline date field; others are deliberately marked uncertain rather than given a speculative countdown.
+- Homepage visitors can now filter by confidence level, read clearer source/closing badges and open an evidence note on each program detail page. Fees, compensation, and attendance-mode filters now include structured official information where supported. 
+- Fixed a JavaScript variable shadowing error that could break the attendance-mode filter.
+
+**Important:** Reviewing an organizer's page is **not** proof that 2027 applications are open. Public Supabase overrides may supersede bundled program facts; audit newly published admin changes separately.
+
 ## October 18, 2026 public launch audit
 
 **Mobile:** Added small-screen layout safeguards to directory, detail pages, dashboard, admin tools, privacy page, and authentication modal; use a real mobile phone for a final visual check.
 
-**Catalog accuracy:** All 41 bundled listings passed ID/HTTPS-field/date-format checks. [Full catalog review queue](catalog-audit-2026-10-18.md) distinguishes nine listings checked against current organizer pages from other programs awaiting another cycle-specific source review. Four entries have confirmed exact upcoming date fields; the other 37 intentionally avoid unverified deadline countdowns. Corrected AMNH Science Alliance's official link, tuition and grades, specified the October 26 Congressional App Challenge cutoff time, and marked Technovation's inconsistent registration-date year as unconfirmed.
+**Catalog accuracy:** All 41 bundled listings passed ID/HTTPS-field/date-format checks. [Full source review](catalog-audit-2026-10-18.md) documents each organizer check and which 2027 application details remain unconfirmed. Five entries have exact deadline dates; the remaining 36 do not display invented countdowns. Updated AMNH Science Alliance tuition, MoMA Teens-in-Residence stipend, Princeton Journalism intake wording, and Technovation's newly clarified registration deadline.
 
 **Security:** Public-browser keys are expected; Supabase Row Level Security, not the hidden dashboard, is the access boundary. Static review found owner-only student notes and administrator-only policies for reports, suggestions and catalog management. Hardened public external links against unsafe URL schemes.
 
