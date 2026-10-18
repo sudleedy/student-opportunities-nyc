@@ -26,22 +26,22 @@ function badges(p){
  return '<div class="program-badges">'+labels.map(([c,t])=>'<span class="program-badge '+c+'">'+safe(t)+'</span>').join('')+'</div>'+
  '<p class="verified-line">'+safe(statusText)+date+link+'</p>';
 }
-function refreshOptions(){
- for(const [id,key] of [['category','type'],['subject','subject'],['location','location']]){
- const select=el(id),old=select.value;
- const options=[...new Set(items.map(p=>p[key]).filter(Boolean))].sort();
- select.innerHTML='<option value="">'+({category:'All program types',subject:'All subjects',location:'All locations'}[id])+'</option>';
- options.forEach(v=>select.add(new Option(v,v)));
- select.value=options.includes(old)?old:'';
- }
-}
 
-const cards=el('cards'),count=el('count'),safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-refreshOptions();
-const saved=el('savedOnly');saved.checked=new URLSearchParams(location.search).get('saved')==='1';
+const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fields=id=>document.getElementById(id);
+const cards=el('cards'),count=el('count'),saved=el('savedOnly');
 const PAGE_SIZE=9,pagers=[el('pagination-top'),el('pagination-bottom')];
-const requestedPage=Number(new URLSearchParams(location.search).get('page')||1);
-let page=Number.isSafeInteger(requestedPage)&&requestedPage>0?requestedPage:1;
+saved.checked=new URLSearchParams(location.search).get('saved')==='1';
+const requested=Number(new URLSearchParams(location.search).get('page')||1);
+let page=Number.isSafeInteger(requested)&&requested>0?requested:1;
+const cityItems=()=>window.NearbyCatalog?.getItems()||[];
+function refreshOptions(){
+ const select=el('subject'),previous=select.value;
+ const choices=[...new Set([...items,...cityItems()].map(p=>p.subject).filter(Boolean))].sort();
+ select.innerHTML='<option value="">All interests</option>';
+ choices.forEach(v=>select.add(new Option(v,v)));
+ select.value=choices.includes(previous)?previous:'';
+}
 function syncPage(){
  const url=new URL(location.href);
  if(page>1)url.searchParams.set('page',String(page));else url.searchParams.delete('page');
@@ -64,46 +64,102 @@ function renderPager(total){
   '<button type="button" data-page="'+(page+1)+'" '+(page===pages?'disabled ':'')+'aria-label="Next page">Next →</button>';
  pagers.forEach(p=>p.innerHTML=html);
 }
-function deadline(p){if(!p.deadlineISO)return [1,Infinity];let d=Date.parse(p.deadlineISO+'T23:59:59');return d>=Date.now()?[0,d]:[2,d]}
+function deadline(p){
+ if(p.kind==='city'||!p.deadlineISO)return [1,Infinity];
+ const value=Date.parse(p.deadlineISO+'T23:59:59');
+ return value>=Date.now()?[0,value]:[2,value];
+}
+function matches(p,q){
+ const city=p.kind==='city';
+ const grade=Number(el('grade').value);
+ const progress=store.get(p.id);
+ const source=el('source-filter').value;
+ if(source&&source!==(city?'city':'curated'))return false;
+ if(el('subject').value&&p.subject!==el('subject').value)return false;
+ // City records lack verified grades except for some specific program models:
+ // keep age-unknown sites visible but mark eligibility unconfirmed.
+ if(grade&&!city&&!(p.grades||[]).includes(grade))return false;
+ if(grade&&city&&p.grades?.length&&!p.grades.includes(grade))return false;
+ if(el('cost-filter').value&&fee(p)!==el('cost-filter').value)return false;
+ if(el('mode-filter').value&&mode(p)!==el('mode-filter').value)return false;
+ if(el('apply-filter').value&&state(p)!==el('apply-filter').value)return false;
+ if(saved.checked&&(city||!progress.favorited))return false;
+ if(el('progress').value&&(city||progress.application_status!==el('progress').value||!(progress.favorited||progress.notes||progress.application_status!=='Interested')))return false;
+ return !q||[p.title,p.org,p.summary,p.whatYouDo,p.subject,p.type,p.eligibility,p.location,p.borough,p.zipcode].join(' ').toLowerCase().includes(q);
+}
+function mixResults(found){
+ const order=el('sort').value;
+ if(order==='az')return found.sort((a,b)=>(a.title||'').localeCompare(b.title||''));
+ if(order==='deadline')return found.sort((a,b)=>deadline(a)[0]-deadline(b)[0]||deadline(a)[1]-deadline(b)[1]||(a.title||'').localeCompare(b.title||''));
+ // Curated entries remain prominent while local city programs are visible on page 1.
+ const curated=found.filter(p=>p.kind!=='city'),city=found.filter(p=>p.kind==='city'),out=[];
+ let c=0,n=0;
+ while(c<curated.length||n<city.length){
+  if(c<curated.length)out.push(curated[c++]);
+  if(c<curated.length)out.push(curated[c++]);
+  if(n<city.length)out.push(city[n++]);
+ }
+ return out;
+}
+function renderCity(p){
+ const name=safe(p.title),url=officialUrl(p),model=officialUrl({url:p.modelUrl});
+ const places=[p.borough,p.zipcode].filter(Boolean).map(safe).join(' · ');
+ const distance=Number.isFinite(p.distance)?' · '+p.distance.toFixed(1)+' miles away':'';
+ return '<article class="card city-card">'+
+  '<span class="pill">NYC-funded site</span><h3>'+name+'</h3>'+
+  '<p class="city-provenance">'+safe(p.type)+' · City data '+safe(p.date||'date unknown')+' · Applications unverified</p>'+
+  '<p class="activity-preview"><strong>What you might do:</strong> '+safe(p.whatYouDo)+'</p>'+
+  '<p class="city-audience"><strong>Usually for:</strong> '+safe(p.eligibility)+'</p>'+
+  '<p class="city-disclaimer">Examples of typical activities; this provider’s current schedule and eligibility have not been checked.</p>'+
+  '<p class="meta">📍 '+places+safe(distance)+' · '+safe(p.org)+'</p>'+
+  (model?'<a class="city-model" href="'+safe(model)+'" target="_blank" rel="noopener noreferrer">About this program type ↗</a>':'')+
+  '<div class="card-actions">'+(url?'<a class="open-detail" href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">Check NYC program directory ↗</a>':'<span>City directory unavailable</span>')+'</div></article>';
+}
+function renderCurated(p){
+ const isFav=Boolean(store.get(p.id).favorited);
+ return '<article class="card"><span class="pill">'+safe(p.type)+'</span><h3>'+safe(p.title)+'</h3>'+badges(p)+
+ '<p class="activity-preview"><strong>What you’ll do:</strong> '+safe(p.whatYouDo||p.summary)+'</p>'+
+ '<p class="deadline-line">📅 '+safe(p.deadline)+'</p><div class="meta">'+safe(p.org)+' · '+safe(p.location)+'</div>'+
+ '<div class="card-actions"><a class="open-detail" href="program.html?id='+encodeURIComponent(p.id)+'">View details →</a>'+
+ '<button class="favorite-button" type="button" data-id="'+safe(p.id)+'" aria-pressed="'+isFav+'" aria-label="'+(isFav?'Remove favorite':'Save favorite')+'">'+(isFav?'♥':'♡')+'</button></div></article>';
+}
 function render(){
- const q=el('search').value.trim().toLowerCase();
- let results=items.filter(o=>
- (!el('category').value||o.type===el('category').value)&&
- (!el('subject').value||o.subject===el('subject').value)&&
- (!el('location').value||o.location===el('location').value)&&
- (!el('grade').value||(o.grades||[]).includes(Number(el('grade').value)))&&
- (!el('cost-filter').value||fee(o)===el('cost-filter').value)&&
- (!el('pay-filter').value||pay(o)===el('pay-filter').value)&&
- (!el('mode-filter').value||mode(o)===el('mode-filter').value)&&
- (!el('apply-filter').value||state(o)===el('apply-filter').value)&&
- (!el('source-filter').value||o.sourceStatus===el('source-filter').value)&&
- (!saved.checked||store.get(o.id).favorited)&&
- (!el('progress').value||(store.get(o.id).application_status===el('progress').value && (store.get(o.id).favorited||store.get(o.id).notes||store.get(o.id).application_status!=='Interested')))&&
- (!q||[o.title,o.org,o.summary,o.subject,o.eligibility].join(' ').toLowerCase().includes(q)));
- const sortMode=el('sort').value;
- if(sortMode==='deadline')results.sort((a,b)=>deadline(a)[0]-deadline(b)[0]||deadline(a)[1]-deadline(b)[1]||a.title.localeCompare(b.title));
- if(sortMode==='az')results.sort((a,b)=>a.title.localeCompare(b.title));
+ const query=el('search').value.trim().toLowerCase(),results=mixResults([...items,...cityItems()].filter(p=>matches(p,query)));
  const pages=Math.max(1,Math.ceil(results.length/PAGE_SIZE));
  if(page>pages){page=pages;syncPage()}
- const visibleResults=results.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
- count.textContent=results.length+' result'+(results.length===1?'':'s');
- cards.innerHTML=results.length?visibleResults.map(o=>{
- const isFav=Boolean(store.get(o.id).favorited);
- return '<article class="card"><span class="pill">'+safe(o.type)+'</span><h3>'+safe(o.title)+'</h3>'+badges(o)+'<p class="activity-preview"><strong>What you’ll do:</strong> '+safe(o.whatYouDo||o.summary)+'</p><p class="deadline-line">📅 '+safe(o.deadline)+'</p><div class="meta">'+safe(o.org)+' · '+safe(o.location)+'</div><div class="card-actions"><a class="open-detail" href="program.html?id='+encodeURIComponent(o.id)+'">View details →</a><button class="favorite-button" type="button" data-id="'+safe(o.id)+'" aria-pressed="'+isFav+'" aria-label="'+(isFav?'Remove favorite':'Save favorite')+'">'+(isFav?'♥':'♡')+'</button></div></article>'}).join(''):'<div class="empty">No matches found. Try different filters or save a program.</div>';
+ const shown=results.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
+ const cityCount=results.filter(x=>x.kind==='city').length;
+ count.textContent=results.length+' result'+(results.length===1?'':'s')+(cityCount?' · '+cityCount+' city sites':'');
+ cards.innerHTML=shown.length?shown.map(p=>p.kind==='city'?renderCity(p):renderCurated(p)).join(''):
+ '<div class="empty">No matching programs. Try another interest or borough, or clear your filters.</div>';
  renderPager(results.length);
 }
-cards.addEventListener('click',e=>{const b=e.target.closest('button[data-id]');if(b)store.save(b.dataset.id,{favorited:!store.get(b.dataset.id).favorited})});
-['search','category','subject','location','grade','sort','progress','cost-filter','pay-filter','mode-filter','apply-filter','source-filter'].forEach(id=>el(id).addEventListener('input',()=>{page=1;syncPage();render()}));
+cards.addEventListener('click',e=>{
+ const button=e.target.closest('button[data-id]');
+ if(button)store.save(button.dataset.id,{favorited:!store.get(button.dataset.id).favorited});
+});
+const resetPage=()=>{page=1;syncPage();render()};
+['search','subject','grade','sort','progress','cost-filter','mode-filter','apply-filter','source-filter'].forEach(id=>el(id).addEventListener('input',resetPage));
 saved.addEventListener('change',()=>{
- const u=new URL(location.href);
- saved.checked?u.searchParams.set('saved','1'):u.searchParams.delete('saved');
- page=1;history.replaceState({},'',u.pathname+u.search+u.hash);syncPage();render();
+ const url=new URL(location.href);
+ if(saved.checked)url.searchParams.set('saved','1');else url.searchParams.delete('saved');
+ history.replaceState({},'',url.pathname+url.search+url.hash);
+ resetPage();
+});
+el('clear-filters').addEventListener('click',()=>{
+ ['search','subject','grade','sort','progress','cost-filter','mode-filter','apply-filter','source-filter'].forEach(id=>el(id).value='');
+ saved.checked=false;
+ const url=new URL(location.href);url.searchParams.delete('saved');
+ history.replaceState({},'',url.pathname+url.search+url.hash);
+ const borough=el('nearby-borough');
+ if(borough.value){borough.value='';borough.dispatchEvent(new Event('change'))}
+ resetPage();
 });
 pagers.forEach(p=>p.addEventListener('click',e=>{
  const button=e.target.closest('button[data-page]');
  if(!button||button.disabled)return;
- const next=Number(button.dataset.page);
- if(!Number.isSafeInteger(next)||next<1)return;
+ const next=Number(button.dataset.page),pages=Math.ceil(Number(count.textContent.match(/^\d+/)?.[0]||0)/PAGE_SIZE);
+ if(!Number.isSafeInteger(next)||next<1||next>pages)return;
  page=next;syncPage();render();
  el('opportunities').scrollIntoView({behavior:'smooth',block:'start'});
 }));
@@ -111,7 +167,8 @@ const backTop=el('back-to-top');
 const updateTop=()=>backTop.classList.toggle('visible',window.scrollY>400);
 window.addEventListener('scroll',updateTop,{passive:true});
 backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-document.addEventListener('sob-catalog-ready',()=>{refreshOptions();page=1;render()});
+document.addEventListener('sob-nearby-updated',()=>{refreshOptions();resetPage()});
+document.addEventListener('sob-catalog-ready',()=>{refreshOptions();resetPage()});
 document.addEventListener('sob-programs-updated',()=>{refreshOptions();render()});
-store.watch(render);el('year').textContent=new Date().getFullYear();render();updateTop();
+store.watch(render);el('year').textContent=new Date().getFullYear();refreshOptions();render();updateTop();
 })();
