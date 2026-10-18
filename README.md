@@ -1,7 +1,7 @@
-# Student Opportunity Beacon — site setup
+# Student Opportunities NYC — site setup
 
 The GitHub Pages website is hosted at:
-https://sudleedy.github.io/student-opportunity-beacon/
+https://sudleedy.github.io/student-opportunities-nyc/
 
 ## Features already working without an account
 - Save/remove favorites (heart icon on cards or program pages).
@@ -17,9 +17,9 @@ https://sudleedy.github.io/student-opportunity-beacon/
 1. Create a project at https://supabase.com/ and open its SQL Editor.
 2. Review and run the statements in `supabase-setup.sql`. They create a `student_saves` table and enable per-user Row Level Security so students cannot read each other's saves.
 3. Under **Authentication → URL Configuration**, set the Site URL to:
-   `https://sudleedy.github.io/student-opportunity-beacon/`
+   `https://sudleedy.github.io/student-opportunities-nyc/`
    Add this allowed Redirect URL:
-   `https://sudleedy.github.io/student-opportunity-beacon/**`
+   `https://sudleedy.github.io/student-opportunities-nyc/**`
 4. Under **Authentication → Providers**, check that Email sign-in is enabled. Passwordless email links can be rate-limited by Supabase's built-in mail service; configure an approved sending service before a large launch.
 5. From your Supabase project, copy the **Project URL** and the public **publishable / anon key**. Put them in `auth-config.js`:
    ```js
