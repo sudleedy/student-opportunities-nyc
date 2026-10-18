@@ -1,0 +1,115 @@
+name: Daily program deadline monitor
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/daily_deadline_monitor.py"
+      - "tests/test_daily_deadline_monitor.py"
+      - ".github/workflows/daily-program-deadlines.yml"
+  schedule:
+    # Daily 13:17 UTC: 9:17 a.m. EDT / 8:17 a.m. EST. GitHub may delay starts.
+    - cron: "17 13 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Inspect source pages without committing any updates"
+        required: false
+        type: boolean
+        default: false
+      max_programs:
+        description: "Optional number of sources to inspect (0 = all; limits never publish)"
+        required: false
+        type: number
+        default: 0
+
+permissions:
+  contents: read
+
+concurrency:
+  group: daily-program-deadlines
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run offline safety checks
+        run: python3 -m unittest discover -s tests -p 'test_daily_deadline_monitor.py' -v
+
+  monitor:
+    if: github.event_name != 'push'
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pages: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Fetch official program pages and verify deadlines
+        env:
+          INPUT_DRY_RUN: ${{ inputs.dry_run }}
+          INPUT_MAX_PROGRAMS: ${{ inputs.max_programs }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          FLAGS=()
+          if [ "${INPUT_DRY_RUN:-false}" = "true" ]; then FLAGS+=(--dry-run); fi
+          if [ "${INPUT_MAX_PROGRAMS:-0}" != "0" ]; then FLAGS+=(--max-programs "${INPUT_MAX_PROGRAMS}"); fi
+          python3 scripts/daily_deadline_monitor.py "${FLAGS[@]}" --report deadline-monitor-report.json
+          python3 scripts/catalog_audit.py
+          python3 scripts/check_program_directory.py
+      - name: Summarize results
+        if: always()
+        shell: bash
+        run: |
+          if [ -f deadline-monitor-report.json ]; then
+            python3 - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          r=json.load(open("deadline-monitor-report.json",encoding="utf-8"))
+          print("## Daily deadline monitor")
+          print("Checked **{} of {}** official pages. **{}** were unavailable or blocked.".format(r["checked"],r["catalog_total"],r["unavailable"]))
+          print("- Confirmed deadline changes: **{}**".format(len(r["deadline_changes"])))
+          print("- Dates waiting for a second daily observation: **{}**".format(len(r["provisional"])))
+          print("- Past-deadline labels corrected: **{}**".format(len(r["past_deadlines_flagged"])))
+          print("- Mode: {}".format(r["mode"]))
+          print("\\nDownload the report artifact for per-program results. A deadline is never invented or marked open based on a date alone.")
+          PY
+          fi
+      - name: Upload per-program results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-program-deadline-results
+          path: deadline-monitor-report.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Commit confirmed changes and trigger a GitHub Pages rebuild
+        if: ${{ !inputs.dry_run && inputs.max_programs == 0 }}
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git add programs-data.js data/deadline-monitor-state.json
+          if git diff --cached --quiet; then
+            echo "No confirmed data changes or expired statuses today." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Auto-check program application deadlines"
+          git push origin HEAD:main
+          # Commits made using GITHUB_TOKEN do not trigger normal push workflows.
+          # Pages uses the built-in branch build on this repo, so request a build.
+          if gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds"; then
+            echo "Committed verified changes and requested a Pages rebuild." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "::warning::Data committed, but GitHub Pages rebuild request was not accepted. Check Pages settings."
+            echo "Data committed but Pages rebuild request failed. The next normal GitHub Pages deployment will include it." >> "$GITHUB_STEP_SUMMARY"
+          fi
