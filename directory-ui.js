@@ -152,7 +152,7 @@ function renderPager(total){
   links.push(link(n,String(n),page===n?'Current page '+n+' of '+pages:'Go to page '+n));
  }
  const html='<span class="pagination-position" aria-live="polite">Page <strong>'+page+'</strong> of <strong>'+pages+'</strong></span>'+
-  '<span class="pagination-summary">Showing '+first+'–'+last+' of '+total+' programs</span>'+
+  '<span class="pagination-summary">Showing '+first+' to '+last+' of '+total+' programs</span>'+
   link(page-1,'← Previous','Previous page')+
   links.join('')+
   link(page+1,'Next →','Next page');
