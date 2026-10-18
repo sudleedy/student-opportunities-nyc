@@ -23,6 +23,7 @@
 <header><div class="nav"><a class="brand" href="./" aria-label="Student Opportunities NYC home"><img src="assets/student_opportunities_nyc_icon.svg?v=1" alt="Graduation cap with upward arrow" class="brand-icon"><span class="brand-copy"><span class="brand-name">Student<strong>Opportunities <em>NYC</em></strong></span><span class="brand-tagline">DISCOVER WHAT’S NEXT</span></span></a><a class="back" href="./#opportunities">← All opportunities</a></div></header>
 <main class="container"><a class="return-link" id="return-to-directory" href="./#opportunities">← Back to Home</a><div id="page"><p>Loading program information…</p></div></main><footer>© <span id="year"></span> Student Opportunities NYC · Independent student project · <a href="./privacy.html">Privacy &amp; Data</a></footer>
 <script src="programs-data.js"></script><script>
+const officialUrl=raw=>{try{const u=new URL(raw);return u.protocol==='https:'?u.href:null}catch{return null}};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const programs=window.PROGRAMS||[],id=new URLSearchParams(location.search).get('id');
 let program=programs.find(o=>o.id===id);
@@ -40,7 +41,7 @@ else {
  '<section class="panel"><h2>Eligibility and important details</h2><div class="info">'+field('Who can apply',program.eligibility)+field('Application deadline',program.deadline)+field('Application status',program.status)+field('Cost or compensation',program.cost)+field('Location',program.location)+field('Time commitment',program.commitment)+'</div><p class="small" id="sob-deadline-note">'+esc(program.deadlineNote||'Verify the current application cutoff on the official program website.')+'</p></section>'+
  '<section class="panel"><h2>How to prepare</h2><p>'+esc(program.preparation||'Check the official website for application steps.')+'</p></section>'+
  '<section class="panel"><h2>Before you apply</h2><div class="warning">Program information can change. Always verify eligibility, dates, application status and any fees on the official organizer website. Student Opportunities NYC is independent and is not affiliated with the organization listed here.</div><p class="small">Information reviewed: <span id="sob-reviewed">'+esc(program.verified||'Date not recorded')+'</span>. This is not a live application-status check.</p></section></div>'+
- '<aside><section class="panel"><h2>Apply or learn more</h2><p style="margin-bottom:17px">'+esc(program.applicationNote||'Go to the organizer’s site for current application details.')+'</p><a class="button" target="_blank" rel="noopener noreferrer" href="'+esc(program.url)+'">Official program website ↗</a></section>'+
+ '<aside><section class="panel"><h2>Apply or learn more</h2><p id="sob-program-application-note" style="margin-bottom:17px">'+esc(program.applicationNote||'Go to the organizer’s site for current application details.')+'</p>'+(officialUrl(program.url)?'<a id="sob-program-official-link" class="button" target="_blank" rel="noopener noreferrer" href="'+esc(officialUrl(program.url))+'">Official program website ↗</a>':'<p id="sob-program-invalid-link" class="warning">Official link needs verification before opening.</p>')+'</section>'+
  '<section class="panel"><h2>Similar opportunities</h2><div class="related">'+(related.length?related.map(o=>'<a href="program.html?id='+encodeURIComponent(o.id)+'">'+esc(o.title)+'<span>'+esc(o.org)+'</span></a>').join(''):'<p class="small">Explore more programs in the directory.</p>')+'</div><p style="margin-top:16px"><a href="./#opportunities">Browse all programs →</a></p></section></aside></div>';
 }
 }
@@ -53,7 +54,28 @@ document.addEventListener('sob-catalog-ready',()=>{
  }
 });
 document.addEventListener('sob-programs-updated',()=>{
- if(!program)return;
+ const newest=programs.find(p=>p.id===id)||null;
+ if(!newest){
+  program=null;renderProgram();return;
+ }
+ if(!program){program=newest;renderProgram();document.dispatchEvent(new Event('sob-detail-ready'));return}
+ program=newest;
+ document.title=program.title+' | Student Opportunities NYC';
+ const headline=root.querySelector('.hero h1');
+ if(headline)headline.textContent=program.title;
+ const crumb=root.querySelector('.crumb');
+ if(crumb)crumb.lastChild.textContent=' / '+program.title;
+ const pill=root.querySelector('.hero .pill');if(pill)pill.textContent=program.type;
+ const subject=root.querySelector('.hero .tag');if(subject)subject.textContent=program.subject||'Opportunities';
+ const meta=root.querySelector('.hero p strong');
+ if(meta&&meta.parentElement)meta.parentElement.textContent=(program.org||'')+' · '+(program.location||'');
+ const intro=root.querySelector('.panel p#sob-program-application-note');
+ if(intro)intro.textContent=program.applicationNote||'Go to the organizer’s site for current application details.';
+ const targetLink=document.getElementById('sob-program-official-link');
+ if(targetLink&&officialUrl(program.url))targetLink.href=officialUrl(program.url);
+ else if(targetLink&&!officialUrl(program.url)){targetLink.removeAttribute('href');targetLink.textContent='Official link needs verification';}
+ const about=root.querySelector('.layout > div > .panel:nth-of-type(3) p');
+ if(about)about.textContent=program.preparation||'Check the official website for application steps.';
  const summary=document.getElementById('sob-program-summary');
  if(summary)summary.textContent=program.summary;
  const details=document.getElementById('sob-program-details');
@@ -61,6 +83,8 @@ document.addEventListener('sob-programs-updated',()=>{
  const entries=root.querySelectorAll('.info > div');
  if(entries[1])entries[1].querySelector('span').textContent=program.deadline;
  if(entries[2])entries[2].querySelector('span').textContent=program.status;
+ const values=[program.eligibility,program.deadline,program.status,program.cost,program.location,program.commitment];
+ entries.forEach((entry,i)=>{const span=entry.querySelector('span');if(span)span.textContent=values[i]||'Not confirmed'});
  const note=document.getElementById('sob-deadline-note');
  if(note)note.textContent=program.deadlineNote||'Verify the current application cutoff on the official program website.';
  const reviewed=document.getElementById('sob-reviewed');
