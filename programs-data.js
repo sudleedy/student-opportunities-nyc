@@ -29,7 +29,8 @@ window.PROGRAMS = [
     "sourceNote": "2027 Design Hive accepts juniors and seniors in NYC area; apply by October 25, 2026 at 11:59 p.m. $1,250 stipend.",
     "applicationState": "open",
     "payCategory": "paid",
-    "deliveryMode": "in-person"
+    "deliveryMode": "in-person",
+    "whatYouDo": "Meet weekly with museum designers, brainstorm ideas inspired by exhibitions, build creative projects with other teens, and share your designs for feedback."
   },
   {
     "id": "brooklyn-botanic-garden-apprentice",
@@ -62,7 +63,8 @@ window.PROGRAMS = [
     "applicationState": "open",
     "costCategory": "free",
     "payCategory": "paid",
-    "deliveryMode": "in-person"
+    "deliveryMode": "in-person",
+    "whatYouDo": "Help grow and care for plants, learn about urban gardening, and assist with activities that introduce younger visitors to nature and sustainability."
   },
   {
     "id": "moma-open-art-space",
@@ -90,7 +92,8 @@ window.PROGRAMS = [
     "sourceNote": "Free Thursday 4–6 p.m. drop-in for high-school-age students; no internship application required.",
     "applicationState": "unknown",
     "costCategory": "free",
-    "deliveryMode": "in-person"
+    "deliveryMode": "in-person",
+    "whatYouDo": "Drop in for hands-on art-making, try new materials, talk about artwork with peers, and take part in occasional creative activities or screenings."
   },
   {
     "title": "Rockefeller University Jumpstart",
@@ -120,7 +123,8 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "sourceNote": "Jumpstart 2027 applications open; due January 4, 2027 at 5 p.m. ET including recommendation. NYC juniors/seniors age 16+.",
     "applicationState": "unknown",
-    "deliveryMode": "in-person"
+    "deliveryMode": "in-person",
+    "whatYouDo": "Practice laboratory and scientific-research skills after school, then join a mentored summer research experience involving real scientific questions and experiments."
   },
   {
     "title": "Science Research Mentoring Program (SRMP)",
@@ -151,7 +155,8 @@ window.PROGRAMS = [
     "sourceNote": "AMNH states Class of 2028 applications expected winter 2027, but no exact date is posted.",
     "applicationState": "upcoming",
     "payCategory": "paid",
-    "deliveryMode": "in-person"
+    "deliveryMode": "in-person",
+    "whatYouDo": "Work with a museum scientist on a research question, learn to collect and interpret evidence, and practice explaining your results to others."
   },
   {
     "title": "CUNY STEM Research Academy",
@@ -182,7 +187,8 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "sourceNote": "CUNY confirms STEM Research Academy for primarily grades 10–11 NYCPS students; select ninth graders considered. Dates differ by campus.",
     "applicationState": "unknown",
-    "payCategory": "paid"
+    "payCategory": "paid",
+    "whatYouDo": "Take a STEM research preparation course and, depending on your CUNY campus and placement, conduct a supervised investigation with researchers."
   },
   {
     "title": "Summer Youth Employment Program (SYEP)",
@@ -209,7 +215,8 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "sourceNote": "NYC DYCD confirms 2026 SYEP submissions closed March 13; next summer application dates not published.",
     "applicationState": "closed",
-    "payCategory": "paid"
+    "payCategory": "paid",
+    "whatYouDo": "Complete paid career-exploration projects or work at a summer job placement; your daily tasks depend on your age and assigned organization."
   },
   {
     "title": "NYC Ladders for Leaders",
@@ -236,7 +243,8 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "sourceNote": "DYCD confirms paid summer internships and career training; the page has no current application deadline.",
     "applicationState": "unknown",
-    "payCategory": "paid"
+    "payCategory": "paid",
+    "whatYouDo": "Prepare a résumé, learn interview and workplace skills, interview with employers, and potentially complete a paid professional summer internship."
   },
   {
     "title": "AMNH Science Communication Internship (SCIP)",
@@ -266,7 +274,8 @@ window.PROGRAMS = [
     "sourceNote": "AMNH still displays the March 1, 2026 deadline for its paid 2026 SCIP cohort; future intake not announced.",
     "applicationState": "closed",
     "payCategory": "paid",
-    "deliveryMode": "in-person"
+    "deliveryMode": "in-person",
+    "whatYouDo": "Learn how to explain science clearly, practice speaking with different audiences, and take part in museum education or visitor-engagement activities."
   },
   {
     "title": "NYU Precollege",
@@ -297,7 +306,8 @@ window.PROGRAMS = [
     "sourceNote": "NYU confirms Precollege for rising juniors/seniors, but the landing page provides no 2027 deadline. Check cost/course details.",
     "applicationState": "unknown",
     "costCategory": "fee",
-    "deliveryMode": "in-person"
+    "deliveryMode": "in-person",
+    "whatYouDo": "Enroll in an NYU course, attend classes, complete college-level readings or assignments, and explore academic subjects with university instructors."
   },
   {
     "title": "NYU College Access Leadership Institute",
@@ -327,7 +337,8 @@ window.PROGRAMS = [
     "sourceNote": "NYU's overview article explains the free summer program for rising seniors, but 2027 application dates are not confirmed; primary article blocked live extraction.",
     "applicationState": "unknown",
     "costCategory": "free",
-    "deliveryMode": "in-person"
+    "deliveryMode": "in-person",
+    "whatYouDo": "Attend college-application workshops, develop essays, learn about financial aid and admissions, and plan your next steps with mentors."
   },
   {
     "title": "NYC Service in Schools",
@@ -353,7 +364,8 @@ window.PROGRAMS = [
     "sourceStatus": "program",
     "sourceChecked": "2026-10-18",
     "sourceNote": "NYC Public Schools describes Service in Schools resources; participation depends on each school's projects, not one application.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "whatYouDo": "Join a service project arranged by your school, plan activities with classmates or community partners, and contribute to a local need."
   },
   {
     "title": "AMNH Science Alliance",
@@ -386,7 +398,8 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "AMNH lists 2026–27 paid Science Alliance courses for grades 9–12, at $1,000 per course with tuition assistance and session availability.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "whatYouDo": "Choose a museum science course and do instructor-led science activities on topics such as genetics, astrophysics or conservation; activities vary by class."
   },
   {
     "title": "NYU High School Art & Design Programs",
@@ -412,7 +425,8 @@ window.PROGRAMS = [
     "sourceStatus": "program",
     "sourceChecked": "2026-10-18",
     "sourceNote": "NYU Steinhardt has different summer art/design programs and enrollment rules; check the individual course.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "whatYouDo": "Choose an arts, design, music or media course and practice creative techniques, develop projects and get instructor feedback."
   },
   {
     "title": "Futures and Options Internship Program",
@@ -443,7 +457,8 @@ window.PROGRAMS = [
     "sourceNote": "Futures and Options explicitly marks its internship application closed; next opening not given.",
     "applicationState": "closed",
     "payCategory": "paid",
-    "deliveryMode": "in-person"
+    "deliveryMode": "in-person",
+    "whatYouDo": "Attend career-readiness workshops, prepare for interviews, and potentially work with an NYC employer on tasks assigned to your internship placement."
   },
   {
     "title": "Futures and Options Urban Leadership Fellows",
@@ -473,7 +488,8 @@ window.PROGRAMS = [
     "sourceNote": "Futures and Options states the six-week paid Urban Leadership Fellows program is closed, and its 2026 form had a February 25 deadline.",
     "applicationState": "closed",
     "payCategory": "paid",
-    "deliveryMode": "in-person"
+    "deliveryMode": "in-person",
+    "whatYouDo": "Learn about public finance, meet professionals, explore how city projects are funded, and practice workplace and communication skills."
   },
   {
     "title": "The Met High School Internships",
@@ -504,7 +520,8 @@ window.PROGRAMS = [
     "sourceNote": "The Met confirms spring and summer high-school internships but currently lists different cohorts; use the official specific session page.",
     "applicationState": "unknown",
     "payCategory": "paid",
-    "deliveryMode": "in-person"
+    "deliveryMode": "in-person",
+    "whatYouDo": "Learn how museum departments operate, meet staff, complete assigned internship projects and explore careers in exhibitions, education or communications."
   },
   {
     "title": "Whitney Youth Insights Artists",
@@ -537,7 +554,8 @@ window.PROGRAMS = [
     "sourceNote": "Whitney's most recent Youth Insights Artists application deadline was September 9, 2026; next semester not published.",
     "applicationState": "closed",
     "costCategory": "free",
-    "deliveryMode": "in-person"
+    "deliveryMode": "in-person",
+    "whatYouDo": "Create art with guidance from working artists, discuss contemporary works, experiment with techniques, and collaborate with other teen artists."
   },
   {
     "title": "Scholastic Art & Writing Awards",
@@ -571,7 +589,8 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "sourceNote": "The 2027 Scholastic awards accept fall entries, with regional closing dates starting in December; check region-specific cutoff.",
     "applicationState": "unknown",
-    "costCategory": "fee"
+    "costCategory": "fee",
+    "whatYouDo": "Select your original artwork or writing, prepare submissions for the appropriate categories and enter them for regional award judging."
   },
   {
     "title": "YoungArts National Arts Competition",
@@ -602,7 +621,8 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "sourceNote": "YoungArts' 2027 cycle closed October 6, 2026 at 8 p.m. ET; 2028 applications open summer 2027.",
     "applicationState": "closed",
-    "costCategory": "fee"
+    "costCategory": "fee",
+    "whatYouDo": "Prepare and submit a portfolio, recording or performance sample that demonstrates your original artistic work in your chosen discipline."
   },
   {
     "title": "WNYC Radio Rookies",
@@ -635,7 +655,8 @@ window.PROGRAMS = [
     "sourceNote": "WNYC still posts Fall 2026 Radio Rookies recruitment for NYC public/charter students in grades 9–12; the form deadline is not published.",
     "applicationState": "unknown",
     "payCategory": "paid",
-    "deliveryMode": "in-person"
+    "deliveryMode": "in-person",
+    "whatYouDo": "Pitch a story about life in NYC, interview people, record audio, edit clips and develop a reported story for a listening audience."
   },
   {
     "title": "Princeton Summer Journalism Program",
@@ -664,7 +685,8 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "sourceNote": "Princeton states 2027–28 application opens mid-November 2026 and closes the last Monday in January; juniors only.",
     "applicationState": "upcoming",
-    "deliveryMode": "hybrid"
+    "deliveryMode": "hybrid",
+    "whatYouDo": "Practice interviewing and reporting, write and edit stories, learn journalism ethics, and receive help navigating college applications."
   },
   {
     "title": "Girls Who Code Pathways",
@@ -697,7 +719,8 @@ window.PROGRAMS = [
     "sourceNote": "Girls Who Code's free virtual Pathways program has an Apply Now link; grade 9–12 girls/nonbinary students; self-paced projects.",
     "applicationState": "open",
     "deliveryMode": "remote",
-    "costCategory": "free"
+    "costCategory": "free",
+    "whatYouDo": "Work through online coding lessons and build small technology projects in areas such as websites, games, AI or cybersecurity."
   },
   {
     "title": "Technovation Challenge",
@@ -724,7 +747,8 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "sourceNote": "2027 Technovation team registration closes March 11, 2027 at 23:59 UTC; final project submission May 5, 2027 at 5 p.m. PDT.",
     "applicationState": "open",
-    "costCategory": "free"
+    "costCategory": "free",
+    "whatYouDo": "Identify a community problem, work with teammates to build an app or AI solution, and prepare a pitch explaining how it works."
   },
   {
     "title": "Congressional App Challenge",
@@ -751,7 +775,8 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "sourceNote": "Congressional App Challenge 2026 closes October 26; check district participation and exact local cutoff with the official rules.",
     "applicationState": "open",
-    "costCategory": "free"
+    "costCategory": "free",
+    "whatYouDo": "Design and program an original app, test it, explain its purpose and submit it to the competition in a participating congressional district."
   },
   {
     "title": "Diamond Challenge",
@@ -777,7 +802,8 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "Diamond Challenge 2027 submission deadline is January 14 at 5 p.m. Eastern; teams of 2–4 students with adult advisor.",
-    "applicationState": "open"
+    "applicationState": "open",
+    "whatYouDo": "Find a business or social problem, research possible solutions, create a venture concept and present a pitch with your team."
   },
   {
     "title": "NYC Student Advisory Councils",
@@ -803,7 +829,8 @@ window.PROGRAMS = [
     "sourceStatus": "program",
     "sourceChecked": "2026-10-18",
     "sourceNote": "NYCPS describes advisory councils; each local council or school has a separate selection process.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "whatYouDo": "Attend student leadership meetings, discuss school concerns, gather student viewpoints and suggest improvements to decision-makers."
   },
   {
     "title": "Mayor's Youth Leadership Council",
@@ -829,7 +856,8 @@ window.PROGRAMS = [
     "sourceStatus": "program",
     "sourceChecked": "2026-10-18",
     "sourceNote": "NYC government describes the Mayor's Youth Leadership Council, but no current recruitment date appears on its overview.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "whatYouDo": "Work with other teens to identify local issues, plan civic or neighborhood projects, and share recommendations with community leaders."
   },
   {
     "title": "NYC Parks Ranger Conservation Corps",
@@ -856,7 +884,8 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "sourceNote": "NYC government confirms Ranger Conservation Corps high-school conservation internships, but the linked internship directory does not publish a current cohort application date.",
     "applicationState": "unknown",
-    "deliveryMode": "in-person"
+    "deliveryMode": "in-person",
+    "whatYouDo": "Explore urban ecosystems and conservation work, learn from park staff and potentially assist with supervised environmental activities; placements vary."
   },
   {
     "id": "nyu-tandon-arise",
@@ -884,7 +913,8 @@ window.PROGRAMS = [
     "sourceNote": "NYU ARISE website still gives the February 27, 2026 closing date from the 2026 cycle; 2027 cycle is not posted.",
     "applicationState": "closed",
     "costCategory": "free",
-    "deliveryMode": "hybrid"
+    "deliveryMode": "hybrid",
+    "whatYouDo": "Join a university research lab or computing project, learn research methods, collect or analyze data and share findings with your mentors."
   },
   {
     "id": "columbia-science-honors-program",
@@ -916,7 +946,8 @@ window.PROGRAMS = [
     "sourceNote": "Columbia lists 2026–27 Saturday classes for grades 10–12, but a new admissions deadline is not published.",
     "applicationState": "unknown",
     "costCategory": "free",
-    "deliveryMode": "in-person"
+    "deliveryMode": "in-person",
+    "whatYouDo": "Attend challenging Saturday science, mathematics or computing classes, study advanced topics and complete instructor-assigned academic work."
   },
   {
     "id": "cshl-urban-barcode-research-program",
@@ -948,7 +979,8 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "sourceNote": "CSHL DNA Learning Center confirms Urban Barcode Research Program grades 9–12; applications generally in spring; next exact date not posted.",
     "applicationState": "unknown",
-    "deliveryMode": "in-person"
+    "deliveryMode": "in-person",
+    "whatYouDo": "Learn DNA-barcoding methods, investigate NYC biodiversity, interpret genetic data and work with scientists to develop a research project."
   },
   {
     "id": "cshl-urban-barcode-project",
@@ -979,7 +1011,8 @@ window.PROGRAMS = [
     "sourceStatus": "program",
     "sourceChecked": "2026-10-18",
     "sourceNote": "CSHL confirms Urban Barcode Project for teams of 2–4 high-school students with trained mentors; upcoming competition dates not specified.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "whatYouDo": "Form a team with a teacher mentor, choose a biodiversity question, analyze DNA-barcode results and communicate what you discover."
   },
   {
     "id": "moma-teens-in-residence",
@@ -1012,7 +1045,8 @@ window.PROGRAMS = [
     "applicationState": "closed",
     "costCategory": "free",
     "payCategory": "paid",
-    "deliveryMode": "in-person"
+    "deliveryMode": "in-person",
+    "whatYouDo": "Meet artists and MoMA staff, create collaborative art or public-engagement projects, and help shape activities designed for museum visitors."
   },
   {
     "id": "moma-in-the-making",
@@ -1040,7 +1074,8 @@ window.PROGRAMS = [
     "sourceNote": "MoMA lists In the Making summer arts courses as free, with no upcoming event or 2027 application window.",
     "applicationState": "closed",
     "costCategory": "free",
-    "deliveryMode": "in-person"
+    "deliveryMode": "in-person",
+    "whatYouDo": "Attend studio-art sessions, experiment with materials, create individual or group artwork and share creative work with fellow participants."
   },
   {
     "id": "cooper-hewitt-teen-drop-in",
@@ -1068,7 +1103,8 @@ window.PROGRAMS = [
     "sourceNote": "Cooper Hewitt confirms free monthly teen drop-in workshops; individual event dates and reservations vary.",
     "applicationState": "unknown",
     "costCategory": "free",
-    "deliveryMode": "in-person"
+    "deliveryMode": "in-person",
+    "whatYouDo": "Visit a teen design workshop, experiment with creative tools and materials, and try design challenges led by museum educators or designers."
   },
   {
     "id": "nyas-junior-academy",
@@ -1096,7 +1132,8 @@ window.PROGRAMS = [
     "sourceNote": "NYAS states Junior Academy Fall 2026 recruitment closed July 9, 2026; future recruitment dates not confirmed.",
     "applicationState": "closed",
     "deliveryMode": "remote",
-    "costCategory": "free"
+    "costCategory": "free",
+    "whatYouDo": "Join a virtual international STEM team, research a real-world challenge, develop a possible solution and present it for feedback."
   },
   {
     "id": "msk-hopp-summer-student-program",
@@ -1122,7 +1159,8 @@ window.PROGRAMS = [
     "sourceStatus": "program",
     "sourceChecked": "2026-10-18",
     "sourceNote": "MSK HOPP confirms high-school Summer Student Program cancer research placements; no current 2027 deadline on this overview.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "whatYouDo": "Spend time in a cancer research laboratory, work on a supervised scientific project, attend research talks and explain your findings."
   },
   {
     "id": "mit-think-scholars-program",
@@ -1148,7 +1186,8 @@ window.PROGRAMS = [
     "sourceStatus": "limited",
     "sourceChecked": "2026-10-18",
     "sourceNote": "MIT THINK's official homepage could not be fully read in this check; a 2026–27 application deadline cannot be independently confirmed.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "whatYouDo": "Write a science or engineering project proposal with a research plan and budget; selected students may develop a prototype or experiment with mentors."
   },
   {
     "id": "nypl-teen-reading-ambassadors",
@@ -1178,7 +1217,8 @@ window.PROGRAMS = [
     "sourceStatus": "limited",
     "sourceChecked": "2026-10-18",
     "sourceNote": "NYPL confirms Teen Reading Ambassadors for grades 10–12 in organizer articles, but no current internship application page or deadline was verified.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "whatYouDo": "Support younger children at library programs, help them practice reading or homework and plan educational activities with library staff."
   },
   {
     "id": "nypl-teen-civics-ambassadors",
@@ -1208,6 +1248,7 @@ window.PROGRAMS = [
     "sourceStatus": "limited",
     "sourceChecked": "2026-10-18",
     "sourceNote": "NYPL confirms Teen Civics Ambassadors grades 10–12 in organizer articles, but no current application deadline was verified.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "whatYouDo": "Research civic and community issues, develop youth-focused library activities and help other teens discuss or present ideas."
   }
 ];
