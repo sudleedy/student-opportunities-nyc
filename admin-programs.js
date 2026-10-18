@@ -133,12 +133,12 @@ el('timeline-pager').addEventListener('click',e=>{
 filters.search.addEventListener('input',()=>{page=1;render()});
 filters.type.addEventListener('change',()=>{page=1;render()});
 el('timeline-refresh').addEventListener('click',load);
-const tabNames=['reports','timelines','descriptions'];
+const tabNames=['reports','timelines','descriptions','management','suggestions','insights'];
 function switchTab(active){
  const selected=tabNames.includes(active)?active:'reports';
  for(const name of tabNames){
   const chosen=name===selected;
-  el(name==='reports'?'reports-panel':name==='timelines'?'timeline-panel':'descriptions-panel').hidden=!chosen;
+  el(name+'-panel').hidden=!chosen;
   const tab=el('tab-'+name);
   tab.classList.toggle('tab-active',chosen);
   tab.setAttribute('aria-selected',String(chosen));
@@ -149,7 +149,7 @@ function switchTab(active){
 for(const name of tabNames)el('tab-'+name).addEventListener('click',()=>switchTab(name));
 document.addEventListener('sob-admin-ready',e=>{
  db=e.detail.db;initialized=true;
- switchTab(location.hash==='#descriptions'?'descriptions':location.hash==='#timelines'?'timelines':'reports');
+ switchTab(tabNames.includes(location.hash.slice(1))?location.hash.slice(1):'reports');
  load();
 });
 })();
