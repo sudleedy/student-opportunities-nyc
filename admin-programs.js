@@ -133,12 +133,13 @@ el('timeline-pager').addEventListener('click',e=>{
 filters.search.addEventListener('input',()=>{page=1;render()});
 filters.type.addEventListener('change',()=>{page=1;render()});
 el('timeline-refresh').addEventListener('click',load);
-const tabNames=['reports','timelines','descriptions','management','suggestions','insights'];
+const panels={reports:'reports-panel',timelines:'timeline-panel',descriptions:'descriptions-panel',management:'management-panel',suggestions:'suggestions-panel',insights:'insights-panel'};
+const tabNames=Object.keys(panels);
 function switchTab(active){
  const selected=tabNames.includes(active)?active:'reports';
  for(const name of tabNames){
   const chosen=name===selected;
-  el(name+'-panel').hidden=!chosen;
+  el(panels[name]).hidden=!chosen;
   const tab=el('tab-'+name);
   tab.classList.toggle('tab-active',chosen);
   tab.setAttribute('aria-selected',String(chosen));
