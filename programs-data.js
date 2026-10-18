@@ -27,7 +27,9 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "2027 Design Hive accepts juniors and seniors in NYC area; apply by October 25, 2026 at 11:59 p.m. $1,250 stipend.",
-    "applicationState": "open"
+    "applicationState": "open",
+    "payCategory": "paid",
+    "deliveryMode": "in-person"
   },
   {
     "id": "brooklyn-botanic-garden-apprentice",
@@ -57,7 +59,10 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "2027 GAP applications have an early December 4, 2026 interview-invitation cutoff; it is not stated as the final deadline. Grades 9–11.",
-    "applicationState": "open"
+    "applicationState": "open",
+    "costCategory": "free",
+    "payCategory": "paid",
+    "deliveryMode": "in-person"
   },
   {
     "id": "moma-open-art-space",
@@ -83,7 +88,9 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "Free Thursday 4–6 p.m. drop-in for high-school-age students; no internship application required.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "costCategory": "free",
+    "deliveryMode": "in-person"
   },
   {
     "title": "Rockefeller University Jumpstart",
@@ -112,7 +119,8 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "Jumpstart 2027 applications open; due January 4, 2027 at 5 p.m. ET including recommendation. NYC juniors/seniors age 16+.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "deliveryMode": "in-person"
   },
   {
     "title": "Science Research Mentoring Program (SRMP)",
@@ -141,7 +149,9 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "AMNH states Class of 2028 applications expected winter 2027, but no exact date is posted.",
-    "applicationState": "upcoming"
+    "applicationState": "upcoming",
+    "payCategory": "paid",
+    "deliveryMode": "in-person"
   },
   {
     "title": "CUNY STEM Research Academy",
@@ -171,7 +181,8 @@ window.PROGRAMS = [
     "sourceStatus": "program",
     "sourceChecked": "2026-10-18",
     "sourceNote": "CUNY confirms STEM Research Academy for primarily grades 10–11 NYCPS students; select ninth graders considered. Dates differ by campus.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "payCategory": "paid"
   },
   {
     "title": "Summer Youth Employment Program (SYEP)",
@@ -197,7 +208,8 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "NYC DYCD confirms 2026 SYEP submissions closed March 13; next summer application dates not published.",
-    "applicationState": "closed"
+    "applicationState": "closed",
+    "payCategory": "paid"
   },
   {
     "title": "NYC Ladders for Leaders",
@@ -223,7 +235,8 @@ window.PROGRAMS = [
     "sourceStatus": "program",
     "sourceChecked": "2026-10-18",
     "sourceNote": "DYCD confirms paid summer internships and career training; the page has no current application deadline.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "payCategory": "paid"
   },
   {
     "title": "AMNH Science Communication Internship (SCIP)",
@@ -251,7 +264,9 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "AMNH still displays the March 1, 2026 deadline for its paid 2026 SCIP cohort; future intake not announced.",
-    "applicationState": "closed"
+    "applicationState": "closed",
+    "payCategory": "paid",
+    "deliveryMode": "in-person"
   },
   {
     "title": "NYU Precollege",
@@ -280,7 +295,9 @@ window.PROGRAMS = [
     "sourceStatus": "program",
     "sourceChecked": "2026-10-18",
     "sourceNote": "NYU confirms Precollege for rising juniors/seniors, but the landing page provides no 2027 deadline. Check cost/course details.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "costCategory": "fee",
+    "deliveryMode": "in-person"
   },
   {
     "title": "NYU College Access Leadership Institute",
@@ -308,7 +325,9 @@ window.PROGRAMS = [
     "sourceStatus": "limited",
     "sourceChecked": "2026-10-18",
     "sourceNote": "NYU's overview article explains the free summer program for rising seniors, but 2027 application dates are not confirmed; primary article blocked live extraction.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "costCategory": "free",
+    "deliveryMode": "in-person"
   },
   {
     "title": "NYC Service in Schools",
@@ -422,7 +441,9 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "Futures and Options explicitly marks its internship application closed; next opening not given.",
-    "applicationState": "closed"
+    "applicationState": "closed",
+    "payCategory": "paid",
+    "deliveryMode": "in-person"
   },
   {
     "title": "Futures and Options Urban Leadership Fellows",
@@ -450,7 +471,9 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "Futures and Options states the six-week paid Urban Leadership Fellows program is closed, and its 2026 form had a February 25 deadline.",
-    "applicationState": "closed"
+    "applicationState": "closed",
+    "payCategory": "paid",
+    "deliveryMode": "in-person"
   },
   {
     "title": "The Met High School Internships",
@@ -479,7 +502,9 @@ window.PROGRAMS = [
     "sourceStatus": "program",
     "sourceChecked": "2026-10-18",
     "sourceNote": "The Met confirms spring and summer high-school internships but currently lists different cohorts; use the official specific session page.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "payCategory": "paid",
+    "deliveryMode": "in-person"
   },
   {
     "title": "Whitney Youth Insights Artists",
@@ -510,7 +535,9 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "Whitney's most recent Youth Insights Artists application deadline was September 9, 2026; next semester not published.",
-    "applicationState": "closed"
+    "applicationState": "closed",
+    "costCategory": "free",
+    "deliveryMode": "in-person"
   },
   {
     "title": "Scholastic Art & Writing Awards",
@@ -543,7 +570,8 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "The 2027 Scholastic awards accept fall entries, with regional closing dates starting in December; check region-specific cutoff.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "costCategory": "fee"
   },
   {
     "title": "YoungArts National Arts Competition",
@@ -573,7 +601,8 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "YoungArts' 2027 cycle closed October 6, 2026 at 8 p.m. ET; 2028 applications open summer 2027.",
-    "applicationState": "closed"
+    "applicationState": "closed",
+    "costCategory": "fee"
   },
   {
     "title": "WNYC Radio Rookies",
@@ -604,7 +633,9 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "WNYC still posts Fall 2026 Radio Rookies recruitment for NYC public/charter students in grades 9–12; the form deadline is not published.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "payCategory": "paid",
+    "deliveryMode": "in-person"
   },
   {
     "title": "Princeton Summer Journalism Program",
@@ -632,7 +663,8 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "Princeton states 2027–28 application opens mid-November 2026 and closes the last Monday in January; juniors only.",
-    "applicationState": "upcoming"
+    "applicationState": "upcoming",
+    "deliveryMode": "hybrid"
   },
   {
     "title": "Girls Who Code Pathways",
@@ -691,7 +723,8 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "2027 Technovation team registration closes March 11, 2027 at 23:59 UTC; final project submission May 5, 2027 at 5 p.m. PDT.",
-    "applicationState": "open"
+    "applicationState": "open",
+    "costCategory": "free"
   },
   {
     "title": "Congressional App Challenge",
@@ -717,7 +750,8 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "Congressional App Challenge 2026 closes October 26; check district participation and exact local cutoff with the official rules.",
-    "applicationState": "open"
+    "applicationState": "open",
+    "costCategory": "free"
   },
   {
     "title": "Diamond Challenge",
@@ -821,7 +855,8 @@ window.PROGRAMS = [
     "sourceStatus": "program",
     "sourceChecked": "2026-10-18",
     "sourceNote": "NYC government confirms Ranger Conservation Corps high-school conservation internships, but the linked internship directory does not publish a current cohort application date.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "deliveryMode": "in-person"
   },
   {
     "id": "nyu-tandon-arise",
@@ -847,7 +882,9 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "NYU ARISE website still gives the February 27, 2026 closing date from the 2026 cycle; 2027 cycle is not posted.",
-    "applicationState": "closed"
+    "applicationState": "closed",
+    "costCategory": "free",
+    "deliveryMode": "hybrid"
   },
   {
     "id": "columbia-science-honors-program",
@@ -877,7 +914,9 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "Columbia lists 2026–27 Saturday classes for grades 10–12, but a new admissions deadline is not published.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "costCategory": "free",
+    "deliveryMode": "in-person"
   },
   {
     "id": "cshl-urban-barcode-research-program",
@@ -908,7 +947,8 @@ window.PROGRAMS = [
     "sourceStatus": "program",
     "sourceChecked": "2026-10-18",
     "sourceNote": "CSHL DNA Learning Center confirms Urban Barcode Research Program grades 9–12; applications generally in spring; next exact date not posted.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "deliveryMode": "in-person"
   },
   {
     "id": "cshl-urban-barcode-project",
@@ -969,7 +1009,10 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "MoMA lists 2026–27 paid Teens-in-Residence cohort (grades 10–12), September 14, 2026 application deadline and $1,000 stipend.",
-    "applicationState": "closed"
+    "applicationState": "closed",
+    "costCategory": "free",
+    "payCategory": "paid",
+    "deliveryMode": "in-person"
   },
   {
     "id": "moma-in-the-making",
@@ -995,7 +1038,9 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "sourceChecked": "2026-10-18",
     "sourceNote": "MoMA lists In the Making summer arts courses as free, with no upcoming event or 2027 application window.",
-    "applicationState": "closed"
+    "applicationState": "closed",
+    "costCategory": "free",
+    "deliveryMode": "in-person"
   },
   {
     "id": "cooper-hewitt-teen-drop-in",
@@ -1021,7 +1066,9 @@ window.PROGRAMS = [
     "sourceStatus": "program",
     "sourceChecked": "2026-10-18",
     "sourceNote": "Cooper Hewitt confirms free monthly teen drop-in workshops; individual event dates and reservations vary.",
-    "applicationState": "unknown"
+    "applicationState": "unknown",
+    "costCategory": "free",
+    "deliveryMode": "in-person"
   },
   {
     "id": "nyas-junior-academy",
@@ -1048,7 +1095,8 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "sourceNote": "NYAS states Junior Academy Fall 2026 recruitment closed July 9, 2026; future recruitment dates not confirmed.",
     "applicationState": "closed",
-    "deliveryMode": "remote"
+    "deliveryMode": "remote",
+    "costCategory": "free"
   },
   {
     "id": "msk-hopp-summer-student-program",
