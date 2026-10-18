@@ -1,5 +1,15 @@
 # Student Opportunities NYC — site setup
 
+## October 18, 2026: Expansion across all boroughs and online
+
+Added 22 **specific named programs** with verified official organizer pages and program descriptions. Catalog now has **142 reviewed listings**, including named opportunities in **all five NYC boroughs** and additional virtual or hybrid offerings. The sitemap has **145 URLs**: 142 program pages, the homepage, privacy, and the A–Z catalog. The static program directory and cached catalog references were refreshed.
+
+Highlights include Queens Botanical Garden Growing Justice (Flushing/Corona residents/schools only), NYC Public Schools Summer Arts Institute in Astoria, Brooklyn Bridge Park TIDES, Reel Works' Brooklyn filmmaking labs, BronxWorks CAFE, Emerging Leaders Program Bx, Staten Island JCC Counselor-in-Training, school-restricted SITHS/UAU JEDI-Career Ready, the Manhattan DA internship and MAD Artslife, Google Code Next Chelsea, Schoolhouse SAT Bootcamps, CyberPatriot, USACO, CSR-x and CMU's tuition-based virtual 3CS course.
+
+**Trust and location safeguards:** Listings never treat an old application's closing date as a new deadline. Current verified enrollment is separated from established programs with unknown next intake. Borough tags reflect the program **venue**, not the home address of the organizer or applicant. Programs that operate at multiple boroughs are not falsely assigned to one borough. School-only or income/age-limited programs display their restrictions. Paid courses are clearly marked. None of the deleted city-funded provider-site feed was restored.
+
+
+
 The production website uses a custom domain (still hosted on GitHub Pages):
 https://student-opportunities-nyc.com/
 
@@ -16,9 +26,9 @@ The former GitHub Pages address, `https://sudleedy.github.io/student-opportuniti
 - **Storage limitation:** Browser-local guest saves, notes and sessions do not migrate between hostnames; this is a browser security boundary. Do not promise automatic migration.
 - **No database migration required:** Keep the existing Supabase project and tables; no SQL script is needed *just for the domain change*.
 
-## October 18, 2026: 120 reviewed student opportunities
+## October 18, 2026: First expansion to 120 reviewed student opportunities
 
-Added 30 official-source-reviewed high school opportunities across STEM, design, mentoring, career preparation, scholarships and competitions. The catalog now has 120 entries, with 123 sitemap URLs (120 detail pages, homepage, privacy and the static program directory). Each new entry explains activities, precise grade or other eligibility limitations, known tuition or scholarship terms, and official organizer source notes. Unless an organizer confirmed a specific active intake, application dates are marked unknown rather than assumed open. The free, crawlable `program-directory.html` page groups all 120 reviewed listings by subject with HTML links. The site retains nine-card pagination and student saved-program tools.
+Added 30 official-source-reviewed high school opportunities across STEM, design, mentoring, career preparation, scholarships and competitions. After this batch, the catalog had 120 entries, with 123 sitemap URLs (120 detail pages, homepage, privacy and the static program directory). Each new entry explains activities, precise grade or other eligibility limitations, known tuition or scholarship terms, and official organizer source notes. Unless an organizer confirmed a specific active intake, application dates are marked unknown rather than assumed open. The free, crawlable `program-directory.html` page groups all 120 reviewed listings by subject with HTML links. The site retains nine-card pagination and student saved-program tools.
 
 ## October 2026: Search visibility, security review, and planning tools
 
@@ -36,7 +46,7 @@ Added 30 official-source-reviewed high school opportunities across STEM, design,
 
 **Student dashboard planning features:** compare up to 3 saved programs; view a subject-based shortlist (not a grade or eligibility decision); download one `.ics` file for future saved deadlines with optional 7-day and 1-day calendar alerts. Imports and reminder delivery depend on the student's calendar app. The site does not send email, SMS, or push notifications. All comparison choices stay in the browser tab; the tool does not collect additional student profile fields.
 
-**New researched catalog entries:** Rockefeller SSRP 2027, Rockefeller Summer Neuroscience Program (next application unconfirmed), NYC DYCD Learn & Earn, and CareerReady Work/Learn/Grow (restricted eligibility); always check the organizer page. The bundled catalog now contains **120** reviewed listings, including 30 additional opportunities checked against official organizer pages on October 18, 2026. Newly added current-cycle application deadlines are not generalized to other cycles.
+**New researched catalog entries:** Rockefeller SSRP 2027, Rockefeller Summer Neuroscience Program (next application unconfirmed), NYC DYCD Learn & Earn, and CareerReady Work/Learn/Grow (restricted eligibility); always check the organizer page. That earlier catalog expansion reached **120** reviewed listings, including 30 additional opportunities checked against official organizer pages on October 18, 2026. Newly added current-cycle application deadlines are not generalized to other cycles.
 
 ## Navigation and calendar usability fixes (October 18, 2026)
 
@@ -136,7 +146,7 @@ Highlights include Columbia BRAINYAC, NYBG High School Explainers, Queens Teens 
 
 ## October 18, 2026: Individually listed programs only
 
-At the owner's request, the public homepage now shows **only the 120 specifically described catalog programs**, each with its own details, organizer link, known eligibility and stated application status. The live DYCD NYC-funded **provider/site record feed** was removed from the homepage, together with its refresh button, city-site card type and browser data request. This does **not** remove legitimate named city programs such as SYEP or Learn & Earn from the reviewed catalog. The page remains 9 programs per page with search, multiple filter choices, bookmarks and saved notes.
+At the owner's request, the public homepage now shows **only specifically described catalog programs**, each with its own details, organizer link, known eligibility and stated application status. The live DYCD NYC-funded **provider/site record feed** was removed from the homepage, together with its refresh button, city-site card type and browser data request. This does **not** remove legitimate named city programs such as SYEP or Learn & Earn from the reviewed catalog. The page remains 9 programs per page with search, multiple filter choices, bookmarks and saved notes.
 
 The **Program borough** filter now searches only curated entries with an explicit physical borough. Its choice is stored locally under `sob-borough-v1` and cleared by **Clear filters**. It does not access location services or request city Open Data. Remote, citywide and unknown-site entries remain available with **All programs · any borough**. `nearby-programs.js` is no longer loaded or used. The privacy page now reflects this behavior.
 
@@ -160,7 +170,7 @@ There is no change to favorites, notes, student tracking, or database permission
 
 - Search, Interest, Grade and Program borough are available in the main directory; additional filters for status, cost, format, favorites and progress are under **More filters**.
 - Only individually reviewed catalog entries are displayed. Each has **View details** and **Save favorite**, descriptive activities, and an official organizer link.
-- Pagination uses real page links, nine cards per page, and a clear Page X of Y indicator. A separate static A–Z index links to all 120 entries.
+- Pagination uses real page links, nine cards per page, and a clear Page X of Y indicator. A separate static A–Z index links to all 142 current entries.
 - Choosing a borough limits results to entries with a confidently established venue in that borough. It does **not** add more results or contact a city site dataset.
 - Students can keep working with their existing saves and synced notes. No Supabase schema changes were required.
 - Program descriptions are written as likely activities based on the organizer's information. Application availability must be checked with the organizer.
