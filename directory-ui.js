@@ -14,6 +14,7 @@ function render(){
  (!el('location').value||o.location===el('location').value)&&
  (!el('grade').value||(o.grades||[]).includes(Number(el('grade').value)))&&
  (!saved.checked||store.get(o.id).favorited)&&
+ (!el('progress').value||(store.get(o.id).application_status===el('progress').value && (store.get(o.id).favorited||store.get(o.id).notes||store.get(o.id).application_status!=='Interested')))&&
  (!q||[o.title,o.org,o.summary,o.subject,o.eligibility].join(' ').toLowerCase().includes(q)));
  const mode=el('sort').value;
  if(mode==='deadline')results.sort((a,b)=>deadline(a)[0]-deadline(b)[0]||deadline(a)[1]-deadline(b)[1]||a.title.localeCompare(b.title));
@@ -24,7 +25,7 @@ function render(){
  return '<article class="card"><span class="pill">'+safe(o.type)+'</span><h3>'+safe(o.title)+'</h3><p>'+safe(o.summary)+'</p><p class="deadline-line">📅 '+safe(o.deadline)+'</p><div class="meta">'+safe(o.org)+' · '+safe(o.location)+'</div><div class="card-actions"><a class="open-detail" href="program.html?id='+encodeURIComponent(o.id)+'">View details →</a><button class="favorite-button" type="button" data-id="'+safe(o.id)+'" aria-pressed="'+isFav+'" aria-label="'+(isFav?'Remove favorite':'Save favorite')+'">'+(isFav?'♥':'♡')+'</button></div></article>'}).join(''):'<div class="empty">No matches found. Try different filters or save a program.</div>';
 }
 cards.addEventListener('click',e=>{const b=e.target.closest('button[data-id]');if(b)store.save(b.dataset.id,{favorited:!store.get(b.dataset.id).favorited})});
-['search','category','subject','location','grade','sort'].forEach(id=>el(id).addEventListener('input',render));
+['search','category','subject','location','grade','sort','progress'].forEach(id=>el(id).addEventListener('input',render));
 saved.addEventListener('change',()=>{const u=new URL(location.href);saved.checked?u.searchParams.set('saved','1'):u.searchParams.delete('saved');history.replaceState({},'',u.pathname+u.search+u.hash);render()});
 store.watch(render);el('year').textContent=new Date().getFullYear();render();
 })();
