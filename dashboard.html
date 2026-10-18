@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Manage saved opportunities and application progress in Student Opportunities NYC."><title>My Dashboard | Student Opportunities NYC</title><link rel="icon" type="image/svg+xml" href="assets/student_opportunities_nyc_icon.svg"><style>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Manage saved opportunities and application progress in Student Opportunities NYC."><meta name="robots" content="noindex,nofollow"><title>My Dashboard | Student Opportunities NYC</title><link rel="icon" type="image/svg+xml" href="assets/student_opportunities_nyc_icon.svg"><style>
 :root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:#19253d;background:#f6f8fc}*{box-sizing:border-box}body{margin:0}a{color:#a54529}header{background:white;border-bottom:1px solid #e0e6ef}.nav{max-width:1120px;margin:auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;padding:15px 22px}.brand{display:flex;gap:11px;align-items:center;text-decoration:none;color:#19253d}.brand img{width:64px;height:60px;object-fit:contain}.brand-copy{font-weight:850;line-height:1.1}.brand-copy strong{display:block;font-size:24px}.brand-copy em{font-style:normal;color:#f47c24}.brand-copy small{font-size:10px;display:block;letter-spacing:1.5px;border-top:2px solid #e9926e;padding-top:5px;margin-top:5px}.return{font-weight:750;text-decoration:none;border:1px solid #d5ddec;padding:12px 14px;border-radius:9px;color:#19253d}.container{max-width:1120px;margin:0 auto;padding:40px 22px 90px}.intro{background:linear-gradient(120deg,#19253d,#324869);color:#fff;padding:35px;border-radius:20px}.intro h1{font-size:clamp(30px,5vw,46px);margin:0 0 8px}.intro p{color:#d8e4f7;font-size:16px;line-height:1.6;max-width:700px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0}.stat{border-radius:14px;border:1px solid #c8d3e2;background:white;padding:20px}.stat strong{display:block;font-size:29px}.stat span{font-size:13px;color:#61728b;font-weight:750}.panel{background:white;border:1px solid #d4deeb;border-radius:16px;padding:22px;margin-top:22px}.panel h2{margin:0 0 16px}.dash-items{display:grid;gap:12px}.dash-card{border:1px solid #bacada;border-left:4px solid #8297b5;border-radius:12px;background:#eef2f7;padding:18px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}.dash-card h3{font-size:17px;margin:0 0 6px}.dash-card p{color:#63758f;font-size:13px;margin:4px 0}.dash-pill{display:inline-block;background:#fff;border:1px solid #d9e0ec;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800;margin:0 5px 5px 0}.dash-pill.soon{background:#fff0df;color:#994a1b}.dash-card a{display:inline-block;background:#19253d;color:white;text-decoration:none;padding:12px 15px;border-radius:9px;font-weight:750;font-size:13px}.small{color:#63758a;font-size:13px;line-height:1.6}#dash-feedback{color:#586c86;margin-top:18px}footer{padding:30px;text-align:center;color:#718097;border-top:1px solid #d8e0ec}a:focus-visible,button:focus-visible{outline:3px solid #f49465;outline-offset:3px}@media(max-width:730px){.stats{grid-template-columns:1fr 1fr}.intro{padding:25px}.dash-card{align-items:flex-start}}@media(max-width:480px){.brand img{width:50px;height:46px}.brand-copy strong{font-size:17px}.brand-copy small{font-size:8px}}
 
 /* Keep tracker cards and counters readable on narrow phones. */
@@ -20,6 +20,25 @@
  .stats{grid-template-columns:minmax(0,1fr)}
  .dash-card a{width:100%;justify-content:center}
 }
+
+/* Saved-program comparison and calendar export. */
+.dash-tool-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:16px 0 21px}
+.dash-tool-actions button{border:0;background:#19253d;color:#fff;border-radius:10px;padding:13px 18px;font:inherit;font-weight:750;cursor:pointer}
+.dash-tool-actions button:disabled{opacity:.5;cursor:not-allowed}
+.dash-compare-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:12px 0 18px;max-height:250px;overflow:auto}
+.dash-compare-choice{display:flex;align-items:flex-start;gap:9px;font-size:13px;font-weight:650;background:#f3f6fb;border:1px solid #d7e0ec;border-radius:9px;padding:10px}
+.dash-compare-choice input{flex:0 0 auto;margin-top:3px;accent-color:#19253d}
+.dash-compare-result{overflow-x:auto}
+.dash-compare-result table{border-collapse:collapse;width:100%;min-width:580px}
+.dash-compare-result th,.dash-compare-result td{text-align:left;vertical-align:top;padding:13px;border:1px solid #d7e0ec;font-size:13px;line-height:1.55}
+.dash-compare-result th{background:#f2f5fa}
+.dash-compare-result a,.dash-recommendation a{color:#91472d;font-weight:750}
+.dash-recommendations{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.dash-recommendation{border:1px solid #ccd8e7;border-radius:12px;padding:15px;background:#f4f7fc}
+.dash-recommendation p{font-size:13px;line-height:1.55;color:#53647a}
+.dash-tool-panel h3{margin:24px 0 8px}
+@media(max-width:700px){.dash-compare-choices,.dash-recommendations{grid-template-columns:minmax(0,1fr)}}
+
 </style></head><body data-page-kind="dashboard"><header><div class="nav">
 <a href="./" class="brand"><img src="assets/student_opportunities_nyc_icon.svg" alt=""><span class="brand-copy">Student<strong>Opportunities <em>NYC</em></strong><small>DISCOVER WHAT'S NEXT</small></span></a>
 <a href="./#opportunities" class="return">← Browse programs</a></div></header>
@@ -31,6 +50,18 @@
 <div class="stat"><strong id="dash-applied">0</strong><span>Applied</span></div></div>
 <section class="panel"><h2>Upcoming deadlines</h2><div id="dash-deadlines" class="dash-items"></div></section>
 <section class="panel"><h2>My applications and notes</h2><p class="small">Your notes and progress are stored locally for guests or synced to your account when signed in. Only save non-sensitive information.</p><div id="dash-list" class="dash-items"></div></section>
+<section class="panel dash-tool-panel" id="dash-tools">
+<h2>Compare saved programs &amp; plan ahead</h2>
+<p class="small">Choose up to three saved opportunities to compare requirements, costs, activities, and deadlines. Your selections stay in this browser tab and are not sent to another service.</p>
+<div id="dash-compare-options" class="dash-compare-choices"></div>
+<div id="dash-compare-result" class="dash-compare-result" aria-live="polite"></div>
+<h3>Save upcoming deadlines to your calendar</h3>
+<p class="small">Download a calendar file for saved programs with known future dates. The file includes suggested alerts seven days and one day before each date, but you must import it into your calendar application. Alert support varies; exact cutoff times still need organizer confirmation.</p>
+<div class="dash-tool-actions"><button type="button" id="dash-calendar-download">Download deadline reminders (.ics)</button><span id="dash-tool-feedback" class="small" role="status"></span></div>
+<h3>More opportunities in your favorite subjects</h3>
+<p class="small">These suggestions use the subjects of programs you've saved. They do not know your grade or guarantee eligibility or open applications.</p>
+<div id="dash-suggestions" class="dash-recommendations"></div>
+</section>
 <p class="small">Always confirm dates on the official organizer website. Unknown deadlines do not imply that applications are currently open.</p></main>
 <footer>Student Opportunities NYC · Independent student project · <a href="./privacy.html">Privacy &amp; Data</a></footer>
-<script src="programs-data.js?v=5"></script><script src="auth-config.js"></script><script src="site-data.js?v=4"></script><script src="program-updates.js?v=2"></script><script src="program-descriptions.js?v=2"></script><script src="beacon-store.js?v=9"></script><script src="dashboard.js?v=1"></script><script src="site-analytics.js?v=1"></script></body></html>
+<script src="programs-data.js?v=5"></script><script src="auth-config.js"></script><script src="site-data.js?v=4"></script><script src="program-updates.js?v=2"></script><script src="program-descriptions.js?v=2"></script><script src="beacon-store.js?v=9"></script><script src="dashboard.js?v=1"></script><script src="dashboard-tools.js?v=1"></script><script src="site-analytics.js?v=1"></script></body></html>
