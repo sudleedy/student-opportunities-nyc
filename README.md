@@ -1,5 +1,20 @@
 # Student Opportunities NYC — site setup
 
+## October 18, 2026: Queens and Staten Island verified program expansion
+
+Added **8** named opportunities for NYC high schoolers, increasing the curated directory from 153 to **161 programs** with **164 sitemap URLs**. Program locations are verified individually rather than inferred from organizer addresses.
+
+- **Queens (4):** RISE Shore Corps environmental leadership, RISE Environmentor science research mentorship, Noguchi Museum Teen Advisory Board, and Noguchi Museum Making Your Mark.
+- **Staten Island (4):** Snug Harbor Heritage Farm Stewardship, Water and Wetlands Stewardship, Environmental and Tree Stewardship, and Youth WINS Green Energy Career Workshops.
+- Both RISE programs require students to attend school in or near the Rockaway peninsula. Environmentor prioritizes previous Shore Corps participation and is expected to take summer 2027 applications in spring 2027.
+- Noguchi museum programs are past 2026 application deadlines; they remain discoverable for future-cycle planning, not labeled open.
+- Snug Harbor stewardship events are discrete **free volunteer workdays**, not paid research internships. The Youth WINS green-energy series has no confirmed new sessions after its 2026 run. Each listing explains the difference.
+- A separate 2026 source review checked program eligibility, activities, schedule and fees or stipends against published organizer details or organizer-related announcements. Current enrollment is not implied unless the organizer explicitly confirms it.
+
+The A to Z HTML program directory, sitemap and public catalog-cache references are updated and the nine-program pagination is unchanged.
+
+
+
 ## October 18, 2026: Medical, Bronx and Staten Island teen programs
 
 Added 11 distinct official-organizer-sourced program records, expanding the catalog to **153 listings** and the sitemap to **156 URLs**. Entries include Genspace Biorocket, Weill Cornell Medicine HPREP 2027, Smithsonian NESST Youth Ambassadors 2026-2027, Bronx Museum Teen Council and Teen Summer, Rocking the Boat Environmental Science, ELP Bx's separate paid Internship and alumni Fellows tracks, Natural Areas Conservancy's 2027 paid SUN ecology internship, Staten Island Art Lab Summer Studio Scholarship Program, and SONIQLAB free teen DJ workshops.
