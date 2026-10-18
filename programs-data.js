@@ -30,7 +30,8 @@ window.PROGRAMS = [
     "applicationState": "open",
     "payCategory": "paid",
     "deliveryMode": "in-person",
-    "whatYouDo": "Meet weekly with museum designers, brainstorm ideas inspired by exhibitions, build creative projects with other teens, and share your designs for feedback."
+    "whatYouDo": "Meet weekly with museum designers, brainstorm ideas inspired by exhibitions, build creative projects with other teens, and share your designs for feedback.",
+    "borough": "Manhattan"
   },
   {
     "id": "brooklyn-botanic-garden-apprentice",
@@ -64,7 +65,8 @@ window.PROGRAMS = [
     "costCategory": "free",
     "payCategory": "paid",
     "deliveryMode": "in-person",
-    "whatYouDo": "Help grow and care for plants, learn about urban gardening, and assist with activities that introduce younger visitors to nature and sustainability."
+    "whatYouDo": "Help grow and care for plants, learn about urban gardening, and assist with activities that introduce younger visitors to nature and sustainability.",
+    "borough": "Brooklyn"
   },
   {
     "id": "moma-open-art-space",
@@ -93,7 +95,8 @@ window.PROGRAMS = [
     "applicationState": "unknown",
     "costCategory": "free",
     "deliveryMode": "in-person",
-    "whatYouDo": "Drop in for hands-on art-making, try new materials, talk about artwork with peers, and take part in occasional creative activities or screenings."
+    "whatYouDo": "Drop in for hands-on art-making, try new materials, talk about artwork with peers, and take part in occasional creative activities or screenings.",
+    "borough": "Manhattan"
   },
   {
     "title": "Rockefeller University Jumpstart",
@@ -124,7 +127,8 @@ window.PROGRAMS = [
     "sourceNote": "Jumpstart 2027 applications open; due January 4, 2027 at 5 p.m. ET including recommendation. NYC juniors/seniors age 16+.",
     "applicationState": "unknown",
     "deliveryMode": "in-person",
-    "whatYouDo": "Practice laboratory and scientific-research skills after school, then join a mentored summer research experience involving real scientific questions and experiments."
+    "whatYouDo": "Practice laboratory and scientific-research skills after school, then join a mentored summer research experience involving real scientific questions and experiments.",
+    "borough": "Manhattan"
   },
   {
     "title": "Science Research Mentoring Program (SRMP)",
@@ -156,7 +160,8 @@ window.PROGRAMS = [
     "applicationState": "upcoming",
     "payCategory": "paid",
     "deliveryMode": "in-person",
-    "whatYouDo": "Work with a museum scientist on a research question, learn to collect and interpret evidence, and practice explaining your results to others."
+    "whatYouDo": "Work with a museum scientist on a research question, learn to collect and interpret evidence, and practice explaining your results to others.",
+    "borough": "Manhattan"
   },
   {
     "title": "CUNY STEM Research Academy",
@@ -275,7 +280,8 @@ window.PROGRAMS = [
     "applicationState": "closed",
     "payCategory": "paid",
     "deliveryMode": "in-person",
-    "whatYouDo": "Learn how to explain science clearly, practice speaking with different audiences, and take part in museum education or visitor-engagement activities."
+    "whatYouDo": "Learn how to explain science clearly, practice speaking with different audiences, and take part in museum education or visitor-engagement activities.",
+    "borough": "Manhattan"
   },
   {
     "title": "NYU Precollege",
@@ -399,7 +405,8 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "sourceNote": "AMNH lists 2026–27 paid Science Alliance courses for grades 9–12, at $1,000 per course with tuition assistance and session availability.",
     "applicationState": "unknown",
-    "whatYouDo": "Choose a museum science course and do instructor-led science activities on topics such as genetics, astrophysics or conservation; activities vary by class."
+    "whatYouDo": "Choose a museum science course and do instructor-led science activities on topics such as genetics, astrophysics or conservation; activities vary by class.",
+    "borough": "Manhattan"
   },
   {
     "title": "NYU High School Art & Design Programs",
@@ -521,7 +528,8 @@ window.PROGRAMS = [
     "applicationState": "unknown",
     "payCategory": "paid",
     "deliveryMode": "in-person",
-    "whatYouDo": "Learn how museum departments operate, meet staff, complete assigned internship projects and explore careers in exhibitions, education or communications."
+    "whatYouDo": "Learn how museum departments operate, meet staff, complete assigned internship projects and explore careers in exhibitions, education or communications.",
+    "borough": "Manhattan"
   },
   {
     "title": "Whitney Youth Insights Artists",
@@ -555,7 +563,8 @@ window.PROGRAMS = [
     "applicationState": "closed",
     "costCategory": "free",
     "deliveryMode": "in-person",
-    "whatYouDo": "Create art with guidance from working artists, discuss contemporary works, experiment with techniques, and collaborate with other teen artists."
+    "whatYouDo": "Create art with guidance from working artists, discuss contemporary works, experiment with techniques, and collaborate with other teen artists.",
+    "borough": "Manhattan"
   },
   {
     "title": "Scholastic Art & Writing Awards",
@@ -914,7 +923,8 @@ window.PROGRAMS = [
     "applicationState": "closed",
     "costCategory": "free",
     "deliveryMode": "hybrid",
-    "whatYouDo": "Join a university research lab or computing project, learn research methods, collect or analyze data and share findings with your mentors."
+    "whatYouDo": "Join a university research lab or computing project, learn research methods, collect or analyze data and share findings with your mentors.",
+    "borough": "Brooklyn"
   },
   {
     "id": "columbia-science-honors-program",
@@ -947,7 +957,8 @@ window.PROGRAMS = [
     "applicationState": "unknown",
     "costCategory": "free",
     "deliveryMode": "in-person",
-    "whatYouDo": "Attend challenging Saturday science, mathematics or computing classes, study advanced topics and complete instructor-assigned academic work."
+    "whatYouDo": "Attend challenging Saturday science, mathematics or computing classes, study advanced topics and complete instructor-assigned academic work.",
+    "borough": "Manhattan"
   },
   {
     "id": "cshl-urban-barcode-research-program",
@@ -1046,7 +1057,8 @@ window.PROGRAMS = [
     "costCategory": "free",
     "payCategory": "paid",
     "deliveryMode": "in-person",
-    "whatYouDo": "Meet artists and MoMA staff, create collaborative art or public-engagement projects, and help shape activities designed for museum visitors."
+    "whatYouDo": "Meet artists and MoMA staff, create collaborative art or public-engagement projects, and help shape activities designed for museum visitors.",
+    "borough": "Manhattan"
   },
   {
     "id": "moma-in-the-making",
@@ -1075,7 +1087,8 @@ window.PROGRAMS = [
     "applicationState": "closed",
     "costCategory": "free",
     "deliveryMode": "in-person",
-    "whatYouDo": "Attend studio-art sessions, experiment with materials, create individual or group artwork and share creative work with fellow participants."
+    "whatYouDo": "Attend studio-art sessions, experiment with materials, create individual or group artwork and share creative work with fellow participants.",
+    "borough": "Manhattan"
   },
   {
     "id": "cooper-hewitt-teen-drop-in",
@@ -1104,7 +1117,8 @@ window.PROGRAMS = [
     "applicationState": "unknown",
     "costCategory": "free",
     "deliveryMode": "in-person",
-    "whatYouDo": "Visit a teen design workshop, experiment with creative tools and materials, and try design challenges led by museum educators or designers."
+    "whatYouDo": "Visit a teen design workshop, experiment with creative tools and materials, and try design challenges led by museum educators or designers.",
+    "borough": "Manhattan"
   },
   {
     "id": "nyas-junior-academy",
