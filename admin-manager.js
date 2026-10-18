@@ -15,11 +15,21 @@ const choose=(name,label,value,options)=>'<label>'+escape(label)+'<select name="
 const opts=values=>values.map(v=>[v,v]);
 function fullList(){
  const merged=new Map(original);
- for(const p of window.PROGRAMS||[])merged.set(p.id,p);
  for(const [id,row] of rows){
-  if(!merged.has(id))merged.set(id,{id,...row.program_data});
+  if(!row.is_archived||!merged.has(id))merged.set(id,{...(original.get(id)||{}),id,...(row.program_data||{})});
  }
  return [...merged.values()].sort((a,b)=>(a.title||'').localeCompare(b.title||''));
+}
+function syncLive(id){
+ const entries=window.PROGRAMS||[],idx=entries.findIndex(p=>p.id===id),row=rows.get(id);
+ if(row?.is_archived||(!row&&!original.has(id))){
+  if(idx>=0)entries.splice(idx,1);
+ }else{
+  const current={...(original.get(id)||{}),id,...(row?.program_data||{})};
+  if(idx>=0)Object.assign(entries[idx],current);
+  else entries.push(current);
+ }
+ document.dispatchEvent(new Event('sob-programs-updated'));
 }
 function isArchived(id){return Boolean(rows.get(id)?.is_archived)}
 function containsDirty(){
@@ -98,7 +108,7 @@ async function save(form){
  const payload={program_id:id,program_data:p,is_archived:false,updated_at:new Date().toISOString()};
  const {data,error}=await db.from('catalog_programs').upsert(payload,{onConflict:'program_id'}).select('program_id,program_data,is_archived,updated_at').single();
  if(error){el('manager-edit-feedback').textContent='Could not save: '+error.message;button.disabled=false;return}
- rows.set(id,data);changed=false;editor.hidden=true;editing=null;render();
+ rows.set(id,data);syncLive(id);changed=false;editor.hidden=true;editing=null;render();
  status.textContent='Published '+p.title+'. Refresh the public website to see it.';
 }
 async function changeArchive(id,archived){
@@ -109,14 +119,14 @@ async function changeArchive(id,archived){
  const payload={program_id:id,program_data:record?.program_data||{},is_archived:archived,updated_at:new Date().toISOString()};
  const {data,error}=await db.from('catalog_programs').upsert(payload,{onConflict:'program_id'}).select().single();
  if(error){status.textContent='Could not update: '+error.message;return}
- rows.set(id,data);render();
+ rows.set(id,data);syncLive(id);render();
 }
 async function revert(id){
  if(!available||!containsDirty()||!rows.has(id))return;
  if(!confirm('Remove the custom catalog entry for '+id+'? Original listings return to their bundled version; newly added programs disappear.'))return;
  const {error}=await db.from('catalog_programs').delete().eq('program_id',id);
  if(error){status.textContent='Could not restore: '+error.message;return}
- rows.delete(id);render();
+ rows.delete(id);syncLive(id);render();
 }
 async function load(){
  if(!db)return;
