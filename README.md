@@ -36,7 +36,7 @@ Added 30 official-source-reviewed high school opportunities across STEM, design,
 
 **Student dashboard planning features:** compare up to 3 saved programs; view a subject-based shortlist (not a grade or eligibility decision); download one `.ics` file for future saved deadlines with optional 7-day and 1-day calendar alerts. Imports and reminder delivery depend on the student's calendar app. The site does not send email, SMS, or push notifications. All comparison choices stay in the browser tab; the tool does not collect additional student profile fields.
 
-**New researched catalog entries:** Rockefeller SSRP 2027, Rockefeller Summer Neuroscience Program (next application unconfirmed), NYC DYCD Learn & Earn, and CareerReady Work/Learn/Grow (restricted eligibility); always check the organizer page. The bundled catalog now contains **90** reviewed listings. Newly added current-cycle application deadlines are not generalized to other cycles.
+**New researched catalog entries:** Rockefeller SSRP 2027, Rockefeller Summer Neuroscience Program (next application unconfirmed), NYC DYCD Learn & Earn, and CareerReady Work/Learn/Grow (restricted eligibility); always check the organizer page. The bundled catalog now contains **120** reviewed listings, including 30 additional opportunities checked against official organizer pages on October 18, 2026. Newly added current-cycle application deadlines are not generalized to other cycles.
 
 ## Navigation and calendar usability fixes (October 18, 2026)
 
