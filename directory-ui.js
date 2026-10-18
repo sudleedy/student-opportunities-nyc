@@ -1,6 +1,7 @@
 (()=>{'use strict';
 const items=window.PROGRAMS||[],store=window.BeaconStore,el=id=>document.getElementById(id);
 
+const officialUrl=p=>{try{const url=new URL(p.url);return url.protocol==='https:'?url.href:null}catch{return null}};
 const daysLeft=d=>d&&/^\d{4}-\d{2}-\d{2}$/.test(d)?Math.ceil((new Date(d+'T23:59:59')-Date.now())/86400000):null;
 const reviewed=p=>p.verified&&/^\d{4}-\d{2}-\d{2}$/.test(p.verified)&&((Date.now()-new Date(p.verified+'T12:00:00Z'))/86400000)<=60&&((Date.now()-new Date(p.verified+'T12:00:00Z'))/86400000)>=-1;
 const fee=p=>['free','fee'].includes(p.costCategory)?p.costCategory:/\bfree\b|no participation fee|no tuition/i.test(p.cost||'')?'free':'unknown';
@@ -16,7 +17,7 @@ function badges(p){
  if(days===null)badges.push(['','Deadline unconfirmed']);
  if(!reviewed(p))badges.push(['review','Status needs checking']);
  return '<div class="program-badges">'+badges.map(([c,t])=>'<span class="program-badge '+c+'">'+safe(t)+'</span>').join('')+'</div>'+
- (reviewed(p)?'<p class="verified-line">Information reviewed '+safe(p.verified)+' · <a href="'+safe(p.url)+'" target="_blank" rel="noopener noreferrer">Official source ↗</a></p>':
+ (reviewed(p)?'<p class="verified-line">Information reviewed '+safe(p.verified)+(officialUrl(p)?' · <a href="'+safe(officialUrl(p))+'" target="_blank" rel="noopener noreferrer">Official source ↗</a>':' · Official link needs checking')+'</p>':
  '<p class="verified-line">Confirm details on the official website.</p>');
 }
 function refreshOptions(){
