@@ -10,12 +10,12 @@ const POLICY='https://data.cityofnewyork.us/Social-Services/DYCD-Program-Sites/e
 const boros=['Brooklyn','Manhattan','Queens','Bronx','Staten Island'];
 const types=/\b(compass high|ladders for leaders|summer youth employment|syep|beacon|cornerstone|advance\s*&\s*earn|learn\s*&\s*earn|train\s*&\s*earn|high school youth|youth council|workforce|internship|job readiness|careerready|career first|emerging leaders)\b/i;
 const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-host.innerHTML='<div class="local-heading"><div><p class="local-kicker">AUTOMATIC NYC PROGRAM DISCOVERY</p><h2>Discover more programs near you</h2><p>Explore youth programs and internship providers from official NYC Open Data. Choose a borough, or optionally allow your browser to find nearby sites.</p></div><a href="'+DIRECTORY+'" target="_blank" rel="noopener noreferrer">Search the full NYC program directory ↗</a></div>'+
+host.innerHTML='<div class="local-heading"><div><p class="local-kicker">AUTOMATIC NYC PROGRAM DISCOVERY</p><h2>Discover more programs near you</h2><p>See what you could do at local youth programs. Choose a borough or optionally find nearby sites. Activities vary by provider.</p></div><a href="'+DIRECTORY+'" target="_blank" rel="noopener noreferrer">Search the full NYC program directory ↗</a></div>'+
 '<div class="local-controls"><label for="local-borough">Your borough</label><select id="local-borough"><option value="">Choose a borough</option>'+boros.map(b=>'<option value="'+b+'">'+b+'</option>').join('')+'</select>'+
 '<button type="button" id="local-position">◎ Use my location</button><button type="button" id="local-refresh" disabled>Refresh results</button></div>'+
 '<p id="local-feedback" class="local-feedback" role="status" aria-live="polite">Choose a borough to load additional NYC youth program locations. Your borough preference stays in this browser.</p>'+
 '<div id="local-results" class="local-grid"></div>'+
-'<p class="local-disclaimer">These are <strong>DYCD-funded program sites</strong>, not independently checked application openings. They may include after-school, career-readiness, and other youth services. Confirm your grade eligibility, registration, costs and openings with the provider. <a href="'+POLICY+'" target="_blank" rel="noopener noreferrer">NYC Open Data source ↗</a>. We do not store or transmit GPS coordinates.</p>';
+'<p class="local-disclaimer">These are <strong>DYCD-funded program sites</strong>, not independently checked application openings. The examples above describe typical activities for each program type, not a verified schedule at a specific site. They may include after-school, career-readiness, and other youth services. Confirm your grade eligibility, registration, costs and openings with the provider. <a href="'+POLICY+'" target="_blank" rel="noopener noreferrer">NYC Open Data source ↗</a>. We do not store or transmit GPS coordinates.</p>';
 const boroughEl=host.querySelector('#local-borough'),feedback=host.querySelector('#local-feedback'),results=host.querySelector('#local-results');
 const refresh=host.querySelector('#local-refresh'),locate=host.querySelector('#local-position');
 let active=0,coords=null,cache=new Map(),lastKey='';
@@ -34,6 +34,41 @@ const relevant=r=>{
  const text=[r.program_type,r.program_area].filter(Boolean).join(' ');
  return types.test(text)||String(r.service_category||'').toLowerCase().includes('jobs and internships')&&/youth|high school|student|internship|career|employment/i.test(text);
 };
+
+/* The city lists locations and program types, but not individual site activity schedules.
+   Examples below describe DYCD program models, not guaranteed local offerings. */
+function explain(r){
+ const name=String(r.program_type||'').toLowerCase()+' '+String(r.program_area||'').toLowerCase();
+ const model=(activity,audience,url)=>({activity,audience,url});
+ if(/\bladders?\s*(?:for)?\s*leaders\b|\blfl\b/.test(name))
+  return model('Practice interviews, resumes and workplace skills, then seek a paid professional summer internship. Actual work depends on the company placement.','Generally NYC high school or college students ages 16–24 with prior work or volunteer experience.','https://www.nyc.gov/site/dycd/families/nyc-ladders-for-leaders.page');
+ if(/\blearn\s*(?:&|and)\s*earn\b/.test(name))
+  return model('Get academic and college-application help, learn workplace skills, join service projects and leadership activities, and potentially complete a paid summer internship.','Generally eligible NYC high school juniors and seniors ages 16–21.','https://www.nyc.gov/site/dycd/services/jobs-internships/learn-and-earn.page');
+ if(/\bwork\s*,?\s*learn\s*(?:&|and)\s*grow\b|\bwlg\b/.test(name))
+  return model('Try career-readiness workshops, explore college courses or credit, and gain paid work experience. Activities depend on the program track.','Generally NYC students ages 16–20; school and program criteria vary.','https://www.nyc.gov/site/dycd/services/jobs-internships/work-learn-grow-employment-program.page');
+ if(/\bcareer\s*ready\b|\bcareerready\b|\bcareerfirst\b/.test(name))
+  return model('Explore careers in group sessions, practice team and job skills, and do paid projects or summer work, depending on your age and program track.','Some tracks require enrollment at participating NYC schools or designated communities.','https://www.nyc.gov/site/dycd/services/jobs-internships/syep-career-ready.page');
+ if(/\bsyep\b|summer youth employment/.test(name))
+  return model('Explore careers and practice communication and teamwork through paid summer activities. Students ages 14–15 usually complete project-based work; older teens may have jobs at partner worksites.','Usually NYC residents ages 14–24 who meet employment eligibility rules.','https://www.nyc.gov/site/dycd/services/jobs-internships/about-syep.page');
+ if(/\bcompass[\s-]*high\b/.test(name))
+  return model('Work with other ninth- and tenth-graders on hands-on projects, develop leadership and study skills, and explore education or career interests. Topics vary by location.','Designed for students in grades 9–10.','https://www.nyc.gov/site/dycd/services/after-school/youth-empowered-programs.page');
+ if(/\bcompass[\s-]*explore\b/.test(name))
+  return model('Explore one interest through creative, project-based after-school activities, working in groups and building confidence and leadership.','Serves several age groups; ask whether this site has teen sessions.','https://www.nyc.gov/site/dycd/services/after-school/youth-empowered-programs.page');
+ if(/\bcompass\b/.test(name))
+  return model('Join supervised after-school learning and enrichment activities. Ask the provider which projects and age groups this particular location offers.','COMPASS serves different school grades; some sites may not accept high-school students.','https://www.nyc.gov/site/dycd/services/after-school/COMPASS_program_model.page');
+ if(/\bbeacon\b|\bcornerstone\b/.test(name))
+  return model('Join community-center programs that may include art, recreation, fitness, group learning and neighborhood activities. Available classes depend on the center.','Children, teens and adults may attend different sessions; ask about the teen schedule.','https://www.nyc.gov/site/dycd/services/DYCD_universal_applications.page');
+ if(/\badvance\s*(?:&|and)\s*earn\b|\btrain\s*(?:&|and)\s*earn\b/.test(name))
+  return model('Explore jobs, train for credentials in fields such as healthcare or technology, and potentially complete a paid internship with job-search assistance.','Primarily for ages 16–24 who are out of school and out of work—not usually enrolled high-school students.','https://www.nyc.gov/site/dycd/services/jobs-internships.page');
+ if(/\bnda\b|neighborhood development area/.test(name))
+  return model('Get educational or college-planning support, develop leadership and conflict-resolution skills, and explore careers. Specific services vary.','The provider must confirm its age groups and participation requirements.','https://www.nyc.gov/site/dycd/services/services.page');
+ if(/\byouth council\b|youth leadership/.test(name))
+  return model('Talk with other youth about neighborhood issues, help organize projects and practice teamwork, public speaking and leadership.','Council ages and activities vary by organizer.','https://www.nyc.gov/site/dycd/services/services.page');
+ if(/\binternship\b|\bworkforce\b|\bjob readiness\b|\bcareer\b/.test(name))
+  return model('Take part in career exploration, job preparation or work experience. The city record does not say what this particular placement involves.','Contact the provider about age, school enrollment, paid work and schedule rules.','https://www.nyc.gov/site/dycd/services/jobs-internships.page');
+ return model('The city lists this program location, but does not publish the actual workshops, classes or tasks. Ask the provider for a current list of activities.','Age, grade and registration requirements have not been confirmed.','https://www.nyc.gov/site/dycd/services/services.page');
+}
+
 function prepare(rows,nearby,borough){
  const found=new Map(),yearNow=new Date().getFullYear();
  for(const r of rows){
@@ -57,7 +92,8 @@ function paint(found,label){
  results.innerHTML=found.map(r=>{
   const type=escape(r.program_type||'Youth program'),name=escape(nameOf(r)),provider=escape(r.provider||'City-funded provider');
   const place=escape([r.borough,r.zipcode].filter(Boolean).join(' · ')),dist=r.distance===null?'':' · '+r.distance.toFixed(1)+' mi away';
-  return '<article class="local-program"><span class="local-tag">'+type+'</span><h3>'+name+'</h3><p>'+provider+'</p><p class="local-place">📍 '+place+escape(dist)+'</p><p class="local-unknown">Application status not verified · City data year: '+escape(r.date||'Unknown')+'</p><a href="'+DIRECTORY+'" target="_blank" rel="noopener noreferrer" aria-label="Verify '+name+' in NYC directory">Check program &amp; availability ↗</a></article>';
+  const activity=explain(r);
+  return '<article class="local-program"><span class="local-tag">'+type+'</span><h3>'+name+'</h3><p>'+provider+'</p><div class="local-activity"><strong>What you might do</strong><p>'+escape(activity.activity)+'</p></div><p class="local-audience"><strong>Who it is usually for:</strong> '+escape(activity.audience)+'</p><p class="local-place">📍 '+place+escape(dist)+'</p><p class="local-unknown">Application status not verified · City data year: '+escape(r.date||'Unknown')+'</p><a class="local-model-link" href="'+activity.url+'" target="_blank" rel="noopener noreferrer">Read about this program type ↗</a><a href="'+DIRECTORY+'" target="_blank" rel="noopener noreferrer" aria-label="Verify '+name+' in NYC directory">Check program &amp; availability ↗</a></article>';
  }).join('');
  feedback.textContent='Showing '+found.length+' additional NYC-funded youth program locations '+label+'. Check the official directory before applying.';
 }
