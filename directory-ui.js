@@ -3,22 +3,28 @@ const items=window.PROGRAMS||[],store=window.BeaconStore,el=id=>document.getElem
 
 const officialUrl=p=>{try{const url=new URL(p.url);return url.protocol==='https:'?url.href:null}catch{return null}};
 const daysLeft=d=>d&&/^\d{4}-\d{2}-\d{2}$/.test(d)?Math.ceil((new Date(d+'T23:59:59')-Date.now())/86400000):null;
-const reviewed=p=>p.verified&&/^\d{4}-\d{2}-\d{2}$/.test(p.verified)&&((Date.now()-new Date(p.verified+'T12:00:00Z'))/86400000)<=60&&((Date.now()-new Date(p.verified+'T12:00:00Z'))/86400000)>=-1;
+const reviewed=p=>p.sourceStatus==='current'&&p.verified&&/^\d{4}-\d{2}-\d{2}$/.test(p.verified)&&((Date.now()-new Date(p.verified+'T12:00:00Z'))/86400000)<=60&&((Date.now()-new Date(p.verified+'T12:00:00Z'))/86400000)>=-1;
 const fee=p=>['free','fee'].includes(p.costCategory)?p.costCategory:/\bfree\b|no participation fee|no tuition/i.test(p.cost||'')?'free':'unknown';
 const pay=p=>['paid','unpaid'].includes(p.payCategory)?p.payCategory:/\bpaid\b|stipend|paid hourly/i.test(p.cost||'')?'paid':'unknown';
 const mode=p=>['in-person','remote','hybrid'].includes(p.deliveryMode)?p.deliveryMode:/online/i.test(p.location||'')&&!/hybrid/i.test(p.location||'')?'remote':'unknown';
 const state=p=>reviewed(p)&&['open','closed','upcoming'].includes(p.applicationState)&&!(p.applicationState==='open'&&daysLeft(p.deadlineISO)!==null&&daysLeft(p.deadlineISO)<0)?p.applicationState:'unknown';
 function badges(p){
- const badges=[],days=daysLeft(p.deadlineISO),status=state(p);
- if(status==='open')badges.push(['open','Applications open']);
- if(status==='closed')badges.push(['closed','Applications closed']);
- if(status==='upcoming')badges.push(['soon','Opening soon']);
- if(days!==null&&days>=0&&days<=14)badges.push(['soon','Deadline in '+days+' days']);
- if(days===null)badges.push(['','Deadline unconfirmed']);
- if(!reviewed(p))badges.push(['review','Status needs checking']);
- return '<div class="program-badges">'+badges.map(([c,t])=>'<span class="program-badge '+c+'">'+safe(t)+'</span>').join('')+'</div>'+
- (reviewed(p)?'<p class="verified-line">Information reviewed '+safe(p.verified)+(officialUrl(p)?' · <a href="'+safe(officialUrl(p))+'" target="_blank" rel="noopener noreferrer">Official source ↗</a>':' · Official link needs checking')+'</p>':
- '<p class="verified-line">Confirm details on the official website.</p>');
+ const labels=[],days=daysLeft(p.deadlineISO),status=state(p);
+ if(status==='open')labels.push(['open','Applications open']);
+ else if(status==='closed')labels.push(['closed','Applications closed']);
+ else if(status==='upcoming')labels.push(['soon','Opening soon']);
+ if(days!==null&&days>=0&&days<=14)labels.push(['soon','Deadline in '+days+' days']);
+ if(days===null)labels.push(['','Next deadline unconfirmed']);
+ if(p.sourceStatus==='limited')labels.push(['review','Current details unverified']);
+ else if(p.sourceStatus==='program')labels.push(['review','Application dates unverified']);
+ else if(!reviewed(p))labels.push(['review','Recheck application status']);
+ const statusText=p.sourceStatus==='current'?'Organizer cycle checked':
+  p.sourceStatus==='program'?'Program confirmed; current dates not confirmed':'Current intake needs verification';
+ const source=officialUrl(p);
+ const link=source?' · <a href="'+safe(source)+'" target="_blank" rel="noopener noreferrer">Official organizer ↗</a>':'';
+ const date=p.sourceChecked?' · '+safe(p.sourceChecked):'';
+ return '<div class="program-badges">'+labels.map(([c,t])=>'<span class="program-badge '+c+'">'+safe(t)+'</span>').join('')+'</div>'+
+ '<p class="verified-line">'+safe(statusText)+date+link+'</p>';
 }
 function refreshOptions(){
  for(const [id,key] of [['category','type'],['subject','subject'],['location','location']]){
@@ -70,6 +76,7 @@ function render(){
  (!el('pay-filter').value||pay(o)===el('pay-filter').value)&&
  (!el('mode-filter').value||mode(o)===el('mode-filter').value)&&
  (!el('apply-filter').value||state(o)===el('apply-filter').value)&&
+ (!el('source-filter').value||o.sourceStatus===el('source-filter').value)&&
  (!saved.checked||store.get(o.id).favorited)&&
  (!el('progress').value||(store.get(o.id).application_status===el('progress').value && (store.get(o.id).favorited||store.get(o.id).notes||store.get(o.id).application_status!=='Interested')))&&
  (!q||[o.title,o.org,o.summary,o.subject,o.eligibility].join(' ').toLowerCase().includes(q)));
@@ -86,7 +93,7 @@ function render(){
  renderPager(results.length);
 }
 cards.addEventListener('click',e=>{const b=e.target.closest('button[data-id]');if(b)store.save(b.dataset.id,{favorited:!store.get(b.dataset.id).favorited})});
-['search','category','subject','location','grade','sort','progress','cost-filter','pay-filter','mode-filter','apply-filter'].forEach(id=>el(id).addEventListener('input',()=>{page=1;syncPage();render()}));
+['search','category','subject','location','grade','sort','progress','cost-filter','pay-filter','mode-filter','apply-filter','source-filter'].forEach(id=>el(id).addEventListener('input',()=>{page=1;syncPage();render()}));
 saved.addEventListener('change',()=>{
  const u=new URL(location.href);
  saved.checked?u.searchParams.set('saved','1'):u.searchParams.delete('saved');
