@@ -1,91 +1,87 @@
-# Catalog accuracy and security audit — October 18, 2026
+# Source-by-source audit: all 41 programs
+**Review date: October 18, 2026**  
+**Site:** [Student Opportunities NYC](https://sudleedy.github.io/student-opportunities-nyc/)
 
-This report inventories **41 bundled opportunities**. It distinguishes automated structural checks from independent source confirmation. An HTTPS-shaped address is **not** proof that the page is reachable or currently accepting applications. The live Supabase catalog, program_updates, and custom descriptions can override the bundled data and must be reviewed separately.
+## Scope and meanings
 
-## Automated inventory results
+I inspected the program's official organizer URL (or a program-specific official replacement) for **all 41 original directory listings** and compared it with the current bundled description. The review identifies which facts are supported by official program information, and deliberately avoids claiming that every upcoming application is open.
 
-- Bundled programs: **41**; unique IDs: **41**.
-- Confirmed exact date fields in bundled data: **4**; no exact date listed: **37** (these are deliberately not used for deadline countdowns).
-- Official HTTPS URL fields: **41** of 41; actual HTTP reachability was not verified for every program.
-- Structural/data issues from this automated check: **none**.
-- The page explicitly tells students to reconfirm eligibility, deadlines, and availability with the organizer.
+- **24 — Dated or current information on organizer page:** recent cycle, announced enrollment, last known application dates, or a recurring live program. This does **not** mean applications are open right now.
+- **13 — Organizer confirms program, next intake unconfirmed:** legitimate program or resource, but no reliable current application date available on the reviewed page.
+- **4 — Limited verification:** organizer evidence was a historical article, an inaccessible/empty website, or a general page that could not confirm a current intake.
 
-## Official pages rechecked this audit
+The `sourceChecked` field documents **when a page was inspected**, **not** when admissions were independently confirmed. The directory uses `sourceStatus`, `sourceNote`, `applicationState` and a known `deadlineISO` to display appropriately cautious filters and labels.
 
-- **Cooper Hewitt Design Hive** — October 25 deadline, 2027 participation and grades from official Design Hive page. [Official source](https://www.cooperhewitt.org/design-hive/).
-- **Rockefeller University Jumpstart** — January 4, 2027 at 5 PM ET; grades 11–12 and minimum age 16 from official Jumpstart page. [Official source](https://www.rockefeller.edu/outreach/lab-jumpstart/).
-- **Brooklyn Botanic Garden — Garden Apprentice Program** — December 4 is early interview invitation cutoff, not confirmed final deadline. [Official source](https://www.bbg.org/learn/gap).
-- **Science Research Mentoring Program (SRMP)** — Class of 2028 expected Winter 2027, official AMNH eligibility. [Official source](https://www.amnh.org/learn-teach/teens/science-research-mentoring-program/join-srmp).
-- **NYU Tandon ARISE Summer Research** — 2026 cycle shown closed; 2027 application deadline not announced. [Official source](https://k12stem.engineering.nyu.edu/programs/arise).
-- **Diamond Challenge** — January 14, 2027 at 5 PM Eastern. [Official source](https://diamondchallenge.org/competition/).
-- **Congressional App Challenge** — October 26, 2026 noon Eastern; district participation must be checked. [Official source](https://www.congressionalappchallenge.us/students/rules/).
-- **Technovation Challenge** — 2026–27 event with inconsistent published registration year; registration cutoff left unconfirmed. [Official source](https://technovationchallenge.org/competition/).
-- **AMNH Science Alliance** — Replaced wrong link and corrected $1,000 tuition per course, aid availability, and grade eligibility. [Official source](https://www.amnh.org/learn-teach/teens/science-alliance-high-school).
+## Specific corrections made
 
-**Corrections made in the catalog:** the U.S. Congressional App Challenge deadline specifies the Eastern cutoff, the inconsistent Technovation registration date is marked unconfirmed, and AMNH Science Alliance now links to its correct program page and displays tuition/assistance instead of being mislabeled free.
+1. **Technovation Challenge:** The official 2026–27 rules now clearly specify registration by **March 11, 2027 at 23:59 UTC** and project submission by **May 5, 2027 at 5 p.m. PDT**. Restored the verified registration countdown.
+2. **Princeton Summer Journalism Program:** Updated to the organizer's mid-November 2026 opening and the *last Monday in January* application cutoff (no guessed clock time).
+3. **CUNY STEM Research Academy:** Recorded grades 10–11 as the usual target and considered ninth graders as exceptional cases; also clarified student stipends.
+4. **MoMA Teens-in-Residence:** Corrected the 2026–27 stipend ($1,000), September 14, 2026 application closing, and session commitments.
+5. **Futures and Options Urban Leadership Fellows:** Switched from an old application form to the official program overview, which marks applications closed.
+6. **The Metropolitan Museum of Art:** Linked to the current central internships directory instead of its redirected historic URL; noted spring/summer applications have separate timelines.
+7. **New York Public Library:** Replaced broad teens homepage links with organizer-authored explanations for Teen Reading Ambassadors and Teen Civics Ambassadors. Recruitment for a current cycle is **not verified**.
+8. **NYAS Junior Academy:** Confirmed the July 9, 2026 Fall application cutoff, free remote format, and ages 13–17.
+9. **Cooper Hewitt, NYU ARISE, Rockefeller Jumpstart, AMNH SRMP, Whitney and many others:** Rechecked present published requirements, historic/current application deadlines and program status against organizer pages.
+10. **Filters and student-facing accuracy:** Added a source-review confidence filter, evidence notes on each detail page, and conservative structured fee, compensation, and attendance metadata where verified; resolved a JavaScript shadowing bug that could crash the format filter.
 
-## Remaining source checks
+## Full official-source review
 
-The other 32 programs still need a current-cycle eligibility/application source review. Many entries refer to the general organizer page or say the next cohort is not announced. Do not convert these to "applications open" until an official dated announcement confirms it.
-
-| Program | Confirmed exact date | Independent source review | Organizer URL |
+| # | Program / organizer evidence | Level | Source findings |
 |---|---|---|---|
-| Cooper Hewitt Design Hive | 2026-10-25 | Source rechecked | [Organizer](https://www.cooperhewitt.org/design-hive/) |
-| Brooklyn Botanic Garden — Garden Apprentice Program | Unconfirmed | Source rechecked | [Organizer](https://www.bbg.org/learn/gap) |
-| MoMA Open Art Space | Unconfirmed | Needs source recheck | [Organizer](https://www.moma.org/calendar/programs/199) |
-| Rockefeller University Jumpstart | 2027-01-04 | Source rechecked | [Organizer](https://www.rockefeller.edu/outreach/lab-jumpstart/) |
-| Science Research Mentoring Program (SRMP) | Unconfirmed | Source rechecked | [Organizer](https://www.amnh.org/learn-teach/teens/science-research-mentoring-program/join-srmp) |
-| CUNY STEM Research Academy | Unconfirmed | Needs source recheck | [Organizer](https://www.cuny.edu/academics/current-initiatives/p20/stem-research-academy/) |
-| Summer Youth Employment Program (SYEP) | Unconfirmed | Needs source recheck | [Organizer](https://www.nyc.gov/site/dycd/services/jobs-internships/summer-youth-employment-program-syep.page) |
-| NYC Ladders for Leaders | Unconfirmed | Needs source recheck | [Organizer](https://www.nyc.gov/site/dycd/services/jobs-internships/nyc-ladders-for-leaders-students.page) |
-| AMNH Science Communication Internship (SCIP) | Unconfirmed | Needs source recheck | [Organizer](https://www.amnh.org/learn-teach/teens/science-communication-internship-program) |
-| NYU Precollege | Unconfirmed | Needs source recheck | [Organizer](https://join.nyu.edu/precollege/) |
-| NYU College Access Leadership Institute | Unconfirmed | Needs source recheck | [Organizer](https://meet.nyu.edu/advice/get-to-know-the-nyu-college-access-leadership-institute/) |
-| NYC Service in Schools | Unconfirmed | Needs source recheck | [Organizer](https://www.schools.nyc.gov/learning/student-journey/experiential-learning/service-in-schools) |
-| AMNH Science Alliance | Unconfirmed | Source rechecked | [Organizer](https://www.amnh.org/learn-teach/teens/science-alliance-high-school) |
-| NYU High School Art & Design Programs | Unconfirmed | Needs source recheck | [Organizer](https://steinhardt.nyu.edu/programs/programs-high-school-students) |
-| Futures and Options Internship Program | Unconfirmed | Needs source recheck | [Organizer](https://futuresandoptions.org/our-programs/the-internship-program/) |
-| Futures and Options Urban Leadership Fellows | Unconfirmed | Needs source recheck | [Organizer](https://futuresandoptions.org/urban-leadership-fellows-application/) |
-| The Met High School Internships | Unconfirmed | Needs source recheck | [Organizer](https://www.metmuseum.org/about-the-met/internships/high-school) |
-| Whitney Youth Insights Artists | Unconfirmed | Needs source recheck | [Organizer](https://whitney.org/education/teens/youth-insights) |
-| Scholastic Art & Writing Awards | Unconfirmed | Needs source recheck | [Organizer](https://www.artandwriting.org/awards/how-to-enter/) |
-| YoungArts National Arts Competition | Unconfirmed | Needs source recheck | [Organizer](https://youngarts.org/apply/) |
-| WNYC Radio Rookies | Unconfirmed | Needs source recheck | [Organizer](https://wnyc.org/browse/shows/rookies) |
-| Princeton Summer Journalism Program | Unconfirmed | Needs source recheck | [Organizer](https://psjp.princeton.edu/apply/application-process) |
-| Girls Who Code Pathways | Unconfirmed | Needs source recheck | [Organizer](https://girlswhocode.com/programs/pathways) |
-| Technovation Challenge | Unconfirmed | Source rechecked | [Organizer](https://technovationchallenge.org/competition/) |
-| Congressional App Challenge | 2026-10-26 | Source rechecked | [Organizer](https://www.congressionalappchallenge.us/students/rules/) |
-| Diamond Challenge | 2027-01-14 | Source rechecked | [Organizer](https://diamondchallenge.org/competition/) |
-| NYC Student Advisory Councils | Unconfirmed | Needs source recheck | [Organizer](https://www.schools.nyc.gov/get-involved/students/student-advisory-councils) |
-| Mayor's Youth Leadership Council | Unconfirmed | Needs source recheck | [Organizer](https://www.nyc.gov/site/ymi/initiatives/youth-leadership-council.page) |
-| NYC Parks Ranger Conservation Corps | Unconfirmed | Needs source recheck | [Organizer](https://www.nyc.gov/jobs/internships.page) |
-| NYU Tandon ARISE Summer Research | Unconfirmed | Source rechecked | [Organizer](https://k12stem.engineering.nyu.edu/programs/arise) |
-| Columbia University Science Honors Program | Unconfirmed | Needs source recheck | [Organizer](https://outreach.engineering.columbia.edu/SHP) |
-| Urban Barcode Research Program (UBRP) | Unconfirmed | Needs source recheck | [Organizer](https://dnalc.cshl.edu/programs/studentresearch.html) |
-| Urban Barcode Project | Unconfirmed | Needs source recheck | [Organizer](https://dnalc.cshl.edu/programs/studentresearch.html) |
-| MoMA Teens-in-Residence | Unconfirmed | Needs source recheck | [Organizer](https://www.moma.org/calendar/programs/253) |
-| MoMA In the Making | Unconfirmed | Needs source recheck | [Organizer](https://www.moma.org/calendar/programs/86) |
-| Cooper Hewitt Teen Drop-In Workshops | Unconfirmed | Needs source recheck | [Organizer](https://www.cooperhewitt.org/teen-programs/) |
-| New York Academy of Sciences — Junior Academy | Unconfirmed | Needs source recheck | [Organizer](https://www.nyas.org/learning/high-school-research-programs/the-junior-academy/) |
-| Memorial Sloan Kettering HOPP Summer Student Program | Unconfirmed | Needs source recheck | [Organizer](https://www.mskcc.org/research-programs/human-oncology-pathogenesis/education) |
-| MIT THINK Scholars Program | Unconfirmed | Needs source recheck | [Organizer](https://think.mit.edu/) |
-| NYPL Teen Reading Ambassadors | Unconfirmed | Needs source recheck | [Organizer](https://www.nypl.org/teens) |
-| NYPL Teen Civics Ambassadors | Unconfirmed | Needs source recheck | [Organizer](https://www.nypl.org/teens) |
+| 1 | [Cooper Hewitt Design Hive](https://www.cooperhewitt.org/design-hive/) | Dated/current organizer information | 2027 Design Hive accepts juniors and seniors in NYC area; apply by October 25, 2026 at 11:59 p.m. $1,250 stipend. |
+| 2 | [Brooklyn Botanic Garden — Garden Apprentice Program](https://www.bbg.org/learn/gap) | Dated/current organizer information | 2027 GAP applications have an early December 4, 2026 interview-invitation cutoff; it is not stated as the final deadline. Grades 9–11. |
+| 3 | [MoMA Open Art Space](https://www.moma.org/calendar/programs/199) | Dated/current organizer information | Free Thursday 4–6 p.m. drop-in for high-school-age students; no internship application required. |
+| 4 | [Rockefeller University Jumpstart](https://www.rockefeller.edu/outreach/lab-jumpstart/) | Dated/current organizer information | Jumpstart 2027 applications open; due January 4, 2027 at 5 p.m. ET including recommendation. NYC juniors/seniors age 16+. |
+| 5 | [Science Research Mentoring Program (SRMP)](https://www.amnh.org/learn-teach/teens/science-research-mentoring-program/join-srmp) | Dated/current organizer information | AMNH states Class of 2028 applications expected winter 2027, but no exact date is posted. |
+| 6 | [CUNY STEM Research Academy](https://www.cuny.edu/academics/current-initiatives/p20/stem-research-academy/) | Program exists; intake unconfirmed | CUNY confirms STEM Research Academy for primarily grades 10–11 NYCPS students; select ninth graders considered. Dates differ by campus. |
+| 7 | [Summer Youth Employment Program (SYEP)](https://www.nyc.gov/site/dycd/services/jobs-internships/summer-youth-employment-program-syep.page) | Dated/current organizer information | NYC DYCD confirms 2026 SYEP submissions closed March 13; next summer application dates not published. |
+| 8 | [NYC Ladders for Leaders](https://www.nyc.gov/site/dycd/services/jobs-internships/nyc-ladders-for-leaders-students.page) | Program exists; intake unconfirmed | DYCD confirms paid summer internships and career training; the page has no current application deadline. |
+| 9 | [AMNH Science Communication Internship (SCIP)](https://www.amnh.org/learn-teach/teens/science-communication-internship-program) | Dated/current organizer information | AMNH still displays the March 1, 2026 deadline for its paid 2026 SCIP cohort; future intake not announced. |
+| 10 | [NYU Precollege](https://join.nyu.edu/precollege/) | Program exists; intake unconfirmed | NYU confirms Precollege for rising juniors/seniors, but the landing page provides no 2027 deadline. Check cost/course details. |
+| 11 | [NYU College Access Leadership Institute](https://meet.nyu.edu/advice/get-to-know-the-nyu-college-access-leadership-institute/) | Current info not verified | NYU's overview article explains the free summer program for rising seniors, but 2027 application dates are not confirmed; primary article blocked live extraction. |
+| 12 | [NYC Service in Schools](https://www.schools.nyc.gov/learning/student-journey/experiential-learning/service-in-schools) | Program exists; intake unconfirmed | NYC Public Schools describes Service in Schools resources; participation depends on each school's projects, not one application. |
+| 13 | [AMNH Science Alliance](https://www.amnh.org/learn-teach/teens/science-alliance-high-school) | Dated/current organizer information | AMNH lists 2026–27 paid Science Alliance courses for grades 9–12, at $1,000 per course with tuition assistance and session availability. |
+| 14 | [NYU High School Art & Design Programs](https://steinhardt.nyu.edu/programs/programs-high-school-students) | Program exists; intake unconfirmed | NYU Steinhardt has different summer art/design programs and enrollment rules; check the individual course. |
+| 15 | [Futures and Options Internship Program](https://futuresandoptions.org/our-programs/the-internship-program/) | Dated/current organizer information | Futures and Options explicitly marks its internship application closed; next opening not given. |
+| 16 | [Futures and Options Urban Leadership Fellows](https://futuresandoptions.org/our-programs/urban-leadership-fellows-program/) | Dated/current organizer information | Futures and Options states the six-week paid Urban Leadership Fellows program is closed, and its 2026 form had a February 25 deadline. |
+| 17 | [The Met High School Internships](https://www.metmuseum.org/opportunities/internships) | Program exists; intake unconfirmed | The Met confirms spring and summer high-school internships but currently lists different cohorts; use the official specific session page. |
+| 18 | [Whitney Youth Insights Artists](https://whitney.org/education/teens/youth-insights) | Dated/current organizer information | Whitney's most recent Youth Insights Artists application deadline was September 9, 2026; next semester not published. |
+| 19 | [Scholastic Art & Writing Awards](https://www.artandwriting.org/awards/how-to-enter/) | Dated/current organizer information | The 2027 Scholastic awards accept fall entries, with regional closing dates starting in December; check region-specific cutoff. |
+| 20 | [YoungArts National Arts Competition](https://youngarts.org/apply/) | Dated/current organizer information | YoungArts' 2027 cycle closed October 6, 2026 at 8 p.m. ET; 2028 applications open summer 2027. |
+| 21 | [WNYC Radio Rookies](https://wnyc.org/browse/shows/rookies) | Dated/current organizer information | WNYC still posts Fall 2026 Radio Rookies recruitment for NYC public/charter students in grades 9–12; the form deadline is not published. |
+| 22 | [Princeton Summer Journalism Program](https://psjp.princeton.edu/apply/application-process) | Dated/current organizer information | Princeton states 2027–28 application opens mid-November 2026 and closes the last Monday in January; juniors only. |
+| 23 | [Girls Who Code Pathways](https://girlswhocode.com/programs/pathways) | Dated/current organizer information | Girls Who Code's free virtual Pathways program has an Apply Now link; grade 9–12 girls/nonbinary students; self-paced projects. |
+| 24 | [Technovation Challenge](https://technovationchallenge.org/competition/) | Dated/current organizer information | 2027 Technovation team registration closes March 11, 2027 at 23:59 UTC; final project submission May 5, 2027 at 5 p.m. PDT. |
+| 25 | [Congressional App Challenge](https://www.congressionalappchallenge.us/students/rules/) | Dated/current organizer information | Congressional App Challenge 2026 closes October 26; check district participation and exact local cutoff with the official rules. |
+| 26 | [Diamond Challenge](https://diamondchallenge.org/competition/) | Dated/current organizer information | Diamond Challenge 2027 submission deadline is January 14 at 5 p.m. Eastern; teams of 2–4 students with adult advisor. |
+| 27 | [NYC Student Advisory Councils](https://www.schools.nyc.gov/get-involved/students/student-advisory-councils) | Program exists; intake unconfirmed | NYCPS describes advisory councils; each local council or school has a separate selection process. |
+| 28 | [Mayor's Youth Leadership Council](https://www.nyc.gov/site/ymi/initiatives/youth-leadership-council.page) | Program exists; intake unconfirmed | NYC government describes the Mayor's Youth Leadership Council, but no current recruitment date appears on its overview. |
+| 29 | [NYC Parks Ranger Conservation Corps](https://www.nyc.gov/jobs/internships.page) | Program exists; intake unconfirmed | NYC government confirms Ranger Conservation Corps high-school conservation internships, but the linked internship directory does not publish a current cohort application date. |
+| 30 | [NYU Tandon ARISE Summer Research](https://k12stem.engineering.nyu.edu/programs/arise) | Dated/current organizer information | NYU ARISE website still gives the February 27, 2026 closing date from the 2026 cycle; 2027 cycle is not posted. |
+| 31 | [Columbia University Science Honors Program](https://outreach.engineering.columbia.edu/SHP) | Dated/current organizer information | Columbia lists 2026–27 Saturday classes for grades 10–12, but a new admissions deadline is not published. |
+| 32 | [Urban Barcode Research Program (UBRP)](https://dnalc.cshl.edu/programs/studentresearch.html) | Program exists; intake unconfirmed | CSHL DNA Learning Center confirms Urban Barcode Research Program grades 9–12; applications generally in spring; next exact date not posted. |
+| 33 | [Urban Barcode Project](https://dnalc.cshl.edu/programs/studentresearch.html) | Program exists; intake unconfirmed | CSHL confirms Urban Barcode Project for teams of 2–4 high-school students with trained mentors; upcoming competition dates not specified. |
+| 34 | [MoMA Teens-in-Residence](https://www.moma.org/calendar/programs/253) | Dated/current organizer information | MoMA lists 2026–27 paid Teens-in-Residence cohort (grades 10–12), September 14, 2026 application deadline and $1,000 stipend. |
+| 35 | [MoMA In the Making](https://www.moma.org/calendar/programs/86) | Dated/current organizer information | MoMA lists In the Making summer arts courses as free, with no upcoming event or 2027 application window. |
+| 36 | [Cooper Hewitt Teen Drop-In Workshops](https://www.cooperhewitt.org/teen-programs/) | Program exists; intake unconfirmed | Cooper Hewitt confirms free monthly teen drop-in workshops; individual event dates and reservations vary. |
+| 37 | [New York Academy of Sciences — Junior Academy](https://www.nyas.org/learning/high-school-research-programs/the-junior-academy/) | Dated/current organizer information | NYAS states Junior Academy Fall 2026 recruitment closed July 9, 2026; future recruitment dates not confirmed. |
+| 38 | [Memorial Sloan Kettering HOPP Summer Student Program](https://www.mskcc.org/research-programs/human-oncology-pathogenesis/education) | Program exists; intake unconfirmed | MSK HOPP confirms high-school Summer Student Program cancer research placements; no current 2027 deadline on this overview. |
+| 39 | [MIT THINK Scholars Program](https://think.mit.edu/) | Current info not verified | MIT THINK's official homepage could not be fully read in this check; a 2026–27 application deadline cannot be independently confirmed. |
+| 40 | [NYPL Teen Reading Ambassadors](https://www.nypl.org/blog/2023/07/31/kick-summer-great-book-teen-reading-ambassadors-favorite-reads-kids) | Current info not verified | NYPL confirms Teen Reading Ambassadors for grades 10–12 in organizer articles, but no current internship application page or deadline was verified. |
+| 41 | [NYPL Teen Civics Ambassadors](https://www.nypl.org/blog/2025/09/29/teen-civics-ambassadors-report-ai-media-bias) | Current info not verified | NYPL confirms Teen Civics Ambassadors grades 10–12 in organizer articles, but no current application deadline was verified. |
 
-## Mobile and access controls review
+## Open questions, limitations and follow-up
 
-- Mobile CSS adjustments added for the home directory, program detail, dashboard, admin tools, privacy page, and account sign-in dialog.
-- All external links from dynamic program details are required to be HTTPS; injected text is HTML-escaped.
-- SQL policies in the repository limit saved notes to the owner and suggestions, reports, catalog changes and page statistics to authorized administrators.
-- The database cannot be impersonated from static code review. Live negative tests must use a real **non-admin** account and confirm that admin reads/writes are denied; an admin browser alone cannot prove this.
-- Run `supabase-security-hardening.sql` once to prevent student report submitters from sending a pre-reviewed status while keeping normal reporting functional.
+- **Always verify exact opening status before applying.** An older published application can remain on a website even after its cutoff. Missing dates are not converted into a predicted deadline.
+- A handful of programs are verified through official background materials rather than current-year recruitment announcements: NYU CALI, MIT THINK, and the two NYPL Ambassador programs particularly need a more recent official application announcement.
+- Some opportunities, such as NYC Service in Schools, MoMA's Open Art Space, and Cooper Hewitt's free drop-in workshops, do **not** operate like a yearly internship application. Their deadlines should not be invented.
+- **Database caveat:** A live administrator edit stored in Supabase `catalog_programs`, `program_updates`, or `program_descriptions` may override the **bundled** values shown in this report. Compare changes in the Admin Dashboard when reconciling public information.
+- URL format checks do not guarantee that every third-party form accepts applications. The review used accessible organizer pages and search-indexed organizer statements where direct extraction was unavailable; those cases are explicitly marked as limited.
+- Program descriptions should be reviewed after each organizer's new cohort announcement, especially for costs, geographic restrictions, recommendations, age requirements, work authorization, and fees.
 
-## Suggested regular maintenance
+## Suggested ongoing review cycle
 
-1. Check exact upcoming deadlines, eligibility and official organizer URLs weekly during application season.
-2. Update the admin **Program Timelines** and **Manage Programs** views when an official announcement changes.
-3. Recheck paid/free claims and grade eligibility each new cohort.
-4. Use a non-admin test account and verify direct access to admin screens is blocked; ensure private Supabase queries remain denied.
-5. Recheck iPhone/Android narrow-screen layout with a physical device before launch.
+Check dated applications weekly during application season; mark entries for rechecking after 60 days. For a new official notice, update the relevant listing via **Admin Dashboard → Manage Programs**, and use the **Program Timelines** tab for verified exact date changes. Keep source links and clear date wording on every update.
 
-_This is an editorial and source audit, not a certification, penetration test, or proof that all 41 programs currently accept applications._
+**Review methodology:** Official organizer sources checked October 18, 2026. This is a source-content audit, not a real-time applicant-portal test, an endorsement from any organizer, or a guarantee of admission eligibility.
