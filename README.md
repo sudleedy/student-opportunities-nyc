@@ -77,6 +77,14 @@ In **Admin Dashboard → Student Reports**, each report has a **Delete report** 
 
 **One-time permission setup:** Run `supabase-report-deletion.sql` in the existing Supabase project's SQL Editor. This adds a Row Level Security `DELETE` policy that allows deletion **only by authorized admins** already recorded in `private.site_admins`. It does not delete records on its own and it does not grant ordinary students report deletion access. No further Supabase visits are needed for individual report deletions.
 
+## Multiple selections per filter (October 2026)
+
+- **Interest**, **Grade**, **Application status**, **Program cost**, **Attendance**, **My progress**, and **Listing source** use compact checkbox drop-down menus. Students may select several options in the same category (for example, both Science & Research and Technology & Coding, or both 10th and 11th grade).
+- Within a single category, programs matching **any checked option** appear; between categories, the choices narrow results together. The search box combines with the chosen filters, and pagination stays **nine cards per page**.
+- Each checkbox stays visibly checked while selected. The closed menu shows either the selected choice or the first choice plus a count (e.g., "Science & Research +2"), while the collapsed **More filters** control displays how many advanced options are selected.
+- Each checkbox menu has a **Clear** button and **Done** button. **Clear filters** resets all menu selections, sorting and the optional borough without deleting actual saved programs. Menus can be operated by mouse, touch, or keyboard.
+- **Borough and Sort by** remain single-choice controls to keep city loading and sorting predictable. No Supabase migration is required; these filters are client-side and reset when the page is fully reloaded.
+
 ## One unified opportunity list (October 2026)
 
 Both the 41 curated entries and opt-in, automatically discovered NYC-funded program sites now appear in **one search result grid**, with a **single nine-card pagination** shared by all results. The standalone "Discover Programs Near You" section and its second set of pages have been retired.
