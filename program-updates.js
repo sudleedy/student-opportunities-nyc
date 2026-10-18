@@ -2,6 +2,7 @@
 (()=>{'use strict';
 const cfg=window.SOB_AUTH_CONFIG||{},items=window.PROGRAMS||[];
 const ready=(async()=>{
+ if(window.StudentCatalog)await window.StudentCatalog.ready;
  if(!cfg.supabaseUrl||!cfg.publishableKey)return;
  try{
   const url=cfg.supabaseUrl+'/rest/v1/program_updates?select=program_id,deadline_text,deadline_iso,status_text,review_note,verified_at';
