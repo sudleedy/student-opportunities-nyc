@@ -1,5 +1,5 @@
 /* Additional NYC DYCD program sites for the SAME nine-card opportunity list.
- * Borough is optional; browser GPS is only used locally and never sent to the dataset.
+ * Visitors choose a borough; device location is never requested.
  * City sites are labeled unverified, unlike the individually reviewed curated catalog.
  */
 (()=>{'use strict';
@@ -8,23 +8,16 @@ const DIRECTORY='https://discoverdycd.dycdconnect.nyc/program-public?nt=1';
 const POLICY='https://data.cityofnewyork.us/Social-Services/DYCD-Program-Sites/ebkm-iyma';
 const boros=['Brooklyn','Manhattan','Queens','Bronx','Staten Island'];
 const types=/\\b(compass high|ladders for leaders|summer youth employment|syep|beacon|cornerstone|advance\\s*&\\s*earn|learn\\s*&\\s*earn|train\\s*&\\s*earn|high school youth|youth council|workforce|internship|job readiness|careerready|career first|emerging leaders)\\b/i;
-const boroughEl=document.getElementById('nearby-borough'),locate=document.getElementById('nearby-position');
+const boroughEl=document.getElementById('nearby-borough');
 const refresh=document.getElementById('nearby-refresh'),feedback=document.getElementById('nearby-feedback');
-if(!boroughEl||!locate||!refresh||!feedback)return;
-let rows=[],coords=null,mode='none',running=0,busy=false,status='Choose a borough to include additional NYC youth programs.',cache=new Map();
+if(!boroughEl||!refresh||!feedback)return;
+let rows=[],running=0,busy=false,status='Choose a borough to include additional NYC youth programs.',cache=new Map();
 const notify=()=>{
  feedback.textContent=status;
  document.dispatchEvent(new Event('sob-nearby-updated'));
 };
-const setBusy=value=>{busy=value;locate.disabled=value;refresh.disabled=value||mode==='none';boroughEl.disabled=value};
+const setBusy=value=>{busy=value;refresh.disabled=value||!boroughEl.value;boroughEl.disabled=value};
 try{const prior=localStorage.getItem('sob-borough-v1');if(boros.includes(prior))boroughEl.value=prior}catch{}
-const asNumber=value=>Number.isFinite(Number(value))?Number(value):null;
-const miles=(a,b,c,d)=>{
- const toRad=x=>x*Math.PI/180;
- const deltaLat=toRad(c-a),deltaLon=toRad(d-b);
- const n=Math.sin(deltaLat/2)**2+Math.cos(toRad(a))*Math.cos(toRad(c))*Math.sin(deltaLon/2)**2;
- return 3959*2*Math.atan2(Math.sqrt(n),Math.sqrt(Math.max(0,1-n)));
-};
 const nameOf=r=>String(r.program_site_name||r.provider||'Program site').trim();
 const normalizeBoro=s=>String(s||'').toLowerCase().replace(/\s+/g,' ').trim();
 const boroOf=r=>{const b=normalizeBoro(r.borough);if(b==='staten island')return 'Staten Island';return boros.find(k=>normalizeBoro(k)===b)||String(r.borough||'NYC')};
@@ -67,22 +60,20 @@ function explain(r){
  return model('The city lists this program location, but does not publish the actual workshops, classes or tasks. Ask the provider for a current list of activities.','Age, grade and registration requirements have not been confirmed.','https://www.nyc.gov/site/dycd/services/services.page');
 }
 
-function prepare(rows,nearby,borough){
+function prepare(rows,borough){
  const found=new Map(),yearNow=new Date().getFullYear();
  for(const r of rows){
   if(!r||!relevant(r))continue;
-  const year=Number(r.date),lat=asNumber(r.latitude),lon=asNumber(r.longitude);
+  const year=Number(r.date);
   if(Number.isFinite(year)&&year<yearNow-1)continue;
   const title=nameOf(r),type=String(r.program_type||'DYCD youth program').trim(),boro=boroOf(r);
   if(!title||title.length<3||!boros.includes(boro)||(borough&&boro!==borough))continue;
-  const distance=nearby&&lat!==null&&lon!==null?miles(nearby.lat,nearby.lon,lat,lon):null;
-  if(nearby&&(distance===null||distance>12))continue;
   const code=String(r.zipcode||'').replace(/[^0-9]/g,'').slice(0,5);
   const key=[type,title,code].map(x=>x.toLowerCase()).join('|');
-  if(!found.has(key)||year>Number(found.get(key).date||0))found.set(key,{...r,program_type:type,program_site_name:title,borough:boro,zipcode:code,distance});
+  if(!found.has(key)||year>Number(found.get(key).date||0))found.set(key,{...r,program_type:type,program_site_name:title,borough:boro,zipcode:code});
  }
  const candidates=[...found.values()];
- candidates.sort((a,b)=>nearby?(a.distance??Infinity)-(b.distance??Infinity)||Number(b.date)-Number(a.date):Number(b.date)-Number(a.date)||nameOf(a).localeCompare(nameOf(b)));
+ candidates.sort((a,b)=>Number(b.date)-Number(a.date)||nameOf(a).localeCompare(nameOf(b)));
  return candidates;
 }
 
@@ -95,7 +86,7 @@ function asItem(r){
  return {
   kind:'city',id:'city:'+typ+':'+site+':'+(r.zipcode||''),
   title:site,org:String(r.provider||'City-funded provider'),type:typ,subject,
-  location:boro,borough:boro,zipcode:r.zipcode||'',distance:r.distance,
+  location:boro,borough:boro,zipcode:r.zipcode||'',
   whatYouDo:activity.activity,eligibility:activity.audience,grades:rawGrades,
   summary:activity.activity,modelUrl:activity.url,url:DIRECTORY,
   date:String(r.date||''),sourceStatus:'city',sourceChecked:'',deadline:null,
@@ -103,27 +94,30 @@ function asItem(r){
  };
 }
 async function load(force=false){
- const borough=boroughEl.value,nearby=mode==='gps'?coords:null;
- if(!borough&&!nearby){running++;rows=[];setBusy(false);status='Choose a borough to include local city programs alongside the main listings.';notify();return}
- const key=nearby?'gps':borough,token=++running;
+ const borough=boroughEl.value;
+ if(!borough){running++;rows=[];setBusy(false);status='Choose a borough to include NYC-funded programs alongside the main listings.';notify();return}
+ const token=++running;
  rows=[];setBusy(true);status='Looking up NYC-funded program locations…';notify();
  try{
   const year=new Date().getFullYear(),params=new URLSearchParams();
-  params.set('$select','date,program_area,program_type,service_category,provider,program_site_name,borough,zipcode,latitude,longitude');
-  params.set('$where','date >= '+(year-1)+(nearby?'':" AND borough = '"+borough+"'"));
-  params.set('$order','date DESC');params.set('$limit',nearby?'7500':'2500');
-  let data=force?null:cache.get(key);
+  params.set('$select','date,program_area,program_type,service_category,provider,program_site_name,borough,zipcode');
+  params.set('$where',"date >= "+(year-1)+" AND borough = '"+borough+"'");
+  params.set('$order','date DESC');params.set('$limit','2500');
+  let data=force?null:cache.get(borough);
   if(!data){
    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),16000);
-   try{const response=await fetch(SOURCE+'?'+params.toString(),{signal:controller.signal,headers:{Accept:'application/json'}});
+   try{
+    const response=await fetch(SOURCE+'?'+params.toString(),{signal:controller.signal,headers:{Accept:'application/json'}});
     if(!response.ok)throw Error('City data unavailable');
-    data=await response.json();if(!Array.isArray(data))throw Error('Unexpected city data');cache.set(key,data);
+    data=await response.json();
+    if(!Array.isArray(data))throw Error('Unexpected city data');
+    cache.set(borough,data);
    }finally{clearTimeout(timer)}
   }
   if(token!==running)return;
-  rows=prepare(data,nearby,borough).map(asItem);
+  rows=prepare(data,borough).map(asItem);
   status=rows.length?'Added '+rows.length+' city-funded program sites to the main results. Activities and openings vary by provider.':
-  'No matching NYC youth program sites found. The curated programs are still available.';
+    'No matching NYC youth program sites found. The curated programs are still available.';
  }catch{
   if(token!==running)return;
   rows=[];
@@ -131,24 +125,10 @@ async function load(force=false){
  }finally{if(token===running){setBusy(false);notify()}}
 }
 boroughEl.addEventListener('change',()=>{
- mode=boroughEl.value?'borough':'none';coords=null;
- try{if(mode==='borough')localStorage.setItem('sob-borough-v1',boroughEl.value);else localStorage.removeItem('sob-borough-v1')}catch{}
+ try{if(boroughEl.value)localStorage.setItem('sob-borough-v1',boroughEl.value);else localStorage.removeItem('sob-borough-v1')}catch{}
  load();
 });
 refresh.addEventListener('click',()=>load(true));
-locate.addEventListener('click',()=>{
- if(!navigator.geolocation){status='Your browser does not support location permission. Choose a borough instead.';notify();return}
- status='Waiting for optional browser location permission…';notify();
- navigator.geolocation.getCurrentPosition(({coords:c})=>{
-  const lat=Number(c.latitude),lon=Number(c.longitude);
-  if(!Number.isFinite(lat)||!Number.isFinite(lon)||lat<40.45||lat>40.95||lon< -74.3||lon> -73.65){
-   status='This location is outside NYC. Choose a borough instead.';notify();return;
-  }
-  coords={lat,lon};mode='gps';boroughEl.value='';load();
- },()=>{status='Location permission was not granted. Choose your borough instead.';notify()},
- {enableHighAccuracy:false,timeout:12000,maximumAge:900000});
-});
-mode=boroughEl.value?'borough':'none';
 window.NearbyCatalog={getItems:()=>rows, getStatus:()=>status, isLoading:()=>busy, directory:DIRECTORY, policy:POLICY};
-if(mode==='borough')load();else notify();
+if(boroughEl.value)load();else notify();
 })();
