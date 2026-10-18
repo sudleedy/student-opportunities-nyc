@@ -71,6 +71,35 @@ In **Admin Dashboard → Student Reports**, each report has a **Delete report** 
 
 **One-time permission setup:** Run `supabase-report-deletion.sql` in the existing Supabase project's SQL Editor. This adds a Row Level Security `DELETE` policy that allows deletion **only by authorized admins** already recorded in `private.site_admins`. It does not delete records on its own and it does not grant ordinary students report deletion access. No further Supabase visits are needed for individual report deletions.
 
+## 2026 platform expansion: seven improvements
+
+This version includes all seven planned improvements:
+
+1. **Manage Programs** (admin): create listings, edit full program information (including fees, compensation, participation mode and application status), archive/unarchive listings, or restore catalog records. Archiving leaves each student's saved application data intact.
+2. **Suggest a program** (homepage): signed-in students submit a program and its official link for private admin review. In **Student Suggestions**, admins can approve, decline, or prefill an editor via **Create program listing**. Approval alone does not publish an unverified listing.
+3. **Application labels** on directory cards: open, opening soon, closed, near deadlines, and unknown/review warnings. "Applications open" is displayed **only** with an explicit status and a review date from the past 60 days. A future deadline alone never establishes that applications are open.
+4. **Extra filters** on homepage: fees, paid/unpaid, in-person/remote/hybrid, and verified application status. Legacy catalog entries without reliable structured data show "Not confirmed" instead of guessing. Obvious free/paid wording can inform legacy filters until an admin confirms metadata.
+5. **My Dashboard** at `dashboard.html`: saved programs, deadlines within 30 days, application progress, and links to edit notes. Uses the existing favorites/tracker store and sign-in; no additional student data table is required.
+6. **Review date/source labels**: visible on program cards, with direct official organizer links. Old or missing review dates generate a warning, not false verification.
+7. **Admin Site Statistics**: aggregate homepage/program/dashboard page loads (daily counts, not unique visitors), catalog counts, reviewed deadlines, edited descriptions, and approved student suggestions. **No visitor IPs, cookies, full URLs or IDs are saved by the new counter.** Counts are approximate and repeat loads can inflate totals.
+
+### One-time Supabase migration
+
+From the GitHub repository, copy `supabase-platform-expansion.sql` to your existing Supabase project → SQL Editor → Run **once**. It creates and protects `catalog_programs`, `program_suggestions`, and `site_page_counts` and adds a narrowly scoped page-load counting RPC. The migration is additive and keeps existing accounts, saves, reports, timelines, and descriptions. Existing `public.is_report_admin()` and admin authorization are reused.
+
+Until the migration has succeeded, the original catalog, filters, saved programs and other existing features remain usable; new admin saves, the student suggestion queue, and new statistics may show a setup warning or lack data. Do not put secret or service-role keys in browser scripts.
+
+### Recommended manual smoke test after migration
+
+- Sign in as the site administrator. Check `admin.html#management`: add a **test** program, then edit, archive, unarchive and finally remove the test entry. Verify the public search and new detail page in a separate browser tab.
+- On `admin.html#timelines` and `#descriptions`, confirm the new test entry is editable. Do not change a real program deadline without checking the official organizer.
+- Using a **different, ordinary signed-in test account**, submit a test suggestion from the homepage. Verify only the administrator can review it at `admin.html#suggestions`; test approve/decline and **Create program listing**.
+- Verify filters and saved programs work without sign-in, then sign in and check `dashboard.html` for synced favorites and notes.
+- Open the homepage and a program page, then refresh `admin.html#insights` and confirm aggregate views update. The counters are not unique-person statistics.
+- Check a small mobile screen as well as desktop for card spacing and form controls.
+
+For rollback: revert the recent site-code commits on GitHub (do not delete user tables). Catalog changes made through admin are in Supabase and are independently reversible through the management dashboard.
+
 ## Files
 - `index.html` — searchable directory
 - `program.html` — shareable program pages and tracker
