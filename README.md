@@ -1,7 +1,20 @@
 # Student Opportunities NYC — site setup
 
-The GitHub Pages website is hosted at:
-https://sudleedy.github.io/student-opportunities-nyc/
+The production website uses a custom domain (still hosted on GitHub Pages):
+https://student-opportunities-nyc.com/
+
+The former GitHub Pages address, `https://sudleedy.github.io/student-opportunities-nyc/`, is a historical address and should not be published as the primary website link.
+
+## Custom domain checklist
+
+- **Official public URL:** https://student-opportunities-nyc.com/; repository's `CNAME` must contain `student-opportunities-nyc.com`.
+- **DNS:** Cloudflare apex A records use GitHub Pages' four published addresses; the `www` CNAME targets `sudleedy.github.io` (the GitHub-hosted destination, **not** the public URL). Keep those records DNS-only when letting GitHub serve HTTPS.
+- **HTTPS:** Keep **Enforce HTTPS** enabled under repository **Settings → Pages**.
+- **Auth URL configuration (manual, outside GitHub):** Update the *existing* Supabase project's **Authentication → URL Configuration** Site URL and allowed redirect URLs to the new origin as documented below. Changing `auth-config.js` alone is not a substitute for this dashboard setting. Do not create a new Supabase project or change its public key just because the domain changed.
+- **GitHub repository homepage (manual):** Under repository **About → Edit**, change the website URL to `https://student-opportunities-nyc.com/`. This is a GitHub repository metadata setting, separate from Pages configuration.
+- **Smoke tests:** In a private/incognito window, visit the home directory, choose a borough, combine interest filters, paginate through nine cards per page, open a program page, and check the student dashboard. Test **Google** and **email-link** sign-in on the new domain and confirm that a saved program syncs to the same account. Test the admin dashboard only with an authorized admin account. Test `https://www.student-opportunities-nyc.com/` redirects to the preferred non-`www` address.
+- **Storage limitation:** Browser-local guest saves, notes and sessions do not migrate between hostnames; this is a browser security boundary. Do not promise automatic migration.
+- **No database migration required:** Keep the existing Supabase project and tables; no SQL script is needed *just for the domain change*.
 
 ## Features already working without an account
 - Save/remove favorites (heart icon on cards or program pages).
@@ -16,10 +29,12 @@ https://sudleedy.github.io/student-opportunities-nyc/
 
 1. Create a project at https://supabase.com/ and open its SQL Editor.
 2. Review and run the statements in `supabase-setup.sql`. They create a `student_saves` table and enable per-user Row Level Security so students cannot read each other's saves.
-3. Under **Authentication → URL Configuration**, set the Site URL to:
-   `https://sudleedy.github.io/student-opportunities-nyc/`
-   Add this allowed Redirect URL:
-   `https://sudleedy.github.io/student-opportunities-nyc/**`
+3. Under **Authentication → URL Configuration**, set the **Site URL** to:
+   `https://student-opportunities-nyc.com/`
+   Add these to the **allowed Redirect URLs**:
+   - `https://student-opportunities-nyc.com/`
+   - `https://student-opportunities-nyc.com/**` (the current client redirects to the active page, including program URLs with query parameters)
+   Use HTTPS and the non-`www` domain for the production site. Optionally keep the former GitHub Pages redirect pattern only during a planned transition; do not point students there. See [Custom domain checklist](#custom-domain-checklist).
 4. Under **Authentication → Providers**, check that Email sign-in is enabled. Passwordless email links can be rate-limited by Supabase's built-in mail service; configure an approved sending service before a large launch.
 5. From your Supabase project, copy the **Project URL** and the public **publishable / anon key**. Put them in `auth-config.js`:
    ```js
@@ -33,7 +48,7 @@ https://sudleedy.github.io/student-opportunities-nyc/
 7. Test the experience with two different test accounts. Each should see only its own notes and favorites.
 8. Before inviting minors to create accounts, have a responsible adult review the privacy notice, third-party service terms, and applicable legal requirements.
 
-The Sign in control is present but will show **Sign in (soon)** until configuration is complete. Students can use guest storage meanwhile. Existing guest saves do not automatically become account data; this avoids copying data from shared computers into someone else's account.
+The Sign in control is present and uses the public Supabase configuration in `auth-config.js` when available; if configuration is missing, it shows **Sign in (soon)**. Students can still save programs as guests. Existing guest saves do not automatically become account data; this avoids copying data from shared computers into someone else's account. **A custom-domain switch also changes the browser storage origin:** guest favorites and notes saved under `sudleedy.github.io` do not automatically appear on `student-opportunities-nyc.com`. Signed-in records stay in the same Supabase database, but users must sign in again on the new hostname.
 
 ## Manage deadlines without editing code
 
