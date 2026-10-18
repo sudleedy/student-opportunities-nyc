@@ -35,6 +35,21 @@ https://sudleedy.github.io/student-opportunities-nyc/
 
 The Sign in control is present but will show **Sign in (soon)** until configuration is complete. Students can use guest storage meanwhile. Existing guest saves do not automatically become account data; this avoids copying data from shared computers into someone else's account.
 
+## Manage deadlines without editing code
+
+The private administrator interface is at `admin.html` → **Program Timelines**.
+
+1. Complete the existing administrator account setup in `supabase-admin-setup.sql` (do not add new admin users unless authorized).
+2. **Once**, run `supabase-program-timelines.sql` in Supabase SQL Editor. It creates an RLS-controlled table, `public.program_updates`.
+3. Sign in with your authorized Google account, open **Account → Manage reports & program timelines**, then choose **Program Timelines**.
+4. Find a program, open its official organizer website, update the exact date (if announced), deadline wording, application status, and review note.
+5. Click **Save & mark reviewed**. Refresh the public directory or program page to see the changes. Public readers can view dates but cannot modify them.
+6. Choose **Restore catalog dates** to remove an override. This restores the original GitHub catalog value, which might be older.
+
+**Review cues:** Deadlines within 30 days, passed dates, unconfirmed dates, and information not reviewed for at least 60 days are flagged in the dashboard. These warnings use stored dates; **they do not automatically check the organizer's website or guarantee availability**.
+
+The public site retains its bundled catalog if Supabase cannot be reached. Check administrator edits with a second, ordinary test account before wider launch. Do not place account passwords or secret keys in the browser scripts.
+
 ## Files
 - `index.html` — searchable directory
 - `program.html` — shareable program pages and tracker
