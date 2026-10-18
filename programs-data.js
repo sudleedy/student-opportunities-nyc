@@ -30,7 +30,7 @@ window.PROGRAMS = [
     "verified": "2026-10-18",
     "sourceChecked": "2026-10-18",
     "deadlineNote": "Exact date from organizer page; verify clock time and new updates.",
-    "applicationNote": "Always check the organizer link for the current application and complete eligibility criteria."
+    "applicationNote": "Contact your eligible partner school/program for its application; prepare research interests and availability. Check the organizer's official application page for current instructions, deadlines and complete eligibility."
   },
   {
     "id": "nybg-high-school-explainer",
@@ -65,7 +65,7 @@ window.PROGRAMS = [
     "verified": "2026-10-18",
     "sourceChecked": "2026-10-18",
     "deadlineNote": "Exact date from organizer page; verify clock time and new updates.",
-    "applicationNote": "Always check the organizer link for the current application and complete eligibility criteria."
+    "applicationNote": "Read training/attendance rules; prepare an interest statement and attend interview if invited. Check the organizer's official application page for current instructions, deadlines and complete eligibility."
   },
   {
     "id": "queens-museum-teens-institute",
@@ -99,7 +99,7 @@ window.PROGRAMS = [
     "verified": "2026-10-18",
     "sourceChecked": "2026-10-18",
     "deadlineNote": "Exact date from organizer page; verify clock time and new updates.",
-    "applicationNote": "Always check the organizer link for the current application and complete eligibility criteria."
+    "applicationNote": "Prepare an arts/leadership interest statement and confirm your Queens affiliation and attendance schedule. Check the organizer's official application page for current instructions, deadlines and complete eligibility."
   },
   {
     "id": "queens-library-peer-to-peer-collective",
@@ -134,7 +134,7 @@ window.PROGRAMS = [
     "verified": "2026-10-18",
     "sourceChecked": "2026-10-18",
     "deadlineNote": "Exact date from organizer page; verify clock time and new updates.",
-    "applicationNote": "Always check the organizer link for the current application and complete eligibility criteria."
+    "applicationNote": "Draft a student-led activity, estimate supplies and duration, and obtain guardian consent. Check the organizer's official application page for current instructions, deadlines and complete eligibility."
   },
   {
     "id": "columbia-precollege-weekend",
@@ -169,7 +169,7 @@ window.PROGRAMS = [
     "verified": "2026-10-18",
     "sourceChecked": "2026-10-18",
     "deadlineNote": "Exact date from organizer page; verify clock time and new updates.",
-    "applicationNote": "Always check the organizer link for the current application and complete eligibility criteria."
+    "applicationNote": "Select a course area, arrange transcript and teacher reference, and review costs and financial aid. Check the organizer's official application page for current instructions, deadlines and complete eligibility."
   },
   {
     "id": "columbia-college-edge",
@@ -202,7 +202,7 @@ window.PROGRAMS = [
     "verified": "2026-10-18",
     "sourceChecked": "2026-10-18",
     "deadlineNote": "Exact date from organizer page; verify clock time and new updates.",
-    "applicationNote": "Always check the organizer link for the current application and complete eligibility criteria."
+    "applicationNote": "Check whether your high school permits the course load and review college tuition/credit requirements. Check the organizer's official application page for current instructions, deadlines and complete eligibility."
   },
   {
     "id": "cooper-hewitt-design-hive",
@@ -1957,7 +1957,7 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "deadlineISO": null,
     "deadlineNote": "Exact future deadline not published; do not infer a cutoff.",
-    "applicationNote": "Always check the organizer link for the current application and complete eligibility criteria."
+    "applicationNote": "Learn about project ideas; review neighborhood eligibility and plan to obtain student working papers. Check the organizer's official application page for current instructions, deadlines and complete eligibility."
   },
   {
     "id": "staten-island-zoo-teen-volunteers",
@@ -2029,7 +2029,7 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "deadlineISO": null,
     "deadlineNote": "Exact future deadline not published; do not infer a cutoff.",
-    "applicationNote": "Always check the organizer link for the current application and complete eligibility criteria."
+    "applicationNote": "Describe ecology/research interests and consider 14-month availability and outdoor fieldwork. Check the organizer's official application page for current instructions, deadlines and complete eligibility."
   },
   {
     "id": "wave-hill-forest-project",
@@ -2065,7 +2065,7 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "deadlineISO": null,
     "deadlineNote": "Exact future deadline not published; do not infer a cutoff.",
-    "applicationNote": "Always check the organizer link for the current application and complete eligibility criteria."
+    "applicationNote": "Check Wave Hill and SYEP application requirements separately; expect outdoor group work. Check the organizer's official application page for current instructions, deadlines and complete eligibility."
   },
   {
     "id": "wave-hill-aces",
@@ -2101,7 +2101,7 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "deadlineISO": null,
     "deadlineNote": "Exact future deadline not published; do not infer a cutoff.",
-    "applicationNote": "Always check the organizer link for the current application and complete eligibility criteria."
+    "applicationNote": "Explain interest in teaching children, art and nature; confirm weekend time availability. Check the organizer's official application page for current instructions, deadlines and complete eligibility."
   },
   {
     "id": "bpl-freedom-to-read-ambassadors",
@@ -2168,7 +2168,7 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "deadlineISO": null,
     "deadlineNote": "Exact future deadline not published; do not infer a cutoff.",
-    "applicationNote": "Always check the organizer link for the current application and complete eligibility criteria."
+    "applicationNote": "Join interest list and prepare to explain environmental questions you would like to research. Check the organizer's official application page for current instructions, deadlines and complete eligibility."
   },
   {
     "id": "nyu-gstem-summer",
@@ -2199,7 +2199,7 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "deadlineISO": null,
     "deadlineNote": "Exact future deadline not published; do not infer a cutoff.",
-    "applicationNote": "Always check the organizer link for the current application and complete eligibility criteria."
+    "applicationNote": "Review research interests, arrange a transcript and recommendation, and plan for tuition or aid paperwork. Check the organizer's official application page for current instructions, deadlines and complete eligibility."
   },
   {
     "id": "nyu-gstem-spring-data-science",
@@ -2231,7 +2231,7 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "deadlineISO": null,
     "deadlineNote": "Exact future deadline not published; do not infer a cutoff.",
-    "applicationNote": "Always check the organizer link for the current application and complete eligibility criteria."
+    "applicationNote": "Review precalculus, basic Python and the tuition/aid terms; check next application notice. Check the organizer's official application page for current instructions, deadlines and complete eligibility."
   },
   {
     "id": "columbia-sprep",
@@ -2265,7 +2265,7 @@ window.PROGRAMS = [
     "sourceChecked": "2026-10-18",
     "deadlineISO": null,
     "deadlineNote": "Exact future deadline not published; do not infer a cutoff.",
-    "applicationNote": "Always check the organizer link for the current application and complete eligibility criteria."
+    "applicationNote": "Read the STEP eligibility rules, gather application/recommendation details and join Columbia's update mailing list. Check the organizer's official application page for current instructions, deadlines and complete eligibility."
   },
   {
     "id": "nyssef-isef-research-fair",
@@ -2299,7 +2299,7 @@ window.PROGRAMS = [
     "verified": "2026-10-18",
     "sourceChecked": "2026-10-18",
     "deadlineNote": "Exact date from organizer page; verify clock time and new updates.",
-    "applicationNote": "Always check the organizer link for the current application and complete eligibility criteria."
+    "applicationNote": "Consult your science advisor and rules, prepare an original paper, poster and all required ethics/safety forms. Check the organizer's official application page for current instructions, deadlines and complete eligibility."
   },
   {
     "verified": "2026-10-18",
