@@ -138,6 +138,10 @@ function deadline(p){
 }
 function matches(p,q){
  const city=p.kind==='city';
+ const borough=el('nearby-borough').value.trim().toLowerCase();
+ // A selected borough must match this opportunity's actual program site.
+ // Unlocated citywide, multi-site and virtual listings do not qualify.
+ if(borough&&String(p.borough||'').trim().toLowerCase()!==borough)return false;
  const progress=store.get(p.id);
  if(!selectedAny('subject',p.subject))return false;
  // Within one category: any checked grade is a match. City programs with no
@@ -186,7 +190,7 @@ function renderCurated(p){
  const isFav=Boolean(store.get(p.id).favorited);
  return '<article class="card"><span class="pill">'+safe(p.type)+'</span><h3>'+safe(p.title)+'</h3>'+badges(p)+
  '<p class="activity-preview"><strong>What you’ll do:</strong> '+safe(p.whatYouDo||p.summary)+'</p>'+
- '<p class="deadline-line">📅 '+safe(p.deadline)+'</p><div class="meta">'+safe(p.org)+' · '+safe(p.location)+'</div>'+
+ '<p class="deadline-line">📅 '+safe(p.deadline)+'</p><div class="meta">'+safe(p.org)+' · '+safe(p.borough||p.location)+'</div>'+
  '<div class="card-actions"><a class="open-detail" href="program.html?id='+encodeURIComponent(p.id)+'">View details →</a>'+
  '<button class="favorite-button" type="button" data-id="'+safe(p.id)+'" aria-pressed="'+isFav+'" aria-label="'+(isFav?'Remove favorite':'Save favorite')+'">'+(isFav?'♥':'♡')+'</button></div></article>';
 }
