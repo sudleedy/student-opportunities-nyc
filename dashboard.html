@@ -37,6 +37,12 @@
 .dash-recommendation{border:1px solid #ccd8e7;border-radius:12px;padding:15px;background:#f4f7fc}
 .dash-recommendation p{font-size:13px;line-height:1.55;color:#53647a}
 .dash-tool-panel h3{margin:24px 0 8px}
+.dash-google-calendar-list{display:grid;gap:9px;margin:14px 0 22px}
+.dash-google-row{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;background:#f4f7fc;border:1px solid #d0daeb;border-radius:10px;padding:12px 14px}
+.dash-google-row span{flex:1;min-width:170px;font-size:13px;font-weight:750;line-height:1.5}
+.dash-google-row small{font-weight:500;color:#65758e}
+.dash-google-row a{display:inline-flex;align-items:center;justify-content:center;padding:11px 14px;background:#19253d;color:white;text-decoration:none;border-radius:9px;font-size:13px;font-weight:750;min-height:44px}
+.dash-google-row a:hover,.dash-google-row a:focus-visible{background:#354969;color:#fff}
 @media(max-width:700px){.dash-compare-choices,.dash-recommendations{grid-template-columns:minmax(0,1fr)}}
 
 </style></head><body data-page-kind="dashboard"><header><div class="nav">
@@ -55,8 +61,11 @@
 <p class="small">Choose up to three saved opportunities to compare requirements, costs, activities, and deadlines. Your selections stay in this browser tab and are not sent to another service.</p>
 <div id="dash-compare-options" class="dash-compare-choices"></div>
 <div id="dash-compare-result" class="dash-compare-result" aria-live="polite"></div>
-<h3>Save upcoming deadlines to your calendar</h3>
-<p class="small">Download a calendar file for saved programs with known future dates. The file includes suggested alerts seven days and one day before each date, but you must import it into your calendar application. Alert support varies; exact cutoff times still need organizer confirmation.</p>
+<h3>Add saved deadlines to Google Calendar</h3>
+<p class="small">Choose an upcoming program below to open a pre-filled event in Google Calendar. Review the deadline and press Save there. No Outlook download is needed. Google Calendar controls its own notifications.</p>
+<div id="dash-google-calendar-list" class="dash-google-calendar-list"></div>
+<h3>Or download all deadlines as a calendar file</h3>
+<p class="small">The .ics file contains future saved deadlines and suggested 7-day and 1-day reminders. Your computer may open Outlook automatically for this file type. To use Google Calendar instead, download the file, then go to <a href="https://calendar.google.com/calendar" target="_blank" rel="noopener noreferrer">Google Calendar ↗</a> → Settings → Import &amp; export → Import. Choose the downloaded .ics file. Exact cutoff times still need organizer confirmation.</p>
 <div class="dash-tool-actions"><button type="button" id="dash-calendar-download">Download deadline reminders (.ics)</button><span id="dash-tool-feedback" class="small" role="status"></span></div>
 <h3>More opportunities in your favorite subjects</h3>
 <p class="small">These suggestions use the subjects of programs you've saved. They do not know your grade or guarantee eligibility or open applications.</p>
@@ -64,4 +73,4 @@
 </section>
 <p class="small">Always confirm dates on the official organizer website. Unknown deadlines do not imply that applications are currently open.</p></main>
 <footer>Student Opportunities NYC · Independent student project · <a href="./privacy.html">Privacy &amp; Data</a></footer>
-<script src="programs-data.js?v=7"></script><script src="auth-config.js"></script><script src="site-data.js?v=4"></script><script src="program-updates.js?v=2"></script><script src="program-descriptions.js?v=2"></script><script src="beacon-store.js?v=9"></script><script src="dashboard.js?v=1"></script><script src="dashboard-tools.js?v=1"></script><script src="site-analytics.js?v=1"></script></body></html>
+<script src="programs-data.js?v=7"></script><script src="auth-config.js"></script><script src="site-data.js?v=4"></script><script src="program-updates.js?v=2"></script><script src="program-descriptions.js?v=2"></script><script src="beacon-store.js?v=9"></script><script src="dashboard.js?v=1"></script><script src="dashboard-tools.js?v=2"></script><script src="site-analytics.js?v=1"></script></body></html>
