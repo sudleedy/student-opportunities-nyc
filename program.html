@@ -7,11 +7,6 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const programs=window.PROGRAMS||[],id=new URLSearchParams(location.search).get('id');
 const program=programs.find(o=>o.id===id);
 const root=document.getElementById('page');
-const backLink=document.getElementById('return-to-directory');
-try{
- const previous=sessionStorage.getItem('sob-directory-url');
- if(previous){const target=new URL(previous,location.href);if(target.origin===location.origin&&target.pathname.replace(/index\\.html$/,'')===new URL('./',location.href).pathname)backLink.href=target.href;}
-}catch{}
 document.getElementById('year').textContent=new Date().getFullYear();
 if(!program){document.title="Program not found | Student Opportunity Beacon";root.innerHTML='<h1>Program not found</h1><p>That program may have moved or the link may be incorrect.</p><a href="./#opportunities">Browse all opportunities →</a>'}
 else {
