@@ -8,7 +8,7 @@ const SOURCE='https://data.cityofnewyork.us/resource/ebkm-iyma.json';
 const DIRECTORY='https://discoverdycd.dycdconnect.nyc/program-public?nt=1';
 const POLICY='https://data.cityofnewyork.us/Social-Services/DYCD-Program-Sites/ebkm-iyma';
 const boros=['Brooklyn','Manhattan','Queens','Bronx','Staten Island'];
-const types=/\\b(compass high|ladders for leaders|summer youth employment|syep|beacon|cornerstone|advance\\s*&\\s*earn|learn\\s*&\\s*earn|train\\s*&\\s*earn|high school youth|youth council|workforce|internship|job readiness|careerready|career first|emerging leaders)\\b/i;
+const types=/\b(compass high|ladders for leaders|summer youth employment|syep|beacon|cornerstone|advance\s*&\s*earn|learn\s*&\s*earn|train\s*&\s*earn|high school youth|youth council|workforce|internship|job readiness|careerready|career first|emerging leaders)\b/i;
 const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 host.innerHTML='<div class="local-heading"><div><p class="local-kicker">AUTOMATIC NYC PROGRAM DISCOVERY</p><h2>Discover more programs near you</h2><p>Explore youth programs and internship providers from official NYC Open Data. Choose a borough, or optionally allow your browser to find nearby sites.</p></div><a href="'+DIRECTORY+'" target="_blank" rel="noopener noreferrer">Search the full NYC program directory ↗</a></div>'+
 '<div class="local-controls"><label for="local-borough">Your borough</label><select id="local-borough"><option value="">Choose a borough</option>'+boros.map(b=>'<option value="'+b+'">'+b+'</option>').join('')+'</select>'+
@@ -28,7 +28,7 @@ const miles=(a,b,c,d)=>{
  return 3959*2*Math.atan2(Math.sqrt(n),Math.sqrt(Math.max(0,1-n)));
 };
 const nameOf=r=>String(r.program_site_name||r.provider||'Program site').trim();
-const normalizeBoro=s=>String(s||'').toLowerCase().replace(/\\s+/g,' ').trim();
+const normalizeBoro=s=>String(s||'').toLowerCase().replace(/\s+/g,' ').trim();
 const boroOf=r=>{const b=normalizeBoro(r.borough);if(b==='staten island')return 'Staten Island';return boros.find(k=>normalizeBoro(k)===b)||String(r.borough||'NYC')};
 const relevant=r=>{
  const text=[r.program_type,r.program_area].filter(Boolean).join(' ');
