@@ -133,22 +133,23 @@ el('timeline-pager').addEventListener('click',e=>{
 filters.search.addEventListener('input',()=>{page=1;render()});
 filters.type.addEventListener('change',()=>{page=1;render()});
 el('timeline-refresh').addEventListener('click',load);
-const reportTab=el('tab-reports'),timelineTab=el('tab-timelines');
-function switchTab(showTimeline){
- el('reports-panel').hidden=showTimeline;
- el('timeline-panel').hidden=!showTimeline;
- reportTab.classList.toggle('tab-active',!showTimeline);
- timelineTab.classList.toggle('tab-active',showTimeline);
- reportTab.setAttribute('aria-selected',String(!showTimeline));
- timelineTab.setAttribute('aria-selected',String(showTimeline));
- if(showTimeline)history.replaceState(null,'','#timelines');
- else history.replaceState(null,'',location.pathname+location.search);
+const tabNames=['reports','timelines','descriptions'];
+function switchTab(active){
+ const selected=tabNames.includes(active)?active:'reports';
+ for(const name of tabNames){
+  const chosen=name===selected;
+  el(name==='reports'?'reports-panel':name==='timelines'?'timeline-panel':'descriptions-panel').hidden=!chosen;
+  const tab=el('tab-'+name);
+  tab.classList.toggle('tab-active',chosen);
+  tab.setAttribute('aria-selected',String(chosen));
+ }
+ const hash=selected==='reports'?'':'#'+selected;
+ history.replaceState(null,'',location.pathname+location.search+hash);
 }
-reportTab.addEventListener('click',()=>switchTab(false));
-timelineTab.addEventListener('click',()=>switchTab(true));
+for(const name of tabNames)el('tab-'+name).addEventListener('click',()=>switchTab(name));
 document.addEventListener('sob-admin-ready',e=>{
  db=e.detail.db;initialized=true;
- if(location.hash==='#timelines')switchTab(true);
+ switchTab(location.hash==='#descriptions'?'descriptions':location.hash==='#timelines'?'timelines':'reports');
  load();
 });
 })();
