@@ -48,7 +48,7 @@ async function start(){
   if(error){notice.textContent='Dashboard setup is incomplete. Run supabase-admin-setup.sql in the Supabase SQL Editor, then authorize your administrator account.';return}
   if(!allowed){notice.textContent='Access restricted. This account is not authorized to view student reports.';return}
   notice.hidden=true;dashboard.hidden=false;
-  if(window.StudentCatalog)await window.StudentCatalog.ready;
+  // The management tab and bundled listings must not wait on a public REST request.
   document.dispatchEvent(new CustomEvent('sob-admin-ready',{detail:{db}}));
   await load();
  }catch(e){console.error('Admin dashboard',e);notice.textContent='Unable to load administrator tools. Please refresh and check your connection.'}
