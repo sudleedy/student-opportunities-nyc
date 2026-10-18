@@ -157,5 +157,6 @@ pager.addEventListener('click',e=>{
  el('descriptions-panel').scrollIntoView({behavior:'smooth',block:'start'});
 });
 el('description-refresh').addEventListener('click',()=>{if(confirmDiscard())load()});
+document.addEventListener('sob-programs-updated',()=>{render()});
 document.addEventListener('sob-admin-ready',e=>{db=e.detail.db;load()});
 })();
