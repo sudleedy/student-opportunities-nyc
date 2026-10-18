@@ -6,6 +6,9 @@ on:
     paths:
       - "programs-data.js"
       - "scripts/catalog_audit.py"
+      - "program-directory.html"
+      - "sitemap.xml"
+      - "scripts/check_program_directory.py"
       - ".github/workflows/catalog-audit.yml"
   schedule:
     - cron: "0 14 * * 1"
@@ -22,3 +25,5 @@ jobs:
         uses: actions/checkout@v4
       - name: Validate program fields, duplicates and review dates
         run: python3 scripts/catalog_audit.py
+      - name: Verify program directory and sitemap links
+        run: python3 scripts/check_program_directory.py
