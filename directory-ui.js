@@ -80,9 +80,9 @@ function render(){
  (!saved.checked||store.get(o.id).favorited)&&
  (!el('progress').value||(store.get(o.id).application_status===el('progress').value && (store.get(o.id).favorited||store.get(o.id).notes||store.get(o.id).application_status!=='Interested')))&&
  (!q||[o.title,o.org,o.summary,o.subject,o.eligibility].join(' ').toLowerCase().includes(q)));
- const mode=el('sort').value;
- if(mode==='deadline')results.sort((a,b)=>deadline(a)[0]-deadline(b)[0]||deadline(a)[1]-deadline(b)[1]||a.title.localeCompare(b.title));
- if(mode==='az')results.sort((a,b)=>a.title.localeCompare(b.title));
+ const sortMode=el('sort').value;
+ if(sortMode==='deadline')results.sort((a,b)=>deadline(a)[0]-deadline(b)[0]||deadline(a)[1]-deadline(b)[1]||a.title.localeCompare(b.title));
+ if(sortMode==='az')results.sort((a,b)=>a.title.localeCompare(b.title));
  const pages=Math.max(1,Math.ceil(results.length/PAGE_SIZE));
  if(page>pages){page=pages;syncPage()}
  const visibleResults=results.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
