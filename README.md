@@ -77,6 +77,14 @@ In **Admin Dashboard → Student Reports**, each report has a **Delete report** 
 
 **One-time permission setup:** Run `supabase-report-deletion.sql` in the existing Supabase project's SQL Editor. This adds a Row Level Security `DELETE` policy that allows deletion **only by authorized admins** already recorded in `private.site_admins`. It does not delete records on its own and it does not grant ordinary students report deletion access. No further Supabase visits are needed for individual report deletions.
 
+## Strict borough filtering (October 18, 2026)
+
+Selecting **Brooklyn, Manhattan, Queens, Bronx, or Staten Island** in the home-page borough selector now filters the **entire nine-card opportunity list**. Only items with a matching specific program-site borough are shown. The city DYCD feed already supplies its site borough; 14 bundled opportunities with clear physical venues now have an explicit `borough` field (12 Manhattan, 2 Brooklyn).
+
+**Important location rule:** the 27 remaining bundled opportunities are not assigned a fixed borough, because they are citywide, virtual, nationwide, across multiple sites, or their exact program venue could not be confidently established. They do **not** appear in a borough-specific search; clearing the borough brings them back. A program being open to residents of a borough does not prove the activity is located there. Avoid guessing venues for administrator-added opportunities until they are verified.
+
+There is no change to favorites, notes, student tracking, or database permissions. The official DYCD feed still labels application status as unverified. The home page explains why citywide and remote options disappear when a borough is selected.
+
 ## Multiple selections per filter (October 2026)
 
 - **Interest**, **Grade**, **Application status**, **Program cost**, **Attendance**, **My progress**, use compact checkbox drop-down menus. Students may select several options in the same category (for example, both Science & Research and Technology & Coding, or both 10th and 11th grade).
