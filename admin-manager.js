@@ -6,7 +6,7 @@ const original=window.StudentCatalog?.originals||new Map();
 const rows=new Map(),editor=el('manager-editor'),listing=el('manager-list'),status=el('manager-message');
 const search=el('manager-search'),filter=el('manager-filter');
 const types=['Research','Internship','College Preparation','Scholarship','Volunteering','Leadership','Competition','Technology Program','Arts Program','Other'];
-const keys=['title','org','type','subject','location','summary','details','eligibility','deadline','deadlineISO','deadlineNote','status','cost','commitment','preparation','url','verified','applicationNote','grades','costCategory','payCategory','deliveryMode','applicationState'];
+const keys=['title','org','type','subject','location','summary','details','eligibility','deadline','deadlineISO','deadlineNote','status','cost','commitment','preparation','url','verified','applicationNote','whatYouDo','grades','costCategory','payCategory','deliveryMode','applicationState'];
 let db=null,available=false,loading=true,page=1,editing=null,changed=false;
 const escField=(name,label,value,type='text',extra='')=>'<label>'+escape(label)+
  (type==='textarea'?'<textarea name="'+name+'" '+extra+'>'+escape(value)+'</textarea>':
@@ -84,6 +84,7 @@ function startEditor(id=null,draft=null){
  escField('eligibility','Eligibility',val('eligibility'),'textarea','maxlength="1400" class="wide"')+
  '<div class="wide">'+escField('summary','Homepage short description *',val('summary'),'textarea','required maxlength="500"')+'</div>'+
  '<div class="wide">'+escField('details','Full description *',val('details'),'textarea','required maxlength="4000"')+'</div>'+
+ '<div class="wide">'+escField('whatYouDo','What students actually do (short and specific)',val('whatYouDo'),'textarea','maxlength="900"')+'</div>'+
  '<div class="wide">'+escField('preparation','How to prepare',val('preparation'),'textarea','maxlength="1500"')+'</div>'+
  '<div class="wide">'+escField('deadlineNote','Deadline verification note',val('deadlineNote'),'textarea','maxlength="500"')+'</div>'+
  '<div class="wide">'+escField('applicationNote','Application details',val('applicationNote'),'textarea','maxlength="700"')+'</div>'+
