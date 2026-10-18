@@ -101,6 +101,34 @@ class DeadlineMonitorTests(unittest.TestCase):
         program.update(deadlineISO="2026-10-10", applicationState="closed")
         self.assertEqual(monitor.expire_dates([program], TODAY), [])
 
+    def test_other_program_deadline_on_shared_museum_page_is_rejected(self):
+        artslife = {"id": "madmuseum-artslife",
+                    "title": "Museum of Arts and Design: Artslife Paid Summer Internship",
+                    "org": "Museum of Arts and Design"}
+        shared = """
+        <html><title>Teen Programs | Museum of Arts and Design</title><body>
+        <h1>Teen Programs</h1>
+        <h2>Artslife</h2><p>The Artslife 2026 internship is closed.</p>
+        <h2>RECESS: Winter Break Intensive</h2>
+        <p>Application Deadline: January 3, 2027</p>
+        <h2>Artslab</h2></body></html>"""
+        date, reason = monitor.extract_verified_date(artslife, shared, TODAY)
+        self.assertIsNone(date, reason)
+
+    def test_own_section_date_not_confused_with_other_program(self):
+        artslife = {"id": "madmuseum-artslife",
+                    "title": "Museum of Arts and Design: Artslife Paid Summer Internship",
+                    "org": "Museum of Arts and Design"}
+        shared = """
+        <html><title>Teen Programs | Museum of Arts and Design</title><body>
+        <h1>Teen Programs</h1>
+        <h2>Artslife</h2><p>Application Deadline: November 25, 2026</p>
+        <h2>RECESS: Winter Break Intensive</h2>
+        <p>Application Deadline: January 3, 2027</p>
+        </body></html>"""
+        found, reason = monitor.extract_verified_date(artslife, shared, TODAY)
+        self.assertEqual(found, "2026-11-25", reason)
+
     def test_public_url_validation(self):
         self.assertTrue(monitor.public_url("https://www.example.org/programs/demo"))
         self.assertFalse(monitor.public_url("http://www.example.org/"))
