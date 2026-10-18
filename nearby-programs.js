@@ -104,7 +104,7 @@ function asItem(r){
 }
 async function load(force=false){
  const borough=boroughEl.value,nearby=mode==='gps'?coords:null;
- if(!borough&&!nearby){running++;rows=[];status='Choose a borough to include local city programs alongside the main listings.';notify();return}
+ if(!borough&&!nearby){running++;rows=[];setBusy(false);status='Choose a borough to include local city programs alongside the main listings.';notify();return}
  const key=nearby?'gps':borough,token=++running;
  setBusy(true);status='Looking up NYC-funded program locations…';notify();
  try{
