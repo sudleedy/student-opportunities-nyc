@@ -54,10 +54,8 @@ function initUI(){
  const open=document.getElementById('sob-account-button'),form=document.getElementById('sob-login-form'),logout=document.getElementById('sob-logout');
  const googleContainer=document.getElementById('sob-google-container');
  const refresh=()=>{
- const email=user?String(user.email||'').trim():'';
- const name=user?String(user.user_metadata?.full_name||user.user_metadata?.name||'').trim():'';
- open.textContent=user?(email||name||'My account'):enabled?'Sign in':'Sign in (soon)';
- open.title=user?'Signed in as '+(email||name||'your account'):'Open sign-in';
+ open.textContent=user?'Account':enabled?'Sign in':'Sign in (soon)';
+ open.title=user?'View your signed-in account':'Open sign-in';
  open.setAttribute('aria-label',open.title);
  form.hidden=Boolean(user)||!enabled;googleContainer.hidden=Boolean(user)||!enabled;logout.hidden=!user;authNotice()
 };
