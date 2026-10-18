@@ -1,6 +1,11 @@
 (()=>{'use strict';
-const id=new URLSearchParams(location.search).get('id'),item=(window.PROGRAMS||[]).find(p=>p.id===id),store=window.BeaconStore;
-if(!item||!store)return;
+const id=new URLSearchParams(location.search).get('id'),store=window.BeaconStore;
+let started=false;
+function initialize(){
+ if(started)return;
+ const item=(window.PROGRAMS||[]).find(p=>p.id===id);
+ if(!item||!store)return;
+ started=true;
 const parent=document.querySelector('.layout > div');if(!parent)return;
 const panel=document.createElement('section');panel.className='panel sob-tracker';
 const futureDate=()=>item.deadlineISO&&/^\d{4}-\d{2}-\d{2}$/.test(item.deadlineISO)&&new Date(item.deadlineISO+'T23:59:59').getTime()>Date.now();
@@ -34,4 +39,8 @@ panel.addEventListener('click',e=>{
  feedback.textContent='Calendar file created. Confirm the exact cutoff time on the official program website.';
 });
 document.getElementById('sob-copy-link').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(location.href);feedback.textContent='Link copied.'}catch{feedback.textContent='Copy the page address from your browser to share it.'}});
+}
+document.addEventListener('sob-catalog-ready',initialize);
+document.addEventListener('sob-detail-ready',initialize);
+initialize();
 })();
