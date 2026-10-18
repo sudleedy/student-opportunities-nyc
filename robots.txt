@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://student-opportunities-nyc.com/sitemap.xml
