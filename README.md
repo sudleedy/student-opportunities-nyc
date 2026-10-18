@@ -77,9 +77,15 @@ In **Admin Dashboard → Student Reports**, each report has a **Delete report** 
 
 **One-time permission setup:** Run `supabase-report-deletion.sql` in the existing Supabase project's SQL Editor. This adds a Row Level Security `DELETE` policy that allows deletion **only by authorized admins** already recorded in `private.site_admins`. It does not delete records on its own and it does not grant ordinary students report deletion access. No further Supabase visits are needed for individual report deletions.
 
-## Nine-program pages (October 2026)
+## One unified opportunity list (October 2026)
 
-The curated directory already shows **9 programs per page**. The location-based **Near You** section now also shows **9 program cards per page**, with numbered pages and **Previous / Next** buttons above and below the nearby cards. The page count and `Showing X–Y of Z` label update for each search. Switching boroughs or refreshing results returns to page 1; selecting a page scrolls to the first nearby card. The available nearby results are no longer arbitrarily truncated after 18 locations. This is client-side pagination only; it doesn't change student notes or the Supabase schema.
+Both the 41 curated entries and opt-in, automatically discovered NYC-funded program sites now appear in **one search result grid**, with a **single nine-card pagination** shared by all results. The standalone "Discover Programs Near You" section and its second set of pages have been retired.
+
+- Visible controls are just **Search**, **Interest**, **Grade**, and optional **Borough**; students may also select **Use my location**. Additional filters (including Saved, source, deadline status, mode, cost and progress) sit under **More filters**.
+- Choosing a borough or allowing browser location permission mixes relevant city-funded sites into the curated program list, prioritizing two curated listings then one city program in the default order. All results share searching, interest filtering and the 9-card pager.
+- Curated program cards retain **View details** and **Save favorite**. City cards carry a distinctive "NYC-funded site / applications unverified" label, typical activity and age notes, and an official-directory link. They are **not** presented as approved active internships and are not added to synced saved programs without curator verification.
+- The borough can be retained in localStorage; GPS coordinates stay in browser memory and never appear in Open Data requests. "Clear filters" clears the borough and any saved search filters, while account favorites/notes remain untouched.
+- City data fetch failures do not prevent the curated catalog from loading. This is entirely front-end functionality; there is **no Supabase migration**.
 
 ## Clear student activity descriptions (October 18, 2026)
 
@@ -91,11 +97,11 @@ The curated directory already shows **9 programs per page**. The location-based 
 
 ## Automatic neighborhood youth program discovery (October 2026)
 
-The homepage has an **additional, visually separate** *Discover more programs near you* panel:
+The same homepage opportunity search includes **optional location-based NYC youth program discovery**:
 
 - Students may choose their NYC borough, and the selection is retained only in browser localStorage.
 - Or they can optionally click **Use my location**, which requests browser permission and calculates distances against city-provided latitude/longitude data. GPS coordinates never leave the browser, and are not saved.
-- On demand, the panel fetches the latest available NYC Department of Youth and Community Development program sites from the **official NYC Open Data** dataset [DYCD Program Sites](https://data.cityofnewyork.us/Social-Services/DYCD-Program-Sites/ebkm-iyma). Data changes on the city's schedule, not ours; no administrator SQL migration or search API key is required.
+- On demand, the integrated location filter fetches the latest available NYC Department of Youth and Community Development program sites from the **official NYC Open Data** dataset [DYCD Program Sites](https://data.cityofnewyork.us/Social-Services/DYCD-Program-Sites/ebkm-iyma). Data changes on the city's schedule, not ours; no administrator SQL migration or search API key is required.
 - Only relevant youth, internship, workforce and high-school category program sites appear. Results are deduplicated and labeled with borough, ZIP code, provider, program type, source-data year and *application status not verified*. A full discoverDYCD directory link is provided.
 - These city **program-site** records are **not** automatically published as separately verified opportunities in the 41-entry curated catalog. Application deadlines, registration and eligibility are not inferred. Any official-data availability failure shows a link to discoverDYCD instead of fabricated results.
 - This automatic expansion currently works for **NYC only**, not all of the United States; additional regions would need vetted local public data sources.
