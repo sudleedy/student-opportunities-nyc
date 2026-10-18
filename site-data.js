@@ -26,6 +26,12 @@ function merge(row){
    const value=data[name];
    if(name==='grades'){if(Array.isArray(value))p.grades=value.map(Number).filter(n=>Number.isInteger(n)&&n>=9&&n<=12)}
    else if(name==='deadlineISO'){p[name]=/^\d{4}-\d{2}-\d{2}$/.test(String(value||''))?value:null}
+   else if(name==='url'){
+    // Never allow dynamic catalog data to create a JavaScript or other unsafe link.
+    if(typeof value==='string'&&value.length<=500){
+     try{const url=new URL(value);if(url.protocol==='https:'&&url.hostname)p.url=url.href}catch{}
+    }
+   }
    else if(typeof value==='string')p[name]=value.slice(0,5000);
   }
  }
