@@ -1,5 +1,23 @@
 # Student Opportunities NYC — site setup
 
+## Daily deadline automation (installed October 18, 2026)
+
+**Status:** Installed in GitHub Actions at `.github/workflows/daily-program-deadlines.yml`. No paid API, local computer, Supabase service-role key, or manual daily check is needed.
+
+- **Schedule:** once daily at **13:17 UTC** (9:17 a.m. EDT / 8:17 a.m. EST), subject to GitHub's schedule delays. It inspects official source URLs for all curated listings. This does **not** mean every organizer page is accessible or every deadline can be verified.
+- **Safe deadline detection:** `scripts/daily_deadline_monitor.py` reads publicly accessible HTML and requires a program-specific heading plus an explicit, unique, full future date linked to an application or registration deadline. If a page lists multiple programs, it reads only the named program's section. Pages with unrelated programs, missing years, conflicting dates, JavaScript-only content, blocked access, or ambiguous deadlines are **not** auto-published.
+- **Two-day confirmation:** a new or revised deadline must be found on separate days. Unconfirmed observations are staged in `data/deadline-monitor-state.json`. The program remains unchanged until verified.
+- **Expired deadlines:** dates that have passed no longer leave bundled programs marked as **open** or **upcoming**. They become **unconfirmed**, since an extension or reopened cycle cannot be inferred. The homepage and detail pages also warn when a past stored deadline is shown (including database overrides).
+- **Publishing:** verified dates update the bundled `programs-data.js`, using honest wording such as "Application deadline" without claiming the program is currently accepting applications. The GitHub Actions bot commits the change and explicitly requests a GitHub Pages rebuild; ordinary bot commits do not trigger all workflows. The static program directory and sitemap require no change for a deadline-only edit. Supabase administrator edits and timeline overrides continue to take precedence when loaded by the public site.
+- **Audit and reporting:** each run executes the catalog and directory checks, uploads `daily-program-deadline-results` (per-program findings) as an artifact kept for 30 days, and shows counts in the GitHub Actions run summary. Look in **GitHub → Actions → Daily program deadline monitor**.
+- **Manual dry run:** open the same GitHub Actions workflow, choose **Run workflow**, and set `dry_run=true`. Use `max_programs` to test a small subset; limited runs never publish. Normal scheduled runs inspect all programs.
+- **Costs/limits:** this uses GitHub-hosted runners and Python's standard library; availability and usage remain subject to GitHub plan and Actions limits. The system cannot independently recover from disabled scheduled workflows, changes to organizer websites, blocked crawling, or GitHub permission changes. On public GitHub repositories, scheduled workflows can be disabled after 60 days without repository activity. The audit workflow and actions notifications should be checked if daily runs stop.
+- **Initial live safety review:** the initial scan staged a date from a multi-program Museum of Arts and Design page. It belonged to RECESS, not Artslife, and was never published. The scanner was corrected to scope dates to each named program section, regression tests were added, and the false pending observation was cleared by the next scan.
+
+**Do not describe the listed application dates as continuously verified or guaranteed**. Failed and ambiguous official-source checks are intentionally preserved as unconfirmed rather than fabricated.
+
+
+
 ## October 18, 2026: Queens and Staten Island verified program expansion
 
 Added **8** named opportunities for NYC high schoolers, increasing the curated directory from 153 to **161 programs** with **164 sitemap URLs**. Program locations are verified individually rather than inferred from organizer addresses.
