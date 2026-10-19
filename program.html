@@ -24,7 +24,7 @@
 </style></head><body>
 <header><div class="nav"><a class="brand" href="./" aria-label="Student Opportunities NYC home"><img src="assets/student_opportunities_nyc_icon.svg?v=1" alt="Graduation cap with upward arrow" class="brand-icon"><span class="brand-copy"><span class="brand-name">Student<strong>Opportunities <em>NYC</em></strong></span><span class="brand-tagline">DISCOVER WHAT’S NEXT</span></span></a><a class="back" href="./#opportunities">← All opportunities</a></div></header>
 <main class="container"><a class="return-link" id="return-to-directory" href="./#opportunities">← Back to Home</a><div id="page"><p>Loading program information…</p></div></main><footer>© <span id="year"></span> Student Opportunities NYC · Independent student project · <a href="./privacy.html">Privacy &amp; Data</a></footer>
-<script src="programs-data.js?v=13"></script><script>
+<script src="programs-data.js?v=14"></script><script>
 const officialUrl=raw=>{try{const u=new URL(raw);return u.protocol==='https:'?u.href:null}catch{return null}};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const programs=window.PROGRAMS||[],id=new URLSearchParams(location.search).get('id');

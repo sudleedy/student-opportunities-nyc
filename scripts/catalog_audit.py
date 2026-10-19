@@ -77,6 +77,11 @@ def main():
         except ValueError:
             error(tag + ": invalid sourceChecked date.")
         state = p.get("applicationState")
+        if state not in ("open", "upcoming", "closed", "unknown"):
+            error(tag + ": invalid applicationState.")
+        status_text = str(p.get("status") or "")
+        if state != "open" and re.search(r"\b(?:applications? (?:are |now )?open|entries open|registration open)\b", status_text, re.I):
+            warn(tag + ": published status says open but applicationState is not open.")
         if state == "open":
             if p.get("sourceStatus") != "current":
                 warn(tag + ": marked open without a current organizer check.")
