@@ -102,7 +102,7 @@ def check(p):
                     parser.feed(data.decode("utf-8", errors="replace"))
                     result["page_title"] = parser.title()
             else:
-                result["reason"] = "Unexpected status"
+                result["reason"] = "HTTP " + str(code) + " is not proof that the full program page loaded."
     except urllib.error.HTTPError as exc:
         result["http"] = exc.code
         result["status"] = "likely_broken" if exc.code in (404, 410) else "unverified"
