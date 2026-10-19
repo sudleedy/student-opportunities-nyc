@@ -1,0 +1,50 @@
+name: Monthly official link audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/audit_official_links.py"
+      - ".github/workflows/official-link-audit.yml"
+  schedule:
+    - cron: "31 12 5 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: official-link-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Check all official organizer links
+        run: |
+          python3 scripts/audit_official_links.py
+          python3 scripts/catalog_audit.py
+          python3 scripts/check_program_directory.py
+      - name: Summarize link health
+        run: |
+          cat audits/latest-official-links.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Save report to repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audits/latest-official-links.json audits/latest-official-links.md
+          git diff --cached --quiet && exit 0
+          git commit -m "Update official link audit for all catalog programs"
+          git push origin HEAD:main
+      - uses: actions/upload-artifact@v4
+        with:
+          name: official-link-audit
+          path: |
+            audits/latest-official-links.json
+            audits/latest-official-links.md
+          retention-days: 30
