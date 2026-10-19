@@ -115,7 +115,7 @@ def check(p):
 
 def main():
     raw = SITE.read_text(encoding="utf-8")
-    found = re.search(r"window\\.PROGRAMS\\s*=\\s*(\\[.*\\])\\s*;\\s*$", raw, re.S)
+    found = re.search(r"window\.PROGRAMS\s*=\s*(\[.*\])\s*;\s*$", raw, re.S)
     if not found:
         raise SystemExit("Cannot parse programs-data.js")
     programs = json.loads(found.group(1))
@@ -130,7 +130,7 @@ def main():
         "links": links,
     }
     REPORT.parent.mkdir(parents=True, exist_ok=True)
-    REPORT.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\\n", encoding="utf-8")
+    REPORT.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     md = ["# Official program link audit", "",
           "Checked at " + report["checked_at_utc"] + ". All " + str(len(programs)) + " official URLs were attempted.", "",
           "**These checks do not confirm current enrollment, program details, or whether a website blocks bots.**", "",
@@ -143,9 +143,9 @@ def main():
         if result["status"] != "responding":
             md.append("- **" + result["id"] + "** | " + result["status"] +
                       " | HTTP " + str(result["http"] or "not available") +
-                      " | " + result["reason"].replace("\\n", " "))
+                      " | " + result["reason"].replace("\n", " "))
     md += ["", "Full per-program results are in latest-official-links.json.", ""]
-    SUMMARY.write_text("\\n".join(md), encoding="utf-8")
+    SUMMARY.write_text("\n".join(md), encoding="utf-8")
     print("Checked " + str(len(programs)) + " links: " + str(counts))
     print("Review list: " + str(SUMMARY.relative_to(ROOT)))
 
