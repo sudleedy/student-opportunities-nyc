@@ -16,6 +16,12 @@ Review date: October 18, 2026 (NYC). Scope: all **161 original catalog records**
 
 The detailed per-program link snapshot is available in [latest official link audit](latest-official-links.json) (which is refreshed by the independent monthly link workflow). It records the actual HTTP result for every item.
 
+## Post-correction second full link check
+
+After the catalog corrections, the full HTTP audit was rerun against the **159 remaining programs** on October 18, 2026 (New York local date). Results: **131** returned HTTP 200, **28** could not be independently verified because of blocked requests (mostly HTTP 403/429) or certificate-chain problems, and **0** returned the earlier HTTP 404 error. The replacement Google, CyberPatriot and English-language Bronx Museum organizer references all responded successfully.
+
+The newest [per-program source-link report](latest-official-links.json) now corresponds to the final 159-program catalog. This is still a *reachability audit*, not a guarantee of live enrollment or a complete manual recheck of every historical program description.
+
 ## Corrections made
 
 1. **Removed two resources that are not single application opportunities:** NYU Steinhardt's general "High School Art & Design Programs" directory, and NYCPS "Service in Schools" resource initiative. Each linked page describes multiple activities rather than a distinct program with a single application. This change prioritizes the website's stated goal of listing actual programs.
