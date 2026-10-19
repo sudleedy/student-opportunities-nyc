@@ -1,5 +1,15 @@
 # Student Opportunities NYC — site setup
 
+## October 18, 2026: Full catalog quality and source-link review
+
+**Current public catalog: 159 individually identified student programs** with 159 static A-to-Z links and **162 sitemap URLs**. The count was reduced from 161 deliberately after removing two generic program-resource directories that lacked one specific student application. We retained valid distinct programs that share organizer pages.
+
+The first 161-program external-link audit returned **131 HTTP 200**, **28 access-restricted or uncertain responses**, and **2 HTTP 404**. Neither 200 nor bot-blocking proves application availability. Two 404-linked listings were corrected: CyberPatriot now points to its parent organization's official Air & Space Forces Association program overview, and Google Code Next points to a historical official Google page with a clear warning that the original program site is unavailable and new enrollment is unconfirmed. The Bronx Museum's two teen programs now use its current English-language page.
+
+Full methodology, decisions, remaining uncertainty and links: `audits/2026-10-18-program-quality-review.md`. New `scripts/audit_official_links.py` and `.github/workflows/official-link-audit.yml` run a **monthly** all-program official link check and publish `audits/latest-official-links.json` and `audits/latest-official-links.md` without removing listings based on automated website responses. The weekly metadata audit and daily conservative deadline checker remain in place.
+
+
+
 ## Daily deadline automation (installed October 18, 2026)
 
 **Status:** Installed in GitHub Actions at `.github/workflows/daily-program-deadlines.yml`. No paid API, local computer, Supabase service-role key, or manual daily check is needed.
