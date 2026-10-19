@@ -1,10 +1,9 @@
 {
-  "checked_at_utc": "2026-10-19T00:11:50+00:00",
-  "programs": 161,
+  "checked_at_utc": "2026-10-19T00:18:40+00:00",
+  "programs": 159,
   "summary": {
     "unverified": 28,
-    "responding": 131,
-    "likely_broken": 2
+    "responding": 131
   },
   "explanation": "Responding does not mean enrollment is open; unverified links are NOT automatically removed. A 404 may reflect access restrictions and requires editorial review.",
   "links": [
@@ -33,10 +32,10 @@
       "title": "Queens Teens Institute for Art & Social Justice",
       "url": "https://queensmuseum.org/2026/09/14/queens-teens-institute-2026-2027-applications-now-open-deadline-10-25-26/",
       "status": "unverified",
-      "http": 202,
-      "final_url": "https://queensmuseum.org/2026/09/14/queens-teens-institute-2026-2027-applications-now-open-deadline-10-25-26/",
+      "http": 403,
+      "final_url": "",
       "page_title": "",
-      "reason": "Unexpected status"
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
     },
     {
       "id": "queens-library-peer-to-peer-collective",
@@ -209,16 +208,6 @@
       "reason": ""
     },
     {
-      "id": "nyc-service-in-schools",
-      "title": "NYC Service in Schools",
-      "url": "https://www.schools.nyc.gov/learning/student-journey/experiential-learning/service-in-schools",
-      "status": "responding",
-      "http": 200,
-      "final_url": "https://www.schools.nyc.gov/learning/student-journey/experiential-learning/service-in-schools",
-      "page_title": "Service in Schools\r\n Hands Forming a Heart academics accessibility alert arts backpack calendar camera careers circle-check circle pointing down clock contact envelope Fa",
-      "reason": ""
-    },
-    {
       "id": "bpl-bookmatch-teen",
       "title": "Brooklyn Public Library: BKLYN BookMatch Teen",
       "url": "https://www.bklynlibrary.org/support/volunteer/bklyn-bookmatch-teen",
@@ -237,16 +226,6 @@
       "final_url": "",
       "page_title": "",
       "reason": "HTTP 403. May be blocked, moved or require a browser."
-    },
-    {
-      "id": "nyu-high-school-art-design-programs",
-      "title": "NYU High School Art & Design Programs",
-      "url": "https://steinhardt.nyu.edu/programs/programs-high-school-students",
-      "status": "responding",
-      "http": 200,
-      "final_url": "https://steinhardt.nyu.edu/programs/programs-high-school-students",
-      "page_title": "Programs for High School Students | NYU Steinhardt",
-      "reason": ""
     },
     {
       "id": "futures-and-options-internship-program",
@@ -543,10 +522,10 @@
       "title": "Queens Botanical Garden: Community Volunteer Days",
       "url": "https://queensbotanical.org/community-volunteer/",
       "status": "unverified",
-      "http": 202,
-      "final_url": "https://queensbotanical.org/community-volunteer/",
+      "http": 403,
+      "final_url": "",
       "page_title": "",
-      "reason": "Unexpected status"
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
     },
     {
       "id": "nyas-junior-academy",
@@ -1043,10 +1022,10 @@
       "title": "Minds Matter NYC: Academic & College Mentorship",
       "url": "https://mindsmatternyc.org/students/application-overview/",
       "status": "unverified",
-      "http": 202,
-      "final_url": "https://mindsmatternyc.org/students/application-overview/",
+      "http": 403,
+      "final_url": "",
       "page_title": "",
-      "reason": "Unexpected status"
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
     },
     {
       "id": "ccny-crest-hires",
@@ -1213,10 +1192,10 @@
       "title": "Queens Botanical Garden: Growing Justice Internship",
       "url": "https://queensbotanical.org/growing-justice/",
       "status": "unverified",
-      "http": 202,
-      "final_url": "https://queensbotanical.org/growing-justice/",
+      "http": 403,
+      "final_url": "",
       "page_title": "",
-      "reason": "Unexpected status"
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
     },
     {
       "id": "nycps-summer-arts-institute-queens",
@@ -1341,12 +1320,12 @@
     {
       "id": "google-code-next-chelsea-lab",
       "title": "Google Code Next: Chelsea Lab",
-      "url": "https://codenext.withgoogle.com/",
-      "status": "likely_broken",
-      "http": 404,
-      "final_url": "",
-      "page_title": "",
-      "reason": "HTTP 404. May be blocked, moved or require a browser."
+      "url": "https://blog.google/company-news/outreach-and-initiatives/diversity/googles-code-next-program-brings-coding-education-harlem/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://blog.google/company-news/outreach-and-initiatives/diversity/googles-code-next-program-brings-coding-education-harlem/",
+      "page_title": "Google’s Code Next program brings coding education to Harlem",
+      "reason": ""
     },
     {
       "id": "schoolhouse-free-online-sat-bootcamp",
@@ -1391,12 +1370,12 @@
     {
       "id": "cyberpatriot-high-school-competition",
       "title": "CyberPatriot: National Youth Cyber Defense Competition",
-      "url": "https://www.uscyberpatriot.org/competition/Competition-Overview/join-the-competition",
-      "status": "likely_broken",
-      "http": 404,
-      "final_url": "",
-      "page_title": "",
-      "reason": "HTTP 404. May be blocked, moved or require a browser."
+      "url": "https://www.afa.org/cyberpatriot/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.afa.org/cyberpatriot/",
+      "page_title": "CyberPatriot - Air & Space Forces Association",
+      "reason": ""
     },
     {
       "id": "usaco-online-programming-contests",
@@ -1461,21 +1440,21 @@
     {
       "id": "bronx-museum-teen-council",
       "title": "Bronx Museum Teen Council",
-      "url": "https://bronxmuseum.org/education/teen-programs/",
+      "url": "https://bronxmuseum.org/learn/teens/",
       "status": "responding",
       "http": 200,
-      "final_url": "https://bronxmuseum.org/es/learn/teen-programs/",
-      "page_title": "Programas para Adolescentes - The Bronx Museum",
+      "final_url": "https://bronxmuseum.org/learn/teens/",
+      "page_title": "Teen Programs - The Bronx Museum",
       "reason": ""
     },
     {
       "id": "bronx-museum-teen-summer",
       "title": "Bronx Museum Teen Summer Arts Internship",
-      "url": "https://bronxmuseum.org/education/teen-programs/",
+      "url": "https://bronxmuseum.org/learn/teens/",
       "status": "responding",
       "http": 200,
-      "final_url": "https://bronxmuseum.org/es/learn/teen-programs/",
-      "page_title": "Programas para Adolescentes - The Bronx Museum",
+      "final_url": "https://bronxmuseum.org/learn/teens/",
+      "page_title": "Teen Programs - The Bronx Museum",
       "reason": ""
     },
     {
