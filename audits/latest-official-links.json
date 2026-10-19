@@ -1,0 +1,1622 @@
+{
+  "checked_at_utc": "2026-10-19T00:11:50+00:00",
+  "programs": 161,
+  "summary": {
+    "unverified": 28,
+    "responding": 131,
+    "likely_broken": 2
+  },
+  "explanation": "Responding does not mean enrollment is open; unverified links are NOT automatically removed. A 404 may reflect access restrictions and requires editorial review.",
+  "links": [
+    {
+      "id": "columbia-brainyac",
+      "title": "Columbia BRAINYAC Neuroscience Research Apprenticeship",
+      "url": "https://zuckermaninstitute.columbia.edu/brainyac",
+      "status": "unverified",
+      "http": 403,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "nybg-high-school-explainer",
+      "title": "NYBG High School Explainer Internship",
+      "url": "https://www.nybg.org/education/childrens-education/kids-teens/explainers/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.nybg.org/education/childrens-education/kids-teens/explainers/",
+      "page_title": "High School Explainer Program | New York Botanical Garden",
+      "reason": ""
+    },
+    {
+      "id": "queens-museum-teens-institute",
+      "title": "Queens Teens Institute for Art & Social Justice",
+      "url": "https://queensmuseum.org/2026/09/14/queens-teens-institute-2026-2027-applications-now-open-deadline-10-25-26/",
+      "status": "unverified",
+      "http": 202,
+      "final_url": "https://queensmuseum.org/2026/09/14/queens-teens-institute-2026-2027-applications-now-open-deadline-10-25-26/",
+      "page_title": "",
+      "reason": "Unexpected status"
+    },
+    {
+      "id": "queens-library-peer-to-peer-collective",
+      "title": "Queens Library Peer-to-Peer Service Collective",
+      "url": "https://volunteer.queenslibrary.org/peer-to-peer-service-collective",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://volunteer.queenslibrary.org/peer-to-peer-service-collective",
+      "page_title": "Queens Library | Peer-to-Peer Service Collective for Teens",
+      "reason": ""
+    },
+    {
+      "id": "columbia-precollege-weekend",
+      "title": "Columbia Pre-College: Academic Year Weekend",
+      "url": "https://precollege.sps.columbia.edu/admissions/dates-and-deadlines",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://precollege.sps.columbia.edu/admissions/dates-and-deadlines",
+      "page_title": "Admissions Dates and Deadlines | Columbia University Pre-College Programs arrow-right arrow-right arrow-right arrow-right arrow-right arrow-right arrow-right arrow-right ",
+      "reason": ""
+    },
+    {
+      "id": "columbia-college-edge",
+      "title": "Columbia College Edge: High School College-Credit Courses",
+      "url": "https://precollege.sps.columbia.edu/admissions/applying-college-edge",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://precollege.sps.columbia.edu/admissions/applying-college-edge",
+      "page_title": "Admissions Applying to College Edge | Columbia University Pre-College Programs arrow-right arrow-right arrow-right arrow-right arrow-right arrow-right arrow-right arrow-r",
+      "reason": ""
+    },
+    {
+      "id": "cooper-hewitt-design-hive",
+      "title": "Cooper Hewitt Design Hive",
+      "url": "https://www.cooperhewitt.org/design-hive/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.cooperhewitt.org/design-hive/",
+      "page_title": "Design Hive | Cooper Hewitt, Smithsonian Design Museum",
+      "reason": ""
+    },
+    {
+      "id": "brooklyn-botanic-garden-apprentice",
+      "title": "Brooklyn Botanic Garden: Garden Apprentice Program",
+      "url": "https://www.bbg.org/learn/gap",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.bbg.org/learn/gap",
+      "page_title": "Garden Apprentice Program - Brooklyn Botanic Garden",
+      "reason": ""
+    },
+    {
+      "id": "moma-open-art-space",
+      "title": "MoMA Open Art Space",
+      "url": "https://www.moma.org/calendar/programs/199",
+      "status": "unverified",
+      "http": 403,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "bpl-librarians-of-tomorrow",
+      "title": "Brooklyn Public Library: Librarians of Tomorrow",
+      "url": "https://www.bklynlibrary.org/lot",
+      "status": "unverified",
+      "http": 403,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "rockefeller-university-jumpstart",
+      "title": "Rockefeller University Jumpstart",
+      "url": "https://www.rockefeller.edu/outreach/lab-jumpstart/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.rockefeller.edu/outreach/lab-jumpstart/",
+      "page_title": "The Rockefeller University » RockEDU Science Outreach - Jumpstart",
+      "reason": ""
+    },
+    {
+      "id": "science-research-mentoring-program-srmp",
+      "title": "Science Research Mentoring Program (SRMP)",
+      "url": "https://www.amnh.org/learn-teach/teens/science-research-mentoring-program/join-srmp",
+      "status": "unverified",
+      "http": 403,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "cuny-stem-research-academy",
+      "title": "CUNY STEM Research Academy",
+      "url": "https://www.cuny.edu/academics/current-initiatives/p20/stem-research-academy/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.cuny.edu/academics/current-initiatives/p20/stem-research-academy/",
+      "page_title": "STEM Research Academy  –  The City University of New York",
+      "reason": ""
+    },
+    {
+      "id": "bpl-storyteen",
+      "title": "Brooklyn Public Library: StoryTeen Internship",
+      "url": "https://www.bklynlibrary.org/support/volunteer/storyteen",
+      "status": "unverified",
+      "http": 403,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "summer-youth-employment-program-syep",
+      "title": "Summer Youth Employment Program (SYEP)",
+      "url": "https://www.nyc.gov/site/dycd/services/jobs-internships/summer-youth-employment-program-syep.page",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.nyc.gov/site/dycd/services/jobs-internships/summer-youth-employment-program-syep.page",
+      "page_title": "Summer Youth Employment Program (SYEP) - DYCD",
+      "reason": ""
+    },
+    {
+      "id": "nyc-ladders-for-leaders",
+      "title": "NYC Ladders for Leaders",
+      "url": "https://www.nyc.gov/site/dycd/services/jobs-internships/nyc-ladders-for-leaders-students.page",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.nyc.gov/site/dycd/services/jobs-internships/nyc-ladders-for-leaders-students.page",
+      "page_title": "nyc-ladders-for-leaders-students",
+      "reason": ""
+    },
+    {
+      "id": "amnh-science-communication-internship-scip",
+      "title": "AMNH Science Communication Internship (SCIP)",
+      "url": "https://www.amnh.org/learn-teach/teens/science-communication-internship-program",
+      "status": "unverified",
+      "http": 403,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "bpl-teen-techies",
+      "title": "Brooklyn Public Library: Teen Techies",
+      "url": "https://www.bklynlibrary.org/support/volunteer/teen-techies",
+      "status": "unverified",
+      "http": 403,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "nyu-precollege",
+      "title": "NYU Precollege",
+      "url": "https://join.nyu.edu/precollege/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://join.nyu.edu/precollege/",
+      "page_title": "Precollege - NYU",
+      "reason": ""
+    },
+    {
+      "id": "nyu-college-access-leadership-institute",
+      "title": "NYU College Access Leadership Institute",
+      "url": "https://meet.nyu.edu/advice/get-to-know-the-nyu-college-access-leadership-institute/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://meet.nyu.edu/advice/get-to-know-the-nyu-college-access-leadership-institute/",
+      "page_title": "Get to Know the NYU College Access Leadership Institute - MEET NYU Icon/External Link",
+      "reason": ""
+    },
+    {
+      "id": "nyc-service-in-schools",
+      "title": "NYC Service in Schools",
+      "url": "https://www.schools.nyc.gov/learning/student-journey/experiential-learning/service-in-schools",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.schools.nyc.gov/learning/student-journey/experiential-learning/service-in-schools",
+      "page_title": "Service in Schools\r\n Hands Forming a Heart academics accessibility alert arts backpack calendar camera careers circle-check circle pointing down clock contact envelope Fa",
+      "reason": ""
+    },
+    {
+      "id": "bpl-bookmatch-teen",
+      "title": "Brooklyn Public Library: BKLYN BookMatch Teen",
+      "url": "https://www.bklynlibrary.org/support/volunteer/bklyn-bookmatch-teen",
+      "status": "unverified",
+      "http": 403,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "amnh-science-alliance",
+      "title": "AMNH Science Alliance",
+      "url": "https://www.amnh.org/learn-teach/teens/science-alliance-high-school",
+      "status": "unverified",
+      "http": 403,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "nyu-high-school-art-design-programs",
+      "title": "NYU High School Art & Design Programs",
+      "url": "https://steinhardt.nyu.edu/programs/programs-high-school-students",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://steinhardt.nyu.edu/programs/programs-high-school-students",
+      "page_title": "Programs for High School Students | NYU Steinhardt",
+      "reason": ""
+    },
+    {
+      "id": "futures-and-options-internship-program",
+      "title": "Futures and Options Internship Program",
+      "url": "https://futuresandoptions.org/our-programs/the-internship-program/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://futuresandoptions.org/our-programs/the-internship-program/",
+      "page_title": "The Internship Program - Futures and Options",
+      "reason": ""
+    },
+    {
+      "id": "bpl-teen-night-council",
+      "title": "Brooklyn Public Library: Teen Night Out Branch Council",
+      "url": "https://www.bklynlibrary.org/support/volunteer/branch-council",
+      "status": "unverified",
+      "http": 403,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "futures-and-options-urban-leadership-fellows",
+      "title": "Futures and Options Urban Leadership Fellows",
+      "url": "https://futuresandoptions.org/our-programs/urban-leadership-fellows-program/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://futuresandoptions.org/our-programs/urban-leadership-fellows-program/",
+      "page_title": "Urban Leadership Fellows Program - Futures and Options",
+      "reason": ""
+    },
+    {
+      "id": "the-met-high-school-internships",
+      "title": "The Met High School Internships",
+      "url": "https://www.metmuseum.org/opportunities/internships",
+      "status": "unverified",
+      "http": 429,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 429. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "whitney-youth-insights-artists",
+      "title": "Whitney Youth Insights Artists",
+      "url": "https://whitney.org/education/teens/youth-insights",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://whitney.org/education/teens/youth-insights",
+      "page_title": "Youth Insights | Whitney Museum of American Art",
+      "reason": ""
+    },
+    {
+      "id": "brooklyn-history-summer-scholars",
+      "title": "Center for Brooklyn History: Summer Scholars",
+      "url": "https://www.bklynlibrary.org/cbh/education/cbh-teen-internships",
+      "status": "unverified",
+      "http": 403,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "scholastic-art-writing-awards",
+      "title": "Scholastic Art & Writing Awards",
+      "url": "https://www.artandwriting.org/awards/how-to-enter/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.artandwriting.org/awards/how-to-enter/",
+      "page_title": "",
+      "reason": ""
+    },
+    {
+      "id": "youngarts-national-arts-competition",
+      "title": "YoungArts National Arts Competition",
+      "url": "https://youngarts.org/apply/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://youngarts.org/apply/",
+      "page_title": "Apply to the National Arts Competition | YoungArts",
+      "reason": ""
+    },
+    {
+      "id": "wnyc-radio-rookies",
+      "title": "WNYC Radio Rookies",
+      "url": "https://wnyc.org/browse/shows/rookies",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://wnyc.org/browse/shows/rookies",
+      "page_title": "Radio Rookies | WNYC",
+      "reason": ""
+    },
+    {
+      "id": "bric-teen-curatorial-fellowship",
+      "title": "BRIC Teen Curatorial Fellowship",
+      "url": "https://bricartsmedia.org/art-artists/opportunity/youth-opportunities/bric-teen-media-curatorial-fellowships/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://bricartsmedia.org/art-artists/opportunity/youth-opportunities/bric-teen-media-curatorial-fellowships/",
+      "page_title": "BRIC Teen Media & Curatorial Fellowships | BRIC",
+      "reason": ""
+    },
+    {
+      "id": "princeton-summer-journalism-program",
+      "title": "Princeton Summer Journalism Program",
+      "url": "https://psjp.princeton.edu/apply/application-process",
+      "status": "unverified",
+      "http": 403,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "girls-who-code-pathways",
+      "title": "Girls Who Code Pathways",
+      "url": "https://girlswhocode.com/programs/pathways",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://girlswhocode.com/programs/pathways",
+      "page_title": "Girls Who Code | Pathways",
+      "reason": ""
+    },
+    {
+      "id": "technovation-challenge",
+      "title": "Technovation Challenge",
+      "url": "https://technovationchallenge.org/competition/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://technovationchallenge.org/competition/",
+      "page_title": "Technovation Challenge Competition: Rules, Timeline & Awards",
+      "reason": ""
+    },
+    {
+      "id": "bric-teen-media-fellowship",
+      "title": "BRIC Teen Media Fellowship",
+      "url": "https://bricartsmedia.org/art-artists/opportunity/youth-opportunities/bric-teen-media-curatorial-fellowships/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://bricartsmedia.org/art-artists/opportunity/youth-opportunities/bric-teen-media-curatorial-fellowships/",
+      "page_title": "BRIC Teen Media & Curatorial Fellowships | BRIC",
+      "reason": ""
+    },
+    {
+      "id": "congressional-app-challenge",
+      "title": "Congressional App Challenge",
+      "url": "https://www.congressionalappchallenge.us/students/rules/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.congressionalappchallenge.us/students/rules/",
+      "page_title": "RULES -",
+      "reason": ""
+    },
+    {
+      "id": "diamond-challenge",
+      "title": "Diamond Challenge",
+      "url": "https://diamondchallenge.org/competition/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://diamondchallenge.org/competition/",
+      "page_title": "Competition - Diamond Challenge",
+      "reason": ""
+    },
+    {
+      "id": "nyc-student-advisory-councils",
+      "title": "NYC Student Advisory Councils",
+      "url": "https://www.schools.nyc.gov/get-involved/students/student-advisory-councils",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.schools.nyc.gov/get-involved/students/student-advisory-councils",
+      "page_title": "Student Advisory Councils\r\n Hands Forming a Heart academics accessibility alert arts backpack calendar camera careers circle-check circle pointing down clock contact enve",
+      "reason": ""
+    },
+    {
+      "id": "bric-teen-filmmaking-bootcamp",
+      "title": "BRIC Teen Filmmaking Bootcamp",
+      "url": "https://bricartsmedia.org/class/teen-filmmaking-bootcamp-cycle-9-fall-2026/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://bricartsmedia.org/class/teen-filmmaking-bootcamp-cycle-9-fall-2026/",
+      "page_title": "Teen Filmmaking Bootcamp Cycle 9 (Fall 2026) | BRIC",
+      "reason": ""
+    },
+    {
+      "id": "mayor-s-youth-leadership-council",
+      "title": "Mayor's Youth Leadership Council",
+      "url": "https://www.nyc.gov/site/ymi/initiatives/youth-leadership-council.page",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.nyc.gov/site/ymi/initiatives/youth-leadership-council.page",
+      "page_title": "initiatives",
+      "reason": ""
+    },
+    {
+      "id": "nyc-parks-ranger-conservation-corps",
+      "title": "NYC Parks Ranger Conservation Corps",
+      "url": "https://www.nyc.gov/jobs/internships.page",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.nyc.gov/jobs/internships.page",
+      "page_title": "Jobs | Internships and Seasonal Opportunities | City of New York",
+      "reason": ""
+    },
+    {
+      "id": "nyu-tandon-arise",
+      "title": "NYU Tandon ARISE Summer Research",
+      "url": "https://k12stem.engineering.nyu.edu/programs/arise",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://k12stem.engineering.nyu.edu/programs/arise",
+      "page_title": "NYU Tandon K12 STEM Education Programs | Inclusive STEM Learning",
+      "reason": ""
+    },
+    {
+      "id": "bric-teen-photography-bootcamp",
+      "title": "BRIC Capture Your World: Teen Photography Bootcamp",
+      "url": "https://bricartsmedia.org/class/capture-your-world-teen-photography-bootcamp-cycle-4/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://bricartsmedia.org/class/capture-your-world-teen-photography-bootcamp-cycle-4/",
+      "page_title": "Capture Your World: Teen Photography Bootcamp - Cycle 4 | BRIC",
+      "reason": ""
+    },
+    {
+      "id": "columbia-science-honors-program",
+      "title": "Columbia University Science Honors Program",
+      "url": "https://outreach.engineering.columbia.edu/SHP",
+      "status": "unverified",
+      "http": 403,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "cshl-urban-barcode-research-program",
+      "title": "Urban Barcode Research Program (UBRP)",
+      "url": "https://dnalc.cshl.edu/programs/studentresearch.html",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://dnalc.cshl.edu/programs/studentresearch.html",
+      "page_title": "Student Research Partnerships - CSHL DNA Learning Center",
+      "reason": ""
+    },
+    {
+      "id": "cshl-urban-barcode-project",
+      "title": "Urban Barcode Project",
+      "url": "https://dnalc.cshl.edu/programs/studentresearch.html",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://dnalc.cshl.edu/programs/studentresearch.html",
+      "page_title": "Student Research Partnerships - CSHL DNA Learning Center",
+      "reason": ""
+    },
+    {
+      "id": "queens-library-teen-volunteer",
+      "title": "Queens Public Library: Teen Volunteer Projects",
+      "url": "https://volunteer.queenslibrary.org/tc_volopportunities?layoutViewMode=mobile",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://volunteer.queenslibrary.org/tc_volopportunities?layoutViewMode=mobile",
+      "page_title": "Queens Library | Teen Central: Volunteer Opportunities",
+      "reason": ""
+    },
+    {
+      "id": "moma-teens-in-residence",
+      "title": "MoMA Teens-in-Residence",
+      "url": "https://www.moma.org/calendar/programs/253",
+      "status": "unverified",
+      "http": 403,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "moma-in-the-making",
+      "title": "MoMA In the Making",
+      "url": "https://www.moma.org/calendar/programs/86",
+      "status": "unverified",
+      "http": 403,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "cooper-hewitt-teen-drop-in",
+      "title": "Cooper Hewitt Teen Drop-In Workshops",
+      "url": "https://www.cooperhewitt.org/teen-programs/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.cooperhewitt.org/teen-programs/",
+      "page_title": "Teen Programs | Cooper Hewitt, Smithsonian Design Museum",
+      "reason": ""
+    },
+    {
+      "id": "queens-botanical-garden-volunteers",
+      "title": "Queens Botanical Garden: Community Volunteer Days",
+      "url": "https://queensbotanical.org/community-volunteer/",
+      "status": "unverified",
+      "http": 202,
+      "final_url": "https://queensbotanical.org/community-volunteer/",
+      "page_title": "",
+      "reason": "Unexpected status"
+    },
+    {
+      "id": "nyas-junior-academy",
+      "title": "New York Academy of Sciences: Junior Academy",
+      "url": "https://www.nyas.org/learning/high-school-research-programs/the-junior-academy/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.nyas.org/learning/high-school-research-programs/the-junior-academy/",
+      "page_title": "The Junior Academy - NYAS",
+      "reason": ""
+    },
+    {
+      "id": "msk-hopp-summer-student-program",
+      "title": "Memorial Sloan Kettering HOPP Summer Student Program",
+      "url": "https://www.mskcc.org/research-programs/human-oncology-pathogenesis/education",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.mskcc.org/research-programs/human-oncology-pathogenesis/education",
+      "page_title": "Human Oncology & Pathogenesis Program: Education & Training | Memorial Sloan Kettering Cancer Center Memorial Sloan Kettering Cancer Center",
+      "reason": ""
+    },
+    {
+      "id": "mit-think-scholars-program",
+      "title": "MIT THINK Scholars Program",
+      "url": "https://think.mit.edu/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://think.mit.edu/",
+      "page_title": "Home | MIT THINK Scholars Program",
+      "reason": ""
+    },
+    {
+      "id": "staten-island-zoo-junior-docent",
+      "title": "Staten Island Zoo: Junior Docent Program",
+      "url": "https://www.statenislandzoo.org/volunteer-job-opportunities",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.statenislandzoo.org/volunteer-job-opportunities",
+      "page_title": "",
+      "reason": ""
+    },
+    {
+      "id": "nypl-teen-reading-ambassadors",
+      "title": "NYPL Teen Reading Ambassadors",
+      "url": "https://www.nypl.org/blog/2023/07/31/kick-summer-great-book-teen-reading-ambassadors-favorite-reads-kids",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.nypl.org/blog/2023/07/31/kick-summer-great-book-teen-reading-ambassadors-favorite-reads-kids",
+      "page_title": "Kick Off Summer with a Great Book: Teen Reading Ambassadors’ Favorite Reads for Kids | The New York Public Library",
+      "reason": ""
+    },
+    {
+      "id": "nypl-teen-civics-ambassadors",
+      "title": "NYPL Teen Civics Ambassadors",
+      "url": "https://www.nypl.org/blog/2025/09/29/teen-civics-ambassadors-report-ai-media-bias",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.nypl.org/blog/2025/09/29/teen-civics-ambassadors-report-ai-media-bias",
+      "page_title": "Teen Civics Ambassadors Report on AI, Media, & Bias | The New York Public Library",
+      "reason": ""
+    },
+    {
+      "id": "biobus-junior-scientists",
+      "title": "BioBus High School Junior Scientist Internship",
+      "url": "https://www.biobus.org/internship/highschool/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.biobus.org/internship/highschool/",
+      "page_title": "BioBus High School Junior Scientist Internships | BioBus",
+      "reason": ""
+    },
+    {
+      "id": "staten-island-zoo-teen-volunteers",
+      "title": "Staten Island Zoo: Teen Volunteer Opportunities",
+      "url": "https://www.statenislandzoo.org/volunteer-job-opportunities",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.statenislandzoo.org/volunteer-job-opportunities",
+      "page_title": "",
+      "reason": ""
+    },
+    {
+      "id": "wave-hill-werm",
+      "title": "Wave Hill: Woodland Ecology Research Mentorship (WERM)",
+      "url": "https://www.wavehill.org/education/youth-internships/werm",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.wavehill.org/education/youth-internships/werm",
+      "page_title": "WERM - Wave Hill",
+      "reason": ""
+    },
+    {
+      "id": "wave-hill-forest-project",
+      "title": "Wave Hill: Forest Project Summer Internship",
+      "url": "https://www.wavehill.org/education/youth-internships/forest-project",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.wavehill.org/education/youth-internships/forest-project",
+      "page_title": "Forest Project - Wave Hill",
+      "reason": ""
+    },
+    {
+      "id": "wave-hill-aces",
+      "title": "Wave Hill: Art, Community, Education & Science (ACES)",
+      "url": "https://www.wavehill.org/education/youth-internships/aces",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.wavehill.org/education/youth-internships/aces",
+      "page_title": "ACES - Wave Hill",
+      "reason": ""
+    },
+    {
+      "id": "bpl-freedom-to-read-ambassadors",
+      "title": "Brooklyn Public Library: Freedom to Read Teen Ambassadors",
+      "url": "https://www.bklynlibrary.org/support/volunteer/freedom-read-teen",
+      "status": "unverified",
+      "http": 403,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "bronx-zoo-project-true",
+      "title": "Bronx Zoo: Project TRUE Field Research Internship",
+      "url": "https://bronxzoo.com/teens/project-true/internship",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://bronxzoo.com/teens/project-true/internship",
+      "page_title": "Project TRUE Internship - Bronx Zoo Close Close Close",
+      "reason": ""
+    },
+    {
+      "id": "nyu-gstem-summer",
+      "title": "NYU GSTEM: Summer Research Program",
+      "url": "https://wp.nyu.edu/gstem/prospective-students/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://wp.nyu.edu/gstem/prospective-students/",
+      "page_title": "Prospective Students",
+      "reason": ""
+    },
+    {
+      "id": "nyu-gstem-spring-data-science",
+      "title": "NYU GSTEM: Online Data Science Course",
+      "url": "https://wp.nyu.edu/gstem/programs/data-science/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://wp.nyu.edu/gstem/programs/data-science/",
+      "page_title": "dataScience",
+      "reason": ""
+    },
+    {
+      "id": "columbia-sprep",
+      "title": "Columbia State Pre-College Enrichment Program (S-PREP)",
+      "url": "https://www.vagelos.columbia.edu/education/academic-programs/educational-opportunities/summer-youth-programs/middle-high-school-students/state-pre-college-enrichment-program-s-prep/how-apply",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.vagelos.columbia.edu/education/academic-programs/educational-opportunities/summer-youth-programs/middle-high-school-students/state-pre-college-enrichment-program-s-prep/how-apply",
+      "page_title": "How to Apply | State Pre-College Enrichment Program (S-PREP) | Vagelos College of Physicians and Surgeons",
+      "reason": ""
+    },
+    {
+      "id": "nyssef-isef-research-fair",
+      "title": "New York State Science & Engineering Fair (NYSSEF ISEF)",
+      "url": "https://www.nyssef.org/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.nyssef.org/",
+      "page_title": "NYSSEF",
+      "reason": ""
+    },
+    {
+      "id": "momi-teen-council",
+      "title": "Museum of the Moving Image: Teen Council",
+      "url": "https://movingimage.org/education/teen-council/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://movingimage.org/education/teen-council/",
+      "page_title": "Teen Council – Museum of the Moving Image",
+      "reason": ""
+    },
+    {
+      "id": "momi-media-game-lab",
+      "title": "Museum of the Moving Image: Media Game Lab",
+      "url": "https://movingimage.org/education/tween-teen-programs/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://movingimage.org/education/tween-teen-programs/",
+      "page_title": "Tween & Teen Programs – Museum of the Moving Image",
+      "reason": ""
+    },
+    {
+      "id": "bronx-documentary-youth-photo-league",
+      "title": "Bronx Documentary Center: Youth Photo League",
+      "url": "https://www.bronxdoc.org/bronx-documentary-center/education/bdc-youth-photo-league/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.bronxdoc.org/bronx-documentary-center/education/bdc-youth-photo-league/",
+      "page_title": "BDC Youth Photo League - BRONX DOCUMENTARY CENTER",
+      "reason": ""
+    },
+    {
+      "id": "nysci-science-career-ladder-explainer",
+      "title": "NYSCI: Science Career Ladder Explainer",
+      "url": "https://www.nysci.org/become-a-nysci-explainer",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.nysci.org/become-a-nysci-explainer",
+      "page_title": "Become A NYSCI Explainer | NYSCI NYSCI",
+      "reason": ""
+    },
+    {
+      "id": "nysci-stem-nights-teen-events",
+      "title": "NYSCI: STEM Nights and Teen Career Events",
+      "url": "https://www.nysci.org/stem-career-events",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.nysci.org/stem-career-events",
+      "page_title": "NYSCI Teen & STEM Night Events | NYSCI NYSCI",
+      "reason": ""
+    },
+    {
+      "id": "brooklyn-museum-museum-apprentices",
+      "title": "Brooklyn Museum: Museum Apprentice Program",
+      "url": "https://www.brooklynmuseum.org/careers/internships-fellowships/museum-apprentice-program",
+      "status": "unverified",
+      "http": 429,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 429. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "brooklyn-museum-teen-night-committee",
+      "title": "Brooklyn Museum: Teen Night Planning Committee",
+      "url": "https://www.brooklynmuseum.org/careers/internships-fellowships/teen-night-planning-committee",
+      "status": "unverified",
+      "http": 429,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 429. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "dorot-summer-teen-internship",
+      "title": "DOROT: Summer Teen Internship",
+      "url": "https://www.dorotusa.org/volunteer/summer-teen-internship/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.dorotusa.org/volunteer/summer-teen-internship/",
+      "page_title": "Summer Teen Internship | DOROT",
+      "reason": ""
+    },
+    {
+      "id": "dorot-academic-year-teen-internship",
+      "title": "DOROT: Academic Year Teen Internship",
+      "url": "https://www.dorotusa.org/volunteer/academic-year-teen-internship/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.dorotusa.org/volunteer/academic-year-teen-internship/",
+      "page_title": "Academic Year Teen Internship | DOROT",
+      "reason": ""
+    },
+    {
+      "id": "new-york-cares-teen-volunteer",
+      "title": "New York Cares: Teen-Friendly Volunteer Projects",
+      "url": "https://www.newyorkcares.org/youth-friendly",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.newyorkcares.org/youth-friendly",
+      "page_title": "Youth Friendly Volunteering | New York Cares",
+      "reason": ""
+    },
+    {
+      "id": "carnegie-nyo-usa-2027",
+      "title": "Carnegie Hall: National Youth Orchestra (NYO-USA)",
+      "url": "https://www.carnegiehall.org/Education/Programs/National-Youth-Ensembles/NYO-USA/Apply/Orchestra",
+      "status": "unverified",
+      "http": 403,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "carnegie-nyo-jazz-2027",
+      "title": "Carnegie Hall: National Youth Orchestra Jazz (NYO Jazz)",
+      "url": "https://www.carnegiehall.org/Education/Programs/National-Youth-Ensembles/NYO-Jazz/Apply",
+      "status": "unverified",
+      "http": 403,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "reelworks-narrative-lab",
+      "title": "Reel Works: Narrative Lab",
+      "url": "https://www.reelworks.org/afterschool",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.reelworks.org/afterschool",
+      "page_title": "After School Programs in New York | Reel Works — Reel Works",
+      "reason": ""
+    },
+    {
+      "id": "reelworks-film-school-friday",
+      "title": "Reel Works: Film School Friday",
+      "url": "https://www.reelworks.org/film-school-friday",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.reelworks.org/film-school-friday",
+      "page_title": "Film School Friday — Reel Works",
+      "reason": ""
+    },
+    {
+      "id": "reelworks-documentary-lab",
+      "title": "Reel Works: Documentary Lab (Doc Lab)",
+      "url": "https://www.reelworks.org/afterschool",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.reelworks.org/afterschool",
+      "page_title": "After School Programs in New York | Reel Works — Reel Works",
+      "reason": ""
+    },
+    {
+      "id": "rockefeller-ssrp-2027",
+      "title": "Rockefeller University Summer Science Research Program (SSRP)",
+      "url": "https://www.rockefeller.edu/outreach/ssrp/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.rockefeller.edu/outreach/ssrp/",
+      "page_title": "The Rockefeller University » Summer Science Research Experience - RockEDU Science Outreach",
+      "reason": ""
+    },
+    {
+      "id": "rockefeller-summer-neuroscience-program",
+      "title": "Rockefeller University Summer Neuroscience Program (SNP)",
+      "url": "https://www.rockefeller.edu/outreach/snp/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.rockefeller.edu/outreach/snp/",
+      "page_title": "The Rockefeller University » Summer Neuroscience Program (SNP)",
+      "reason": ""
+    },
+    {
+      "id": "nyc-learn-and-earn",
+      "title": "NYC DYCD Learn & Earn: College and Career Support",
+      "url": "https://www.nyc.gov/site/dycd/services/jobs-internships/learn-and-earn.page",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.nyc.gov/site/dycd/services/jobs-internships/learn-and-earn.page",
+      "page_title": "Learn & Earn - DYCD",
+      "reason": ""
+    },
+    {
+      "id": "nyc-careerready-work-learn-grow",
+      "title": "NYC CareerReady Work, Learn & Grow (WLG)",
+      "url": "https://www.nyc.gov/site/dycd/services/jobs-internships/work-learn-grow-employment-program.page",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.nyc.gov/site/dycd/services/jobs-internships/work-learn-grow-employment-program.page",
+      "page_title": "Work, Learn & Grow Employment Program - DYCD",
+      "reason": ""
+    },
+    {
+      "id": "nyu-tandon-cs4cs",
+      "title": "NYU Tandon: Computer Science for Cyber Security (CS4CS)",
+      "url": "https://k12stem.engineering.nyu.edu/programs/cs4cs",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://k12stem.engineering.nyu.edu/programs/cs4cs",
+      "page_title": "NYU Tandon K12 STEM Education Programs | Inclusive STEM Learning",
+      "reason": ""
+    },
+    {
+      "id": "nyu-tandon-iesosc",
+      "title": "NYU Tandon: Innovation, Entrepreneurship & Science of Smart Cities",
+      "url": "https://k12stem.engineering.nyu.edu/programs/iesosc",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://k12stem.engineering.nyu.edu/programs/iesosc",
+      "page_title": "NYU Tandon K12 STEM Education Programs | Inclusive STEM Learning",
+      "reason": ""
+    },
+    {
+      "id": "nyu-tandon-machine-learning",
+      "title": "NYU Tandon: Machine Learning Summer Program",
+      "url": "https://k12stem.engineering.nyu.edu/programs/ml",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://k12stem.engineering.nyu.edu/programs/ml",
+      "page_title": "NYU Tandon K12 STEM Education Programs | Inclusive STEM Learning",
+      "reason": ""
+    },
+    {
+      "id": "nyu-tandon-design-invent-innovate",
+      "title": "NYU Tandon: Design, Invent & Innovate",
+      "url": "https://k12stem.engineering.nyu.edu/programs/dii",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://k12stem.engineering.nyu.edu/programs/dii",
+      "page_title": "NYU Tandon K12 STEM Education Programs | Inclusive STEM Learning",
+      "reason": ""
+    },
+    {
+      "id": "nyu-tandon-digital-design-ux",
+      "title": "NYU Tandon: Digital Design & User Experience (UX)",
+      "url": "https://k12stem.engineering.nyu.edu/programs/ux",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://k12stem.engineering.nyu.edu/programs/ux",
+      "page_title": "NYU Tandon K12 STEM Education Programs | Inclusive STEM Learning",
+      "reason": ""
+    },
+    {
+      "id": "nyu-tandon-extending-reality-xr",
+      "title": "NYU Tandon: Extending Reality Through Virtual Worlds (XR)",
+      "url": "https://k12stem.engineering.nyu.edu/programs/xr",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://k12stem.engineering.nyu.edu/programs/xr",
+      "page_title": "NYU Tandon K12 STEM Education Programs | Inclusive STEM Learning",
+      "reason": ""
+    },
+    {
+      "id": "nyu-tandon-computer-engineering-good",
+      "title": "NYU Tandon: Computer Engineering for Good (CE4G)",
+      "url": "https://k12stem.engineering.nyu.edu/programs/ce4g",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://k12stem.engineering.nyu.edu/programs/ce4g",
+      "page_title": "NYU Tandon K12 STEM Education Programs | Inclusive STEM Learning",
+      "reason": ""
+    },
+    {
+      "id": "ace-mentor-greater-ny",
+      "title": "ACE Mentor Program of Greater New York",
+      "url": "https://www.acementorny.org/students/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.acementorny.org/students/",
+      "page_title": "Student Information - ACE Mentor Program Greater NY",
+      "reason": ""
+    },
+    {
+      "id": "ace-greater-ny-scholarship",
+      "title": "ACE Greater NY Scholarship",
+      "url": "https://www.acementorny.org/students/scholarships/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.acementorny.org/students/scholarships/",
+      "page_title": "Scholarships for Students - ACE Mentor Program Greater NY",
+      "reason": ""
+    },
+    {
+      "id": "ghetto-film-school-new-york-fellows",
+      "title": "Ghetto Film School: New York Fellows Program",
+      "url": "https://www.ghettofilm.org/nyfellows",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.ghettofilm.org/nyfellows",
+      "page_title": "New York Fellows Program — Ghetto Film School",
+      "reason": ""
+    },
+    {
+      "id": "girls-write-now-journey-mentorship",
+      "title": "Girls Write Now: Journey Mentorship",
+      "url": "https://girlswritenow.org/mentorship/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://girlswritenow.org/mentorship/",
+      "page_title": "Mentorship | Girls Write Now Mentorship | Girls Write Now",
+      "reason": ""
+    },
+    {
+      "id": "girls-write-now-mentorship-on-demand",
+      "title": "Girls Write Now: Mentorship on Demand",
+      "url": "https://girlswritenow.org/mentoring-type/mentorship-on-demand/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://girlswritenow.org/mentoring-type/mentorship-on-demand/",
+      "page_title": "Mentorship on Demand | Girls Write Now Mentorship on Demand | Girls Write Now",
+      "reason": ""
+    },
+    {
+      "id": "seo-scholars-nyc",
+      "title": "SEO Scholars: NYC College Success Program",
+      "url": "https://www.seo-usa.org/scholars/faqs/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.seo-usa.org/scholars/faqs/",
+      "page_title": "FAQs - SEO",
+      "reason": ""
+    },
+    {
+      "id": "minds-matter-nyc",
+      "title": "Minds Matter NYC: Academic & College Mentorship",
+      "url": "https://mindsmatternyc.org/students/application-overview/",
+      "status": "unverified",
+      "http": 202,
+      "final_url": "https://mindsmatternyc.org/students/application-overview/",
+      "page_title": "",
+      "reason": "Unexpected status"
+    },
+    {
+      "id": "ccny-crest-hires",
+      "title": "CUNY CREST / CCNY: HIRES Earth Science Research",
+      "url": "https://crest.cuny.edu/hires/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://crest.cuny.edu/hires/",
+      "page_title": "HIRES – High School Initiative in Remote Sensing of the Earth Systems Engineering and Sciences",
+      "reason": ""
+    },
+    {
+      "id": "cuny-crest-weather-camp",
+      "title": "CUNY CREST: Weather Camp at City College",
+      "url": "https://crest.cuny.edu/research/research-programs/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://crest.cuny.edu/research/research-programs/",
+      "page_title": "Programs – CUNY Remote Sensing Earth System Institute",
+      "reason": ""
+    },
+    {
+      "id": "collegeboard-bigfuture-scholarships",
+      "title": "College Board: BigFuture Scholarships",
+      "url": "https://bigfuture.collegeboard.org/pay-for-college/bigfuture-scholarships",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://bigfuture.collegeboard.org/pay-for-college/bigfuture-scholarships",
+      "page_title": "BigFuture Scholarships: Earn by Planning for College and Career - BigFuture | College Board",
+      "reason": ""
+    },
+    {
+      "id": "coolidge-scholarship",
+      "title": "Coolidge Scholarship: Full-Ride Award",
+      "url": "https://coolidgescholars.org/selection-timeline/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://coolidgescholars.org/selection-timeline/",
+      "page_title": "2026-27 SELECTION TIMELINE - The Coolidge Scholarship",
+      "reason": ""
+    },
+    {
+      "id": "futures-and-options-career-essentials",
+      "title": "Futures and Options: Career Essentials",
+      "url": "https://futuresandoptions.org/career-essentials-application/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://futuresandoptions.org/career-essentials-application/",
+      "page_title": "Career Essentials Application - Futures and Options",
+      "reason": ""
+    },
+    {
+      "id": "all-star-code-summer-intensive",
+      "title": "All Star Code: Summer Intensive",
+      "url": "https://allstarcode.org/apply/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://allstarcode.org/apply/",
+      "page_title": "Apply to the Summer Intensive | All Star Code",
+      "reason": ""
+    },
+    {
+      "id": "all-star-code-weekend-ai-intensive",
+      "title": "All Star Code: Weekend AI Intensive",
+      "url": "https://allstarcode.org/students/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://allstarcode.org/students/",
+      "page_title": "High school programs | All Star Code",
+      "reason": ""
+    },
+    {
+      "id": "nasa-techrise-challenge-2026-27",
+      "title": "NASA TechRise Student Challenge: 2026-27",
+      "url": "https://www.nasa.gov/stmd-flight-opportunities/access-flight-tests/techrise/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.nasa.gov/stmd-flight-opportunities/access-flight-tests/techrise/",
+      "page_title": "TechRise (for 6–12 graders) - NASA",
+      "reason": ""
+    },
+    {
+      "id": "genes-in-space-student-contest",
+      "title": "Genes in Space: Student Biology Research Contest",
+      "url": "https://www.genesinspace.org/us-contest/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.genesinspace.org/us-contest/",
+      "page_title": "Contest - Genes in Space",
+      "reason": ""
+    },
+    {
+      "id": "questbridge-national-college-match",
+      "title": "QuestBridge: National College Match",
+      "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+      "page_title": "National College Match: Full Four-Year Scholarships | QuestBridge | QuestBridge",
+      "reason": ""
+    },
+    {
+      "id": "jack-kent-cooke-college-scholarship",
+      "title": "Jack Kent Cooke Foundation: College Scholarship Program",
+      "url": "https://www.jkcf.org/our-scholarships/college-scholarship-program/how-to-apply/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.jkcf.org/our-scholarships/college-scholarship-program/how-to-apply/",
+      "page_title": "How to Apply - Jack Kent Cooke Foundation",
+      "reason": ""
+    },
+    {
+      "id": "doodle-for-google-student-art",
+      "title": "Doodle for Google: Student Art Contest",
+      "url": "https://doodles.google.com/intl/root/d4g/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://doodleforgoogle.doodles.google/intl/root/",
+      "page_title": "National Winner announced - Doodle for Google",
+      "reason": ""
+    },
+    {
+      "id": "cuny-college-now-free-dual-enrollment",
+      "title": "CUNY College Now: Free NYC Dual Enrollment",
+      "url": "https://www.cuny.edu/academics/current-initiatives/p20/college-now/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.cuny.edu/academics/current-initiatives/p20/college-now/",
+      "page_title": "College Now  –  The City University of New York",
+      "reason": ""
+    },
+    {
+      "id": "questbridge-college-prep-scholars",
+      "title": "QuestBridge: College Prep Scholars Program",
+      "url": "https://www.questbridge.org/apply-to-college/programs/college-prep-scholars-program",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.questbridge.org/apply-to-college/programs/college-prep-scholars-program",
+      "page_title": "College Prep Scholars Program | QuestBridge",
+      "reason": ""
+    },
+    {
+      "id": "questbridge-quest-for-excellence-nyc",
+      "title": "QuestBridge: Quest for Excellence NYC Award",
+      "url": "https://www.questbridge.org/apply-to-college/programs/college-prep-scholars-program/scholarships-and-awards/quest-for-excellence-awards",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.questbridge.org/apply-to-college/programs/college-prep-scholars-program/scholarships-and-awards/quest-for-excellence-awards",
+      "page_title": "Quest for Excellence Awards | QuestBridge",
+      "reason": ""
+    },
+    {
+      "id": "kode-with-klossy-tech-workshops",
+      "title": "Kode With Klossy: Free Technology Workshops",
+      "url": "https://www.kodewithklossy.com/programs",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.kodewithklossy.com/programs",
+      "page_title": "Programs | Kode With Klossy",
+      "reason": ""
+    },
+    {
+      "id": "queens-botanical-growing-justice",
+      "title": "Queens Botanical Garden: Growing Justice Internship",
+      "url": "https://queensbotanical.org/growing-justice/",
+      "status": "unverified",
+      "http": 202,
+      "final_url": "https://queensbotanical.org/growing-justice/",
+      "page_title": "",
+      "reason": "Unexpected status"
+    },
+    {
+      "id": "nycps-summer-arts-institute-queens",
+      "title": "NYC Public Schools: Summer Arts Institute",
+      "url": "https://sites.google.com/schools.nyc.gov/teen-arts-audition-prep-series/summer-arts-institute",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://sites.google.com/schools.nyc.gov/teen-arts-audition-prep-series/summer-arts-institute",
+      "page_title": "Teen Arts Audition Prep Series - SUMMER ARTS INSTITUTE",
+      "reason": ""
+    },
+    {
+      "id": "american-folk-art-youth-art-connection",
+      "title": "American Folk Art Museum: Youth Art Connection",
+      "url": "https://folkartmuseum.org/resources/youth-art-connection/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://folkartmuseum.org/resources/youth-art-connection/",
+      "page_title": "Youth Art Connection | American Folk Art Museum",
+      "reason": ""
+    },
+    {
+      "id": "elp-bronx-core-program",
+      "title": "Emerging Leaders Program Bx: Core Program",
+      "url": "https://elpbx.org/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://elpbx.org/",
+      "page_title": "The Emerging Leaders Program",
+      "reason": ""
+    },
+    {
+      "id": "bronxworks-cafe-college-access",
+      "title": "BronxWorks: Center for Achieving Future Education (CAFE)",
+      "url": "https://bronxworks.org/our-services/education-and-youth-development/adolescent-programs/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://bronxworks.org/our-services/education-and-youth-development/adolescent-programs/",
+      "page_title": "Adolescent Programs - BronxWorks",
+      "reason": ""
+    },
+    {
+      "id": "brooklyn-bridge-park-tides",
+      "title": "Brooklyn Bridge Park: TIDES Environmental Stewardship",
+      "url": "https://brooklynbridgepark.org/education/teen-programs/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://brooklynbridgepark.org/education/teen-programs/",
+      "page_title": "Teen Programs - Brooklyn Bridge Park",
+      "reason": ""
+    },
+    {
+      "id": "reelworks-fall-supported-lab",
+      "title": "Reel Works: Fall Supported Lab",
+      "url": "https://www.reelworks.org/afterschool",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.reelworks.org/afterschool",
+      "page_title": "After School Programs in New York | Reel Works — Reel Works",
+      "reason": ""
+    },
+    {
+      "id": "reelworks-summer-documentary-lab",
+      "title": "Reel Works: Summer Documentary Lab",
+      "url": "https://www.reelworks.org/summer-doc-lab",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.reelworks.org/summer-doc-lab",
+      "page_title": "Summer Documentary Lab — Reel Works",
+      "reason": ""
+    },
+    {
+      "id": "staten-island-jcc-cit",
+      "title": "Staten Island JCC: Counselor-in-Training (CIT)",
+      "url": "https://sijccdaycamp.org/teen-programs/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://sijccdaycamp.org/teen-programs/",
+      "page_title": "Teen Programs – Staten Island JCC Day Camp",
+      "reason": ""
+    },
+    {
+      "id": "siths-uau-jedi-careerready",
+      "title": "Staten Island Technical HS × UAU: JEDI & Career Ready Internship Pathway",
+      "url": "https://www.siths.org/apps/news/article/2241550?categoryId=16105",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.siths.org/apps/news/article/2241550?categoryId=16105",
+      "page_title": "The UAU-SITHS JEDI and Career Ready Program Application is open! | Staten Island Technical High School",
+      "reason": ""
+    },
+    {
+      "id": "canvas-youth-empowerment-summit-staten",
+      "title": "Canvas Institute: Youth Empowerment Summit",
+      "url": "https://www.canvasinstitute.org/programs/youth-empowerment-summit",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.canvasinstitute.org/programs/youth-empowerment-summit",
+      "page_title": "Youth Empowerment Summit | Canvas Institute",
+      "reason": ""
+    },
+    {
+      "id": "madmuseum-artslife",
+      "title": "Museum of Arts and Design: Artslife Paid Summer Internship",
+      "url": "https://madmuseum.org/programs/teen-programs-mad",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://madmuseum.org/programs/teen-programs-mad",
+      "page_title": "Teen Programs | Museum of Arts and Design header-logo header-logo nav-logo search-button mad-footer-logo mail facebook instagram twitter youtube closer",
+      "reason": ""
+    },
+    {
+      "id": "manhattan-da-hsip",
+      "title": "Manhattan District Attorney: High School Internship Program",
+      "url": "https://manhattanda.org/careers/internship-opportunities/high-school-internship/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://manhattanda.org/careers/internship-opportunities/high-school-internship/",
+      "page_title": "High School Internship Program - Manhattan District Attorney's Office",
+      "reason": ""
+    },
+    {
+      "id": "google-code-next-chelsea-lab",
+      "title": "Google Code Next: Chelsea Lab",
+      "url": "https://codenext.withgoogle.com/",
+      "status": "likely_broken",
+      "http": 404,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 404. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "schoolhouse-free-online-sat-bootcamp",
+      "title": "Schoolhouse.world: Free Online SAT Bootcamps",
+      "url": "https://schoolhouse.world/sat-bootcamp/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://schoolhouse.world/sat-bootcamp/",
+      "page_title": "Free SAT® Tutoring | Schoolhouse SAT Bootcamps",
+      "reason": ""
+    },
+    {
+      "id": "girls-who-code-clubs",
+      "title": "Girls Who Code: Free Coding Clubs",
+      "url": "https://girlswhocode.com/programs",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://girlswhocode.com/programs",
+      "page_title": "Girls Who Code | Programs",
+      "reason": ""
+    },
+    {
+      "id": "breakthrough-junior-challenge",
+      "title": "Breakthrough Junior Challenge: Science Video Competition",
+      "url": "https://breakthroughjuniorchallenge.org/enter",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://breakthroughjuniorchallenge.org/enter",
+      "page_title": "Breakthrough Junior Challenge",
+      "reason": ""
+    },
+    {
+      "id": "csrx-online-research-experience",
+      "title": "CSR-x: Collaborative Summer Research Experience",
+      "url": "https://www.csr-x.org/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.csr-x.org/",
+      "page_title": "CSR-x",
+      "reason": ""
+    },
+    {
+      "id": "cyberpatriot-high-school-competition",
+      "title": "CyberPatriot: National Youth Cyber Defense Competition",
+      "url": "https://www.uscyberpatriot.org/competition/Competition-Overview/join-the-competition",
+      "status": "likely_broken",
+      "http": 404,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 404. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "usaco-online-programming-contests",
+      "title": "USA Computing Olympiad: Online Programming Contests",
+      "url": "https://usaco.org/index.php?page=register",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://usaco.org/index.php?page=register",
+      "page_title": "USACO",
+      "reason": ""
+    },
+    {
+      "id": "cmu-3cs-virtual-college-computer-science",
+      "title": "Carnegie Mellon: 3CS Virtual College Computer Science",
+      "url": "https://academy.cs.cmu.edu/3cs",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://academy.cs.cmu.edu/3cs",
+      "page_title": "3CS | CMU CS Academy",
+      "reason": ""
+    },
+    {
+      "id": "nypl-iccan-college-career-access",
+      "title": "NYPL: Intensive College & Career Access Network (ICCAN)",
+      "url": "https://www.nypl.org/blog/2025/07/07/get-know-teens-nypls-intensive-college-and-career-access-network",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.nypl.org/blog/2025/07/07/get-know-teens-nypls-intensive-college-and-career-access-network",
+      "page_title": "Get to Know Teens from NYPL’s Intensive College and Career Access Network | The New York Public Library",
+      "reason": ""
+    },
+    {
+      "id": "genspace-biorocket-research",
+      "title": "Genspace Biorocket Youth Research Internship",
+      "url": "https://www.genspace.org/biorocket",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.genspace.org/biorocket",
+      "page_title": "Biorocket Youth Research Internship — Genspace",
+      "reason": ""
+    },
+    {
+      "id": "weill-cornell-hprep-2027",
+      "title": "Weill Cornell Medicine HPREP (Health Profession Recruitment and Exposure Program)",
+      "url": "https://teach.weill.cornell.edu/medical-education/programs/academic-access-programs",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://teach.weill.cornell.edu/medical-education/programs/academic-access-programs",
+      "page_title": "Academic Access Programs | Teach",
+      "reason": ""
+    },
+    {
+      "id": "smithsonian-nesst-youth-ambassadors-2026",
+      "title": "Smithsonian NESST Youth Ambassadors 2026-2027",
+      "url": "https://ssec.si.edu/event/YouthAmbassadors",
+      "status": "unverified",
+      "http": 403,
+      "final_url": "",
+      "page_title": "",
+      "reason": "HTTP 403. May be blocked, moved or require a browser."
+    },
+    {
+      "id": "bronx-museum-teen-council",
+      "title": "Bronx Museum Teen Council",
+      "url": "https://bronxmuseum.org/education/teen-programs/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://bronxmuseum.org/es/learn/teen-programs/",
+      "page_title": "Programas para Adolescentes - The Bronx Museum",
+      "reason": ""
+    },
+    {
+      "id": "bronx-museum-teen-summer",
+      "title": "Bronx Museum Teen Summer Arts Internship",
+      "url": "https://bronxmuseum.org/education/teen-programs/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://bronxmuseum.org/es/learn/teen-programs/",
+      "page_title": "Programas para Adolescentes - The Bronx Museum",
+      "reason": ""
+    },
+    {
+      "id": "rocking-the-boat-environmental-science",
+      "title": "Rocking the Boat Environmental Science Youth Program",
+      "url": "https://rockingtheboat.org/youth-development/environmental",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://rockingtheboat.org/youth-development/environmental",
+      "page_title": "environmental - Rocking the Boat",
+      "reason": ""
+    },
+    {
+      "id": "elp-bronx-paid-internships",
+      "title": "Emerging Leaders Program Bx Paid Internship",
+      "url": "https://elpbx.org/index.php/programs/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://elpbx.org/index.php/programs/",
+      "page_title": "Programs – The Emerging Leaders Program",
+      "reason": ""
+    },
+    {
+      "id": "elp-bronx-fellows",
+      "title": "Emerging Leaders Program Bx Fellows Mentorship",
+      "url": "https://elpbx.org/index.php/programs/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://elpbx.org/index.php/programs/",
+      "page_title": "Programs – The Emerging Leaders Program",
+      "reason": ""
+    },
+    {
+      "id": "natural-areas-sun-high-school-internship",
+      "title": "Natural Areas Conservancy SUN High School Internship",
+      "url": "https://naturalareasnyc.org/high-school-internship/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://naturalareasnyc.org/high-school-internship/",
+      "page_title": "High School Internship - Natural Areas Conservancy",
+      "reason": ""
+    },
+    {
+      "id": "artlab-staten-summer-studio-scholarship",
+      "title": "Art Lab Staten Island Summer Studio Scholarship Program",
+      "url": "https://artlabsi.com/scholarships/summer-studio-scholarship-program/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://artlabsi.com/scholarships/summer-studio-scholarship-program/",
+      "page_title": "Summer Studio Scholarship Program - Art Lab",
+      "reason": ""
+    },
+    {
+      "id": "soniqlab-staten-teen-dj-workshops",
+      "title": "SONIQLAB Staten Island Free Teen DJ Workshops",
+      "url": "https://makerparkradio.nyc/soniqlabs/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://makerparkradio.nyc/soniqlabs/",
+      "page_title": "Soniqlab - Maker Park Radio",
+      "reason": ""
+    },
+    {
+      "id": "rise-shore-corps-rockaway",
+      "title": "RISE Shore Corps Environmental Leadership",
+      "url": "https://www.riserockaway.org/rise/programs/youth/shore-corps/",
+      "status": "unverified",
+      "http": null,
+      "final_url": "",
+      "page_title": "",
+      "reason": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)>"
+    },
+    {
+      "id": "rise-environmentor-research",
+      "title": "RISE Environmentor Summer Research Mentorship",
+      "url": "https://www.riserockaway.org/rise/programs/youth/environmentor-internship/",
+      "status": "unverified",
+      "http": null,
+      "final_url": "",
+      "page_title": "",
+      "reason": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)>"
+    },
+    {
+      "id": "noguchi-teen-advisory-board",
+      "title": "The Noguchi Museum Teen Advisory Board",
+      "url": "https://www.noguchi.org/museum/education/teens/teen-advisory-board/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.noguchi.org/museum/education/teens/teen-advisory-board/",
+      "page_title": "Teen Advisory Board - The Noguchi Museum Noguchi Musesum Noguchi Musesum Noguchi Musesum Artboard",
+      "reason": ""
+    },
+    {
+      "id": "noguchi-making-your-mark",
+      "title": "The Noguchi Museum Making Your Mark",
+      "url": "https://www.noguchi.org/museum/education/teens/making-your-mark/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.noguchi.org/museum/education/teens/making-your-mark/",
+      "page_title": "Making Your Mark - The Noguchi Museum Noguchi Musesum Noguchi Musesum Noguchi Musesum Artboard Artboard Artboard",
+      "reason": ""
+    },
+    {
+      "id": "snug-harbor-farm-stewardship",
+      "title": "Snug Harbor Heritage Farm Stewardship",
+      "url": "https://snug-harbor.org/class/farm-stewardship/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://snug-harbor.org/class/farm-stewardship/",
+      "page_title": "Farm Stewardship | Snug Harbor",
+      "reason": ""
+    },
+    {
+      "id": "snug-harbor-water-stewardship",
+      "title": "Snug Harbor Water and Wetlands Stewardship",
+      "url": "https://snug-harbor.org/class/water-stewardship/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://snug-harbor.org/class/water-stewardship/",
+      "page_title": "Water Stewardship | Snug Harbor",
+      "reason": ""
+    },
+    {
+      "id": "snug-harbor-environmental-tree-stewardship",
+      "title": "Snug Harbor Environmental and Tree Stewardship",
+      "url": "https://snug-harbor.org/class/environmental-and-tree-stewardship/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://snug-harbor.org/class/environmental-and-tree-stewardship/",
+      "page_title": "Environmental and Tree Stewardship | Snug Harbor",
+      "reason": ""
+    },
+    {
+      "id": "snug-harbor-green-energy-workshops",
+      "title": "Snug Harbor Youth WINS Green Energy Career Workshops",
+      "url": "https://snug-harbor.org/class/green-energy-industry-workshop/?slot_id=22815",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://snug-harbor.org/class/green-energy-industry-workshop/?slot_id=22815",
+      "page_title": "Green Energy Industry Workshop | Snug Harbor",
+      "reason": ""
+    }
+  ]
+}
