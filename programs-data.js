@@ -4749,7 +4749,7 @@ window.PROGRAMS = [
       11,
       12
     ],
-    "url": "https://bronxmuseum.org/education/teen-programs/",
+    "url": "https://bronxmuseum.org/learn/teens/",
     "whatYouDo": "Interview contemporary artists, curate exhibits, create art and collaborative publications, and discuss issues relevant to NYC teens.",
     "details": "Teen Council is a four-month after-school paid youth internship at the Bronx Museum. Selected students develop art, communication, exhibition planning and teamwork skills. The museum runs separate fall and spring sessions.",
     "eligibility": "New York City high school students ages 14-19. Selection is competitive; the fall 2026 announcement said 12 places were available.",
@@ -4770,7 +4770,7 @@ window.PROGRAMS = [
     "sourceStatus": "current",
     "verified": "2026-10-18",
     "sourceChecked": "2026-10-18",
-    "sourceNote": "Bronx Museum official 2026 Teen Council announcement confirms paid NYC teen art internship ages 14-19, fall October 4 deadline and museum-based sessions."
+    "sourceNote": "Bronx Museum official 2026 Teen Council announcement confirms paid NYC teen art internship ages 14-19, fall October 4 deadline and museum-based sessions. October 2026 quality audit: replaced old page URL, which redirected to the Spanish site, with the current English-language teen programs page. The page confirms Teen Council and Teen Summer are separate paid opportunities."
   },
   {
     "id": "bronx-museum-teen-summer",
@@ -4784,7 +4784,7 @@ window.PROGRAMS = [
       11,
       12
     ],
-    "url": "https://bronxmuseum.org/education/teen-programs/",
+    "url": "https://bronxmuseum.org/learn/teens/",
     "whatYouDo": "Develop art with educators, explore exhibition themes and museum careers, and collaborate on a final teen-created display.",
     "details": "Teen Summer is a four-week paid intensive that lets NYC teens explore creative work and museum exhibition practices. In the 2026 cohort, teens curated works from the permanent collection and produced a public exhibition.",
     "eligibility": "NYC high school students ages 14-19. Enrollment is competitive and limited; applicants must attend the museum's summer sessions.",
@@ -4805,7 +4805,7 @@ window.PROGRAMS = [
     "sourceStatus": "program",
     "verified": "2026-10-18",
     "sourceChecked": "2026-10-18",
-    "sourceNote": "Bronx Museum official Teen Summer 2026 announcement confirms paid four-week summer artmaking, curating and ages 14-19."
+    "sourceNote": "Bronx Museum official Teen Summer 2026 announcement confirms paid four-week summer artmaking, curating and ages 14-19. October 2026 quality audit: replaced old page URL, which redirected to the Spanish site, with the current English-language teen programs page. The page confirms Teen Council and Teen Summer are separate paid opportunities."
   },
   {
     "id": "rocking-the-boat-environmental-science",
