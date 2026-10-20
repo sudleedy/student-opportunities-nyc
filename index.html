@@ -185,6 +185,33 @@ input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #ff78
  .nav .sob-header-actions{order:3;flex:1 1 100%;width:100%;margin:0;justify-content:center}
 }
 
+
+/* Give search and filter controls stronger contrast against the white page.
+   Keep the same layout, labels, and keyboard focus indicators. */
+.simple-filters .simple-search input,
+.simple-filters .borough-picker select,
+.simple-filters .multi-filter > summary,
+.advanced-filters select,
+.advanced-filters .multi-filter > summary {
+ background:#edf2f8;
+ border:1px solid #9bafc7;
+ color:#203653;
+ box-shadow:0 1px 2px rgba(22,40,66,.06);
+}
+.simple-filters .simple-search input::placeholder {color:#536882;opacity:1}
+.simple-filters .simple-search input:hover,
+.simple-filters .borough-picker select:hover,
+.simple-filters .multi-filter > summary:hover,
+.advanced-filters select:hover,
+.advanced-filters .multi-filter > summary:hover,
+.simple-filters .multi-filter[open] > summary,
+.advanced-filters .multi-filter[open] > summary {
+ background:#e5edf7;
+ border-color:#6f8eaf;
+}
+.more-filters {border-color:#b5c5d9}
+.more-filters > summary {background:#f0f4f9}
+.more-filters > summary:hover {background:#e6edf5}
 </style></head><body>
 <header id="top"><div class="nav"><a class="brand" href="#top" aria-label="Student Opportunities NYC homepage"><img src="assets/student_opportunities_nyc_icon.svg?v=1" alt="Graduation cap with upward arrow" class="brand-icon"><span class="brand-copy"><span class="brand-name">Student<strong>Opportunities <em>NYC</em></strong></span><span class="brand-tagline">DISCOVER WHAT’S NEXT</span></span></a><nav><a href="#opportunities">Explore</a><a href="#about">About</a><a href="#contribute">Contribute</a></nav></div></header>
 <section class="hero"><div class="wrap"><div class="eyebrow">Discover what's possible</div><h1>Every opportunity starts somewhere.</h1><p>Find internships, scholarships, research experiences, and volunteer programs for high school students, all in one place.</p><a href="#opportunities">Explore opportunities →</a></div></section>
