@@ -1,5 +1,12 @@
 # Student Opportunities NYC — site setup
 
+## October 19, 2026: Search aliases and subject synonyms across all 170 programs
+
+Program search now recognizes **organizer abbreviations**, **common program nicknames**, **related terms**, and program slug spelling for all catalog entries, in addition to the prior flexible multiple-word matching. The `program-search.js` helper derives search text for every program from its official title, organization, description, topics and stable ID; adds a curated list of familiar organizer acronyms (AMNH, NYU, CUNY, CCNY, CSHL, BPL, NYPL, QPL, NYBG, NYSCI, MSK, ACS, DYCD and others); and supplies specific aliases for programs where students use known acronyms or familiar alternate names (SRMP, SYEP, USNCO, UBRP, HOPP, NYO, PSJP, etc.). `program.searchAliases` is also supported for future records. Common discipline synonyms (AI/machine learning, coding/programming, chem/chemistry, volunteer/community service, scholarship/financial aid and others) are applied as carefully scoped alternatives to **individual query terms**, with multiword synonym phrases recognized.
+
+Every input token must still match an official field or relevant alias. A short acronym such as `AI` is matched as a whole word, not inside unrelated words like "paid"; related-name aliases never assert extra eligibility, organizer affiliation or availability. The user-facing search placeholder explains that students can search by name, acronym or topic. Search module cache version bumped to `program-search.js?v=2`, and the regression suite tests all 170 titles/organizations/IDs, 20 acronym queries, subject synonyms and false-positive cases.
+
+
 ## October 19, 2026: Clearer topic categories and multi-keyword program searches
 
 The three topic-category headings **STEM**, **Arts & Media**, and **Careers & Community** now use a dark blue high-contrast background, bright accent edge, larger white labels, and sticky headers while scrolling through the topic options. Category headings remain informational (not checkboxes) and subtopic selections, counts, and keyboard controls are preserved.

@@ -81,8 +81,8 @@ test('homepage supplies accessible menus and invokes the facet matcher',()=>{
  }
  assert.ok(html.includes('program-taxonomy.js?v=5'));
  assert.ok(html.indexOf('program-taxonomy.js?v=5')<html.indexOf('program-order.js?v=1'));
- assert.ok(html.indexOf('program-order.js?v=1')<html.indexOf('program-search.js?v=1'));
- assert.ok(html.indexOf('program-search.js?v=1')<html.indexOf('directory-ui.js?v=28'));
+ assert.ok(html.indexOf('program-order.js?v=1')<html.indexOf('program-search.js?v=2'));
+ assert.ok(html.indexOf('program-search.js?v=2')<html.indexOf('directory-ui.js?v=28'));
  assert.ok(js.includes("taxonomy.matchesFacets(p,selected('topic'),selected('kind'))"));
  assert.ok(js.includes('const PAGE_SIZE=9'));
  assert.ok(js.includes("for(const key of Object.keys(choices)){checked[key].clear()"));
@@ -248,7 +248,7 @@ test('keyword search still finds other programs and topic labels',()=>{
  assert.ok(search.matchesProgram(byId.get('nyu-tandon-arise'),'ArIsE',taxonomy));
  const html=fs.readFileSync(path.join(ROOT,'index.html'),'utf8');
  const ui=fs.readFileSync(path.join(ROOT,'directory-ui.js'),'utf8');
- assert.ok(html.includes('program-search.js?v=1'));
+ assert.ok(html.includes('program-search.js?v=2'));
  assert.ok(ui.includes('search.matchesProgram(p,q,taxonomy)'));
  assert.ok(html.includes('position:sticky;top:0'));
  assert.ok(html.includes('background:#223d65'));
@@ -256,4 +256,71 @@ test('keyword search still finds other programs and topic labels',()=>{
  for(const name of ['STEM','Arts & Media','Careers & Community']){
   assert.ok(taxonomy.TOPIC_GROUPS.some(([group])=>group===name),name);
  }
+});
+
+test('every reviewed program matches its official title, organization and stable identifier',()=>{
+ for(const p of programs){
+  for(const [kind,q] of [['title',p.title],['organization',p.org],['catalog identifier',p.id]]){
+   assert.ok(search.matchesProgram(p,q,taxonomy),kind+' does not find '+p.id+' with '+q);
+  }
+ }
+});
+test('program and organizer acronyms work throughout the catalog',()=>{
+ const examples=[
+  ['amnh srmp','science-research-mentoring-program-srmp'],
+  ['amnh scip','amnh-science-communication-internship-scip'],
+  ['bpl teen techies','bpl-teen-techies'],
+  ['brooklyn library storyteen','bpl-storyteen'],
+  ['qpl teen volunteer','queens-library-teen-volunteer'],
+  ['nypl civics','nypl-teen-civics-ambassadors'],
+  ['cshl barcode','cshl-urban-barcode-research-program'],
+  ['msk hopp','msk-hopp-summer-student-program'],
+  ['nyu arise','nyu-tandon-arise'],
+  ['new york university arise','nyu-tandon-arise'],
+  ['ccny hires','ccny-crest-hires'],
+  ['dycd syep','summer-youth-employment-program-syep'],
+  ['nyas junior academy','nyas-junior-academy'],
+  ['acs usnco','acs-us-national-chemistry-olympiad-2027'],
+  ['nyo jazz','carnegie-nyo-jazz-2027'],
+  ['rockefeller lab jumpstart','rockefeller-university-jumpstart'],
+  ['college now','cuny-college-now-free-dual-enrollment'],
+  ['psjp','princeton-summer-journalism-program'],
+  ['ubrp','cshl-urban-barcode-research-program'],
+  ['s prep','columbia-sprep']
+ ];
+ for(const [q,id] of examples)assert.ok(search.matchesProgram(byId.get(id),q,taxonomy),q+' should find '+id);
+});
+test('related terms and alternate names find the correct STEM and non-STEM entries',()=>{
+ const examples=[
+  ['chem project seed','acs-project-seed-chemistry-research'],
+  ['programming machine learning','nyu-tandon-machine-learning'],
+  ['artificial intelligence weekend','all-star-code-weekend-ai-intensive'],
+  ['AI code next','google-code-next-chelsea-lab'],
+  ['computer science cybersecurity','nyu-tandon-cs4cs'],
+  ['math bootcamp','schoolhouse-free-online-sat-bootcamp'],
+  ['scholarships coolidge','coolidge-scholarship'],
+  ['financial aid coolidge','coolidge-scholarship'],
+  ['community service library','queens-library-teen-volunteer'],
+  ['intern bronx zoo','bronx-zoo-project-true'],
+  ['sustainability garden','brooklyn-botanic-garden-apprentice'],
+  ['space apps hackathon','nasa-space-apps-challenge-2026'],
+  ['NYC summer jobs','summer-youth-employment-program-syep']
+ ];
+ for(const [q,id] of examples)assert.ok(search.matchesProgram(byId.get(id),q,taxonomy),q+' should find '+id);
+});
+test('aliases stay precise: unmatched words and unrelated institutions do not qualify',()=>{
+ const noMatches=[
+  ['amnh arise','nyu-tandon-arise'],
+  ['nyu srmp','science-research-mentoring-program-srmp'],
+  ['nyu cshl','cshl-urban-barcode-research-program'],
+  ['chem coolidge','coolidge-scholarship'],
+  ['ai coolidge','coolidge-scholarship'],
+  ['nasa scholastic','scholastic-art-writing-awards'],
+  ['randomkeyword','nyu-tandon-arise']
+ ];
+ for(const [q,id] of noMatches)assert.ok(!search.matchesProgram(byId.get(id),q,taxonomy),q+' should not find '+id);
+ assert.ok(!search.matchesProgram(byId.get('brooklyn-museum-museum-apprentices'),'ai',taxonomy),
+  'AI must be matched as a whole term, not as a substring of paid');
+ assert.ok(search.matchesProgram({id:'demo',title:'Example Research',searchAliases:['new nickname']},'nickname',taxonomy));
+ assert.ok(!search.matchesProgram({id:'demo',title:'Example Research',searchAliases:['new nickname']},'arise',taxonomy));
 });
