@@ -113,7 +113,7 @@ test('priority uses verified application status instead of assuming a date prove
  assert.equal(order.displayState(entries[7],now),'unknown');
  assert.equal(order.displayState(entries[8],now),'unknown');
  assert.deepEqual(order.sortPrograms(entries,'default',now).map(x=>x.id),
-  ['open-soon','open-late','open-no-date','upcoming','unknown-future','expired-open','stale-open','unknown-no-date','closed']);
+  ['open-soon','open-late','open-no-date','upcoming','unknown-future','stale-open','expired-open','unknown-no-date','closed']);
  assert.deepEqual(order.sortPrograms(entries,'deadline',now).slice(0,3).map(x=>x.id),
   ['open-soon','upcoming','open-late']);
  assert.equal(order.sortPrograms(entries,'az',now).at(-1).id,'closed');
