@@ -1,5 +1,14 @@
 # Student Opportunities NYC — site setup
 
+## October 19, 2026: Detailed topic and opportunity-type filters
+
+The homepage now offers an additional **Topic** filter for **Biology, Machine Learning & AI, Coding & Programming, Chemistry, NASA Programs, Space Science, and Engineering**. These are curated, conservative matches to documented activities; a broad Science & Research entry does not automatically qualify for Chemistry or NASA. For example, Columbia Science Honors Program offers organic and environmental chemistry classes and astronomy/astrophysics; NASA TechRise is directly identified as a NASA opportunity. A topical tag does **not** guarantee a specific research placement or that applications are open.
+
+A separate **Opportunity type** filter has three non-exclusive choices: **Research, Internship, Volunteering**. It recognizes explicitly described research opportunities, internship titles/types, and volunteering titles/types. A research internship may belong to both Research and Internship. Other opportunities, including competitions, mentoring and arts courses, remain visible with no type selected.
+
+Both filters allow multiple selections (OR within a filter, AND between the Topic, Opportunity type, Interest, Grade, Borough, and other existing filters). Filters reset to page 1; the existing 9-card pagination, account, favorites, application-status logic and all **159 program IDs** remain unchanged. The tags are defined in `program-taxonomy.js`; new dynamically managed programs may explicitly provide recognized topic keys in a `topics` array. These topic associations are navigational labels, not organizer-confirmed academic concentrations. `tests/test_program_filters.cjs` runs with the weekly catalog audit to catch missing IDs and filter regressions.
+
+
 ## October 18, 2026: Full catalog quality and source-link review
 
 **Current public catalog: 159 individually identified student programs** with 159 static A-to-Z links and **162 sitemap URLs**. The count was reduced from 161 deliberately after removing two generic program-resource directories that lacked one specific student application. We retained valid distinct programs that share organizer pages.

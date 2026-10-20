@@ -5,6 +5,10 @@ on:
     branches: [main]
     paths:
       - "programs-data.js"
+      - "program-taxonomy.js"
+      - "directory-ui.js"
+      - "index.html"
+      - "tests/test_program_filters.cjs"
       - "scripts/catalog_audit.py"
       - "program-directory.html"
       - "sitemap.xml"
@@ -27,3 +31,5 @@ jobs:
         run: python3 scripts/catalog_audit.py
       - name: Verify program directory and sitemap links
         run: python3 scripts/check_program_directory.py
+      - name: Check new topic and opportunity-type filters
+        run: node --test tests/test_program_filters.cjs
