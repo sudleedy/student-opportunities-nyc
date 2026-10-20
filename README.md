@@ -1,5 +1,12 @@
 # Student Opportunities NYC — site setup
 
+## October 19, 2026: Canonical categories and availability-first ordering
+
+The homepage **Opportunity type** filter now normalizes alternative wording (including paid internships, research experiences, volunteering and research apprenticeships). It retains the three primary choices **Research**, **Internship** and **Volunteering**, with an additional **Other programs (courses, competitions, etc.)** choice for entries that genuinely do not fit those types. Every bundled program can now be found through an opportunity-type option. Some research contests and structured environmental investigations can appear in Research, but this does not mean they offer lab placements. The cards show both the consistent filter category and the original descriptive program type. AMNH Science Alliance has been tagged for biology and space science because its course subject matter can include genetics and astrophysics, depending on the class offered.
+
+The default homepage order is now **verified open with nearest future published deadlines → other verified open → opening soon → unconfirmed → verified closed**. Expired or older unverified listings are not falsely portrayed as open, and a future deadline alone never proves an application is open. The optional deadline sort compares confirmed open/upcoming programs with known dates; A–Z also leaves verified closed programs last. Statuses and dates are evaluated at page render time, and `program-order.js` has regression tests. Existing IDs, details, favorites and saved progress stay unchanged.
+
+
 ## October 19, 2026: Detailed topic and opportunity-type filters
 
 The homepage now offers an additional **Topic** filter for **Biology, Machine Learning & AI, Coding & Programming, Chemistry, NASA Programs, Space Science, and Engineering**. These are curated, conservative matches to documented activities; a broad Science & Research entry does not automatically qualify for Chemistry or NASA. For example, Columbia Science Honors Program offers organic and environmental chemistry classes and astronomy/astrophysics; NASA TechRise is directly identified as a NASA opportunity. A topical tag does **not** guarantee a specific research placement or that applications are open.

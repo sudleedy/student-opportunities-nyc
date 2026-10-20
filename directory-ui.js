@@ -1,6 +1,7 @@
 (()=>{'use strict';
 const items=window.PROGRAMS||[],store=window.BeaconStore,el=id=>document.getElementById(id);
 const taxonomy=window.SOBProgramTaxonomy;
+const priority=window.SOBProgramOrder;
 
 const officialUrl=p=>{try{const url=new URL(p.url);return url.protocol==='https:'?url.href:null}catch{return null}};
 const daysLeft=d=>d&&/^\d{4}-\d{2}-\d{2}$/.test(d)?Math.ceil((new Date(d+'T23:59:59')-Date.now())/86400000):null;
@@ -8,13 +9,14 @@ const reviewed=p=>p.sourceStatus==='current'&&p.verified&&/^\d{4}-\d{2}-\d{2}$/.
 const fee=p=>['free','fee'].includes(p.costCategory)?p.costCategory:/\bfree\b|no participation fee|no tuition/i.test(p.cost||'')?'free':'unknown';
 const pay=p=>['paid','unpaid'].includes(p.payCategory)?p.payCategory:/\bpaid\b|stipend|paid hourly/i.test(p.cost||'')?'paid':'unknown';
 const mode=p=>['in-person','remote','hybrid'].includes(p.deliveryMode)?p.deliveryMode:/online/i.test(p.location||'')&&!/hybrid/i.test(p.location||'')?'remote':'unknown';
-const state=p=>reviewed(p)&&['open','closed','upcoming'].includes(p.applicationState)&&!(p.applicationState==='open'&&daysLeft(p.deadlineISO)!==null&&daysLeft(p.deadlineISO)<0)?p.applicationState:'unknown';
+const state=p=>priority.displayState(p);
 function badges(p){
  const labels=[],days=daysLeft(p.deadlineISO),status=state(p);
  if(status==='open')labels.push(['open','Applications open']);
  else if(status==='closed')labels.push(['closed','Applications closed']);
  else if(status==='upcoming')labels.push(['soon','Opening soon']);
- if(days!==null&&days>=0&&days<=14)labels.push(['soon','Deadline in '+days+' days']);
+ if(days!==null&&days>=0&&days<=14&&status==='open')labels.push(['soon','Deadline in '+days+' days']);
+ if(days!==null&&days<0&&['open','upcoming'].includes(p.applicationState))labels.push(['review','Listed deadline passed; recheck applications']);
  if(days===null)labels.push(['','Next deadline unconfirmed']);
  if(p.sourceStatus==='limited')labels.push(['review','Current details unverified']);
  else if(p.sourceStatus==='program')labels.push(['review','Application dates unverified']);
@@ -161,11 +163,6 @@ function renderPager(total){
   link(page+1,'Next →','Next page');
  pagers.forEach(p=>p.innerHTML=html);
 }
-function deadline(p){
- if(!p.deadlineISO)return [1,Infinity];
- const value=Date.parse(p.deadlineISO+'T23:59:59');
- return value>=Date.now()?[0,value]:[2,value];
-}
 function matches(p,q){
  const borough=el('nearby-borough').value.trim().toLowerCase();
  // Filter only programs with an explicitly known physical borough.
@@ -193,12 +190,7 @@ function matches(p,q){
  return !q||[p.title,p.org,p.summary,p.whatYouDo,p.subject,p.type,p.eligibility,p.location,p.borough,...taxonomy.topicsFor(p).map(key=>taxonomy.TOPICS.find(pair=>pair[0]===key)?.[1]||key)].join(' ').toLowerCase().includes(q);
 }
 function mixResults(found){
- const order=el('sort').value;
- if(order==='az')found.sort((a,b)=>(a.title||'').localeCompare(b.title||''));
- else if(order==='deadline')found.sort((a,b)=>
-  deadline(a)[0]-deadline(b)[0]||deadline(a)[1]-deadline(b)[1]||
-  (a.title||'').localeCompare(b.title||''));
- return found;
+ return priority.sortPrograms(found,el('sort').value);
 }
 const deadlinePassed=p=>/^\d{4}-\d{2}-\d{2}$/.test(p.deadlineISO||'')&&
   new Date(p.deadlineISO+'T23:59:59').getTime()<Date.now();
@@ -206,7 +198,9 @@ const deadlineDisplay=p=>deadlinePassed(p)&&!/last published deadline|\bpassed\b
   ?'Last published deadline: '+p.deadline+' (passed; verify next cycle)':p.deadline;
 function renderCurated(p){
  const isFav=Boolean(store.get(p.id).favorited);
- return '<article class="card"><span class="pill">'+safe(p.type)+'</span><h3>'+safe(p.title)+'</h3>'+badges(p)+
+ const kindLabels=taxonomy.kindsFor(p).map(key=>taxonomy.KINDS.find(pair=>pair[0]===key)?.[1]||key);
+ const canonical=kindLabels.map(label=>label.startsWith('Other programs')?'Other opportunities':label).join(' · ');
+ return '<article class="card"><div class="category-row"><span class="pill">'+safe(canonical)+'</span><span class="category-subtype">'+safe(p.type)+'</span></div><h3>'+safe(p.title)+'</h3>'+badges(p)+
  '<p class="activity-preview"><strong>What you’ll do:</strong> '+safe(p.whatYouDo||p.summary)+'</p>'+
  '<p class="deadline-line">📅 '+safe(deadlineDisplay(p))+'</p><div class="meta">'+safe(p.org)+' · '+safe(p.borough||p.location)+'</div>'+
  '<div class="card-actions"><a class="open-detail" href="program.html?id='+encodeURIComponent(p.id)+'">View details →</a>'+

@@ -4,11 +4,12 @@
 (function(root){
 'use strict';
 const TOPICS = [["biology","Biology"],["machine-learning","Machine Learning & AI"],["coding","Coding & Programming"],["chemistry","Chemistry"],["nasa","NASA Programs"],["space-science","Space Science"],["engineering","Engineering"]];
-const KINDS = [["research","Research"],["internship","Internship"],["volunteering","Volunteering"]];
+const KINDS = [["research","Research"],["internship","Internship"],["volunteering","Volunteering"],["other","Other programs (courses, competitions, etc.)"]];
 const curated = {
   "biology": [
     "columbia-brainyac",
     "nybg-high-school-explainer",
+    "amnh-science-alliance",
     "brooklyn-botanic-garden-apprentice",
     "rockefeller-university-jumpstart",
     "columbia-science-honors-program",
@@ -71,6 +72,7 @@ const curated = {
   ],
   "space-science": [
     "columbia-science-honors-program",
+    "amnh-science-alliance",
     "ccny-crest-hires",
     "nasa-techrise-challenge-2026-27",
     "genes-in-space-student-contest"
@@ -100,14 +102,20 @@ function topicsFor(program){
  const tagged=Array.isArray(program.topics)?program.topics.filter(tag=>typeof tag==='string'&&topicKeys.has(tag)):[];
  return [...new Set([...(tagsByProgram.get(program.id)||[]),...tagged])];
 }
+/* Normalize organizer wording without rewriting the original program type.
+   Research competitions and internship-style apprenticeships are meaningful
+   discovery matches, but a generic course is never mislabeled as an internship.
+   "Other" keeps every curated program reachable by its opportunity type. */
 function kindsFor(program){
  const type=String(program.type||'').toLowerCase();
  const title=String(program.title||'').toLowerCase();
  const result=[];
- if(/\bresearch\b/.test(type))result.push('research');
- if(/\binternships?\b/.test(type)||/\binternships?\b/.test(title))result.push('internship');
- if(/\bvolunteer(?:ing)?\b/.test(type)||/\bvolunteer(?:ing)?\b/.test(title))result.push('volunteering');
- return result;
+ if(/\bresearch\b/.test(type)||/\bresearch\b/.test(title)||
+    ['nyssef-isef-research-fair','mit-think-scholars-program','rocking-the-boat-environmental-science'].includes(program.id))result.push('research');
+ if(/\bintern(?:s|ship|ships)?\b/.test(type)||/\bintern(?:s|ship|ships)?\b/.test(title)||
+    /\bapprenticeships?\b/.test(type)||/\bapprenticeships?\b/.test(title))result.push('internship');
+ if(/\bvolunteer(?:s|ing)?\b/.test(type)||/\bvolunteer(?:s|ing)?\b/.test(title))result.push('volunteering');
+ return result.length?result:['other'];
 }
 function matchesFacets(program,selectedTopics,selectedKinds){
  const topics=selectedTopics||new Set(),kinds=selectedKinds||new Set();

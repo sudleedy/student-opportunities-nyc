@@ -6,6 +6,7 @@ on:
     paths:
       - "programs-data.js"
       - "program-taxonomy.js"
+      - "program-order.js"
       - "directory-ui.js"
       - "index.html"
       - "tests/test_program_filters.cjs"
