@@ -1,5 +1,12 @@
 # Student Opportunities NYC — site setup
 
+## October 19, 2026: More topics and chemistry/NASA/space-science programs
+
+The directory now has **170 programs**, up from the original 159, and a grouped **31-topic** filter covering science and engineering, arts and media, plus community, careers and college preparation. Every listing inherits one accurate broad topic from its catalog subject, and additional focused tags (e.g. chemistry, neuroscience, journalism, NASA) are curated from the listed activities. The dropdown shows program counts next to each topic; totals overlap because programs may belong to more than one topic. Existing search, opportunity-type, deadline ordering, favorites and student progress remain intact.
+
+The **11 new distinct programs** are ACS Project SEED, the 2027 ACS National Chemistry Olympiad, ACS ChemClub, the U.S. Astronomy and Astrophysics Olympiad, the 2026 NASA Space Apps Challenge, and six NASA-listed citizen-science research collaborations (Exoplanet Watch, Planet Hunters TESS, Backyard Worlds: Planet 9, Space Umbrella, GLOBE Observer, Galaxy Zoo: Tidal Tales). The NASA citizen-science projects welcome ongoing participation but are **not internships**. ACS Project SEED and the astronomy olympiad have **unconfirmed** 2027 application dates; the 2027 ACS chemistry olympiad starts registration November 1, 2026. Space Apps participants under 18 must follow published guardian rules. Full evidence: `audits/2026-10-19-topic-and-stem-expansion.md`.
+
+
 ## October 19, 2026: Canonical categories and availability-first ordering
 
 The homepage **Opportunity type** filter now normalizes alternative wording (including paid internships, research experiences, volunteering and research apprenticeships). It retains the three primary choices **Research**, **Internship** and **Volunteering**, with an additional **Other programs (courses, competitions, etc.)** choice for entries that genuinely do not fit those types. Every bundled program can now be found through an opportunity-type option. Some research contests and structured environmental investigations can appear in Research, but this does not mean they offer lab placements. The cards show both the consistent filter category and the original descriptive program type. AMNH Science Alliance has been tagged for biology and space science because its course subject matter can include genetics and astrophysics, depending on the class offered.
