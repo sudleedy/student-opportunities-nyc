@@ -250,7 +250,8 @@ test('keyword search still finds other programs and topic labels',()=>{
  const ui=fs.readFileSync(path.join(ROOT,'directory-ui.js'),'utf8');
  assert.ok(html.includes('program-search.js?v=2'));
  assert.ok(ui.includes('search.matchesProgram(p,q,taxonomy)'));
- assert.ok(html.includes('position:sticky;top:0'));
+ assert.ok(html.includes('position:static;display:flex;align-items:center;'));
+ assert.ok(!html.includes('position:sticky;top:0'));
  assert.ok(html.includes('background:#223d65'));
  assert.ok(ui.includes('role="heading" aria-level="3"'));
  for(const name of ['STEM','Arts & Media','Careers & Community']){
