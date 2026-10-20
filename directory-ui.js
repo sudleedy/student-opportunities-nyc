@@ -84,9 +84,15 @@ function refreshOptions(){
   const allowed=new Set(options.map(([value])=>value));
   for(const value of checked[key])if(!allowed.has(value))checked[key].delete(value);
   const box=el(key+'-options');
-  box.innerHTML=options.map(([value,label])=>
-   '<label class="multi-choice"><input type="checkbox" value="'+safe(value)+'" '+(checked[key].has(value)?'checked ':'')+'><span>'+safe(label)+'</span></label>'
-  ).join('')+
+  const groupNames=key==='topic'?new Map(taxonomy.TOPIC_GROUPS.flatMap(([name,entries])=>entries.map(([value])=>[value,name]))):null;
+  let lastHeading='';
+  box.innerHTML=options.map(([value,label])=>{
+   const group=groupNames?.get(value);
+   const heading=group&&group!==lastHeading?'<div class="topic-menu-heading">'+safe(group)+'</div>':'';
+   if(group)lastHeading=group;
+   const n=groupNames?items.filter(p=>taxonomy.topicsFor(p).includes(value)).length:null;
+   return heading+'<label class="multi-choice"><input type="checkbox" value="'+safe(value)+'" '+(checked[key].has(value)?'checked ':'')+'><span>'+safe(label)+'</span>'+(n===null?'':'<span class="topic-option-count">'+n+'</span>')+'</label>';
+  }).join('')+
   '<div class="multi-options-footer"><button type="button" data-multi-clear="'+safe(key)+'">Clear</button><button type="button" class="multi-done" data-multi-done="'+safe(key)+'">Done</button></div>';
   labelSelected(key,options);
  }

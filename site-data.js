@@ -4,7 +4,7 @@ const items=window.PROGRAMS||[],config=window.SOB_AUTH_CONFIG||{};
 const existing=new Set(items.map(p=>p.id)),fields=[
  'title','org','type','subject','location','summary','details','eligibility','deadline',
  'deadlineISO','deadlineNote','status','cost','commitment','preparation','url',
- 'verified','applicationNote','whatYouDo','grades','costCategory','payCategory','deliveryMode','applicationState'
+ 'verified','applicationNote','whatYouDo','grades','topics','costCategory','payCategory','deliveryMode','applicationState'
 ];
 const byId=new Map(items.map(p=>[p.id,p]));
 const originals=new Map(items.map(p=>[p.id,JSON.parse(JSON.stringify(p))]));
@@ -29,6 +29,7 @@ function merge(row){
   if(Object.prototype.hasOwnProperty.call(data,name)){
    const value=data[name];
    if(name==='grades'){if(Array.isArray(value))p.grades=value.map(Number).filter(n=>Number.isInteger(n)&&n>=9&&n<=12)}
+   else if(name==='topics'){if(Array.isArray(value))p.topics=[...new Set(value.filter(x=>typeof x==='string'&&/^[a-z][a-z0-9-]{1,50}$/.test(x)))].slice(0,20)}
    else if(name==='deadlineISO'){p[name]=/^\d{4}-\d{2}-\d{2}$/.test(String(value||''))?value:null}
    else if(name==='url'){
     // Never allow dynamic catalog data to create a JavaScript or other unsafe link.
