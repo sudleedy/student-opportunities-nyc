@@ -66,7 +66,7 @@ test('checkbox OR within each filter and AND across filters',()=>{
 });
 test('unreviewed dynamic records can only opt into recognized topics',()=>{
  const p={id:'made-up',title:'Sample coding workshop',type:'Technology Workshop',topics:['coding','nasa','invalid','coding']};
- assert.deepEqual(taxonomy.topicsFor(p),['stem','coding','nasa']);
+ assert.deepEqual(taxonomy.topicsFor(p),['coding','nasa']);
  assert.deepEqual(taxonomy.kindsFor(p),['other']);
  assert.deepEqual(taxonomy.topicsFor({id:'made-up',topics:'biology'}),[]);
 });
@@ -78,8 +78,8 @@ test('homepage supplies accessible menus and invokes the facet matcher',()=>{
   assert.ok(html.includes('id="'+key+'-options"'),key+' options missing');
   assert.ok(html.includes('id="'+key+'-summary-text"'),key+' summary missing');
  }
- assert.ok(html.includes('program-taxonomy.js?v=4'));
- assert.ok(html.indexOf('program-taxonomy.js?v=4')<html.indexOf('program-order.js?v=1'));
+ assert.ok(html.includes('program-taxonomy.js?v=5'));
+ assert.ok(html.indexOf('program-taxonomy.js?v=5')<html.indexOf('program-order.js?v=1'));
  assert.ok(html.indexOf('program-order.js?v=1')<html.indexOf('directory-ui.js?v=26'));
  assert.ok(js.includes("taxonomy.matchesFacets(p,selected('topic'),selected('kind'))"));
  assert.ok(js.includes('const PAGE_SIZE=9'));
@@ -155,7 +155,7 @@ test('topic group headings counts and all new source-linked detail pages',()=>{
  assert.ok(js.includes('taxonomy.TOPIC_GROUPS.flatMap'));
  assert.ok(js.includes('topic-option-count'));
  assert.ok(html.includes('programs-data.js?v=15'));
- assert.ok(html.includes('program-taxonomy.js?v=4'));
+ assert.ok(html.includes('program-taxonomy.js?v=5'));
  assert.ok(html.includes('directory-ui.js?v=26'));
  const pages=['program.html','dashboard.html','admin.html'];
  for(const page of pages){
@@ -169,34 +169,39 @@ test('topic group headings counts and all new source-linked detail pages',()=>{
  }
 });
 
-test('STEM includes every science, technology, and environment program',()=>{
- const core=new Set(['Science & Research','Technology & Coding','Environment & Sustainability']);
- assert.equal(taxonomy.TOPIC_GROUPS[0][1][0][0],'stem');
- const matching=programs.filter(p=>taxonomy.topicsFor(p).includes('stem'));
- assert.ok(matching.length>=85,'STEM should cover all core fields and cross-subject opportunities');
- for(const p of programs){
-  if(core.has(p.subject))assert.ok(taxonomy.topicsFor(p).includes('stem'),'missing '+p.id);
+
+test('STEM is a heading, not a duplicate selectable STEM topic',()=>{
+ const headings=taxonomy.TOPIC_GROUPS.map(([name])=>name);
+ assert.deepEqual(headings,['STEM','Arts & Media','Careers & Community']);
+ assert.ok(!taxonomy.TOPICS.some(([key])=>key==='stem'));
+ assert.ok(taxonomy.TOPIC_GROUPS[0][1].some(([key])=>key==='science-research'));
+ assert.ok(taxonomy.TOPIC_GROUPS[0][1].some(([key])=>key==='technology-computing'));
+ assert.ok(!taxonomy.TOPICS.some(([key])=>key==='general-stem'),'avoid redundant General STEM subject');
+ assert.ok(!programs.some(p=>taxonomy.topicsFor(p).includes('stem')));
+});
+test('STEM category retains science, technology, and environment listings',()=>{
+ const categoryTopics=new Set(taxonomy.TOPIC_GROUPS[0][1].map(([key])=>key));
+ const relevant=new Set(['Science & Research','Technology & Coding','Environment & Sustainability']);
+ for(const p of programs.filter(p=>relevant.has(p.subject))){
+  assert.ok(taxonomy.topicsFor(p).some(tag=>categoryTopics.has(tag)),p.id+' missing from STEM heading');
+ }
+ const matching=programs.filter(p=>taxonomy.topicsFor(p).some(tag=>categoryTopics.has(tag)));
+ assert.ok(matching.length>=85,'STEM category should retain all STEM programs');
+ for(const id of ['ace-mentor-greater-ny','schoolhouse-free-online-sat-bootcamp',
+   'amnh-science-communication-internship-scip','wave-hill-aces',
+   'nysci-stem-nights-teen-events','nyu-tandon-digital-design-ux',
+   'nyu-tandon-extending-reality-xr','ace-greater-ny-scholarship',
+   'snug-harbor-green-energy-workshops']){
+  assert.ok(taxonomy.topicsFor(byId.get(id)).some(tag=>categoryTopics.has(tag)),id+' missing');
  }
 });
-test('STEM includes specialized tags even for cross-subject and dynamic programs',()=>{
- const disciplines=['biology','chemistry','neuroscience','health-medicine','machine-learning','coding','data-science',
-   'cybersecurity','engineering','robotics','nasa','space-science','earth-science','environmental-studies','mathematics','general-stem'];
- for(const p of programs){
-  const tags=taxonomy.topicsFor(p);
-  if(tags.some(t=>disciplines.includes(t)))assert.ok(tags.includes('stem'),p.id);
+test('STEM category does not pull unrelated listings into its subjects',()=>{
+ const stemKeys=new Set(taxonomy.TOPIC_GROUPS[0][1].map(([key])=>key));
+ for(const id of ['youngarts-national-arts-competition','coolidge-scholarship',
+   'reelworks-documentary-lab','dorot-summer-teen-internship']){
+  assert.ok(!taxonomy.topicsFor(byId.get(id)).some(tag=>stemKeys.has(tag)),id+' not STEM');
  }
- for(const id of ['ace-mentor-greater-ny','schoolhouse-free-online-sat-bootcamp','amnh-science-communication-internship-scip',
-   'wave-hill-aces','nysci-stem-nights-teen-events','nyu-tandon-digital-design-ux',
-   'nyu-tandon-extending-reality-xr','ace-greater-ny-scholarship','snug-harbor-green-energy-workshops']){
-  assert.ok(taxonomy.matchesFacets(byId.get(id),selected(['stem']),selected([])),id+' missing STEM');
- }
- assert.ok(taxonomy.topicsFor({id:'new-a',topics:['chemistry']}).includes('stem'));
- assert.ok(taxonomy.topicsFor({id:'new-b',topics:['stem']}).includes('stem'));
- assert.ok(taxonomy.topicsFor({id:'new-c',subject:'Environment & Sustainability'}).includes('stem'));
-});
-test('STEM does not absorb unrelated arts, scholarships, or generic technology-help listings',()=>{
- for(const id of ['youngarts-national-arts-competition','coolidge-scholarship','reelworks-documentary-lab','dorot-summer-teen-internship']){
-  assert.ok(!taxonomy.topicsFor(byId.get(id)).includes('stem'),'false positive '+id);
- }
- assert.ok(!taxonomy.topicsFor({id:'unlisted',title:'Technology Help Day',type:'Arts Program'}).includes('stem'));
+ assert.deepEqual(taxonomy.topicsFor({id:'new-chem',topics:['chemistry']}),['chemistry']);
+ assert.deepEqual(taxonomy.topicsFor({id:'new-stem',topics:['stem']}),[]);
+ assert.ok(taxonomy.topicsFor({id:'new-school',subject:'Technology & Coding'}).includes('technology-computing'));
 });

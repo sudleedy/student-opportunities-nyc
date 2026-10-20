@@ -1,10 +1,10 @@
 # Student Opportunities NYC — site setup
 
-## October 19, 2026: Unified STEM topic filter
+## October 19, 2026: STEM category heading (clarified)
 
-Added **STEM — All Fields** at the top of the Science & Technology topic dropdown. It includes **every Science & Research, Technology & Coding, and Environment & Sustainability program**, all special-topic STEM entries, and additional science/engineering opportunities listed under other broad subjects (e.g. ACE engineering mentorship, AMNH science communication, NYSCI STEM Nights, NYU digital technology workshops, the ACE engineering scholarship, Snug Harbor green-energy workshops and Schoolhouse SAT Math). This filter combines existing curated tags without modifying an organizer's program type or claiming a research placement.
+The **Topic** filter uses exactly **three nonselectable category headings**: **STEM**, **Arts & Media**, and **Careers & Community**. STEM now **replaces** the former `Science & Technology` heading. It is **not a checkbox**, and the redundant `STEM — All Fields` and `General STEM & Science` topic options were removed. Useful subject options remain below the STEM heading, including General Science & Research, Biology, Chemistry, NASA, Space Science, Engineering, Coding, Technology & Computing, and other focused topics.
 
-Students can combine STEM with Research, Internship, grade, deadline or borough filters. Other unrelated arts/financial-aid/community programs remain outside STEM. New dynamically managed programs with valid science-topic tags also inherit STEM. Topic total: **32**. Automated tests cover the union and explicit exclusions.
+Every Science & Research, Technology & Coding, and Environment & Sustainability record still maps to at least one **subject under the STEM heading**, and cross-subject records like ACE engineering mentorship, AMNH science communication, and NYU UX/XR courses retain their relevant STEM subtopic. More than one subject may be selected, with the existing result-count numbers, grade, opportunity-type, and open-deadline sorting unchanged. All **170 programs**, account/favorite links, and A–Z directory entries remain unchanged. Automated tests cover the headings, removal of the redundant checkbox, category coverage, and exclusions.
 
 
 ## October 19, 2026: More topics and chemistry/NASA/space-science programs
