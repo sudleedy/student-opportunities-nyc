@@ -8,6 +8,7 @@ on:
       - "program-taxonomy.js"
       - "program-order.js"
       - "directory-ui.js"
+      - "program-search.js"
       - "index.html"
       - "tests/test_program_filters.cjs"
       - "scripts/catalog_audit.py"

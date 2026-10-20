@@ -1,5 +1,12 @@
 # Student Opportunities NYC — site setup
 
+## October 19, 2026: Clearer topic categories and multi-keyword program searches
+
+The three topic-category headings **STEM**, **Arts & Media**, and **Careers & Community** now use a dark blue high-contrast background, bright accent edge, larger white labels, and sticky headers while scrolling through the topic options. Category headings remain informational (not checkboxes) and subtopic selections, counts, and keyboard controls are preserved.
+
+Homepage search now interprets multiple words as an **AND** search across the program's title, organization, summary, activity, eligibility, location, and topic labels, regardless of word order or words in between. It handles case differences, extra spaces and punctuation. For example, both **`nyu arise`** and **`nyu tandon arise`** match NYU Tandon ARISE. Searches with an unmatched word still return no results. No program names, eligibility or availability status were modified. The logic is in `program-search.js`, loaded before `directory-ui.js?v=28`, with regression tests in `tests/test_program_filters.cjs`.
+
+
 ## October 19, 2026: Combined Interest and Topics
 
 The redundant **Interest** dropdown was removed from the homepage directory. **Topics** is now the only subject-selection dropdown, with the three category headings **STEM**, **Arts & Media**, and **Careers & Community** and all 32 useful selectable subtopics retained. Every one of the 170 program records still matches at least one topic, including STEM courses and research as well as non-STEM programs. The redundant subject checkbox restriction was deleted, so choosing a specific topic no longer accidentally excludes a cross-disciplinary program because of its broad catalog subject. Multiple topics still use OR; different filter types use AND. Search, grade, borough, research/internship/volunteering, application state, sorting, favorites and login are unchanged. The five visible filters reflow cleanly on desktop and mobile, and the homepage JS cache version is bumped. New automated tests verify that Interest UI/code is absent and all programs are still discoverable via Topics.

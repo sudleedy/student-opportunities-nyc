@@ -6,6 +6,7 @@ const path = require('node:path');
 const ROOT = path.join(__dirname, '..');
 const taxonomy = require(path.join(ROOT, 'program-taxonomy.js'));
 const order = require(path.join(ROOT, 'program-order.js'));
+const search = require(path.join(ROOT, 'program-search.js'));
 const raw = fs.readFileSync(path.join(ROOT, 'programs-data.js'), 'utf8');
 const found = raw.match(/window\.PROGRAMS\s*=\s*(\[[\s\S]*\])\s*;\s*$/);
 assert.ok(found, 'Bundled program catalog is valid');
@@ -80,7 +81,8 @@ test('homepage supplies accessible menus and invokes the facet matcher',()=>{
  }
  assert.ok(html.includes('program-taxonomy.js?v=5'));
  assert.ok(html.indexOf('program-taxonomy.js?v=5')<html.indexOf('program-order.js?v=1'));
- assert.ok(html.indexOf('program-order.js?v=1')<html.indexOf('directory-ui.js?v=27'));
+ assert.ok(html.indexOf('program-order.js?v=1')<html.indexOf('program-search.js?v=1'));
+ assert.ok(html.indexOf('program-search.js?v=1')<html.indexOf('directory-ui.js?v=28'));
  assert.ok(js.includes("taxonomy.matchesFacets(p,selected('topic'),selected('kind'))"));
  assert.ok(js.includes('const PAGE_SIZE=9'));
  assert.ok(js.includes("for(const key of Object.keys(choices)){checked[key].clear()"));
@@ -215,7 +217,7 @@ test('single Topics filter replaces the old redundant Interest filter',()=>{
  }
  assert.ok(!js.includes("subject:{placeholder:"),'no subject checkbox option');
  assert.ok(!js.includes("selectedAny('subject'"),'no remaining subject filter restriction');
- assert.ok(html.includes('directory-ui.js?v=27'),'fresh UI script requested');
+ assert.ok(html.includes('directory-ui.js?v=28'),'fresh UI script requested');
  assert.ok(html.includes('grid-column:span 2'),'filter grid should have no unused second-row gap');
 });
 test('all program subjects remain discoverable by one or more topic choices',()=>{
@@ -227,5 +229,31 @@ test('all program subjects remain discoverable by one or more topic choices',()=
   assert.ok(tags.length>0,p.id+' has no topic choices');
   assert.ok(tags.some(t=>taxonomy.TOPICS.some(([key])=>key===t)),p.id+' tags are not available in Topics');
   assert.ok(taxonomy.matchesFacets(p,selected(tags),selected([])),p.id+' not searchable with topics');
+ }
+});
+
+test('keyword search matches NYU ARISE without requiring adjacent words',()=>{
+ const p=byId.get('nyu-tandon-arise');
+ assert.ok(p,'NYU Tandon ARISE is in the catalog');
+ for(const query of ['nyu arise','NYU ARISE','nyu tandon arise','arise nyu','  nyu   arise  ','nyu, arise']){
+  assert.ok(search.matchesProgram(p,query,taxonomy),query+' should find NYU ARISE');
+ }
+ assert.ok(!search.matchesProgram(p,'nyu nonexistentword',taxonomy),'all query words must match');
+ assert.ok(!search.matchesProgram(byId.get('columbia-brainyac'),'nyu arise',taxonomy),'unrelated listing');
+});
+test('keyword search still finds other programs and topic labels',()=>{
+ assert.ok(search.matchesProgram(byId.get('acs-project-seed-chemistry-research'),'project seed',taxonomy));
+ assert.ok(search.matchesProgram(byId.get('nasa-techrise-challenge-2026-27'),'nasa engineering',taxonomy));
+ assert.ok(search.matchesProgram(byId.get('nyu-tandon-arise'),'  ',taxonomy));
+ assert.ok(search.matchesProgram(byId.get('nyu-tandon-arise'),'ArIsE',taxonomy));
+ const html=fs.readFileSync(path.join(ROOT,'index.html'),'utf8');
+ const ui=fs.readFileSync(path.join(ROOT,'directory-ui.js'),'utf8');
+ assert.ok(html.includes('program-search.js?v=1'));
+ assert.ok(ui.includes('search.matchesProgram(p,q,taxonomy)'));
+ assert.ok(html.includes('position:sticky;top:0'));
+ assert.ok(html.includes('background:#223d65'));
+ assert.ok(ui.includes('role="heading" aria-level="3"'));
+ for(const name of ['STEM','Arts & Media','Careers & Community']){
+  assert.ok(taxonomy.TOPIC_GROUPS.some(([group])=>group===name),name);
  }
 });

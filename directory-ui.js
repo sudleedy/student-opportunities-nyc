@@ -2,6 +2,7 @@
 const items=window.PROGRAMS||[],store=window.BeaconStore,el=id=>document.getElementById(id);
 const taxonomy=window.SOBProgramTaxonomy;
 const priority=window.SOBProgramOrder;
+const search=window.SOBProgramSearch;
 
 const officialUrl=p=>{try{const url=new URL(p.url);return url.protocol==='https:'?url.href:null}catch{return null}};
 const daysLeft=d=>d&&/^\d{4}-\d{2}-\d{2}$/.test(d)?Math.ceil((new Date(d+'T23:59:59')-Date.now())/86400000):null;
@@ -87,7 +88,7 @@ function refreshOptions(){
   let lastHeading='';
   box.innerHTML=options.map(([value,label])=>{
    const group=groupNames?.get(value);
-   const heading=group&&group!==lastHeading?'<div class="topic-menu-heading">'+safe(group)+'</div>':'';
+   const heading=group&&group!==lastHeading?'<div class="topic-menu-heading" role="heading" aria-level="3">'+safe(group)+'</div>':'';
    if(group)lastHeading=group;
    const n=groupNames?items.filter(p=>taxonomy.topicsFor(p).includes(value)).length:null;
    return heading+'<label class="multi-choice"><input type="checkbox" value="'+safe(value)+'" '+(checked[key].has(value)?'checked ':'')+'><span>'+safe(label)+'</span>'+(n===null?'':'<span class="topic-option-count">'+n+'</span>')+'</label>';
@@ -191,7 +192,7 @@ function matches(p,q){
  if(!selectedAny('apply-filter',state(p)))return false;
  if(saved.checked&&!progress.favorited)return false;
  if(selected('progress').size&&(!selectedAny('progress',progress.application_status)||!(progress.favorited||progress.notes||progress.application_status!=='Interested')))return false;
- return !q||[p.title,p.org,p.summary,p.whatYouDo,p.subject,p.type,p.eligibility,p.location,p.borough,...taxonomy.topicsFor(p).map(key=>taxonomy.TOPICS.find(pair=>pair[0]===key)?.[1]||key)].join(' ').toLowerCase().includes(q);
+ return search.matchesProgram(p,q,taxonomy);
 }
 function mixResults(found){
  return priority.sortPrograms(found,el('sort').value);
