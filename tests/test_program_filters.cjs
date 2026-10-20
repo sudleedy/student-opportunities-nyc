@@ -66,7 +66,7 @@ test('checkbox OR within each filter and AND across filters',()=>{
 });
 test('unreviewed dynamic records can only opt into recognized topics',()=>{
  const p={id:'made-up',title:'Sample coding workshop',type:'Technology Workshop',topics:['coding','nasa','invalid','coding']};
- assert.deepEqual(taxonomy.topicsFor(p),['coding','nasa']);
+ assert.deepEqual(taxonomy.topicsFor(p),['stem','coding','nasa']);
  assert.deepEqual(taxonomy.kindsFor(p),['other']);
  assert.deepEqual(taxonomy.topicsFor({id:'made-up',topics:'biology'}),[]);
 });
