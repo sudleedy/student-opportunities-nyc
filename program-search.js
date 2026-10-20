@@ -47,6 +47,7 @@ const ORGANIZER_ALIASES=[
  ['new york city public schools',['nycps','nyc public schools']],
  ['nyc public schools',['nycps']],
  ['department of youth and community development',['dycd']],
+ ['department of youth community development',['dycd']],
  ['princeton university',['princeton']],
  ['massachusetts institute of technology',['mit']]
 ];
