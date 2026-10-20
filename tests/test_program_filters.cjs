@@ -73,14 +73,14 @@ test('unreviewed dynamic records can only opt into recognized topics',()=>{
 test('homepage supplies accessible menus and invokes the facet matcher',()=>{
  const html=fs.readFileSync(path.join(ROOT,'index.html'),'utf8');
  const js=fs.readFileSync(path.join(ROOT,'directory-ui.js'),'utf8');
- for(const key of ['subject','topic','kind','grade']){
+ for(const key of ['topic','kind','grade']){
   assert.ok(html.includes('id="'+key+'-dropdown"'),key+' dropdown missing');
   assert.ok(html.includes('id="'+key+'-options"'),key+' options missing');
   assert.ok(html.includes('id="'+key+'-summary-text"'),key+' summary missing');
  }
  assert.ok(html.includes('program-taxonomy.js?v=5'));
  assert.ok(html.indexOf('program-taxonomy.js?v=5')<html.indexOf('program-order.js?v=1'));
- assert.ok(html.indexOf('program-order.js?v=1')<html.indexOf('directory-ui.js?v=26'));
+ assert.ok(html.indexOf('program-order.js?v=1')<html.indexOf('directory-ui.js?v=27'));
  assert.ok(js.includes("taxonomy.matchesFacets(p,selected('topic'),selected('kind'))"));
  assert.ok(js.includes('const PAGE_SIZE=9'));
  assert.ok(js.includes("for(const key of Object.keys(choices)){checked[key].clear()"));
@@ -204,4 +204,28 @@ test('STEM category does not pull unrelated listings into its subjects',()=>{
  assert.deepEqual(taxonomy.topicsFor({id:'new-chem',topics:['chemistry']}),['chemistry']);
  assert.deepEqual(taxonomy.topicsFor({id:'new-stem',topics:['stem']}),[]);
  assert.ok(taxonomy.topicsFor({id:'new-school',subject:'Technology & Coding'}).includes('technology-computing'));
+});
+
+test('single Topics filter replaces the old redundant Interest filter',()=>{
+ const html=fs.readFileSync(path.join(ROOT,'index.html'),'utf8');
+ const js=fs.readFileSync(path.join(ROOT,'directory-ui.js'),'utf8');
+ assert.ok(html.includes('id="topic-dropdown"'));
+ for(const id of ['subject-title','subject-dropdown','subject-options','subject-summary-text']){
+  assert.ok(!html.includes('id="'+id+'"'),id+' should be removed');
+ }
+ assert.ok(!js.includes("subject:{placeholder:"),'no subject checkbox option');
+ assert.ok(!js.includes("selectedAny('subject'"),'no remaining subject filter restriction');
+ assert.ok(html.includes('directory-ui.js?v=27'),'fresh UI script requested');
+ assert.ok(html.includes('grid-column:span 2'),'filter grid should have no unused second-row gap');
+});
+test('all program subjects remain discoverable by one or more topic choices',()=>{
+ const groups=taxonomy.TOPIC_GROUPS.map(([heading])=>heading);
+ assert.deepEqual(groups,['STEM','Arts & Media','Careers & Community']);
+ assert.equal(programs.length,170);
+ for(const p of programs){
+  const tags=taxonomy.topicsFor(p);
+  assert.ok(tags.length>0,p.id+' has no topic choices');
+  assert.ok(tags.some(t=>taxonomy.TOPICS.some(([key])=>key===t)),p.id+' tags are not available in Topics');
+  assert.ok(taxonomy.matchesFacets(p,selected(tags),selected([])),p.id+' not searchable with topics');
+ }
 });

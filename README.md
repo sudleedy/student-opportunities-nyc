@@ -1,5 +1,10 @@
 # Student Opportunities NYC — site setup
 
+## October 19, 2026: Combined Interest and Topics
+
+The redundant **Interest** dropdown was removed from the homepage directory. **Topics** is now the only subject-selection dropdown, with the three category headings **STEM**, **Arts & Media**, and **Careers & Community** and all 32 useful selectable subtopics retained. Every one of the 170 program records still matches at least one topic, including STEM courses and research as well as non-STEM programs. The redundant subject checkbox restriction was deleted, so choosing a specific topic no longer accidentally excludes a cross-disciplinary program because of its broad catalog subject. Multiple topics still use OR; different filter types use AND. Search, grade, borough, research/internship/volunteering, application state, sorting, favorites and login are unchanged. The five visible filters reflow cleanly on desktop and mobile, and the homepage JS cache version is bumped. New automated tests verify that Interest UI/code is absent and all programs are still discoverable via Topics.
+
+
 ## October 19, 2026: STEM category heading (clarified)
 
 The **Topic** filter uses exactly **three nonselectable category headings**: **STEM**, **Arts & Media**, and **Careers & Community**. STEM now **replaces** the former `Science & Technology` heading. It is **not a checkbox**, and the redundant `STEM — All Fields` and `General STEM & Science` topic options were removed. Useful subject options remain below the STEM heading, including General Science & Research, Biology, Chemistry, NASA, Space Science, Engineering, Coding, Technology & Computing, and other focused topics.

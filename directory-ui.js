@@ -55,7 +55,6 @@ try {
 // Native checkboxes allow any number of choices within a filter category.
 // Multiple checked choices use OR; distinct categories combine using AND.
 const choices={
- subject:{placeholder:'All interests',options:()=>[...new Set(items.map(p=>p.subject).filter(Boolean))].sort().map(v=>[v,v])},
  topic:{placeholder:'All topics',options:()=>taxonomy.TOPICS},
  kind:{placeholder:'All types',options:()=>taxonomy.KINDS},
  grade:{placeholder:'Any grade',options:()=>[9,10,11,12].map(n=>[String(n),'Grade '+n])},
@@ -179,7 +178,6 @@ function matches(p,q){
   if(!locations.some(place=>String(place||'').trim().toLowerCase()===borough))return false;
  }
  const progress=store.get(p.id);
- if(!selectedAny('subject',p.subject))return false;
  if(!taxonomy.matchesFacets(p,selected('topic'),selected('kind')))return false;
  // Within one category, any checked grade is a match. Unknown grades
  // cannot qualify for a grade-specific search.
@@ -220,7 +218,7 @@ function render(){
  const shown=results.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
  count.textContent=results.length+' program'+(results.length===1?'':'s')+(results.length?' · Page '+page+' of '+pages:'');
  cards.innerHTML=shown.length?shown.map(renderCurated).join(''):
- '<div class="empty">No matching programs. Try another interest or borough, or clear your filters.</div>';
+ '<div class="empty">No matching programs. Try another topic or borough, or clear your filters.</div>';
  renderPager(results.length);
 }
 cards.addEventListener('click',e=>{
