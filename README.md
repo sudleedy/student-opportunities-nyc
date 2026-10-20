@@ -1,5 +1,12 @@
 # Student Opportunities NYC — site setup
 
+## October 19, 2026: Unified STEM topic filter
+
+Added **STEM — All Fields** at the top of the Science & Technology topic dropdown. It includes **every Science & Research, Technology & Coding, and Environment & Sustainability program**, all special-topic STEM entries, and additional science/engineering opportunities listed under other broad subjects (e.g. ACE engineering mentorship, AMNH science communication, NYSCI STEM Nights, NYU digital technology workshops, the ACE engineering scholarship, Snug Harbor green-energy workshops and Schoolhouse SAT Math). This filter combines existing curated tags without modifying an organizer's program type or claiming a research placement.
+
+Students can combine STEM with Research, Internship, grade, deadline or borough filters. Other unrelated arts/financial-aid/community programs remain outside STEM. New dynamically managed programs with valid science-topic tags also inherit STEM. Topic total: **32**. Automated tests cover the union and explicit exclusions.
+
+
 ## October 19, 2026: More topics and chemistry/NASA/space-science programs
 
 The directory now has **170 programs**, up from the original 159, and a grouped **31-topic** filter covering science and engineering, arts and media, plus community, careers and college preparation. Every listing inherits one accurate broad topic from its catalog subject, and additional focused tags (e.g. chemistry, neuroscience, journalism, NASA) are curated from the listed activities. The dropdown shows program counts next to each topic; totals overlap because programs may belong to more than one topic. Existing search, opportunity-type, deadline ordering, favorites and student progress remain intact.

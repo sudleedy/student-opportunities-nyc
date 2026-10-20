@@ -15,7 +15,7 @@ const selected = (ids) => new Set(ids);
 test('reviewed catalog identity and facet menus',()=>{
  assert.equal(programs.length,170);
  assert.equal(byId.size,programs.length);
- assert.equal(taxonomy.TOPICS.length,31);
+ assert.equal(taxonomy.TOPICS.length,32);
  assert.equal(taxonomy.TOPIC_GROUPS.length,3);
  assert.ok(taxonomy.TOPICS.some(pair=>pair[0]==='arts-design'));
  assert.ok(taxonomy.TOPICS.some(pair=>pair[0]==='scholarships'));
@@ -78,8 +78,8 @@ test('homepage supplies accessible menus and invokes the facet matcher',()=>{
   assert.ok(html.includes('id="'+key+'-options"'),key+' options missing');
   assert.ok(html.includes('id="'+key+'-summary-text"'),key+' summary missing');
  }
- assert.ok(html.includes('program-taxonomy.js?v=3'));
- assert.ok(html.indexOf('program-taxonomy.js?v=3')<html.indexOf('program-order.js?v=1'));
+ assert.ok(html.includes('program-taxonomy.js?v=4'));
+ assert.ok(html.indexOf('program-taxonomy.js?v=4')<html.indexOf('program-order.js?v=1'));
  assert.ok(html.indexOf('program-order.js?v=1')<html.indexOf('directory-ui.js?v=26'));
  assert.ok(js.includes("taxonomy.matchesFacets(p,selected('topic'),selected('kind'))"));
  assert.ok(js.includes('const PAGE_SIZE=9'));
@@ -128,7 +128,7 @@ test('verified upcoming with expired published deadline becomes unconfirmed',()=
  assert.equal(order.displayState({applicationState:'upcoming',sourceStatus:'current',verified:'2026-10-18',deadlineISO:'2026-09-30'},now),'unknown');
 });
 
-test('every program has at least one topic and all 31 topics have candidates',()=>{
+test('every program has at least one topic and all 32 topics have candidates',()=>{
  assert.ok(programs.every(p=>taxonomy.topicsFor(p).length>0),'catalog topic coverage must be 100%');
  const allTags=programs.flatMap(p=>taxonomy.topicsFor(p));
  assert.ok(taxonomy.TOPICS.every(([key])=>allTags.includes(key)),'no empty selectable topic');
@@ -155,7 +155,7 @@ test('topic group headings counts and all new source-linked detail pages',()=>{
  assert.ok(js.includes('taxonomy.TOPIC_GROUPS.flatMap'));
  assert.ok(js.includes('topic-option-count'));
  assert.ok(html.includes('programs-data.js?v=15'));
- assert.ok(html.includes('program-taxonomy.js?v=3'));
+ assert.ok(html.includes('program-taxonomy.js?v=4'));
  assert.ok(html.includes('directory-ui.js?v=26'));
  const pages=['program.html','dashboard.html','admin.html'];
  for(const page of pages){
@@ -167,4 +167,36 @@ test('topic group headings counts and all new source-linked detail pages',()=>{
   assert.ok(dir.includes('./program.html?id='+p.id),p.id+' absent from directory');
   assert.ok(map.includes('program.html?id='+p.id),p.id+' absent from sitemap');
  }
+});
+
+test('STEM includes every science, technology, and environment program',()=>{
+ const core=new Set(['Science & Research','Technology & Coding','Environment & Sustainability']);
+ assert.equal(taxonomy.TOPIC_GROUPS[0][1][0][0],'stem');
+ const matching=programs.filter(p=>taxonomy.topicsFor(p).includes('stem'));
+ assert.ok(matching.length>=85,'STEM should cover all core fields and cross-subject opportunities');
+ for(const p of programs){
+  if(core.has(p.subject))assert.ok(taxonomy.topicsFor(p).includes('stem'),'missing '+p.id);
+ }
+});
+test('STEM includes specialized tags even for cross-subject and dynamic programs',()=>{
+ const disciplines=['biology','chemistry','neuroscience','health-medicine','machine-learning','coding','data-science',
+   'cybersecurity','engineering','robotics','nasa','space-science','earth-science','environmental-studies','mathematics','general-stem'];
+ for(const p of programs){
+  const tags=taxonomy.topicsFor(p);
+  if(tags.some(t=>disciplines.includes(t)))assert.ok(tags.includes('stem'),p.id);
+ }
+ for(const id of ['ace-mentor-greater-ny','schoolhouse-free-online-sat-bootcamp','amnh-science-communication-internship-scip',
+   'wave-hill-aces','nysci-stem-nights-teen-events','nyu-tandon-digital-design-ux',
+   'nyu-tandon-extending-reality-xr','ace-greater-ny-scholarship','snug-harbor-green-energy-workshops']){
+  assert.ok(taxonomy.matchesFacets(byId.get(id),selected(['stem']),selected([])),id+' missing STEM');
+ }
+ assert.ok(taxonomy.topicsFor({id:'new-a',topics:['chemistry']}).includes('stem'));
+ assert.ok(taxonomy.topicsFor({id:'new-b',topics:['stem']}).includes('stem'));
+ assert.ok(taxonomy.topicsFor({id:'new-c',subject:'Environment & Sustainability'}).includes('stem'));
+});
+test('STEM does not absorb unrelated arts, scholarships, or generic technology-help listings',()=>{
+ for(const id of ['youngarts-national-arts-competition','coolidge-scholarship','reelworks-documentary-lab','dorot-summer-teen-internship']){
+  assert.ok(!taxonomy.topicsFor(byId.get(id)).includes('stem'),'false positive '+id);
+ }
+ assert.ok(!taxonomy.topicsFor({id:'unlisted',title:'Technology Help Day',type:'Arts Program'}).includes('stem'));
 });

@@ -2,7 +2,7 @@
    Specific tags signal documented subjects, not a guaranteed internship placement. */
 (function(root){
 'use strict';
-const TOPIC_GROUPS=[["Science & Technology",[["biology","Biology & Life Science"],["chemistry","Chemistry"],["neuroscience","Neuroscience"],["health-medicine","Health & Medicine"],["machine-learning","Machine Learning & AI"],["coding","Coding & Programming"],["data-science","Data Science"],["cybersecurity","Cybersecurity"],["engineering","Engineering"],["robotics","Robotics & Makerspaces"],["nasa","NASA Programs"],["space-science","Space Science & Astronomy"],["earth-science","Earth & Climate Science"],["environmental-studies","Environment & Conservation"],["mathematics","Mathematics"],["general-stem","General STEM & Science"]]],["Arts & Media",[["arts-design","Visual Arts & Design"],["filmmaking","Film & Video"],["photography","Photography"],["writing-journalism","Writing & Journalism"],["media-communications","Media & Communications"],["music-performance","Music & Performance"]]],["Community, Careers & College",[["leadership","Leadership & Civic Engagement"],["community-service","Community Service & Volunteering"],["education-mentoring","Teaching & Mentoring"],["business","Business & Entrepreneurship"],["finance","Finance & Economics"],["career-prep","Career Exploration"],["college-prep","College Preparation"],["scholarships","Scholarships & Financial Aid"],["community-general","Community Programs"]]]];
+const TOPIC_GROUPS=[["Science & Technology",[["stem","STEM — All Fields"],["biology","Biology & Life Science"],["chemistry","Chemistry"],["neuroscience","Neuroscience"],["health-medicine","Health & Medicine"],["machine-learning","Machine Learning & AI"],["coding","Coding & Programming"],["data-science","Data Science"],["cybersecurity","Cybersecurity"],["engineering","Engineering"],["robotics","Robotics & Makerspaces"],["nasa","NASA Programs"],["space-science","Space Science & Astronomy"],["earth-science","Earth & Climate Science"],["environmental-studies","Environment & Conservation"],["mathematics","Mathematics"],["general-stem","General STEM & Science"]]],["Arts & Media",[["arts-design","Visual Arts & Design"],["filmmaking","Film & Video"],["photography","Photography"],["writing-journalism","Writing & Journalism"],["media-communications","Media & Communications"],["music-performance","Music & Performance"]]],["Community, Careers & College",[["leadership","Leadership & Civic Engagement"],["community-service","Community Service & Volunteering"],["education-mentoring","Teaching & Mentoring"],["business","Business & Entrepreneurship"],["finance","Finance & Economics"],["career-prep","Career Exploration"],["college-prep","College Preparation"],["scholarships","Scholarships & Financial Aid"],["community-general","Community Programs"]]]];
 const TOPICS=TOPIC_GROUPS.flatMap(group=>group[1]);
 const KINDS=[["research","Research"],["internship","Internship"],["volunteering","Volunteering"],["other","Other programs (courses, competitions, etc.)"]];
 const BASE_TOPIC_BY_SUBJECT={
@@ -252,6 +252,26 @@ const curated={
   "community-general": []
 };
 const topicKeys=new Set(TOPICS.map(([key])=>key));
+/* STEM is the union of STEM-oriented primary catalog subjects, narrower
+   scientific or technical topic tags, and verified cross-subject listings.
+   This classification does not rely on generic title substring matches. */
+const STEM_SUBJECTS=new Set(["Science & Research","Technology & Coding","Environment & Sustainability"]);
+const STEM_SPECIALTIES=new Set([
+ "biology","chemistry","neuroscience","health-medicine","machine-learning",
+ "coding","data-science","cybersecurity","engineering","robotics","nasa",
+ "space-science","earth-science","environmental-studies","mathematics","general-stem"
+]);
+const STEM_CROSS_SUBJECT_IDS=new Set([
+ "ace-mentor-greater-ny",
+ "schoolhouse-free-online-sat-bootcamp",
+ "amnh-science-communication-internship-scip",
+ "wave-hill-aces",
+ "nysci-stem-nights-teen-events",
+ "nyu-tandon-digital-design-ux",
+ "nyu-tandon-extending-reality-xr",
+ "ace-greater-ny-scholarship",
+ "snug-harbor-green-energy-workshops"
+]);
 const tagsByProgram=new Map();
 for(const [topic,ids] of Object.entries(curated)){
  for(const id of ids){
@@ -262,7 +282,10 @@ for(const [topic,ids] of Object.entries(curated)){
 function topicsFor(program){
  const tagged=Array.isArray(program.topics)?program.topics.filter(tag=>typeof tag==='string'&&topicKeys.has(tag)):[];
  const broadTag=BASE_TOPIC_BY_SUBJECT[program.subject];
- return [...new Set([...(tagsByProgram.get(program.id)||[]),...tagged,...(broadTag?[broadTag]:[])])];
+ const tags=[...(tagsByProgram.get(program.id)||[]),...tagged,...(broadTag?[broadTag]:[])];
+ if(STEM_SUBJECTS.has(program.subject)||STEM_CROSS_SUBJECT_IDS.has(program.id)||
+    tags.some(tag=>STEM_SPECIALTIES.has(tag)))tags.unshift("stem");
+ return [...new Set(tags)];
 }
 function kindsFor(program){
  const type=String(program.type||'').toLowerCase();
