@@ -158,7 +158,7 @@ test('topic group headings counts and all new source-linked detail pages',()=>{
  assert.ok(js.includes('topic-option-count'));
  assert.ok(html.includes('programs-data.js?v=15'));
  assert.ok(html.includes('program-taxonomy.js?v=5'));
- assert.ok(html.includes('directory-ui.js?v=27'));
+ assert.ok(html.includes('directory-ui.js?v=28'));
  const pages=['program.html','dashboard.html','admin.html'];
  for(const page of pages){
   assert.ok(fs.readFileSync(path.join(ROOT,page),'utf8').includes('programs-data.js?v=15'),page+' cache');
