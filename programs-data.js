@@ -15,10 +15,10 @@ window.PROGRAMS = [
     "whatYouDo": "Train with neuroscience researchers, join a Columbia laboratory for summer experiments, analyze your findings, and present research to mentors.",
     "details": "BRAINYAC pairs eligible NYC sophomores and juniors with Columbia neuroscientists for intensive summer laboratory research and mentorship. It is not an open application for all NYC students; you must be enrolled in one of the named partner schools or youth programs.",
     "eligibility": "NYC residents in grade 10 or 11 enrolled in an eligible partner: S-PREP, BioBus, Lang Youth Medical, Double Discovery Center, or Columbia Secondary School. Preference for Upper Manhattan and South Bronx.",
-    "deadline": "October 28, 2026, 11:59 p.m. (2027 program)",
+    "deadline": "Last published deadline: 2026-10-28 (passed; next date not confirmed)",
     "deadlineISO": "2026-10-28",
-    "status": "Applications open through designated partners for summer 2027",
-    "applicationState": "open",
+    "status": "The last listed deadline has passed. Check the organizer for extensions or the next application cycle.",
+    "applicationState": "unknown",
     "cost": "Research apprenticeship; confirm stipend terms with your partner program.",
     "commitment": "Training plus an intensive summer laboratory placement; exact 2027 hours through organizer.",
     "sourceNote": "Columbia confirms 2027 applications end October 28, 2026 at 11:59 p.m.; only students from designated partner schools/programs may apply.",
@@ -29,7 +29,7 @@ window.PROGRAMS = [
     "summary": "Train with neuroscience researchers, join a Columbia laboratory for summer experiments, analyze your findings, and present research to mentors.",
     "verified": "2026-10-18",
     "sourceChecked": "2026-10-18",
-    "deadlineNote": "Exact date from organizer page; verify clock time and new updates.",
+    "deadlineNote": "Automatically flagged as past on 2026-10-29. This does not confirm the organizer has closed or reopened applications.",
     "applicationNote": "Contact your eligible partner school/program for its application; prepare research interests and availability. Check the organizer's official application page for current instructions, deadlines and complete eligibility."
   },
   {
