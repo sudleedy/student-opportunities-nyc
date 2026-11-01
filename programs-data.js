@@ -118,10 +118,10 @@ window.PROGRAMS = [
     "whatYouDo": "Propose a workshop or club for other teens, work with library staff to improve your idea, and possibly lead it at a neighborhood branch.",
     "details": "A teen-led service-learning opportunity: submit a practical activity concept, receive staff guidance if selected, and present a program in a Queens library branch if a branch agrees to host it. Earn service credit for delivery.",
     "eligibility": "NYC high school students in grades 9-12, ages 14-17; parental consent and working papers listed by Queens Public Library.",
-    "deadline": "Fall proposals due October 31, 2026, 11:59 p.m.; spring submissions February 1-28, 2027",
+    "deadline": "Last published deadline: 2026-10-31 (passed; next date not confirmed)",
     "deadlineISO": "2026-10-31",
-    "status": "Fall 2026 proposal window open",
-    "applicationState": "open",
+    "status": "The last listed deadline has passed. Check the organizer for extensions or the next application cycle.",
+    "applicationState": "unknown",
     "cost": "Volunteer community service with hours recorded; no payment promised.",
     "costCategory": "free",
     "deliveryMode": "in-person",
@@ -133,7 +133,7 @@ window.PROGRAMS = [
     "summary": "Propose a workshop or club for other teens, work with library staff to improve your idea, and possibly lead it at a neighborhood branch.",
     "verified": "2026-10-18",
     "sourceChecked": "2026-10-18",
-    "deadlineNote": "Exact date from organizer page; verify clock time and new updates.",
+    "deadlineNote": "Automatically flagged as past on 2026-11-01. This does not confirm the organizer has closed or reopened applications.",
     "applicationNote": "Draft a student-led activity, estimate supplies and duration, and obtain guardian consent. Check the organizer's official application page for current instructions, deadlines and complete eligibility."
   },
   {
