@@ -1,9 +1,9 @@
 {
-  "checked_at_utc": "2026-10-19T00:18:40+00:00",
-  "programs": 159,
+  "checked_at_utc": "2026-11-05T13:41:52+00:00",
+  "programs": 170,
   "summary": {
-    "unverified": 28,
-    "responding": 131
+    "unverified": 30,
+    "responding": 140
   },
   "explanation": "Responding does not mean enrollment is open; unverified links are NOT automatically removed. A 404 may reflect access restrictions and requires editorial review.",
   "links": [
@@ -32,10 +32,10 @@
       "title": "Queens Teens Institute for Art & Social Justice",
       "url": "https://queensmuseum.org/2026/09/14/queens-teens-institute-2026-2027-applications-now-open-deadline-10-25-26/",
       "status": "unverified",
-      "http": 403,
+      "http": null,
       "final_url": "",
       "page_title": "",
-      "reason": "HTTP 403. May be blocked, moved or require a browser."
+      "reason": "RemoteDisconnected: Remote end closed connection without response"
     },
     {
       "id": "queens-library-peer-to-peer-collective",
@@ -522,10 +522,10 @@
       "title": "Queens Botanical Garden: Community Volunteer Days",
       "url": "https://queensbotanical.org/community-volunteer/",
       "status": "unverified",
-      "http": 403,
+      "http": 520,
       "final_url": "",
       "page_title": "",
-      "reason": "HTTP 403. May be blocked, moved or require a browser."
+      "reason": "HTTP 520. May be blocked, moved or require a browser."
     },
     {
       "id": "nyas-junior-academy",
@@ -654,7 +654,7 @@
       "status": "responding",
       "http": 200,
       "final_url": "https://bronxzoo.com/teens/project-true/internship",
-      "page_title": "Project TRUE Internship - Bronx Zoo Close Close Close",
+      "page_title": "Project TRUE Internship - Bronx Zoo Close",
       "reason": ""
     },
     {
@@ -1022,10 +1022,10 @@
       "title": "Minds Matter NYC: Academic & College Mentorship",
       "url": "https://mindsmatternyc.org/students/application-overview/",
       "status": "unverified",
-      "http": 403,
+      "http": null,
       "final_url": "",
       "page_title": "",
-      "reason": "HTTP 403. May be blocked, moved or require a browser."
+      "reason": "RemoteDisconnected: Remote end closed connection without response"
     },
     {
       "id": "ccny-crest-hires",
@@ -1192,10 +1192,10 @@
       "title": "Queens Botanical Garden: Growing Justice Internship",
       "url": "https://queensbotanical.org/growing-justice/",
       "status": "unverified",
-      "http": 403,
+      "http": 520,
       "final_url": "",
       "page_title": "",
-      "reason": "HTTP 403. May be blocked, moved or require a browser."
+      "reason": "HTTP 520. May be blocked, moved or require a browser."
     },
     {
       "id": "nycps-summer-arts-institute-queens",
@@ -1525,7 +1525,7 @@
       "http": null,
       "final_url": "",
       "page_title": "",
-      "reason": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)>"
+      "reason": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)>"
     },
     {
       "id": "rise-environmentor-research",
@@ -1535,7 +1535,7 @@
       "http": null,
       "final_url": "",
       "page_title": "",
-      "reason": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)>"
+      "reason": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)>"
     },
     {
       "id": "noguchi-teen-advisory-board",
@@ -1595,6 +1595,116 @@
       "http": 200,
       "final_url": "https://snug-harbor.org/class/green-energy-industry-workshop/?slot_id=22815",
       "page_title": "Green Energy Industry Workshop | Snug Harbor",
+      "reason": ""
+    },
+    {
+      "id": "acs-project-seed-chemistry-research",
+      "title": "ACS Project SEED: Chemistry Summer Research",
+      "url": "https://www.acs.org/education/students/highschool/seed/apply.html",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.acs.org/education/students/highschool/seed/apply.html",
+      "page_title": "Apply for Project SEED Summer Program",
+      "reason": ""
+    },
+    {
+      "id": "acs-us-national-chemistry-olympiad-2027",
+      "title": "U.S. National Chemistry Olympiad (USNCO) 2027",
+      "url": "https://www.acs.org/education/olympiad.html",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.acs.org/education/olympiad.html",
+      "page_title": "U.S. National Chemistry Olympiad",
+      "reason": ""
+    },
+    {
+      "id": "acs-chemclub-high-school",
+      "title": "ACS ChemClub: High School Chemistry Clubs",
+      "url": "https://www.acs.org/education/students/highschool/chemistryclubs.html",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://www.acs.org/education/students/highschool/chemistryclubs.html",
+      "page_title": "ACS High School ChemClubs",
+      "reason": ""
+    },
+    {
+      "id": "usaaao-astronomy-astrophysics-olympiad",
+      "title": "U.S. Astronomy & Astrophysics Olympiad (USAAAO)",
+      "url": "https://usaaao.org/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://usaaao.org/",
+      "page_title": "USAAAO",
+      "reason": ""
+    },
+    {
+      "id": "nasa-space-apps-challenge-2026",
+      "title": "NASA Space Apps Challenge 2026",
+      "url": "https://www.spaceappschallenge.org/2026/",
+      "status": "unverified",
+      "http": null,
+      "final_url": "",
+      "page_title": "",
+      "reason": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)>"
+    },
+    {
+      "id": "nasa-exoplanet-watch-citizen-science",
+      "title": "NASA Exoplanet Watch: Citizen Science",
+      "url": "https://science.nasa.gov/citizen-science/exoplanet-watch/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://science.nasa.gov/citizen-science/exoplanet-watch/",
+      "page_title": "Exoplanet Watch - NASA Science",
+      "reason": ""
+    },
+    {
+      "id": "nasa-planet-hunters-tess-citizen-science",
+      "title": "NASA Planet Hunters TESS: Find Exoplanets",
+      "url": "https://science.nasa.gov/citizen-science/planet-hunters-tess/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://science.nasa.gov/citizen-science/planet-hunters-tess/",
+      "page_title": "Planet Hunters TESS - NASA Science",
+      "reason": ""
+    },
+    {
+      "id": "nasa-backyard-worlds-planet-nine",
+      "title": "NASA Backyard Worlds: Planet 9",
+      "url": "https://science.nasa.gov/citizen-science/backyard-worlds-planet-9/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://science.nasa.gov/citizen-science/backyard-worlds-planet-9/",
+      "page_title": "Backyard Worlds: Planet 9 - NASA Science",
+      "reason": ""
+    },
+    {
+      "id": "nasa-space-umbrella-helio-citizen-science",
+      "title": "NASA Space Umbrella: Solar and Space Weather",
+      "url": "https://science.nasa.gov/citizen-science/space-umbrella/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://science.nasa.gov/citizen-science/space-umbrella/",
+      "page_title": "Space Umbrella - NASA Science",
+      "reason": ""
+    },
+    {
+      "id": "nasa-globe-observer-earth-science",
+      "title": "NASA GLOBE Observer: Earth Science Citizen Research",
+      "url": "https://observer.globe.gov/do-globe-observer",
+      "status": "unverified",
+      "http": 202,
+      "final_url": "https://observer.globe.gov/do-globe-observer",
+      "page_title": "",
+      "reason": "HTTP 202 is not proof that the full program page loaded."
+    },
+    {
+      "id": "nasa-galaxy-zoo-tidal-tales",
+      "title": "Galaxy Zoo: Tidal Tales Astronomy Research",
+      "url": "https://science.nasa.gov/citizen-science/tidal-tales/",
+      "status": "responding",
+      "http": 200,
+      "final_url": "https://science.nasa.gov/citizen-science/tidal-tales/",
+      "page_title": "Galaxy Zoo: Tidal Tales - NASA Science",
       "reason": ""
     }
   ]
