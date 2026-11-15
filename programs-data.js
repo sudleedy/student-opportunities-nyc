@@ -49,10 +49,10 @@ window.PROGRAMS = [
     "whatYouDo": "Teach children about plants at hands-on garden activity stations, collect seasonal plant observations in the forest, and present a group science project.",
     "details": "A tiered youth education program based at the Everett Children's Adventure Garden. New Intern Explainers start as volunteers; graduates can apply for paid advanced levels later. Includes training, garden facilitation, botany and climate learning.",
     "eligibility": "High school students ages 14-17; accepted students must attend required training and weekend shifts. Future paid tiers are not guaranteed.",
-    "deadline": "November 14, 2026, 11:59 p.m. (Spring 2027 Intern Explainers)",
+    "deadline": "Last published deadline: 2026-11-14 (passed; next date not confirmed)",
     "deadlineISO": "2026-11-14",
-    "status": "Applications open for Spring 2027 Intern Explainer cohort",
-    "applicationState": "open",
+    "status": "The last listed deadline has passed. Check the organizer for extensions or the next application cycle.",
+    "applicationState": "unknown",
     "cost": "Initial internship is volunteer service; advanced tiers may offer paid roles.",
     "costCategory": "free",
     "commitment": "Spring 2027: required March training and weekend shifts through June (confirm hour requirement with NYBG).",
@@ -64,7 +64,7 @@ window.PROGRAMS = [
     "summary": "Teach children about plants at hands-on garden activity stations, collect seasonal plant observations in the forest, and present a group science project.",
     "verified": "2026-10-18",
     "sourceChecked": "2026-10-18",
-    "deadlineNote": "Exact date from organizer page; verify clock time and new updates.",
+    "deadlineNote": "Automatically flagged as past on 2026-11-15. This does not confirm the organizer has closed or reopened applications.",
     "applicationNote": "Read training/attendance rules; prepare an interest statement and attend interview if invited. Check the organizer's official application page for current instructions, deadlines and complete eligibility."
   },
   {
